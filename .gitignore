@@ -13,3 +13,6 @@
 *.db-shm
 *.db
 .vs/CarGame/v16/.suo
+*.db
+*.db-shm
+*.opendb
