@@ -1,0 +1,15 @@
+
+*.obj
+*.obj
+*.pdb
+*.ilk
+*.tlog
+*.lastbuildstate
+*.pdb
+*.exe
+*.ipch
+*.opendb
+*.db-wal
+*.db-shm
+*.db
+.vs/CarGame/v16/.suo
