@@ -3,8 +3,8 @@
 
 #include "Game.h"
 #include "GameObjects/Rock.h"
+#include "GameObjects/PowerUp.h"
 #include "GameObjects/Coin.h"
-#include "GameObjects/Money.h"
 #include "GameObjectContainer.h"
 
 class GameObjectGenerator
@@ -20,10 +20,10 @@ public:
 			addInRandomPosition(game, new Rock(game));
 
 		for (int i = 0; i < N_COINS; i++)
-			addInRandomPosition(game, new Coin(game));
+			addInRandomPosition(game, new PowerUp(game));
 
 		for (int i = 0; i < N_MONEY; i++)
-			addInRandomPosition(game, new Money(game));
+			addInRandomPosition(game, new Coin(game));
 	}
 };
 

@@ -90,6 +90,11 @@ void Game::appendHelpInfo(string a)
     helpText += a + "  ";
 }
 
+void Game::addObject(GameObject* obj)
+{
+    container->add(obj);
+}
+
 void Game::draw() {
 
     container->draw();

@@ -15,6 +15,7 @@
 #include "Commands/AccCommand.h"
 #include "Commands/DebugCommand.h"
 #include "Commands/HelpCommand.h"
+#include "Commands/ShootCommand.h"
 
 
 #include "../Logic/Game.h"

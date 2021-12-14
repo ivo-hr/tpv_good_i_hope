@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CarGameCode\Logic\GameObjects\Bullet.h" />
     <ClInclude Include="CarGameCode\Control\CommandFactory.h" />
     <ClInclude Include="CarGameCode\Control\Commands\AccCommand.h" />
     <ClInclude Include="CarGameCode\Control\Commands\Command.h" />
@@ -24,12 +25,12 @@
     <ClInclude Include="CarGameCode\Logic\GameObjectGenerator.h" />
     <ClInclude Include="CarGameCode\Logic\GameObjects\BadObject.h" />
     <ClInclude Include="CarGameCode\Logic\GameObjects\Car.h" />
-    <ClInclude Include="CarGameCode\Logic\GameObjects\Coin.h" />
+    <ClInclude Include="CarGameCode\Logic\GameObjects\PowerUp.h" />
     <ClInclude Include="CarGameCode\Logic\GameObjects\Collider.h" />
     <ClInclude Include="CarGameCode\Logic\GameObjects\FinLine.h" />
     <ClInclude Include="CarGameCode\Logic\GameObjects\GameObject.h" />
     <ClInclude Include="CarGameCode\Logic\GameObjects\GoodObject.h" />
-    <ClInclude Include="CarGameCode\Logic\GameObjects\Money.h" />
+    <ClInclude Include="CarGameCode\Logic\GameObjects\Coin.h" />
     <ClInclude Include="CarGameCode\Logic\GameObjects\Rock.h" />
     <ClInclude Include="CarGameCode\Utils\Vector2D.h" />
     <ClInclude Include="CarGameCode\View\Box.h" />
@@ -37,8 +38,10 @@
     <ClInclude Include="CarGameCode\View\Infobar.h" />
     <ClInclude Include="CarGameCode\View\Texture.h" />
     <ClInclude Include="CarGameCode\View\TextureContainer.h" />
+    <ClInclude Include="CarGameCode\Control\Commands\ShootCommand.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CarGameCode\Logic\GameObjects\Bullet.cpp" />
     <ClCompile Include="CarGameCode\Control\Commands\AccCommand.cpp" />
     <ClCompile Include="CarGameCode\Control\Commands\DebugCommand.cpp" />
     <ClCompile Include="CarGameCode\Control\Commands\HelpCommand.cpp" />
@@ -50,15 +53,16 @@
     <ClCompile Include="CarGameCode\Logic\GameObjectGenerator.cpp" />
     <ClCompile Include="CarGameCode\Logic\GameObjects\BadObject.cpp" />
     <ClCompile Include="CarGameCode\Logic\GameObjects\Car.cpp" />
-    <ClCompile Include="CarGameCode\Logic\GameObjects\Coin.cpp" />
+    <ClCompile Include="CarGameCode\Logic\GameObjects\PowerUp.cpp" />
     <ClCompile Include="CarGameCode\Logic\GameObjects\FinLine.cpp" />
     <ClCompile Include="CarGameCode\Logic\GameObjects\GameObject.cpp" />
     <ClCompile Include="CarGameCode\Logic\GameObjects\GoodObject.cpp" />
-    <ClCompile Include="CarGameCode\Logic\GameObjects\Money.cpp" />
+    <ClCompile Include="CarGameCode\Logic\GameObjects\Coin.cpp" />
     <ClCompile Include="CarGameCode\Logic\GameObjects\Rock.cpp" />
     <ClCompile Include="CarGameCode\Main.cpp" />
     <ClCompile Include="CarGameCode\View\Infobar.cpp" />
     <ClCompile Include="CarGameCode\View\Texture.cpp" />
+    <ClCompile Include="CarGameCode\Control\Commands\ShootCommand.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>

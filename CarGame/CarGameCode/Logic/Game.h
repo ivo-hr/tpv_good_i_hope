@@ -54,12 +54,13 @@ public:
 
     Game(string name, int width, int height, int roadLength);
     ~Game();
-
     
     void startGame();
     void update();
 
     void appendHelpInfo(string a);
+
+    void addObject(GameObject* obj);
 
     void draw();
 

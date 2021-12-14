@@ -1,5 +1,5 @@
-#ifndef CARGAME_COIN_H
-#define CARGAME_COIN_H
+#ifndef CARGAME_MONEY_H
+#define CARGAME_MONEY_H
 
 #include "GameObject.h"
 #include "GoodObject.h"
@@ -12,7 +12,6 @@ class Game;
 
 class Coin : public GoodObject {
 
-
 public:
     Coin(Game* game);
     ~Coin();
@@ -21,7 +20,5 @@ public:
     void update();
     bool receiveCarCollision(Car* car) override;
 };
-
-
 
 #endif 

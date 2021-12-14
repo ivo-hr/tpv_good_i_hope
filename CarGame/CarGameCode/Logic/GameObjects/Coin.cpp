@@ -4,15 +4,15 @@
 Coin::Coin(Game* game) : GoodObject(game)
 {
 	texture = nullptr;
-	w = 40;
-	h = 40;
+	w = 20;
+	h = 20;
 }
 
 Coin::~Coin() {}
 
 void Coin::draw()
 {
-	drawTexture(game->getTexture(coinTexture));
+	drawTexture(game->getTexture(moneyTexture));
 }
 
 void Coin::update() {}
@@ -20,6 +20,6 @@ void Coin::update() {}
 bool Coin::receiveCarCollision(Car* car)
 {
 	alive = false;
-	car->AddPower();
+	car->AddCoins(1);
 	return true;
 }
