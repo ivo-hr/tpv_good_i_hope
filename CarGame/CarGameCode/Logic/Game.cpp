@@ -69,6 +69,7 @@ Game::~Game() {
 void Game::update() {
     car->update();
 
+    container->update();
     container->removeDead();
 }
 
@@ -92,6 +93,7 @@ void Game::appendHelpInfo(string a)
 
 void Game::addObject(GameObject* obj)
 {
+    cout << "añadido";
     container->add(obj);
 }
 
@@ -114,6 +116,16 @@ void Game::draw() {
         goal->drawDebug();
     }
 
+}
+
+int Game::GetCarX()
+{
+    return car->getX();
+}
+
+int Game::GetCarY()
+{
+    return car->getY();
 }
 
 void Game::MoveCarX(int movX) {

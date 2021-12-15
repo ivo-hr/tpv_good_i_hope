@@ -13,5 +13,7 @@ bool ShootCommand::parse(SDL_Event& event)
 
 void ShootCommand::execute()
 {
-    game->addObject(new Bullet(game));
+    Bullet* bulet = new Bullet(game);
+    bulet->setPosition(game->GetCarX(), game->GetCarY());
+    game->addObject(bulet);
 }

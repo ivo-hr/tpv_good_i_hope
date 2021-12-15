@@ -17,6 +17,8 @@ public:
     Bullet(Game* game);
     ~Bullet();
 
-    void draw();
-    void update();
+    void draw() override;
+    void update() override;
+
+    void hasImpacted();
 };

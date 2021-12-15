@@ -64,6 +64,9 @@ public:
 
     void draw();
 
+    int GetCarX();
+    int GetCarY();
+
     void MoveCarX(int movX);
     void MoveCarY(int movY);
     void setUserExit();

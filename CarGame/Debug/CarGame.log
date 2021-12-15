@@ -1,4 +1,4 @@
-﻿  ShootCommand.cpp
+﻿  Bullet.cpp
 C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\CarGame\CarGameCode\Logic\GameObjects\GameObject.h(41,30): warning C4244: 'return': conversión de 'T' a 'int'; posible pérdida de datos
           with
           [

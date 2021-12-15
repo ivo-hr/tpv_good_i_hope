@@ -18,4 +18,16 @@ void Bullet::draw()
 void Bullet::update()
 {
 	pos = Point2D<double>(getX() + speed, getY());
+
+	vector<Collider*> colisiones = game->GetCollisions(this);
+
+	for (auto e : colisiones) {
+		e->receiveBulletCollision(this);
+	}
+}
+
+void Bullet::hasImpacted()
+{
+	cout << "ha impactado";
+	alive = false;
 }
