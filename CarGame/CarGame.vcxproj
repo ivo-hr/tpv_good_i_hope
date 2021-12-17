@@ -39,6 +39,7 @@
     <ClInclude Include="CarGameCode\View\Texture.h" />
     <ClInclude Include="CarGameCode\View\TextureContainer.h" />
     <ClInclude Include="CarGameCode\Control\Commands\ShootCommand.h" />
+    <ClInclude Include="CarGameCode\Logic\GameObjects\SuperRock.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CarGameCode\Logic\GameObjects\Bullet.cpp" />
@@ -63,6 +64,7 @@
     <ClCompile Include="CarGameCode\View\Infobar.cpp" />
     <ClCompile Include="CarGameCode\View\Texture.cpp" />
     <ClCompile Include="CarGameCode\Control\Commands\ShootCommand.cpp" />
+    <ClCompile Include="CarGameCode\Logic\GameObjects\SuperRock.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>

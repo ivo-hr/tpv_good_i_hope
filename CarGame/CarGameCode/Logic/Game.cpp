@@ -19,6 +19,7 @@ Game::Game(string name, int width, int height, int roadLength) {
     numRocks = 15;
     numExLives = 5;
     numCoins = 25;
+    numSRocks = 3;
 
     infobar = new Infobar(this);
 }
@@ -34,7 +35,7 @@ void Game::startGame() {
 
     container = new GameObjectContainer();
 
-    GameObjectGenerator::generate(this, numRocks, numExLives, numCoins);
+    GameObjectGenerator::generate(this, numRocks, numExLives, numCoins, numSRocks);
     
     goal = new FinLine(this);
 
@@ -126,6 +127,11 @@ int Game::GetCarX()
 int Game::GetCarY()
 {
     return car->getY();
+}
+
+bool Game::CarCanBuy(int cost)
+{
+    return car->CanBuy(cost);
 }
 
 void Game::MoveCarX(int movX) {
@@ -224,5 +230,5 @@ bool Game::isRebased(GameObject* toBe){
 
 int Game::GetCarCoins()
 {
-    return car->GetNumCoins();
+    return car->GetCoins();
 }

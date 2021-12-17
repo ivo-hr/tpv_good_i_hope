@@ -7,6 +7,7 @@
 
 class Command {
 protected:
+    int cost = 0;
     string info_string;
     Game* game;
 public:

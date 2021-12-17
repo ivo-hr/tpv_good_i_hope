@@ -12,6 +12,7 @@ class Game;
 class Bullet : public GoodObject {
 
     int speed = 15;
+    int distance = 700;
 
 public:
     Bullet(Game* game);

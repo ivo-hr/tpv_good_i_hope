@@ -24,10 +24,15 @@ void Bullet::update()
 	for (auto e : colisiones) {
 		e->receiveBulletCollision(this);
 	}
+
+	distance -= speed;
+
+	if (distance <= 0) {
+		alive = false;
+	}
 }
 
 void Bullet::hasImpacted()
 {
-	cout << "ha impactado";
 	alive = false;
 }

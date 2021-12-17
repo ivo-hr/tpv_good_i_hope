@@ -9,16 +9,13 @@ Car::Car(Game* game) : GameObject(game) {
 
 
 void Car::MoveX(int movX) {
+
     if (movX < 0) {
         xMov *= DECELERATION;
     }
     else if (movX > 0) {
         xMov *= ACCELERATION;
     }
-
-    if (xMov > 10)
-        xMov = 10;
-    else if (xMov < 1) xMov = 1;
 }
 
 void Car::MoveY(int movY) {
@@ -27,18 +24,28 @@ void Car::MoveY(int movY) {
 
 }
 
+void Car::Stop()
+{
+    xMov = 0;
+}
+
 void Car::update() {
     
     if ((yMov > 0 && getY() >= game->getWindowHeight() - h / 2)) yMov = 0;
     else if ((yMov < 0 && getY() <= (h / 2) + 22)) yMov = 0;
 
-    pos = Point2D<double>(getX() + xMov, getY() + yMov);
+    if (xMov > 10)
+        xMov = 10;
+    else if (xMov < 1) xMov = 1;
 
     vector<Collider*> colisiones = game->GetCollisions(this);
 
-    for (auto e: colisiones) {
+    for (auto e : colisiones) {
         e->receiveCarCollision(this);
     }
+
+    pos = Point2D<double>(getX() + xMov, getY() + yMov);
+
 }
 
 void Car::GetHit(){
@@ -60,9 +67,18 @@ void Car::AddCoins(int num)
     coins += num;
 }
 
-int Car::GetNumCoins()
+int Car::GetCoins()
 {
     return coins;
+}
+
+bool Car::CanBuy(int cost)
+{
+    if (coins < cost)
+        return false;
+
+    coins -= cost;
+    return true;
 }
 
 Car::~Car() {};

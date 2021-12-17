@@ -43,11 +43,15 @@ public:
 
     void MoveX(int movX);
     void MoveY(int movY);
+    void Stop();
     void GetHit();
+
     void AddPower();
     int Power();
+
     void AddCoins(int num);
-    int GetNumCoins();
+    int GetCoins();
+    bool CanBuy(int cost);
 
     SDL_Rect getCollider() override;
 };
