@@ -7,6 +7,7 @@
 #include "GameObjects/Coin.h"
 #include "GameObjects/SuperRock.h"
 #include "GameObjects/oil.h"
+#include "GameObjects/Truck.h"
 #include "GameObjectContainer.h"
 
 class GameObjectGenerator
@@ -16,7 +17,7 @@ class GameObjectGenerator
 	void static addInRandomPosition(Game* game, GameObject* o);
 
 public:
-	static void generate(Game* game, int N_ROCKS = 0, int N_COINS = 0, int N_MONEY = 0, int N_SROCKS = 0, int N_OILS = 0)
+	static void generate(Game* game, int N_ROCKS = 0, int N_COINS = 0, int N_MONEY = 0, int N_SROCKS = 0, int N_OILS = 0, int N_TRUCKS = 0)
 	{
 		for (int i = 0; i < N_ROCKS; i++)
 			addInRandomPosition(game, new Rock(game));
@@ -32,6 +33,9 @@ public:
 
 		for (int i = 0; i < N_OILS; i++)
 			addInRandomPosition(game, new Oil(game));
+
+		for (int i = 0; i < N_TRUCKS; i++)
+			addInRandomPosition(game, new Truck(game));
 	}
 };
 

@@ -16,11 +16,12 @@ Game::Game(string name, int width, int height, int roadLength) {
     help = false;
     font = new Font("../Images/Monospace.ttf", 12);
 
-    numRocks = 15;
+    numRocks = 10;
     numExLives = 5;
-    numCoins = 25;
+    numCoins = 15;
     numSRocks = 3;
     numOils = 7;
+    numTrucks = 3;
 
     infobar = new Infobar(this);
 }
@@ -36,7 +37,7 @@ void Game::startGame() {
 
     container = new GameObjectContainer();
 
-    GameObjectGenerator::generate(this, numRocks, numExLives, numCoins, numSRocks, numOils);
+    GameObjectGenerator::generate(this, numRocks, numExLives, numCoins, numSRocks, numOils, numTrucks);
     
     goal = new FinLine(this);
 

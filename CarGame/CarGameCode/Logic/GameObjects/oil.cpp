@@ -20,7 +20,7 @@ void Oil::update() {}
 
 bool Oil::receiveCarCollision(Car* car)
 {
-	car->SlowDown(3);
+	car->SlowDown(2);
 	return true;
 }
 
