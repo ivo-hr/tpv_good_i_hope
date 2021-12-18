@@ -40,6 +40,7 @@ private:
     int numRocks;
     int numExLives;
     int numCoins;
+    int numSRocks;
     bool debug;
     bool help;
     string helpText;
@@ -54,14 +55,20 @@ public:
 
     Game(string name, int width, int height, int roadLength);
     ~Game();
-
     
     void startGame();
     void update();
 
     void appendHelpInfo(string a);
 
+    void addObject(GameObject* obj);
+
     void draw();
+
+    int GetCarX();
+    int GetCarY();
+    bool CarCanBuy(int cost);
+    int GetCarCoins();
 
     void MoveCarX(int movX);
     void MoveCarY(int movY);
@@ -94,8 +101,6 @@ public:
     void Help();
 
     bool isRebased(GameObject* toBe);
-
-    int GetCarCoins();
 
     string currentState = "didNotWork :(";
 

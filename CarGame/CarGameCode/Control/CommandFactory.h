@@ -6,6 +6,7 @@
 #include "Commands/MoveCommand.h"
 #include "Commands/AccCommand.h"
 #include "Commands/HelpCommand.h"
+#include "Commands/ShootCommand.h"
 
 #include <vector>
 

@@ -40,6 +40,7 @@ void GameObjectContainer::removeDead(){
 		if (gameObjects[i] != nullptr && gameObjects[i]->toDelete()){
 			gameObjects[i]->onDelete();
 
+			cout << "eliminado";
 			delete gameObjects[i];
 
 			for (int j = i + 1; j < gameObjects.size(); j++) 

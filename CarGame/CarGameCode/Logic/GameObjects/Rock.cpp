@@ -1,5 +1,7 @@
 #include "Rock.h"
+#include "Bullet.h"
 #include "../Game.h"
+
 Rock::Rock(Game* game) : BadObject(game)
 {
 	texture = nullptr;
@@ -25,9 +27,7 @@ bool Rock::receiveCarCollision(Car* car)
 
 bool Rock::receiveBulletCollision(Bullet* bullet)
 {
-	cout << "bala ha chocado" << endl;
-	delete bullet;
-	bullet = nullptr;
+	bullet->hasImpacted();
 	alive = false;
 	return true;
 }
