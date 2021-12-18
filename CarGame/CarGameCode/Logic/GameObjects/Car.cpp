@@ -50,7 +50,11 @@ void Car::update() {
 
 void Car::GetHit(){
     currPower--;
-    xMov = 1;
+    SlowDown(1);
+}
+
+void Car::SlowDown(int slow) {
+    xMov = slow;
 }
 
 void Car::AddPower()

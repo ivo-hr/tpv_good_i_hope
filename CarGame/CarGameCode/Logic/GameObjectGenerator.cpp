@@ -1,4 +1,6 @@
 #include "GameObjectGenerator.h"
+
+
 Point2D<int> GameObjectGenerator::generateRandomPosition(Game* game, GameObject* o)
 {
 	return Point2D<int>(rand() % (game->getRoadLenght() + o->getWidth()) + o->getWidth() / 2,

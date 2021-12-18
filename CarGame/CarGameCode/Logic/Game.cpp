@@ -20,6 +20,7 @@ Game::Game(string name, int width, int height, int roadLength) {
     numExLives = 5;
     numCoins = 25;
     numSRocks = 3;
+    numOils = 7;
 
     infobar = new Infobar(this);
 }
@@ -35,7 +36,7 @@ void Game::startGame() {
 
     container = new GameObjectContainer();
 
-    GameObjectGenerator::generate(this, numRocks, numExLives, numCoins, numSRocks);
+    GameObjectGenerator::generate(this, numRocks, numExLives, numCoins, numSRocks, numOils);
     
     goal = new FinLine(this);
 

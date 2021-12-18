@@ -45,7 +45,7 @@ public:
     void MoveY(int movY);
     void Stop();
     void GetHit();
-
+    void SlowDown(int slow);
     void AddPower();
     int Power();
 
