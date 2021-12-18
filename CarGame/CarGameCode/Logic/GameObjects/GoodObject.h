@@ -12,6 +12,7 @@ public:
     static int instances;
     GoodObject(Game* game) : GameObject(game) {
         alive = true;
+        waveValue = 150;
     };
 
     ~GoodObject() override = default;

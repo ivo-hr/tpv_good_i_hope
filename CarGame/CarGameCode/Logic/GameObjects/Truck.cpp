@@ -23,7 +23,7 @@ void Truck::update() {
 bool Truck::receiveCarCollision(Car* car)
 {
 	alive = false;
-	car->GetHit();
+	car->GetHit(1);
 	car->SlowDown(0);
 	return true;
 }

@@ -43,6 +43,7 @@ private:
     int numSRocks;
     int numOils;
     int numTrucks;
+    int numTurbos;
     bool debug;
     bool help;
     string helpText;

@@ -21,7 +21,7 @@ void Rock::update() {}
 bool Rock::receiveCarCollision(Car* car)
 {
 	alive = false;
-	car->GetHit();
+	car->GetHit(1);
 	return true;
 }
 

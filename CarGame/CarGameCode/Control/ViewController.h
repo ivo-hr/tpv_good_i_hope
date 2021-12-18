@@ -16,6 +16,7 @@
 #include "Commands/DebugCommand.h"
 #include "Commands/HelpCommand.h"
 #include "Commands/ShootCommand.h"
+#include "Commands/WaveCommand.h"
 
 
 #include "../Logic/Game.h"

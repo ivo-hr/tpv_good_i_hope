@@ -12,6 +12,7 @@ public:
     static int instances;
     BadObject(Game *game) : GameObject(game) {
         alive = true;
+        waveValue = -150;
     };
     
     ~BadObject() override = default;

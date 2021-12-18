@@ -14,6 +14,7 @@ class GameObject : public Collider
 protected:
 	Point2D<double> pos;
 	int w, h;
+	int waveValue;
 
 	Game* game;
 	Texture* texture;
@@ -44,6 +45,7 @@ public:
 	virtual SDL_Rect getCenter();
 
 	bool collide(SDL_Rect other);
+	bool wave() override;
 };
 
 #endif // !CARGAME_GAMEOBJECT_H

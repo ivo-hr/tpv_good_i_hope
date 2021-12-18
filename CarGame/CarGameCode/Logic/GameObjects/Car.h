@@ -31,6 +31,8 @@ private:
 
     int coins = INITIAL_COINS;
 
+    int turbo = 0;
+
 public:
     Car(Game* game);
     ~Car();
@@ -44,10 +46,12 @@ public:
     void MoveX(int movX);
     void MoveY(int movY);
     void Stop();
-    void GetHit();
+    void GetHit(int damage);
     void SlowDown(int slow);
     void AddPower();
     int Power();
+    void ActivateTurbo();
+    void StopTurbo();
 
     void AddCoins(int num);
     int GetCoins();

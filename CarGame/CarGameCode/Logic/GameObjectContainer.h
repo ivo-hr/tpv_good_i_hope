@@ -19,6 +19,7 @@ public:
     void drawDebug();
     void add(GameObject *gameObject);
     void removeDead();
+    void waveObjects();
     vector<Collider *> getCollisions(GameObject *g);
     bool hasCollision(GameObject *g);
 };

@@ -36,7 +36,8 @@ void Car::update() {
 
     if (xMov > 10)
         xMov = 10;
-    else if (xMov < 1) xMov = 1;
+    else if (xMov < 1) 
+        xMov = 1;
 
     vector<Collider*> colisiones = game->GetCollisions(this);
 
@@ -44,12 +45,18 @@ void Car::update() {
         e->receiveCarCollision(this);
     }
 
+    if (turbo > 0)
+    {
+        turbo--;
+        xMov = 20;
+    }
+
     pos = Point2D<double>(getX() + xMov, getY() + yMov);
 
 }
 
-void Car::GetHit(){
-    currPower--;
+void Car::GetHit(int damage){
+    currPower -= damage;
     SlowDown(1);
 }
 
@@ -62,8 +69,19 @@ void Car::AddPower()
     currPower++;
 }
 
-int Car::Power() {
+int Car::Power()
+{
     return currPower;
+}
+
+void Car::ActivateTurbo()
+{
+    turbo = 150;
+}
+
+void Car::StopTurbo()
+{
+    turbo = 0;
 }
 
 void Car::AddCoins(int num)

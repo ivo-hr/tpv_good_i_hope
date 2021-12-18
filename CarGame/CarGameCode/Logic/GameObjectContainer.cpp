@@ -22,7 +22,7 @@ void GameObjectContainer::draw(){
 	}
 }
 
-void GameObjectContainer::drawDebug(){
+void GameObjectContainer::drawDebug() {
 	int num = gameObjects.size();
 	for (int i = 0; i < num; i++){
 		if (gameObjects[i] != nullptr) gameObjects[i]->drawDebug();
@@ -50,6 +50,14 @@ void GameObjectContainer::removeDead(){
 
 			gameObjects.resize(num);
 		}
+	}
+}
+
+void GameObjectContainer::waveObjects()
+{
+	int num = gameObjects.size();
+	for (int i = 0; i < num; i++) {
+		if (gameObjects[i] != nullptr) gameObjects[i]->wave();
 	}
 }
 

@@ -57,3 +57,9 @@ bool GameObject::collide(SDL_Rect other)
 {
 	return SDL_HasIntersection(&getCollider(), &other);
 }
+
+bool GameObject::wave()
+{
+	setPosition(getX() - waveValue, getY());
+	return true;
+}

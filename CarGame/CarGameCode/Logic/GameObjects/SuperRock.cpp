@@ -5,8 +5,8 @@
 SuperRock::SuperRock(Game* game) : BadObject(game)
 {
 	texture = nullptr;
-	w = 70;
-	h = 70;
+	w = 160;
+	h = 80;
 }
 
 SuperRock::~SuperRock() {}
@@ -18,7 +18,9 @@ void SuperRock::draw()
 
 bool SuperRock::receiveCarCollision(Car* car)
 {
-	car->Stop();
+	alive = false;
+	car->GetHit(2);
+	car->StopTurbo();
 	return true;
 }
 

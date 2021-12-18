@@ -9,7 +9,7 @@ public:
     const string INFO_STRING = "[S] to shoot";
 
     ShootCommand() {
-        cost = 3;
+        cost = 1;
         info_string = INFO_STRING;
     }
     ~ShootCommand() = default;
