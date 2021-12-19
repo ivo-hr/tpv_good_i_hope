@@ -12,7 +12,10 @@ class Game;
 
 class Oil : public BadObject {
 
-
+protected:
+	bool slowed = false;
+	bool colliding = false;
+	Car* kar;
 public:
 
 	Oil(Game* game);
@@ -21,7 +24,7 @@ public:
 	void draw();
 	void update();
 	bool receiveCarCollision(Car* car) override;
-	//bool receiveBulletCollision(Bullet* bullet) override;
+	void recoverSpeed(Car* car);
 };
 
 #endif 

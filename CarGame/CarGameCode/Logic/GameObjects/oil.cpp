@@ -16,17 +16,33 @@ void Oil::draw()
 	drawTexture(game->getTexture(oilTexture));
 }
 
-void Oil::update() {}
+void Oil::update() {
+	if (!colliding && slowed) {
+		recoverSpeed(kar);
+		slowed = false;
+	}
+
+
+	colliding = false;
+
+}
 
 bool Oil::receiveCarCollision(Car* car)
 {
-	car->SlowDown(2);
+	kar = car;
+
+	colliding = true;
+	
+	if (!slowed) {
+		car->SlowDown(car->getSpeed() * 0.7);
+		slowed = true;
+	}
+	
+	
 	return true;
 }
 
-/*bool Oil::receiveBulletCollision(Bullet* bullet)
+void Oil::recoverSpeed(Car* car)
 {
-	bullet->hasImpacted();
-	alive = false;
-	return true;
-}*/
+	car->SlowDown(car->getSpeed() * 10 / 7);
+}

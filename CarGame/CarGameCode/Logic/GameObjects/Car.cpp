@@ -61,6 +61,7 @@ void Car::GetHit(int damage){
 }
 
 void Car::SlowDown(int slow) {
+
     xMov = slow;
 }
 
