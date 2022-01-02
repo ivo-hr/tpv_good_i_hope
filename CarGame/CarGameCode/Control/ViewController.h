@@ -10,14 +10,7 @@
 #include "SDL_ttf.h"
 
 #include "CommandFactory.h"
-#include "Commands/QuitCommand.h"
-#include "Commands/MoveCommand.h"
-#include "Commands/AccCommand.h"
-#include "Commands/DebugCommand.h"
-#include "Commands/HelpCommand.h"
-#include "Commands/ShootCommand.h"
-#include "Commands/WaveCommand.h"
-#include "Commands/BlastCommand.h"
+#include "Commands/commands.h"
 
 
 #include "../Logic/Game.h"

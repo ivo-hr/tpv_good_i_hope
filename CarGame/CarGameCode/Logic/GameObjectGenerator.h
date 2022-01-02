@@ -2,14 +2,7 @@
 #define	CARGAME_GAMEOBJECTGENERATOR_H
 
 #include "Game.h"
-#include "GameObjects/Rock.h"
-#include "GameObjects/PowerUp.h"
-#include "GameObjects/Coin.h"
-#include "GameObjects/SuperRock.h"
-#include "GameObjects/oil.h"
-#include "GameObjects/Truck.h"
-#include "GameObjects/Turbo.h"
-#include "GameObjectContainer.h"
+#include "GameObjects/Objects.h"
 
 class GameObjectGenerator
 {

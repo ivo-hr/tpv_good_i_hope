@@ -1,66 +1,36 @@
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\vc142.pdb
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\vc142.idb
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\infobar.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\main.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\rock.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\coin.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\goodobject.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\gameobject.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\finline.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\powerup.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\car.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\badobject.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\gameobjectgenerator.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\gameobjectcontainer.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\game.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\viewcontroller.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\quitcommand.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\movecommand.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\helpcommand.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\debugcommand.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\acccommand.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\bullet.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\wavecommand.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\turbo.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\truck.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\oil.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\superrock.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\shootcommand.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\texture.obj
 c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\vc142.pdb
 c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\vc142.idb
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\acccommand.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\debugcommand.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\helpcommand.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\movecommand.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\quitcommand.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\viewcontroller.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\game.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\gameobjectcontainer.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\gameobjectgenerator.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\badobject.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\car.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\powerup.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\finline.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\gameobject.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\goodobject.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\coin.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\rock.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\infobar.obj
 c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\main.obj
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\bin\cargamepr1debug.exe
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\cargame\debug\cargamepr1debug.ilk
-d:\docs\0uni\2o\tpv i\tpv_good_i_hope\bin\cargamepr1debug.pdb
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\rock.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\coin.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\goodobject.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\gameobject.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\finline.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\powerup.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\car.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\badobject.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\gameobjectgenerator.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\gameobjectcontainer.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\game.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\viewcontroller.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\quitcommand.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\movecommand.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\helpcommand.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\debugcommand.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\acccommand.obj
 c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\bullet.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\oil.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\shootcommand.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\superrock.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\texture.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\truck.obj
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\turbo.obj
 c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\wavecommand.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\turbo.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\truck.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\oil.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\superrock.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\shootcommand.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\texture.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\blastcommand.obj
+c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\bin\cargamepr1debug.exe
 c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\cargamepr1debug.ilk
 c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\bin\cargamepr1debug.pdb
-c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\bin\cargamepr1debug.exe
 c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\cargamepr1.tlog\cl.command.1.tlog
 c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\cargamepr1.tlog\cl.read.1.tlog
 c:\users\javier\desktop\masmierdas\unitwt\tpv_good_i_hope\cargame\debug\cargamepr1.tlog\cl.write.1.tlog
