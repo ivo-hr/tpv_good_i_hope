@@ -83,6 +83,11 @@ vector<Collider*> Game::GetCollisions(GameObject* o) {
 
 }
 
+vector<Collider*> Game::GetCollisions(SDL_Rect* r)
+{
+    return container->getCollisions(r);
+}
+
 bool Game::HasLost(){
 
     bool a = car->Power() <= 0;

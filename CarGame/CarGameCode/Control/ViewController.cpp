@@ -24,6 +24,7 @@ ViewController::ViewController(Game* _game) {
     commandFactory->add(new HelpCommand());
     commandFactory->add(new ShootCommand());
     commandFactory->add(new WaveCommand());
+    commandFactory->add(new BlastCommand());
 
 }
 

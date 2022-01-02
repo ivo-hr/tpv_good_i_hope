@@ -1,14 +1,35 @@
-﻿  oil.cpp
-D:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\CarGame\CarGameCode\Logic\GameObjects\GameObject.h(42,30): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+﻿  BlastCommand.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\CarGame\CarGameCode\Logic\GameObjects\GameObject.h(42,30): warning C4244: 'return': conversión de 'T' a 'int'; posible pérdida de datos
           with
           [
               T=double
           ]
-D:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\CarGame\CarGameCode\Logic\GameObjects\GameObject.h(43,30): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\CarGame\CarGameCode\Logic\GameObjects\GameObject.h(43,30): warning C4244: 'return': conversión de 'T' a 'int'; posible pérdida de datos
           with
           [
               T=double
           ]
-D:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\CarGame\CarGameCode\Logic\GameObjects\oil.cpp(37,33): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-D:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\CarGame\CarGameCode\Logic\GameObjects\oil.cpp(47,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  CarGame.vcxproj -> D:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\bin\CarGamePr1Debug.exe
+  ViewController.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\CarGame\CarGameCode\Logic\GameObjects\GameObject.h(42,30): warning C4244: 'return': conversión de 'T' a 'int'; posible pérdida de datos
+          with
+          [
+              T=double
+          ]
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\CarGame\CarGameCode\Logic\GameObjects\GameObject.h(43,30): warning C4244: 'return': conversión de 'T' a 'int'; posible pérdida de datos
+          with
+          [
+              T=double
+          ]
+  Main.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\CarGame\CarGameCode\Logic\GameObjects\GameObject.h(42,30): warning C4244: 'return': conversión de 'T' a 'int'; posible pérdida de datos
+          with
+          [
+              T=double
+          ]
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\CarGame\CarGameCode\Logic\GameObjects\GameObject.h(43,30): warning C4244: 'return': conversión de 'T' a 'int'; posible pérdida de datos
+          with
+          [
+              T=double
+          ]
+  Generando código...
+  CarGame.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\bin\CarGamePr1Debug.exe

@@ -18,7 +18,7 @@ public:
     ~BadObject() override = default;
     void update() override{};
 
-
+    bool blast() override;
 
     bool toDelete() override;
     void onEnter() override;

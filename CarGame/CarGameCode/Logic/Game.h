@@ -79,6 +79,7 @@ public:
     bool isUserExit();
     bool doQuit();
     vector<Collider*> GetCollisions(GameObject* o);
+    vector<Collider*> GetCollisions(SDL_Rect* r);
     bool HasLost();
 
     int getWindowWidth();

@@ -1,6 +1,12 @@
 #include "BadObject.h"
 #include "../Game.h"
 
+bool BadObject::blast()
+{
+	alive = false;
+	return true;
+}
+
 bool BadObject::toDelete()
 {
 	return !alive || game->isRebased(this);

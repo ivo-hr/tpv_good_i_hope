@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CarGameCode\Control\Commands\BlastCommand.h" />
     <ClInclude Include="CarGameCode\Logic\GameObjects\Bullet.h" />
     <ClInclude Include="CarGameCode\Control\CommandFactory.h" />
     <ClInclude Include="CarGameCode\Control\Commands\AccCommand.h" />
@@ -46,6 +47,7 @@
     <ClInclude Include="CarGameCode\Control\Commands\WaveCommand.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CarGameCode\Control\Commands\BlastCommand.cpp" />
     <ClCompile Include="CarGameCode\Logic\GameObjects\Bullet.cpp" />
     <ClCompile Include="CarGameCode\Control\Commands\AccCommand.cpp" />
     <ClCompile Include="CarGameCode\Control\Commands\DebugCommand.cpp" />

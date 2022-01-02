@@ -20,7 +20,8 @@ public:
     void add(GameObject *gameObject);
     void removeDead();
     void waveObjects();
-    vector<Collider *> getCollisions(GameObject *g);
+    vector<Collider*> getCollisions(GameObject *g);
+    vector<Collider*> getCollisions(SDL_Rect* r);
     bool hasCollision(GameObject *g);
 };
 

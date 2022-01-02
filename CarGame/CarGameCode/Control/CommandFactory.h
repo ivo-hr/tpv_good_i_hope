@@ -7,6 +7,8 @@
 #include "Commands/AccCommand.h"
 #include "Commands/HelpCommand.h"
 #include "Commands/ShootCommand.h"
+#include "Commands/BlastCommand.h"
+
 
 #include <vector>
 

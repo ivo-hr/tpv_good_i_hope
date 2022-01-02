@@ -74,6 +74,19 @@ vector<Collider*> GameObjectContainer::getCollisions(GameObject* g){
 	return a;
 }
 
+vector<Collider*> GameObjectContainer::getCollisions(SDL_Rect* r)
+{
+	int num = gameObjects.size();
+	vector<Collider*> a;
+
+	for (int i = 0; i < num; i++) {
+		if (gameObjects[i] != nullptr && SDL_HasIntersection(&gameObjects[i]->getCollider(), r))
+			a.push_back(gameObjects[i]);
+	}
+
+	return a;
+}
+
 bool GameObjectContainer::hasCollision(GameObject* g){
 	int num = gameObjects.size();
 
