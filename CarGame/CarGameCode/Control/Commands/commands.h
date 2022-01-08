@@ -9,3 +9,4 @@
 #include "BlastCommand.h"
 #include "DebugCommand.h"
 #include "WaveCommand.h"
+#include "NextCommand.h"

@@ -47,6 +47,11 @@
     <ClInclude Include="CarGameCode\Control\Commands\BlastCommand.h" />
     <ClInclude Include="CarGameCode\Logic\GameObjects\Objects.h" />
     <ClInclude Include="CarGameCode\Control\Commands\commands.h" />
+    <ClInclude Include="CarGameCode\Control\States\GameOverState.h" />
+    <ClInclude Include="CarGameCode\Control\States\MenuState.h" />
+    <ClInclude Include="CarGameCode\Control\States\PlayingState.h" />
+    <ClInclude Include="CarGameCode\Control\States\State.h" />
+    <ClInclude Include="CarGameCode\Control\Commands\NextCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CarGameCode\Control\Commands\AccCommand.cpp">
@@ -131,6 +136,18 @@
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
     <ClCompile Include="CarGameCode\Control\Commands\BlastCommand.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="CarGameCode\Control\States\GameOverState.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="CarGameCode\Control\States\MenuState.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="CarGameCode\Control\States\PlayingState.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="CarGameCode\Control\Commands\NextCommand.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
   </ItemGroup>

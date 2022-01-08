@@ -13,6 +13,11 @@
   <ItemGroup>
     <ClInclude Include="CarGameCode\Control\Commands\BlastCommand.h" />
     <ClInclude Include="CarGameCode\Control\Commands\commands.h" />
+    <ClInclude Include="CarGameCode\Control\Commands\NextCommand.h" />
+    <ClInclude Include="CarGameCode\Control\States\GameOverState.h" />
+    <ClInclude Include="CarGameCode\Control\States\MenuState.h" />
+    <ClInclude Include="CarGameCode\Control\States\PlayingState.h" />
+    <ClInclude Include="CarGameCode\Control\States\State.h" />
     <ClInclude Include="CarGameCode\Logic\GameObjects\Bullet.h" />
     <ClInclude Include="CarGameCode\Control\CommandFactory.h" />
     <ClInclude Include="CarGameCode\Control\Commands\AccCommand.h" />
@@ -50,6 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CarGameCode\Control\Commands\BlastCommand.cpp" />
+    <ClCompile Include="CarGameCode\Control\Commands\NextCommand.cpp" />
+    <ClCompile Include="CarGameCode\Control\States\GameOverState.cpp" />
+    <ClCompile Include="CarGameCode\Control\States\MenuState.cpp" />
+    <ClCompile Include="CarGameCode\Control\States\PlayingState.cpp" />
     <ClCompile Include="CarGameCode\Logic\GameObjects\Bullet.cpp" />
     <ClCompile Include="CarGameCode\Control\Commands\AccCommand.cpp" />
     <ClCompile Include="CarGameCode\Control\Commands\DebugCommand.cpp" />
