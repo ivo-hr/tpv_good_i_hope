@@ -1,4 +1,5 @@
 #include "Infobar.h"
+#include "../Control/States/State.h"
 
 void Infobar::drawInfo()
 {
@@ -48,7 +49,7 @@ void Infobar::drawState()
 					 int(game->font->getSize() * 1.8) };
 	Box(rect, BLACK).render(game->renderer);
 
-    string s = ("Current State: " + game->currentState);
+    string s = ("Current State: " + game->state->getStateName());
     game->renderText(s, x, game->getWindowHeight() - game->font->getSize() * 1.5);
 
     if (game->car != nullptr)

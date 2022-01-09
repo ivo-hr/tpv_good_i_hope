@@ -21,11 +21,11 @@
 #include "GameObjects/Car.h"
 #include "GameObjects/FinLine.h"
 
-
+#include "StatesMachine.h"
 
 using namespace std;
 
-class Game {
+class Game : public StateMachine{
 
     friend class Infobar;
 
@@ -48,6 +48,8 @@ private:
     bool help;
     string helpText;
 
+    int currentTime;
+
     TextureContainer* textureContainer;
     GameObjectContainer* container;
     SDL_Renderer* renderer = nullptr;
@@ -66,7 +68,7 @@ public:
 
     void addObject(GameObject* obj);
 
-    void draw();
+    void drawGameplay();
 
     int GetCarX();
     int GetCarY();
@@ -91,7 +93,6 @@ public:
 
     string getGameName();
 
-    void GameMenu();
     bool GameEnd();
 
     void setRenderer(SDL_Renderer* renderer);
@@ -101,10 +102,14 @@ public:
     void renderText(string text, int x, int y, SDL_Color color = { 0,0,0 });
     Font* GetFont();
 
+    void setElapsedTime(int time);
+    void drawStateName();
+
     void Debug();
     void Help();
-
+    void drawHelp();
     bool isRebased(GameObject* toBe);
+    void clearHelp();
 
     string currentState = "didNotWork :(";
 

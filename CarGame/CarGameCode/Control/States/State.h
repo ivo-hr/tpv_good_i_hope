@@ -24,6 +24,19 @@ public:
 	virtual void update() = 0;
 	virtual void draw() = 0;
 	virtual void next() = 0;
-	bool doQuit() { return false; };
-	void handleEvents() {};
+
+	virtual string getStateName() const = 0;
+
+	void handleEvents() 
+	{
+		SDL_Event event;
+		while (SDL_PollEvent(&event)) {
+
+			Command* command = commandFactory->getCommand(event);
+			if (command != nullptr) {
+				command->execute();
+				break;
+			}
+		}
+	};
 };

@@ -1,5 +1,5 @@
 #include "NextCommand.h"
-
+#include "../States/State.h"
 
 void NextCommand::execute() {
     game->getState()->next();

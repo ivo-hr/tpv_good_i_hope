@@ -45,21 +45,6 @@ void Game::startGame() {
     goal->setPosition(roadLength - goal->getWidth() / 2, height / 2.0);
 }
 
-void Game::GameMenu(){
-    currentState = "menuScreen";
-    infobar->drawState();
-
-    string title = "SandoKart";
-
-    renderText(title, getWindowWidth()/2, getWindowHeight()/2);
-    
-    string start = "Press 'Space' to start";
-    renderText(start, getWindowWidth()/2 - 10, getWindowHeight()/2 + font->getSize());
-
-    string exit = "Press 'Esc' to quit";
-    renderText(exit, getWindowWidth() / 2 - 10, getWindowHeight() / 2 + font->getSize() * 2);
-}
-
 string Game::getGameName() {
     return name;
 }
@@ -106,18 +91,13 @@ void Game::addObject(GameObject* obj)
     container->add(obj);
 }
 
-void Game::draw() {
+void Game::drawGameplay() {
 
     container->draw();
     car->draw();
     goal->draw();
 
     infobar->drawInfo();
-    infobar->drawState();
-
-    if (help) {
-        infobar->drawHelp();
-    }
 
     if (debug) {
         container->drawDebug();
@@ -204,6 +184,16 @@ Font* Game::GetFont() {
     return font;
 }
 
+void Game::setElapsedTime(int time)
+{
+    this->currentTime = time;
+}
+
+void Game::drawStateName()
+{
+    infobar->drawState();
+}
+
 void Game::Debug(){
     debug = !debug;
 }
@@ -218,7 +208,6 @@ bool Game::GameEnd() {
     infobar->drawState();
 
     if (SDL_HasIntersection(&car->getCollider(), &goal->getCollider()) || car->Power() < 1) {
-        currentState = "finState";
         return true;
     }
     else {
@@ -239,4 +228,15 @@ bool Game::isRebased(GameObject* toBe){
 int Game::GetCarCoins()
 {
     return car->GetCoins();
+}
+
+void Game::drawHelp(){
+    if (help) {
+        infobar->drawHelp();
+    }
+}
+
+void Game::clearHelp()
+{
+    helpText = "";
 }

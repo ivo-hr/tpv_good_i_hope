@@ -15,6 +15,8 @@ PlayingState::PlayingState(Game* game) : State(game)
 
 	totalTime = 0;
 	initTime = SDL_GetTicks();
+
+	game->startGame();
 }
 
 void PlayingState::update()
@@ -23,15 +25,16 @@ void PlayingState::update()
 	initTime = SDL_GetTicks();
 	game->setElapsedTime(totalTime);
 
+	game->update();
+
 	if (game->GameEnd())
 		next();
-
-	game->update();
 }
 
 void PlayingState::draw()
 {
 	game->drawGameplay();
+	game->drawHelp();
 }
 
 void PlayingState::next()

@@ -17,16 +17,11 @@
 
 const int FRAME_RATE = 30;
 
-enum State { ini, running, fin };
-
 class ViewController {
 private:
     Game* game;
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
-    State state;
-
-    CommandFactory* commandFactory;
 
     void initSDL();
 public:
@@ -35,7 +30,6 @@ public:
     ~ViewController();
 
     void run();
-    void handleEvents();
     void clearBackground();
 
     unsigned int frameDuration();

@@ -40,6 +40,7 @@
     <ClInclude Include="CarGameCode\Logic\GameObjects\GoodObject.h" />
     <ClInclude Include="CarGameCode\Logic\GameObjects\Coin.h" />
     <ClInclude Include="CarGameCode\Logic\GameObjects\Rock.h" />
+    <ClInclude Include="CarGameCode\Logic\StatesMachine.h" />
     <ClInclude Include="CarGameCode\Utils\Vector2D.h" />
     <ClInclude Include="CarGameCode\View\Box.h" />
     <ClInclude Include="CarGameCode\View\Font.h" />
