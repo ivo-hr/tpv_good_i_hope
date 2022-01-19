@@ -12,6 +12,7 @@ PlayingState::PlayingState(Game* game) : State(game)
 	commandFactory->add(new BlastCommand());
 	commandFactory->add(new QuitCommand());
 	commandFactory->add(new WaveCommand());
+	commandFactory->add(new ShieldCommand());
 
 	totalTime = 0;
 	initTime = SDL_GetTicks();

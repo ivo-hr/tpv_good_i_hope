@@ -53,6 +53,9 @@
     <ClInclude Include="CarGameCode\Control\States\State.h" />
     <ClInclude Include="CarGameCode\Control\Commands\NextCommand.h" />
     <ClInclude Include="CarGameCode\Logic\StatesMachine.h" />
+    <ClInclude Include="CarGameCode\Control\Commands\ShieldCommand.h" />
+    <ClInclude Include="CarGameCode\Logic\GameObjects\Wormhole.h" />
+    <ClInclude Include="CarGameCode\Logic\GameObjects\Cloud.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CarGameCode\Control\Commands\AccCommand.cpp">
@@ -149,6 +152,15 @@
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
     <ClCompile Include="CarGameCode\Control\Commands\NextCommand.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="CarGameCode\Control\Commands\ShieldCommand.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="CarGameCode\Logic\GameObjects\Wormhole.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="CarGameCode\Logic\GameObjects\Cloud.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
   </ItemGroup>

@@ -23,6 +23,8 @@ Game::Game(string name, int width, int height, int roadLength) {
     numOils = 7;
     numTrucks = 3;
     numTurbos = 5;
+    numPortals = 4;
+    numClouds = 3;
 
     infobar = new Infobar(this);
 }
@@ -38,7 +40,7 @@ void Game::startGame() {
 
     container = new GameObjectContainer();
 
-    GameObjectGenerator::generate(this, numRocks, numExLives, numCoins, numSRocks, numOils, numTrucks, numTurbos);
+    GameObjectGenerator::generate(this, numRocks, numExLives, numCoins, numSRocks, numOils, numTrucks, numTurbos, numPortals, numClouds);
     
     goal = new FinLine(this);
 
@@ -239,4 +241,10 @@ void Game::drawHelp(){
 void Game::clearHelp()
 {
     helpText = "";
+}
+
+void Game::shieldCar(bool canIt) {
+
+        car->shielded = canIt;
+
 }

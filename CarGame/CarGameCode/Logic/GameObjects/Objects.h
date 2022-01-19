@@ -12,3 +12,5 @@
 #include "oil.h"
 #include "Truck.h"
 #include "Turbo.h"
+#include "Wormhole.h"
+#include "Cloud.h"

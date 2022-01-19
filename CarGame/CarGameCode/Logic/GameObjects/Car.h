@@ -43,6 +43,9 @@ public:
 
     float getSpeed() { return xMov; };
 
+    bool shielded;
+    bool teleporting;
+
     void MoveX(int movX);
     void MoveY(int movY);
     void Stop();
@@ -52,6 +55,7 @@ public:
     int Power();
     void ActivateTurbo();
     void StopTurbo();
+    void telePort(int distance);
 
     void AddCoins(int num);
     int GetCoins();

@@ -56,8 +56,14 @@ void Car::update() {
 }
 
 void Car::GetHit(int damage){
-    currPower -= damage;
-    SlowDown(1);
+    if (!shielded) {
+		currPower -= damage;
+		SlowDown(1);
+    }
+    else {
+        coins--;
+        if (coins <= 0) shielded = false;
+    }
 }
 
 void Car::SlowDown(int slow) {
@@ -85,6 +91,13 @@ void Car::StopTurbo()
     turbo = 0;
 }
 
+void Car::telePort(int distance) {
+    if (!teleporting) {
+        pos = Point2D<double>(getX() + distance + xMov, getY() + yMov);
+        teleporting = true;
+    }
+}
+
 void Car::AddCoins(int num)
 {
     coins += num;
@@ -97,17 +110,23 @@ int Car::GetCoins()
 
 bool Car::CanBuy(int cost)
 {
-    if (coins < cost)
+    if (coins <= cost)
         return false;
 
-    coins -= cost;
+    if (!shielded)
+        coins -= cost;
+
     return true;
 }
 
 Car::~Car() {};
 
 void Car::draw() {
+    if (!shielded)
     drawTexture(game->getTexture(carTexture));
+    else
+    drawTexture(game->getTexture(shieldCarTexture));
+
 }
 
 SDL_Rect Car::getCollider() {

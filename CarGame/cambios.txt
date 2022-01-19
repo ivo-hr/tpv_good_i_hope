@@ -1,0 +1,38 @@
+Comando shield:
+
+para realizar el comando shield he usado como plantilla MoveCommand, cambiando
+la tecla que activa a M y condicionando el estado del booleano que activa
+el escudo con el metodo CarCanBuy(cost) del game, que comprueba si el coche se 
+puede permitir el comando.
+En execute se pasará el booleano al metodo shieldCar del game para activar o no
+el escudo. Este método actua como puente para asignar un booleano público de car,
+el cual dependiendo si está true o false cambia la textura y la pérdida de vidas
+o monedas, además de comprobar si se puede permitir el escudo de nuevo.
+Finalmente se añade el comando como disponible al estado de juego, playngState.
+
+
+Objeto wormhole:
+
+el objeto wormhole parte de la base del objeto PowerUp, y para implementaer su
+comportamiento seguí usando su detector de colisiones. Al colisionar con car,
+wormhole llama a un método de car que cambia su posición x al siguiente portal,
+a 500px de distancia. Para que no se vuelva a teletransportar en el portal de
+llegada, car cuenta con un booleano público que se pone true si se está 
+teletransportando e impide una nueva teletransportación.
+Para la generación del wormhole gameObjectGenerator tiene dos métodos nuevos:
+Uno que genera puntos constantes y espaciados equidistantemente en intervalos,
+generateStaticPosition, y otro que los añade, addInStaticPosition.
+Finalmente, se implementa los cambios al game para que los genere adecuadamente.
+
+
+Objeto nube:
+
+basado en el objeto truck y coin, únicamente hubo que modificar su movimiento 
+para que fuera vertical y que no se destruyera en contacto.
+Se añadió al gameObjectGenerator e implementó en game.
+
+GENERAL: si integraron las texturas y su exsistencia en los achivos necesarios.
+
+FALTA: absorpción de bala por wormhole, Para absorber la bala incluiría bullet.h
+ y copiaría la colisión de bala de rock, eliminando los componentes que 
+destruirían el wormhole.

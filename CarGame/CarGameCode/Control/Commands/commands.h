@@ -10,3 +10,4 @@
 #include "DebugCommand.h"
 #include "WaveCommand.h"
 #include "NextCommand.h"
+#include "ShieldCommand.h"

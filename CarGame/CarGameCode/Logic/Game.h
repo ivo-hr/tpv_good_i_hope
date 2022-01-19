@@ -44,6 +44,8 @@ private:
     int numOils;
     int numTrucks;
     int numTurbos;
+    int numPortals;
+    int numClouds;
     bool debug;
     bool help;
     string helpText;
@@ -110,7 +112,7 @@ public:
     void drawHelp();
     bool isRebased(GameObject* toBe);
     void clearHelp();
-
+    void shieldCar(bool canIt);
     string currentState = "didNotWork :(";
 
 };
