@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ﻿  AccCommand.cpp
 C:\Users\enriq\Documents\vs\CarGame\CarGameCode\Logic\GameObjects\GameObject.h(42,30): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
           with
@@ -375,3 +376,6 @@ C:\Users\enriq\Documents\vs\CarGame\CarGameCode\View\Infobar.cpp(53,52): warning
 C:\Users\enriq\Documents\vs\CarGame\CarGameCode\View\Infobar.cpp(58,62): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   Generating Code...
   CarGame.vcxproj -> C:\Users\enriq\Documents\vs\bin\CarGamePr1Debug.exe
+=======
+﻿
+>>>>>>> Stashed changes

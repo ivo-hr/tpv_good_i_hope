@@ -56,13 +56,25 @@ public:
 	virtual void render(glm::dmat4 const& modelViewMat) const;
 };
 
-
 //-------------------------------------------------------------------------
+
 class RegularPolygon : public Abs_Entity
 {
 public:
 	explicit RegularPolygon(GLdouble l, GLuint vert, glm::dvec4 color);
 	~RegularPolygon();
+	virtual void render(glm::dmat4 const& modelViewMat) const;
+};
+
+
+
+//-------------------------------------------------------------------------
+
+class Rectangle : public Abs_Entity
+{
+public:
+	explicit Rectangle(GLdouble w, GLdouble h);
+	~Rectangle();
 	virtual void render(glm::dmat4 const& modelViewMat) const;
 };
 

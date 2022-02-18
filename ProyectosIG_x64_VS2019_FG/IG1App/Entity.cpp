@@ -84,3 +84,24 @@ void RegularPolygon::render(glm::dmat4 const& modelViewMat) const
 		glColor3d(0., 0., 0.);
 	}
 }
+
+Rectangle::Rectangle(GLdouble w, GLdouble h)
+{
+	mMesh = Mesh::generaRectangulo(w, h);
+}
+
+Rectangle::~Rectangle()
+{
+	delete mMesh; mMesh = nullptr;
+}
+
+void Rectangle::render(glm::dmat4 const& modelViewMat) const
+{
+	if (mMesh != nullptr) {
+		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
+		upload(aMat);
+		glLineWidth(2);
+		mMesh->render();
+		glLineWidth(1);
+	}
+}
