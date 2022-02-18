@@ -20,7 +20,7 @@ void Scene::init()
 	//gObjects.push_back(new RegularPolygon(250., 7, glm::dvec4(0., 0., 0., 1.)));
 	//gObjects.push_back(new RegularPolygon(250., 3, glm::dvec4(0., 1., 1., 1.)));
 	//gObjects.push_back(new RegularPolygon(250., 100, glm::dvec4(1., 0., 1., 1.)));
-	gObjects.push_back(new Rectangle(20.0, 4.0));
+	gObjects.push_back(new Rectangulo(300.0, 400.0));
 	
 }
 //-------------------------------------------------------------------------

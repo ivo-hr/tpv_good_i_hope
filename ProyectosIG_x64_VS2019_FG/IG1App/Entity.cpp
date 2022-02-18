@@ -85,17 +85,17 @@ void RegularPolygon::render(glm::dmat4 const& modelViewMat) const
 	}
 }
 
-Rectangle::Rectangle(GLdouble w, GLdouble h)
+Rectangulo::Rectangulo(GLdouble w, GLdouble h)
 {
 	mMesh = Mesh::generaRectangulo(w, h);
 }
 
-Rectangle::~Rectangle()
+Rectangulo::~Rectangulo()
 {
 	delete mMesh; mMesh = nullptr;
 }
 
-void Rectangle::render(glm::dmat4 const& modelViewMat) const
+void Rectangulo::render(glm::dmat4 const& modelViewMat) const
 {
 	if (mMesh != nullptr) {
 		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication

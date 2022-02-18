@@ -70,11 +70,11 @@ public:
 
 //-------------------------------------------------------------------------
 
-class Rectangle : public Abs_Entity
+class Rectangulo : public Abs_Entity
 {
 public:
-	explicit Rectangle(GLdouble w, GLdouble h);
-	~Rectangle();
+	explicit Rectangulo(GLdouble w, GLdouble h);
+	~Rectangulo();
 	virtual void render(glm::dmat4 const& modelViewMat) const;
 };
 
