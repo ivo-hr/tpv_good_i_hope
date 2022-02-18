@@ -1,11 +1,5 @@
-﻿  Camera.cpp
-  Entity.cpp
-  IG1App.cpp
-  main.cpp
-  Mesh.cpp
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(79,23): warning C4018: '<': no coinciden signed/unsigned
-  Scene.cpp
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(23,25): error C2061: error de sintaxis: identificador 'Rectangle'
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(39,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
+﻿  Scene.cpp
+C:\Users\enriq\Documents\00Uni\IG\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(23,25): error C2061: syntax error: identifier 'Rectangle'
+C:\Users\enriq\Documents\00Uni\IG\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(39,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
   Viewport.cpp
-  Generando código...
+  Generating Code...
