@@ -105,3 +105,29 @@ void Rectangulo::render(glm::dmat4 const& modelViewMat) const
 		glLineWidth(1);
 	}
 }
+
+RectanguloRGB::RectanguloRGB(GLdouble w, GLdouble h)
+{
+	mMesh = Mesh::generaRectanguloRGB(w, h);
+}
+
+RectanguloRGB::~RectanguloRGB()
+{
+	delete mMesh; mMesh = nullptr;
+}
+
+void RectanguloRGB::render(glm::dmat4 const& modelViewMat) const
+{
+	if (mMesh != nullptr) {
+		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
+
+		glPolygonMode(GL_BACK, GL_FILL);
+		//glPolygonMode(GL_BACK, GL_LINE);
+		glPolygonMode(GL_FRONT, GL_LINE);
+
+		upload(aMat);
+		glLineWidth(2);
+		mMesh->render();
+		glLineWidth(1);
+	}
+}
