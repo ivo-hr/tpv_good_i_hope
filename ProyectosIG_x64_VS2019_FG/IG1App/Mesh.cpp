@@ -147,3 +147,29 @@ Mesh* Mesh::generaRectanguloRGB(GLdouble w, GLdouble h)
     return mesh;
 }
 //---------------------------------------------------------
+Mesh* Mesh::generaCubo(GLdouble longitud)
+{
+    Mesh* mesh = new Mesh();
+
+    mesh->mPrimitive = GL_TRIANGLE_STRIP;
+
+    mesh->mNumVertices = 14;
+    mesh->vVertices.reserve(mesh->mNumVertices);
+
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., -longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., -longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., -longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., longitud / 2., longitud / 2.);
+
+    return mesh;
+}

@@ -1,3 +1,9 @@
-﻿  Mesh.cpp
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(79,23): warning C4018: '<': no coinciden signed/unsigned
-  IG1App.vcxproj -> C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe
+﻿  Entity.cpp
+  IG1App.cpp
+  Mesh.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(79,23): warning C4018: '<': no coinciden signed/unsigned
+  Scene.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(39,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
+  main.cpp
+  Generando código...
+  IG1App.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe

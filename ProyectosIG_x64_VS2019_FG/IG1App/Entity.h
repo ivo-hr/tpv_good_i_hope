@@ -90,4 +90,12 @@ public:
 
 //-------------------------------------------------------------------------
 
+class Cubo : public Abs_Entity
+{
+public:
+	explicit Cubo(GLdouble longitud);
+	~Cubo();
+	virtual void render(glm::dmat4 const& modelViewMat) const;
+};
+
 #endif //_H_Entities_H_
