@@ -2,6 +2,7 @@
 
 #include <gtc/matrix_transform.hpp>  
 #include <gtc/type_ptr.hpp>
+#include <iostream>
 
 using namespace glm;
 
@@ -39,7 +40,7 @@ void EjesRGB::render(dmat4 const& modelViewMat) const
 }
 //-------------------------------------------------------------------------
 
-TriangleRGB::TriangleRGB() : num(0)
+TriangleRGB::TriangleRGB() : triAngl(0)
 {
 	mMesh = Mesh::createTriangleRGB();
 }
@@ -67,7 +68,7 @@ void TriangleRGB::update()
 {
 	
 	
-	mModelMat = rotate(mModelMat, num, dvec3(0, 0, 1));		//"Unrotate" the triangle to go to center
+	mModelMat = rotate(mModelMat, triAngl, dvec3(0, 0, 1));		//"Unrotate" the triangle to go to center
 	
 	mModelMat = translate(mModelMat, dvec3(-300, 0, 0));	//Go to center duh
 
@@ -75,9 +76,9 @@ void TriangleRGB::update()
 
 	mModelMat = translate(mModelMat, dvec3(+300, 0, 0));	//Translation to next point
 
-	num += 0.1;
+	triAngl += 0.1;
 
-	mModelMat = rotate(mModelMat, - num, dvec3(0, 0, 1));	//"Re-rotate" the triangle
+	mModelMat = rotate(mModelMat, - triAngl, dvec3(0, 0, 1));	//"Re-rotate" the triangle
 
 	
 	// sus
@@ -204,4 +205,50 @@ void CuboRGB::render(glm::dmat4 const& modelViewMat) const
 		mMesh->render();
 		glLineWidth(1);
 	}
+}
+
+void CuboRGB::update()
+{
+	if (axis == 0) {
+		if (cubAngl >= 3.125) {
+			axis = 1;
+			cubAngl = 0.;
+		}
+		else {
+			mModelMat = translate(mModelMat, dvec3(-100, -100, 0));	//Go to center duh
+
+			mModelMat = rotate(mModelMat, 0.02, dvec3(0, 0, 1));	//Rotate for translation to next point
+			cubAngl += 0.02;
+			mModelMat = translate(mModelMat, dvec3(+100, +100, 0));	//Translation to next point
+		}
+	}
+	else if (axis == 1) {
+		if (cubAngl >= 3.125) {
+			axis = 2;
+			cubAngl = 0.;
+		}
+		else {
+			mModelMat = translate(mModelMat, dvec3(0, -100, -100));	//Go to center duh
+
+			mModelMat = rotate(mModelMat, 0.02, dvec3(1, 0, 0));	//Rotate for translation to next point
+			cubAngl += 0.02;
+			mModelMat = translate(mModelMat, dvec3(0, +100, +100));	//Translation to next point
+		}
+
+	}
+	else if (axis == 2) {
+		if (cubAngl >= 3.125) {
+			axis = 0;
+			cubAngl = 0.;
+		}
+		else {
+			mModelMat = translate(mModelMat, dvec3(-100, 0, -100));	//Go to center duh
+
+			mModelMat = rotate(mModelMat, -0.02, dvec3(0, 1, 0));	//Rotate for translation to next point
+			cubAngl += 0.02;
+			mModelMat = translate(mModelMat, dvec3(+100, 0, +100));	//Translation to next point
+		}
+
+	}
+	// sus
 }

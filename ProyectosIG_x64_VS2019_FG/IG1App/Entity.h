@@ -52,7 +52,7 @@ public:
 
 class TriangleRGB : public Abs_Entity
 {
-	double num = 0;
+	double triAngl = 0;
 public:
 	explicit TriangleRGB();
 	~TriangleRGB();
@@ -107,9 +107,12 @@ public:
 class CuboRGB : public Abs_Entity
 {
 public:
+	double cubAngl = 0;
+	int axis = 0;
 	explicit CuboRGB(GLdouble longitud);
 	~CuboRGB();
 	virtual void render(glm::dmat4 const& modelViewMat) const;
+	void update();
 };
 
 #endif //_H_Entities_H_

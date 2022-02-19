@@ -31,7 +31,11 @@ void Scene::init()
 	}
 	else if (mId == 1)
 	{
-		gObjects.push_back(new CuboRGB(200.));
+		auto cub = new CuboRGB(200.);
+
+		gObjects.push_back(cub);
+
+		cub->setModelMat(translate(cub->modelMat(), dvec3(100, 100, 100)));
 	}
 
     // Graphics objects (entities) of the scene
