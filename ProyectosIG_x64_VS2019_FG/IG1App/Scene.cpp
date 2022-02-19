@@ -20,12 +20,13 @@ void Scene::init()
 	{
 		auto tri = new TriangleRGB();
 		auto rec = new RectanguloRGB(300.0, 400.0);
-		auto cir = new RegularPolygon(circRad, 100, glm::dvec4(1., 0., 1., 1.)));
-
-		gObjects.push_back(new TriangleRGB());
-		gObjects.push_back(new RectanguloRGB(300.0, 400.0));
-		gObjects.push_back(new RegularPolygon(200., 100, glm::dvec4(1., 0., 1., 1.)));
+		auto cir = new RegularPolygon(circRad, 100, glm::dvec4(1., 0., 1., 1.));
 		
+		gObjects.push_back(tri);
+		gObjects.push_back(rec);
+		gObjects.push_back(cir);
+		
+		tri->setModelMat(translate(tri->modelMat(), dvec3(circRad, 0, 0)));
 		
 	}
 	else if (mId == 1)

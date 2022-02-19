@@ -32,7 +32,7 @@ public:
 protected:
 
 	int mId;
-	float32 circRad = 100.;
+	GLdouble circRad = 300.;
 	void free();
 	void setGL();
 	void resetGL();

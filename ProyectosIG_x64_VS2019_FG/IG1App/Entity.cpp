@@ -39,7 +39,7 @@ void EjesRGB::render(dmat4 const& modelViewMat) const
 }
 //-------------------------------------------------------------------------
 
-TriangleRGB::TriangleRGB()
+TriangleRGB::TriangleRGB() : num(0)
 {
 	mMesh = Mesh::createTriangleRGB();
 }
@@ -65,7 +65,22 @@ void TriangleRGB::render(glm::dmat4 const& modelViewMat) const
 
 void TriangleRGB::update()
 {
-	mModelMat = rotate(mModelMat, radians(2.0), dvec3(0, 0, 1));
+	
+	
+	mModelMat = rotate(mModelMat, num, dvec3(0, 0, 1));		//"Unrotate" the triangle to go to center
+	
+	mModelMat = translate(mModelMat, dvec3(-300, 0, 0));	//Go to center duh
+
+	mModelMat = rotate(mModelMat, 0.02, dvec3(0, 0, 1));	//Rotate for translation to next point
+
+	mModelMat = translate(mModelMat, dvec3(+300, 0, 0));	//Translation to next point
+
+	num += 0.1;
+
+	mModelMat = rotate(mModelMat, - num, dvec3(0, 0, 1));	//"Re-rotate" the triangle
+
+	
+	// sus
 }
 
 RegularPolygon::RegularPolygon(GLdouble l, GLuint vert, glm::dvec4 color)

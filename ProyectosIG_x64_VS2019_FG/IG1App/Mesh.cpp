@@ -92,9 +92,9 @@ Mesh* Mesh::createTriangleRGB()
     mesh->mNumVertices = 3;
     mesh->vVertices.reserve(mesh->mNumVertices);
 
-    mesh->vVertices.emplace_back(0., 150., 0.);
-    mesh->vVertices.emplace_back(-150., -150., 0.);
-    mesh->vVertices.emplace_back(150., -150., 0.);
+    mesh->vVertices.emplace_back(0., 50., 0.);
+    mesh->vVertices.emplace_back(-50., -50., 0.);
+    mesh->vVertices.emplace_back(50., -50., 0.);
 
 
     mesh->vColors.reserve(mesh->mNumVertices);

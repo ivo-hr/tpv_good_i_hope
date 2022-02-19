@@ -52,6 +52,7 @@ public:
 
 class TriangleRGB : public Abs_Entity
 {
+	double num = 0;
 public:
 	explicit TriangleRGB();
 	~TriangleRGB();
