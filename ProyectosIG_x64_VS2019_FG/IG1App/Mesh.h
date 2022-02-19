@@ -24,6 +24,7 @@ public:
 	static Mesh* generaRectanguloRGB(GLdouble w, GLdouble h);
 
 	static Mesh* generaCubo(GLdouble longitud);
+	static Mesh* generaCuboRGB(GLdouble longitud);
 	
 	Mesh() {};
 	virtual ~Mesh() {};

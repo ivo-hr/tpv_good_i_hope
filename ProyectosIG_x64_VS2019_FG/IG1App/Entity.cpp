@@ -63,6 +63,11 @@ void TriangleRGB::render(glm::dmat4 const& modelViewMat) const
 	}
 }
 
+void TriangleRGB::update()
+{
+	mModelMat = rotate(mModelMat, radians(2.0), dvec3(0, 0, 1));
+}
+
 RegularPolygon::RegularPolygon(GLdouble l, GLuint vert, glm::dvec4 color)
 {
 	mMesh = Mesh::generaPoligonoRegular(vert, l);
@@ -146,12 +151,42 @@ void Cubo::render(glm::dmat4 const& modelViewMat) const
 {
 	if (mMesh != nullptr) {
 
-		glPolygonMode(GL_FRONT, GL_FILL);
+		glFrontFace(GL_CW);
+
+		glPolygonMode(GL_FRONT, GL_LINE);
 		//glPolygonMode(GL_BACK, GL_LINE);
 		glPolygonMode(GL_BACK, GL_POINT);
+
+		glColor3d(0., 0., 0.);
 
 		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
 		upload(aMat);
 		mMesh->render();
+	}
+}
+
+CuboRGB::CuboRGB(GLdouble longitud)
+{
+	mMesh = Mesh::generaCuboRGB(longitud);
+}
+
+CuboRGB::~CuboRGB()
+{
+	delete mMesh; mMesh = nullptr;
+}
+
+void CuboRGB::render(glm::dmat4 const& modelViewMat) const
+{
+	if (mMesh != nullptr) {
+
+		glPolygonMode(GL_BACK, GL_POINT);
+
+		glPolygonMode(GL_FRONT, GL_FILL);
+
+		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
+		upload(aMat);
+		glLineWidth(2);
+		mMesh->render();
+		glLineWidth(1);
 	}
 }

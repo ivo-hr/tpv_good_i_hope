@@ -173,3 +173,85 @@ Mesh* Mesh::generaCubo(GLdouble longitud)
 
     return mesh;
 }
+
+Mesh* Mesh::generaCuboRGB(GLdouble longitud)
+{
+    Mesh* mesh = new Mesh();
+
+    mesh->mPrimitive = GL_TRIANGLES;
+
+    mesh->mNumVertices = 36;
+    mesh->vVertices.reserve(mesh->mNumVertices);
+
+    mesh->vVertices.emplace_back(-longitud / 2., longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., -longitud / 2.);
+
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., -longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., -longitud / 2.);
+
+
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., longitud / 2.);
+
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., -longitud / 2., longitud / 2.);
+
+    //---------------------------------
+
+    mesh->vVertices.emplace_back(-longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., -longitud / 2.);
+
+    mesh->vVertices.emplace_back(-longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., longitud / 2.);
+
+
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., -longitud / 2., -longitud / 2.);
+
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., -longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., -longitud / 2., -longitud / 2.);
+
+    //-------------------------------------
+
+    mesh->vVertices.emplace_back(-longitud / 2., longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., -longitud / 2.);
+
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., longitud / 2.);
+
+
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., -longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., longitud / 2.);
+
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., -longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., -longitud / 2., longitud / 2.);
+
+    mesh->vColors.reserve(mesh->mNumVertices);
+
+    for (int i = 0;i < mesh->mNumVertices; i++){
+
+        if (i < 12){
+            mesh->vColors.emplace_back(1.0, 0.0, 0.0, 1.0); //r
+        }
+        else if (i < 24){
+            mesh->vColors.emplace_back(0.0, 1.0, 0.0, 1.0); //g
+        } 
+        else{
+            mesh->vColors.emplace_back(0.0, 0.0, 1.0, 1.0); //b
+        } 
+    }
+
+    return mesh;
+}

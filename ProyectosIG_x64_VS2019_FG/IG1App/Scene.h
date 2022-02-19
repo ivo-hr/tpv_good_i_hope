@@ -15,7 +15,7 @@
 class Scene	
 { 
 public:
-	Scene() {};
+	Scene() : mId(0) {};
 	~Scene() { free(); resetGL(); };
 
 	Scene(const Scene& s) = delete;  // no copy constructor
@@ -24,8 +24,15 @@ public:
 	void init();
 
     void render(Camera const& cam) const;
+
+	void SetState(int id);
+
+	virtual void update();
 	
 protected:
+
+	int mId;
+	float32 circRad = 100.;
 	void free();
 	void setGL();
 	void resetGL();

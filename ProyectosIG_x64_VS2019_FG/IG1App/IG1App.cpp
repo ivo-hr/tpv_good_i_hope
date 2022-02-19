@@ -128,6 +128,15 @@ void IG1App::key(unsigned char key, int x, int y)
 	case 'o':
 		mCamera->set2D();
 		break;
+	case 'u':
+		mScene->update();
+		break;
+	case '1':
+		mScene->SetState(0);
+		break;
+	case '2':
+		mScene->SetState(1);
+		break;
 	default:
 		need_redisplay = false;
 		break;

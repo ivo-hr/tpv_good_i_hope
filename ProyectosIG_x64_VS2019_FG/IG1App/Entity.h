@@ -20,6 +20,8 @@ public:
 
 	virtual void render(glm::dmat4 const& modelViewMat) const = 0;  // abstract method
 
+	virtual void update() {};
+
 	// modeling matrix
 	glm::dmat4 const& modelMat() const { return mModelMat; };
 	void setModelMat(glm::dmat4 const& aMat) { mModelMat = aMat; };
@@ -54,6 +56,7 @@ public:
 	explicit TriangleRGB();
 	~TriangleRGB();
 	virtual void render(glm::dmat4 const& modelViewMat) const;
+	virtual void update() override;
 };
 
 //-------------------------------------------------------------------------
@@ -95,6 +98,16 @@ class Cubo : public Abs_Entity
 public:
 	explicit Cubo(GLdouble longitud);
 	~Cubo();
+	virtual void render(glm::dmat4 const& modelViewMat) const;
+};
+
+//-------------------------------------------------------------------------
+
+class CuboRGB : public Abs_Entity
+{
+public:
+	explicit CuboRGB(GLdouble longitud);
+	~CuboRGB();
 	virtual void render(glm::dmat4 const& modelViewMat) const;
 };
 
