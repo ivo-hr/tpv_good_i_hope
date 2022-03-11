@@ -1,2 +1,4 @@
-﻿  Entity.cpp
-  IG1App.vcxproj -> F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe
+﻿  Mesh.cpp
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(88,23): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(252,22): warning C4018: '<': no coinciden signed/unsigned
+  IG1App.vcxproj -> C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe

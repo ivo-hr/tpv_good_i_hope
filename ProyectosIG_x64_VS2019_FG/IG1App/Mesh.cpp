@@ -15,6 +15,14 @@ void Mesh::draw() const
 void Mesh::render() const 
 {
   if (vVertices.size() > 0) {  // transfer data
+
+      if (vTexCoors.size() > 0)
+      {
+          glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+          glTexCoordPointer(2, GL_DOUBLE, 0, vTexCoors.data());
+      }
+
+
     // transfer the coordinates of the vertices
     glEnableClientState(GL_VERTEX_ARRAY);
     glVertexPointer(3, GL_DOUBLE, 0, vVertices.data());  // number of coordinates per vertex, type of each coordinate, stride, pointer 
@@ -25,6 +33,7 @@ void Mesh::render() const
 
 	draw();
 
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);
   }
@@ -115,10 +124,10 @@ Mesh* Mesh::generaRectangulo(GLdouble w, GLdouble h)
     mesh->mNumVertices = 4;
     mesh->vVertices.reserve(mesh->mNumVertices);
 
-    mesh->vVertices.emplace_back(w / 2., h / 2., 0.);
-    mesh->vVertices.emplace_back(w / 2., -h / 2., 0.);
-    mesh->vVertices.emplace_back(-w / 2., h / 2., 0.);
-    mesh->vVertices.emplace_back(-w / 2., -h / 2., 0.);
+    mesh->vVertices.emplace_back(w / 2., 0, h / 2.);
+    mesh->vVertices.emplace_back(w / 2., 0, -h / 2.);
+    mesh->vVertices.emplace_back(-w / 2., 0, h / 2.);
+    mesh->vVertices.emplace_back(-w / 2., 0, -h / 2.);
 
     return mesh;
 }
@@ -254,4 +263,61 @@ Mesh* Mesh::generaCuboRGB(GLdouble longitud)
     }
 
     return mesh;
+}
+
+Mesh* Mesh::generaRectanguloTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh)
+{
+    Mesh* m = generaRectangulo(w, h);
+
+    m->vTexCoors.reserve(m->mNumVertices);
+
+    m->vTexCoors.emplace_back(rw, 0);
+    m->vTexCoors.emplace_back(rw, rh);
+    m->vTexCoors.emplace_back(0, 0);
+    m->vTexCoors.emplace_back(0, rh);
+
+    return m;
+}
+
+Mesh* Mesh::generaContCaja(GLdouble longitud)
+{
+    Mesh* mesh = new Mesh();
+
+    mesh->mPrimitive = GL_TRIANGLE_STRIP;
+
+    mesh->mNumVertices = 10;
+    mesh->vVertices.reserve(mesh->mNumVertices);
+
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., -longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., -longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., -longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., longitud / 2., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., -longitud / 2., longitud / 2.);
+
+    return mesh;
+}
+
+Mesh* Mesh::generaContCajaTexCor(GLdouble longitud)
+{
+    Mesh* m = generaContCaja(longitud);
+
+    m->vTexCoors.reserve(m->mNumVertices);
+
+    m->vTexCoors.emplace_back(1, 0);
+    m->vTexCoors.emplace_back(1, 1);
+    m->vTexCoors.emplace_back(0, 0);
+    m->vTexCoors.emplace_back(0, 1);
+    m->vTexCoors.emplace_back(1, 2);
+    m->vTexCoors.emplace_back(0, 2);
+    m->vTexCoors.emplace_back(1, 3);
+    m->vTexCoors.emplace_back(0, 3);
+    m->vTexCoors.emplace_back(1, 4);
+    m->vTexCoors.emplace_back(0, 4);
+
+    return m;
 }

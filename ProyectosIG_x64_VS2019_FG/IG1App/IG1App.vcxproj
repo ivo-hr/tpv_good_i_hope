@@ -141,6 +141,9 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Viewport.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Bmps\baldosaC.bmp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

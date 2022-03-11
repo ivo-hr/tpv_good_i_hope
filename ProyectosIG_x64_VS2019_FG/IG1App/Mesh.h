@@ -25,6 +25,12 @@ public:
 
 	static Mesh* generaCubo(GLdouble longitud);
 	static Mesh* generaCuboRGB(GLdouble longitud);
+
+	static Mesh* generaRectanguloTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh);
+
+	static Mesh* generaContCaja(GLdouble longitud);
+
+	static Mesh* generaContCajaTexCor(GLdouble longitud);
 	
 	Mesh() {};
 	virtual ~Mesh() {};
@@ -39,6 +45,8 @@ public:
 	std::vector<glm::dvec4> const& colors() const { return vColors; };
 		
 protected:
+
+	std::vector<glm::dvec2> vTexCoors;
 	
 	GLuint mPrimitive = GL_TRIANGLES;   // graphic primitive: GL_POINTS, GL_LINES, GL_TRIANGLES, ...
 	GLuint mNumVertices = 0;  // number of elements ( = vVertices.size())

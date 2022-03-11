@@ -37,6 +37,28 @@ void Scene::init()
 
 		cub->setModelMat(translate(cub->modelMat(), dvec3(100, 100, 100)));
 	}
+	else if (mId == 2)
+	{
+		Texture* t = new Texture();
+		t->load("..\\Bmps\\baldosaC.bmp");
+		gTextures.push_back(t);
+
+		Suelo* s = new Suelo(800., 4);
+		s->SetTexture(t);
+
+		gObjects.push_back(s);
+	}
+	else if (mId == 3)
+	{
+		Texture* t = new Texture();
+		t->load("..\\Bmps\\container.bmp");
+		gTextures.push_back(t);
+
+		ContornoCaja* s = new ContornoCaja(200.);
+		s->SetTexture(t);
+
+		gObjects.push_back(s);
+	}
 
     // Graphics objects (entities) of the scene
 	
@@ -56,11 +78,17 @@ void Scene::free()
 	{
 		delete el;  el = nullptr;
 	}
+
+	for (Texture* tex : gTextures)
+	{
+		delete tex;  tex = nullptr;
+	}
 }
 //-------------------------------------------------------------------------
 void Scene::setGL() 
 {
 	// OpenGL basic setting
+	glEnable(GL_TEXTURE_2D);
 	glClearColor(0.2, 0.2, 0.2, 1.0);  // background color (alpha=1 -> opaque)
 	glEnable(GL_DEPTH_TEST);  // enable Depth test 
 
@@ -68,6 +96,7 @@ void Scene::setGL()
 //-------------------------------------------------------------------------
 void Scene::resetGL() 
 {
+	glDisable(GL_TEXTURE_2D);
 	glClearColor(.0, .0, .0, .0);  // background color (alpha=1 -> opaque)
 	glDisable(GL_DEPTH_TEST);  // disable Depth test 	
 }

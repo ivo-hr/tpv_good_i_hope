@@ -137,6 +137,12 @@ void IG1App::key(unsigned char key, int x, int y)
 	case '2':
 		mScene->SetState(1);
 		break;
+	case '3':
+		mScene->SetState(2);
+		break;
+	case '4':
+		mScene->SetState(3);
+		break;
 	default:
 		need_redisplay = false;
 		break;

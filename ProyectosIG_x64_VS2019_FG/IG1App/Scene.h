@@ -5,6 +5,7 @@
 #include <GL/freeglut.h>
 #include <glm.hpp>
 
+#include "Texture.h"
 #include "Camera.h"
 #include "Entity.h"
 
@@ -15,6 +16,9 @@
 class Scene	
 { 
 public:
+
+	std::vector<Texture*> gTextures;	//Recursos compartidos
+
 	Scene() : mId(0) {};
 	~Scene() { free(); resetGL(); };
 

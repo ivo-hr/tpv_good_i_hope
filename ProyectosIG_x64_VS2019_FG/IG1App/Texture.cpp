@@ -4,8 +4,7 @@
 
 Texture::~Texture() 
 {
-	if(mId!=0)
-    glDeleteTextures(1, &mId);
+	if(mId != 0)	glDeleteTextures(1, &mId);
 }
 //-------------------------------------------------------------------------
 

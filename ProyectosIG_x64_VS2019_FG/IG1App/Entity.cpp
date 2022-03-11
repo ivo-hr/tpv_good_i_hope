@@ -252,3 +252,56 @@ void CuboRGB::update()
 	}
 	// sus
 }
+
+Suelo::Suelo(GLdouble longitud, GLuint repes)
+{
+	mMesh = Mesh::generaRectanguloTexCor(longitud, longitud, repes, repes);
+}
+
+Suelo::~Suelo()
+{
+	delete mMesh; mMesh = nullptr;
+}
+
+void Suelo::render(glm::dmat4 const& modelViewMat) const
+{
+	if (mMesh != nullptr) {
+
+		glPolygonMode(GL_FRONT, GL_FILL);
+
+		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
+		upload(aMat);
+		glColor4dv(value_ptr(mColor));
+		mTexture->bind(GL_MODULATE);
+		mMesh->render();
+		mTexture->unbind();
+		glColor4d(1, 1, 1, 1);
+	}
+}
+
+ContornoCaja::ContornoCaja(GLdouble longitud)
+{
+	mMesh = Mesh::generaContCaja(longitud);
+}
+
+ContornoCaja::~ContornoCaja()
+{
+	delete mMesh; mMesh = nullptr;
+}
+
+void ContornoCaja::render(glm::dmat4 const& modelViewMat) const
+{
+	if (mMesh != nullptr) {
+
+		/*glPolygonMode(GL_FRONT, GL_LINE);
+		glPolygonMode(GL_BACK, GL_LINE);*/
+
+		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
+		upload(aMat);
+		glColor4dv(value_ptr(mColor));
+		mTexture->bind(GL_MODULATE);
+		mMesh->render();
+		mTexture->unbind();
+		glColor4d(1, 1, 1, 1);
+	}
+}

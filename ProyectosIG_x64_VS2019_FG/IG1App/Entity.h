@@ -5,6 +5,7 @@
 #include <GL/freeglut.h>
 #include <glm.hpp>
 
+#include "Texture.h"
 #include "Mesh.h"
 
 //-------------------------------------------------------------------------
@@ -12,6 +13,7 @@
 class Abs_Entity  // abstract class
 {
 public:
+
 	Abs_Entity() : mModelMat(1.0), mColor(1.0) {};  // 4x4 identity matrix
 	virtual ~Abs_Entity() {};
 
@@ -28,8 +30,12 @@ public:
 
 	glm::dvec4 const& getColor() const { return mColor; };
 	void setColor(glm::dvec4 const& mcol) { mColor = mcol; };
+
+	void SetTexture(Texture* tex) { mTexture = tex; };
 	
 protected:
+
+	Texture* mTexture = nullptr;
 
 	Mesh* mMesh = nullptr;   // the mesh
 	glm::dmat4 mModelMat;    // modeling matrix
@@ -114,5 +120,26 @@ public:
 	virtual void render(glm::dmat4 const& modelViewMat) const;
 	void update();
 };
+
+//-------------------------------------------------------------------------
+
+class Suelo : public Abs_Entity
+{
+public:
+	explicit Suelo(GLdouble longitud, GLuint repes);
+	~Suelo();
+	virtual void render(glm::dmat4 const& modelViewMat) const;
+};
+
+//-------------------------------------------------------------------------
+
+class ContornoCaja : public Abs_Entity
+{
+public:
+	explicit ContornoCaja(GLdouble longitud);
+	~ContornoCaja();
+	virtual void render(glm::dmat4 const& modelViewMat) const;
+};
+
 
 #endif //_H_Entities_H_
