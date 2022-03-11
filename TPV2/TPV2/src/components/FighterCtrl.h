@@ -5,7 +5,7 @@
 
 class Transform;
 
-class PacManCtrl: public ecs::Component {
+class FighterCtrl: public ecs::Component {
 public:
 
 	// This line expands to the following (see the defintion of
@@ -15,8 +15,8 @@ public:
 	//
 	__CMPID_DECL__(ecs::_PACMANCTRL)
 
-	PacManCtrl();
-	virtual ~PacManCtrl();
+	FighterCtrl();
+	virtual ~FighterCtrl();
 	void initComponent() override;
 	void update() override;
 

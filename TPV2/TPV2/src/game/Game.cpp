@@ -4,9 +4,10 @@
 
 #include "../components/GameCtrl.h"
 #include "../components/Image.h"
-#include "../components/PacManCtrl.h"
+#include "../components/FighterCtrl.h"
 #include "../components/StopOnBorders.h"
 #include "../components/Transform.h"
+#include "../components/DeAcceleration.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
@@ -43,8 +44,9 @@ void Game::init() {
 	auto y = (sdlutils().height() - s) / 2.0f;
 	tr->init(Vector2D(x, y), Vector2D(), s, s, 0.0f);
 	pacman->addComponent<Image>(&sdlutils().images().at("fighter"));
-	pacman->addComponent<PacManCtrl>();
+	pacman->addComponent<FighterCtrl>();
 	pacman->addComponent<StopOnBorders>();
+	pacman->addComponent<DeAcceleration>();
 
 	// create the game info entity
 	auto ginfo = mngr_->addEntity();

@@ -1,6 +1,6 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
-#include "PacManCtrl.h"
+#include "FighterCtrl.h"
 
 #include <cassert>
 
@@ -12,19 +12,19 @@
 #include "StarMotion.h"
 #include "Transform.h"
 
-PacManCtrl::PacManCtrl() :
+FighterCtrl::FighterCtrl() :
 		tr_(nullptr) {
 }
 
-PacManCtrl::~PacManCtrl() {
+FighterCtrl::~FighterCtrl() {
 }
 
-void PacManCtrl::initComponent() {
+void FighterCtrl::initComponent() {
 	tr_ = ent_->getComponent<Transform>();
 	assert(tr_ != nullptr);
 }
 
-void PacManCtrl::update() {
+void FighterCtrl::update() {
 
 	auto &ihldr = ih();
 
