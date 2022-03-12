@@ -20,7 +20,7 @@
 //
 #define _GRPS_LIST_ \
 	_grp_STAR, \
-	_grp_ASTEROID
+	_grp_ASTEROIDS
 
 // Handlers list - must have at least one element
 //

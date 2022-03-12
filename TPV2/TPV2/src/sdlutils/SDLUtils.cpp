@@ -79,6 +79,36 @@ void SDLUtils::closeWindow() {
 	SDL_Quit(); // quit SDL
 }
 
+void SDLUtils::initSDLExtensions() {
+
+#ifdef _DEBUG
+	std::cout << "Initializing SDL_ttf" << std::endl;
+#endif
+	// initialize SDL_ttf
+	int ttfInit_r = TTF_Init();
+	assert(ttfInit_r == 0);
+
+#ifdef _DEBUG
+	std::cout << "Initializing SDL_img" << std::endl;
+#endif
+	// initialize SDL_image
+	int imgInit_ret = IMG_Init(
+		IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF | IMG_INIT_WEBP);
+	assert(imgInit_ret != 0);
+
+#ifdef _DEBUG
+	std::cout << "Initializing SEL_Mixer" << std::endl;
+#endif
+	// initialize SDL_Mixer
+	int mixOpenAudio = Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+	assert(mixOpenAudio == 0);
+	int mixInit_ret = Mix_Init(
+		MIX_INIT_FLAC | MIX_INIT_MOD | MIX_INIT_MP3 | MIX_INIT_OGG);
+	assert(mixInit_ret != 0);
+	SoundEffect::setNumberofChannels(8); // we start with 8 channels
+
+}
+
 void SDLUtils::loadReasources(std::string filename) {
 	// TODO check the correctness of values and issue a corresponding
 	// exception. Now we just do some simple checks, and assume input

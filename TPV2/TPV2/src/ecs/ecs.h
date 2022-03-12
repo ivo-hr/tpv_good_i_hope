@@ -44,7 +44,6 @@ enum cmpId : cmpId_type {
 // list of group identifiers
 enum grpId : cmpId_type {
 	_GRPS_LIST_, /* taken from ../game/ecs_defs */
-
 	// do not remove this
 	_LAST_GRP_ID
 };

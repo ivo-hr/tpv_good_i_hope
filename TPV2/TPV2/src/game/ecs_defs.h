@@ -8,17 +8,21 @@
 #define _CMPS_LIST_ \
 	_TRANSFORM, \
 	_IMAGE, \
-	_PACMANCTRL, \
+	_FIGHTERCTRL, \
 	_STARMOTION, \
 	_GAMECTRL, \
 	_DEACC, \
-	_STOPONBORDER
+	_HEARTS, \
+	_GUN, \
+	_STOPONBORDER, \
+	_SHOWOPPOSITE
 
 
 // Groups list - must have at least one element
 //
 #define _GRPS_LIST_ \
-	_grp_STARS
+	_grp_STARS, \
+	_grp_ASTEROIDS
 
 // Handlers list - must have at least one element
 //

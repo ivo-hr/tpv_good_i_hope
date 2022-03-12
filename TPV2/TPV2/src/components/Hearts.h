@@ -1,11 +1,12 @@
-// This file is part of the course TPV2@UCM - Samir Genaim
+
 
 #pragma once
 #include "../ecs/Component.h"
 
-class Transform;
+class Texture;
 
-class FighterCtrl: public ecs::Component {
+
+class Hearts : public ecs::Component {
 public:
 
 	// This line expands to the following (see the defintion of
@@ -13,15 +14,22 @@ public:
 	//
 	//    constexpr static ecs::cmpId_type id = ecs::_PACMANCTRL
 	//
-	__CMPID_DECL__(ecs::_FIGHTERCTRL)
+	__CMPID_DECL__(ecs::_HEARTS)
 
-	FighterCtrl();
-	virtual ~FighterCtrl();
+	Hearts();
+	Hearts(Texture* heart);
+	virtual ~Hearts();
 	void initComponent() override;
 	void update() override;
+	void render() override;
+
+	void takeLive(int amount);
+	void resetLives();
+	int GetLives() { return lives; };
 
 private:
 	void createStart();
-	Transform *tr_;
+	Texture* hearts_;
+	int lives = 3;
 };
 

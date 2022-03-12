@@ -6,8 +6,11 @@
 #include "../components/Image.h"
 #include "../components/FighterCtrl.h"
 #include "../components/StopOnBorders.h"
+#include "../components/ShowAtOppositeSide.h"
 #include "../components/Transform.h"
 #include "../components/DeAcceleration.h"
+#include "../components/Hearts.h"
+#include "../components/Gun.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
@@ -36,17 +39,33 @@ void Game::init() {
 
 	// create the PacMan entity
 	//
-	auto pacman = mngr_->addEntity();
-	mngr_->setHandler(ecs::_hdlr_PACMAN, pacman);
-	auto tr = pacman->addComponent<Transform>();
+	auto fighter = mngr_->addEntity();
+	mngr_->setHandler(ecs::_hdlr_PACMAN, fighter);
+	auto tr = fighter->addComponent<Transform>();
 	auto s = 50.0f;
 	auto x = (sdlutils().width() - s) / 2.0f;
 	auto y = (sdlutils().height() - s) / 2.0f;
 	tr->init(Vector2D(x, y), Vector2D(), s, s, 0.0f);
-	pacman->addComponent<Image>(&sdlutils().images().at("fighter"));
-	pacman->addComponent<FighterCtrl>();
-	pacman->addComponent<StopOnBorders>();
-	pacman->addComponent<DeAcceleration>();
+	fighter->addComponent<Image>(&sdlutils().images().at("fighter"));
+	fighter->addComponent<FighterCtrl>();
+	fighter->addComponent<ShowAtOppositeSide>();
+	fighter->addComponent<DeAcceleration>();
+	fighter->addComponent<Hearts>(&sdlutils().images().at("heart"));
+	fighter->addComponent<Gun>();
+
+
+	auto &asteroids = mngr_->getEntitiesByGroup(ecs::_grp_ASTEROIDS);
+	auto n = asteroids.size();
+	for (auto i = 0u; i < n; i++) {
+		auto e = asteroids[i];
+		if (e->isAlive()) { // if the star is active (it might have died in this frame)
+
+			// the Star's Transform
+			//
+			auto eTR = e->getComponent<Transform>();
+			}
+		}
+	
 
 	// create the game info entity
 	auto ginfo = mngr_->addEntity();

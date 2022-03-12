@@ -21,8 +21,11 @@
   <ItemGroup>
     <ClInclude Include="src\components\DeAcceleration.h" />
     <ClInclude Include="src\components\GameCtrl.h" />
+    <ClInclude Include="src\components\Gun.h" />
+    <ClInclude Include="src\components\Hearts.h" />
     <ClInclude Include="src\components\Image.h" />
     <ClInclude Include="src\components\FighterCtrl.h" />
+    <ClInclude Include="src\components\ShowAtOppositeSide.h" />
     <ClInclude Include="src\components\StarMotion.h" />
     <ClInclude Include="src\components\StopOnBorders.h" />
     <ClInclude Include="src\components\Transform.h" />
@@ -54,8 +57,11 @@
   <ItemGroup>
     <ClCompile Include="src\components\DeAcceleration.cpp" />
     <ClCompile Include="src\components\GameCtrl.cpp" />
+    <ClCompile Include="src\components\Gun.cpp" />
+    <ClCompile Include="src\components\Hearts.cpp" />
     <ClCompile Include="src\components\Image.cpp" />
     <ClCompile Include="src\components\FighterCtrl.cpp" />
+    <ClCompile Include="src\components\ShowAtOppositeSide.cpp" />
     <ClCompile Include="src\components\StarMotion.cpp" />
     <ClCompile Include="src\components\StopOnBorders.cpp" />
     <ClCompile Include="src\ecs\Entity.cpp" />

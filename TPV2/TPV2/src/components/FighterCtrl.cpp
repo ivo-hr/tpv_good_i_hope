@@ -59,6 +59,10 @@ void FighterCtrl::update() {
 			// is looking
 			//
 			vel_ = Vector2D(0, -speed).rotate(rot);
+
+
+			sdlutils().soundEffects().at("thrust").play(0, 1);
+
 		} else if (ihldr.isKeyDown(SDL_SCANCODE_DOWN)) { // decrease speed
 			// subtract 1.0f to the speed (respecting the limit 0.0f). Recall
 			// that speed is the length of the velocity vector
@@ -70,6 +74,10 @@ void FighterCtrl::update() {
 			// is looking
 			//
 			vel_ = Vector2D(0, -speed).rotate(rot);
+		}
+
+		else if (ihldr.isKeyDown(SDL_SCANCODE_S)){
+			//Shoot a bullet!
 		}
 	}
 }
