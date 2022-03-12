@@ -307,17 +307,12 @@ Mesh* Mesh::generaContCajaTexCor(GLdouble longitud)
     Mesh* m = generaContCaja(longitud);
 
     m->vTexCoors.reserve(m->mNumVertices);
-
-    m->vTexCoors.emplace_back(1, 0);
-    m->vTexCoors.emplace_back(1, 1);
-    m->vTexCoors.emplace_back(0, 0);
+    
     m->vTexCoors.emplace_back(0, 1);
-    m->vTexCoors.emplace_back(1, 2);
-    m->vTexCoors.emplace_back(0, 2);
-    m->vTexCoors.emplace_back(1, 3);
-    m->vTexCoors.emplace_back(0, 3);
-    m->vTexCoors.emplace_back(1, 4);
-    m->vTexCoors.emplace_back(0, 4);
+    m->vTexCoors.emplace_back(0, 0);
+    m->vTexCoors.emplace_back(4, 1);
+    m->vTexCoors.emplace_back(4, 0);
+
 
     return m;
 }

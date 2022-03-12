@@ -293,8 +293,9 @@ void ContornoCaja::render(glm::dmat4 const& modelViewMat) const
 {
 	if (mMesh != nullptr) {
 
-		/*glPolygonMode(GL_FRONT, GL_LINE);
-		glPolygonMode(GL_BACK, GL_LINE);*/
+		glPolygonMode(GL_FRONT, GL_FILL);
+		glPolygonMode(GL_BACK, GL_LINE);
+
 
 		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
 		upload(aMat);

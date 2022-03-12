@@ -51,7 +51,7 @@ void Scene::init()
 	else if (mId == 3)
 	{
 		Texture* t = new Texture();
-		t->load("..\\Bmps\\container.bmp");
+		t->load("..\\Bmps\\Zelda.bmp");
 		gTextures.push_back(t);
 
 		ContornoCaja* s = new ContornoCaja(200.);
