@@ -51,13 +51,31 @@ void Scene::init()
 	else if (mId == 3)
 	{
 		Texture* t = new Texture();
-		t->load("..\\Bmps\\Zelda.bmp");
+		Texture* u = new Texture();
+		t->load("..\\Bmps\\container.bmp");
+		u->load("..\\Bmps\\papelE.bmp");
 		gTextures.push_back(t);
+		gTextures.push_back(u);
 
 		ContornoCaja* s = new ContornoCaja(200.);
 		s->SetTexture(t);
+		s->SetTexture2(u);
+
+		
 
 		gObjects.push_back(s);
+	}
+	else if (mId == 4)
+	{
+		Texture* t = new Texture();
+		t->load("..\\Bmps\\baldosaP.bmp");
+		gTextures.push_back(t);
+
+		Estrella3D* e = new Estrella3D(200., 8, 200.);
+		e->SetTexture(t);
+
+
+		gObjects.push_back(e);
 	}
 
     // Graphics objects (entities) of the scene

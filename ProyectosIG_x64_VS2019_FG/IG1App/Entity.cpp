@@ -281,7 +281,7 @@ void Suelo::render(glm::dmat4 const& modelViewMat) const
 
 ContornoCaja::ContornoCaja(GLdouble longitud)
 {
-	mMesh = Mesh::generaContCaja(longitud);
+	mMesh = Mesh::generaContCajaTexCor(longitud);
 }
 
 ContornoCaja::~ContornoCaja()
@@ -293,16 +293,72 @@ void ContornoCaja::render(glm::dmat4 const& modelViewMat) const
 {
 	if (mMesh != nullptr) {
 
-		glPolygonMode(GL_FRONT, GL_FILL);
-		glPolygonMode(GL_BACK, GL_LINE);
 
+		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
+		upload(aMat);
+		glColor4dv(value_ptr(mColor));
+		
+		glPolygonMode(GL_FRONT, GL_FILL);
+		glPolygonMode(GL_BACK, GL_POINT);
+
+
+		mTexture->bind(GL_MODULATE);
+		mMesh->render();
+		mTexture->unbind();
+		
+		glPolygonMode(GL_FRONT, GL_POINT);
+		glPolygonMode(GL_BACK, GL_FILL);
+
+		mTexture2->bind(GL_MODULATE);
+		mMesh->render();
+		mTexture2->unbind();
+		glColor4d(1, 1, 1, 1);
+	}
+}
+
+
+
+Estrella3D::Estrella3D(GLdouble re, GLuint np, GLdouble h)
+{
+	mMesh = Mesh::generaEstrella3DTexCor(re, np, h);
+	mMesh2 = Mesh::generaEstrella3DTexCor(re, np, -h);
+}
+
+Estrella3D::~Estrella3D()
+{
+	delete mMesh; mMesh = nullptr;
+}
+
+void Estrella3D::render(glm::dmat4 const& modelViewMat) const
+{
+	if (mMesh != nullptr) {
+
+		glPolygonMode(GL_FRONT, GL_FILL);
+		glPolygonMode(GL_BACK, GL_FILL);
 
 		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
 		upload(aMat);
 		glColor4dv(value_ptr(mColor));
 		mTexture->bind(GL_MODULATE);
 		mMesh->render();
+		mMesh2->render();
 		mTexture->unbind();
 		glColor4d(1, 1, 1, 1);
 	}
 }
+
+void Estrella3D::update()
+{
+	mModelMat = rotate(mModelMat, rotAngl, dvec3(0, 0, 1));		//"Unrotate" the z axis
+
+
+
+	mModelMat = rotate(mModelMat, 0.02, dvec3(0, 1, 0));	//Rotate y axis
+
+
+
+	rotAngl += 0.1;
+
+	mModelMat = rotate(mModelMat, -rotAngl, dvec3(0, 0, 1));	//"Re-rotate" z axis
+}
+

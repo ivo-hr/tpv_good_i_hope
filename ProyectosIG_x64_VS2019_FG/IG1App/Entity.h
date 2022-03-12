@@ -32,10 +32,12 @@ public:
 	void setColor(glm::dvec4 const& mcol) { mColor = mcol; };
 
 	void SetTexture(Texture* tex) { mTexture = tex; };
+	void SetTexture2(Texture* tex) { mTexture2 = tex; };
 	
 protected:
 
 	Texture* mTexture = nullptr;
+	Texture* mTexture2 = nullptr;
 
 	Mesh* mMesh = nullptr;   // the mesh
 	glm::dmat4 mModelMat;    // modeling matrix
@@ -139,6 +141,21 @@ public:
 	explicit ContornoCaja(GLdouble longitud);
 	~ContornoCaja();
 	virtual void render(glm::dmat4 const& modelViewMat) const;
+};
+
+//-------------------------------------------------------------------------
+
+class Estrella3D : public Abs_Entity
+{
+	Mesh* mMesh2 = nullptr;
+public:
+	explicit Estrella3D(GLdouble re, GLuint np, GLdouble h);
+	~Estrella3D();
+	virtual void render(glm::dmat4 const& modelViewMat) const;
+
+	double rotAngl = 0;
+
+	void update();
 };
 
 

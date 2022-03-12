@@ -310,9 +310,74 @@ Mesh* Mesh::generaContCajaTexCor(GLdouble longitud)
     
     m->vTexCoors.emplace_back(0, 1);
     m->vTexCoors.emplace_back(0, 0);
+    m->vTexCoors.emplace_back(1, 1);
+    m->vTexCoors.emplace_back(1, 0);
+    m->vTexCoors.emplace_back(2, 1);
+    m->vTexCoors.emplace_back(2, 0);
+    m->vTexCoors.emplace_back(3, 1);
+    m->vTexCoors.emplace_back(3, 0);
     m->vTexCoors.emplace_back(4, 1);
     m->vTexCoors.emplace_back(4, 0);
 
-
     return m;
+}
+
+Mesh* Mesh::generaEstrella3D(GLdouble re, GLuint np, GLdouble h)
+{
+    Mesh* mesh = new Mesh();
+
+    mesh->mPrimitive = GL_TRIANGLE_FAN;
+
+    mesh->mNumVertices = (np * 2) + 2;
+    mesh->vVertices.reserve(mesh->mNumVertices);
+
+    GLdouble ri = re/2;
+
+    long double sect = (4 * glm::acos(0.0)) / (np * 2);  //  2*Pi / nº of sides
+
+    mesh->vVertices.emplace_back(0, 0, 0);
+
+    for (int i = 0; i < np * 2; i += 2)
+    {
+        mesh->vVertices.emplace_back(re * -glm::sin(sect * i), re * glm::cos(sect * i), h);
+        mesh->vVertices.emplace_back(ri * -glm::sin(sect * (i + 1)), ri * glm::cos(sect * (i + 1)), h);
+    }
+
+    mesh->vVertices.emplace_back(re * -glm::sin(0), re * glm::cos(0), h);
+
+    return mesh;
+}
+
+
+
+Mesh* Mesh::generaEstrella3DTexCor(GLdouble re, GLuint np, GLdouble h)
+{
+    Mesh* mesh = generaEstrella3D(re, np, h);
+    
+    mesh->vTexCoors.reserve(mesh->mNumVertices);
+
+    mesh->vTexCoors.emplace_back(0.5, 0.5);
+
+    
+    mesh->vTexCoors.emplace_back(0,     0);
+    mesh->vTexCoors.emplace_back(0.25,  0);
+    mesh->vTexCoors.emplace_back(0.5,   0);
+    mesh->vTexCoors.emplace_back(0.75,  0);
+    mesh->vTexCoors.emplace_back(1,     0);
+    mesh->vTexCoors.emplace_back(1,     0.25);
+    mesh->vTexCoors.emplace_back(1,     0.5);
+    mesh->vTexCoors.emplace_back(1,     0.75);
+    mesh->vTexCoors.emplace_back(1,     1);
+    mesh->vTexCoors.emplace_back(0.75,  1);
+    mesh->vTexCoors.emplace_back(0.5,   1);
+    mesh->vTexCoors.emplace_back(0.25,  1);
+    mesh->vTexCoors.emplace_back(0,     1);
+    mesh->vTexCoors.emplace_back(0,     0.75);
+    mesh->vTexCoors.emplace_back(0,     0.5);
+    mesh->vTexCoors.emplace_back(0,     0.25);
+
+
+    mesh->vTexCoors.emplace_back(0, 0);
+
+    return mesh;
 }
