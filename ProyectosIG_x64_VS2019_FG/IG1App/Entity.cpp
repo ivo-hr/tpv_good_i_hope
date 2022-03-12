@@ -293,7 +293,6 @@ void ContornoCaja::render(glm::dmat4 const& modelViewMat) const
 {
 	if (mMesh != nullptr) {
 
-
 		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
 		upload(aMat);
 		glColor4dv(value_ptr(mColor));
@@ -335,7 +334,7 @@ void Estrella3D::render(glm::dmat4 const& modelViewMat) const
 
 		glPolygonMode(GL_FRONT, GL_FILL);
 		glPolygonMode(GL_BACK, GL_FILL);
-
+		
 		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
 		upload(aMat);
 		glColor4dv(value_ptr(mColor));
@@ -356,9 +355,35 @@ void Estrella3D::update()
 	mModelMat = rotate(mModelMat, 0.02, dvec3(0, 1, 0));	//Rotate y axis
 
 
-
 	rotAngl += 0.1;
 
 	mModelMat = rotate(mModelMat, -rotAngl, dvec3(0, 0, 1));	//"Re-rotate" z axis
 }
 
+
+Cristalera::Cristalera(GLdouble longitud, GLdouble h)
+{
+	mMesh = Mesh::generaCristaleraTexCor(longitud, h);
+}
+
+Cristalera::~Cristalera()
+{
+	delete mMesh; mMesh = nullptr;
+}
+
+void Cristalera::render(glm::dmat4 const& modelViewMat) const
+{
+	if (mMesh != nullptr) {
+
+		glPolygonMode(GL_FRONT, GL_FILL);
+		glPolygonMode(GL_BACK, GL_FILL);
+
+		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
+		upload(aMat);
+		glColor4dv(value_ptr(mColor));
+		mTexture->bind(GL_MODULATE);
+		mMesh->render();
+		mTexture->unbind();
+		glColor4d(1, 1, 1, 0.5);
+	}
+}

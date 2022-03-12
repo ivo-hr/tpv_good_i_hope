@@ -381,3 +381,46 @@ Mesh* Mesh::generaEstrella3DTexCor(GLdouble re, GLuint np, GLdouble h)
 
     return mesh;
 }
+
+Mesh* Mesh::generaCristalera(GLdouble longitud, GLdouble h)
+{
+    Mesh* mesh = new Mesh();
+
+    mesh->mPrimitive = GL_TRIANGLE_STRIP;
+
+    mesh->mNumVertices = 10;
+    mesh->vVertices.reserve(mesh->mNumVertices);
+
+    mesh->vVertices.emplace_back(longitud / 2., h, longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., 0., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., h, -longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., 0., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., h, -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., 0., -longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., h, longitud / 2.);
+    mesh->vVertices.emplace_back(-longitud / 2., 0., longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., h, longitud / 2.);
+    mesh->vVertices.emplace_back(longitud / 2., 0., longitud / 2.);
+
+    return mesh;
+}
+
+Mesh* Mesh::generaCristaleraTexCor(GLdouble longitud, GLdouble h)
+{
+    Mesh* m = generaCristalera(longitud, h);
+
+    m->vTexCoors.reserve(m->mNumVertices);
+
+    m->vTexCoors.emplace_back(0, 1);
+    m->vTexCoors.emplace_back(0, 0);
+    m->vTexCoors.emplace_back(1, 1);
+    m->vTexCoors.emplace_back(1, 0);
+    m->vTexCoors.emplace_back(2, 1);
+    m->vTexCoors.emplace_back(2, 0);
+    m->vTexCoors.emplace_back(3, 1);
+    m->vTexCoors.emplace_back(3, 0);
+    m->vTexCoors.emplace_back(4, 1);
+    m->vTexCoors.emplace_back(4, 0);
+
+    return m;
+}

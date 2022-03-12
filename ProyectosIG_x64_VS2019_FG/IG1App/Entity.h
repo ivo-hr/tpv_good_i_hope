@@ -158,5 +158,16 @@ public:
 	void update();
 };
 
+//-------------------------------------------------------------------------
+
+class Cristalera : public Abs_Entity
+{
+public:
+	explicit Cristalera(GLdouble longitud, GLdouble h);
+	~Cristalera();
+	virtual void render(glm::dmat4 const& modelViewMat) const;
+
+};
+
 
 #endif //_H_Entities_H_

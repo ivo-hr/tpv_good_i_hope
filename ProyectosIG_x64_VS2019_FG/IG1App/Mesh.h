@@ -35,6 +35,10 @@ public:
 	static Mesh* generaEstrella3D(GLdouble re, GLuint np, GLdouble h);
 	static Mesh* generaEstrella3DTexCor(GLdouble re, GLuint np, GLdouble h);
 	
+	static Mesh* generaCristalera(GLdouble longitud, GLdouble h);
+	static Mesh* generaCristaleraTexCor(GLdouble longitud, GLdouble h);
+
+
 	Mesh() {};
 	virtual ~Mesh() {};
 

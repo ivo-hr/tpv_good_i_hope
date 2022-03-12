@@ -1,3 +1,4 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
-  DeAcceleration.cpp
-  TPV2.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\bin\TPV2Debug.exe
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  SDLUtils.cpp
+SDLUtils.obj : error LNK2019: unresolved external symbol "private: void __cdecl SDLUtils::initSDLExtensions(void)" (?initSDLExtensions@SDLUtils@@AEAAXXZ) referenced in function "private: __cdecl SDLUtils::SDLUtils(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (??0SDLUtils@@AEAA@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\TPV2\bin\TPV2Debug.exe : fatal error LNK1120: 1 unresolved externals

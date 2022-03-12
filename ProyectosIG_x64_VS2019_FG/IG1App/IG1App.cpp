@@ -64,7 +64,6 @@ void IG1App::iniWinOpenGL()
 	//glutInitWindowPosition (140, 140);
 
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH /*| GLUT_STENCIL*/); // RGBA colors, double buffer, depth buffer and stencil buffer   
-	
 	mWinId = glutCreateWindow("IG1App");  // with its associated OpenGL context, return window's identifier 
 	
 	// Callback registration
@@ -145,6 +144,9 @@ void IG1App::key(unsigned char key, int x, int y)
 		break;
 	case '5':
 		mScene->SetState(4);
+		break;
+	case '6':
+		mScene->SetState(5);
 		break;
 	default:
 		need_redisplay = false;

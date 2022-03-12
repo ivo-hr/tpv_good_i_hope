@@ -1,2 +1,6 @@
 ﻿  Entity.cpp
+  Scene.cpp
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(128,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(168,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
   IG1App.vcxproj -> F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe

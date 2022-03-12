@@ -9,7 +9,7 @@ using namespace glm;
 void Scene::init()
 { 
 	setGL();  // OpenGL settings
-
+	glEnable(GL_DEPTH_TEST);
 	// allocate memory and load resources
     // Lights
     // Textures
@@ -77,6 +77,19 @@ void Scene::init()
 
 		gObjects.push_back(e);
 	}
+	else if (mId == 5)
+	{
+		
+		Texture* t = new Texture();
+		t->load("..\\Bmps\\windowV.bmp", 150);
+		gTextures.push_back(t);
+
+		Cristalera* e = new Cristalera(400., 100.);
+		e->SetTexture(t);
+
+
+		gTransObjects.push_back(e);
+	}
 
     // Graphics objects (entities) of the scene
 	
@@ -93,6 +106,11 @@ void Scene::free()
 { // release memory and resources   
 
 	for (Abs_Entity* el : gObjects)
+	{
+		delete el;  el = nullptr;
+	}
+
+	for (Abs_Entity* el : gTransObjects)
 	{
 		delete el;  el = nullptr;
 	}
@@ -128,6 +146,17 @@ void Scene::render(Camera const& cam) const
 	{
 	  el->render(cam.viewMat());
 	}
+	glDepthMask(GL_FALSE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	for (Abs_Entity* el : gTransObjects)
+	{
+		el->render(cam.viewMat());
+	}
+
+	glDepthMask(GL_TRUE);
+	glDisable(GL_BLEND);
 }
 //-------------------------------------------------------------------------
 
@@ -139,6 +168,7 @@ void Scene::SetState(int id){
 		for (int i = gObjects.size(); i > 0; i--)
 			gObjects.pop_back();
 
+
 		mId = id;
 
 		init();
@@ -148,6 +178,11 @@ void Scene::SetState(int id){
 void Scene::update()
 {
 	for (Abs_Entity* obj : gObjects )
+	{
+		obj->update();
+	}
+
+	for (Abs_Entity* obj : gTransObjects)
 	{
 		obj->update();
 	}
