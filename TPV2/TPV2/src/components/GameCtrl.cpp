@@ -27,32 +27,33 @@ void GameCtrl::initComponent() {
 }
 
 void GameCtrl::update() {
-	auto &ihldr = ih();
+	auto& ihldr = ih();
 
 	if (ihldr.keyDownEvent()) {
-		if (ihldr.isKeyDown(SDL_SCANCODE_SPACE)) { // create stars
-			createStart(std::min(5u, starsLimit_ - currNumOfStars_));
+		if (ihldr.isKeyDown(SDL_SCANCODE_SPACE))
+		{
+			if (mngr_->GetState() != ecs::RUNNING)
+			{
+				if (mngr_->GetState() == ecs::NEWGAME)
+				{
+					mngr_->SetState(ecs::RUNNING);
+					createStart(std::min(5u, starsLimit_ - currNumOfStars_));
+				}
+				else if (mngr_->GetState() == ecs::PAUSED)
+				{
+					mngr_->SetState(ecs::RUNNING);
+				}
+				else if (mngr_->GetState() == ecs::GAMEOVER)
+				{
+					mngr_->SetState(ecs::NEWGAME);
+				}
+			}
 		}
 	}
 }
 
 void GameCtrl::render() {
 
-	// draw the score
-	//
-	Texture scoreTex(sdlutils().renderer(), std::to_string(score_),
-			sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0x444444ff));
-
-	SDL_Rect dest = build_sdlrect( //
-			(sdlutils().width() - scoreTex.width()) / 2.0f, //
-			10.0f, //
-			scoreTex.width(), //
-			scoreTex.height());
-
-	scoreTex.render(dest);
-
-	// draw add stars message
-	sdlutils().msgs().at("addstars").render(10, 10);
 }
 
 void GameCtrl::createStart(unsigned int n) {

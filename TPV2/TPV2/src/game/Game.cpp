@@ -11,6 +11,7 @@
 #include "../components/DeAcceleration.h"
 #include "../components/Hearts.h"
 #include "../components/Gun.h"
+#include "../components/State.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
@@ -71,6 +72,7 @@ void Game::init() {
 	auto ginfo = mngr_->addEntity();
 	mngr_->setHandler(ecs::_hdlr_GAMEINFO, ginfo);
 	ginfo->addComponent<GameCtrl>();
+	ginfo->addComponent<State>();
 }
 
 void Game::start() {

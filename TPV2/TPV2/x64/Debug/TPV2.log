@@ -1,13 +1,39 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
+  AsteroidMotion.cpp
+  DeAcceleration.cpp
+  DisableOnExit.cpp
+  FighterCtrl.cpp
+  FramedImage.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\SDL2-2.0.7\include\SDL_rect.h(65,1): warning C4099: 'SDL_Rect': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\SDL2-2.0.7\include\SDL_rect.h(64): message : vea la declaración de 'SDL_Rect'
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\FramedImage.cpp(36,38): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\FramedImage.cpp(36,35): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\FramedImage.cpp(49,20): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\FramedImage.cpp(50,21): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
   GameCtrl.cpp
-C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\FramedImage.h(8,15): warning C4099: 'SDL_Rect': type name first seen using 'struct' now seen using 'class'
-C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\SDL2-2.0.7\include\SDL_rect.h(64): message : see declaration of 'SDL_Rect'
-C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(50,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(49,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(126,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(126,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(130,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(130,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(130,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(130,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  TPV2.vcxproj -> C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\bin\TPV2Debug.exe
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\FramedImage.h(8,15): warning C4099: 'SDL_Rect': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\SDL2-2.0.7\include\SDL_rect.h(64): message : vea la declaración de 'SDL_Rect'
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(66,19): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(65,18): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(139,24): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(139,21): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(139,43): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(139,40): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Gun.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\Gun.cpp(23,40): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\Gun.cpp(60,43): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
+  Hearts.cpp
+  Image.cpp
+  ShowAtOppositeSide.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\ShowAtOppositeSide.cpp(29,28): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\ShowAtOppositeSide.cpp(39,29): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  StarMotion.cpp
+  State.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\FramedImage.h(8,15): warning C4099: 'SDL_Rect': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\SDL2-2.0.7\include\SDL_rect.h(64): message : vea la declaración de 'SDL_Rect'
+  StopOnBorders.cpp
+  Entity.cpp
+  Manager.cpp
+  Game.cpp
+  Generando código...
+  TPV2.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\bin\TPV2Debug.exe

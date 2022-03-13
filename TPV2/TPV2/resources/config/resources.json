@@ -20,6 +20,10 @@
   "messages" : [
     { "id" : "PressAnyKey", "text" : "Press Any Key", "font" : "ARIAL24", "color" : "0x112233ff", "bg" : "0xffffffff" },
     { "id" : "HelloSDL", "text" : "Hello SDL!", "font" : "ARIAL48", "color" : "0x0000ffff" },
+    { "id" : "NewGame", "text" : "Press SPACE to start game", "font" : "ARIAL24", "color" : "0x00000000" },
+    { "id" : "Running", "text" : "Shoot the asteroids", "font" : "ARIAL24", "color" : "0x00000000" },
+    { "id" : "Paused", "text" : "Press Space to continue", "font" : "ARIAL24", "color" : "0x00000000" },
+    { "id" : "GameOver", "text" : "Press Space to go back to new game", "font" : "ARIAL24", "color" : "0x00000000" },
     { "id" : "addstars", "text" : "Press SPACE to add stars to eat!", "font" : "ARIAL16", "color" : "0x00ff00ff" }
   ],
   

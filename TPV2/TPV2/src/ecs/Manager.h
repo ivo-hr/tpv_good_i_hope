@@ -12,6 +12,15 @@
 
 namespace ecs {
 
+	enum States
+	{
+		NEWGAME,
+		RUNNING,
+		PAUSED,
+		GAMEOVER
+	};
+
+
 /*
  * A class for managing the list of entities, groups, etc.
  *
@@ -103,6 +112,9 @@ public:
 	//
 	void refresh();
 
+	States GetState() { return currentState_; };
+	void SetState(States newState) { currentState_ = newState; };
+
 private:
 
 	// class Entity is a friend so it can access addToGroup and removeFromGroup
@@ -119,6 +131,8 @@ private:
 	void addToGroup(grpId_type gId, Entity *e) {
 		entsByGroup_[gId].push_back(e);
 	}
+
+	States currentState_;
 
 	std::vector<Entity*> ents_;
 	std::array<Entity*, maxHandlerId> hdlrs_;

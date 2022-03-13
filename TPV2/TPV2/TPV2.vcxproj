@@ -30,6 +30,7 @@
     <ClInclude Include="src\components\FighterCtrl.h" />
     <ClInclude Include="src\components\ShowAtOppositeSide.h" />
     <ClInclude Include="src\components\StarMotion.h" />
+    <ClInclude Include="src\components\State.h" />
     <ClInclude Include="src\components\StopOnBorders.h" />
     <ClInclude Include="src\components\Transform.h" />
     <ClInclude Include="src\ecs\Component.h" />
@@ -69,6 +70,7 @@
     <ClCompile Include="src\components\FighterCtrl.cpp" />
     <ClCompile Include="src\components\ShowAtOppositeSide.cpp" />
     <ClCompile Include="src\components\StarMotion.cpp" />
+    <ClCompile Include="src\components\State.cpp" />
     <ClCompile Include="src\components\StopOnBorders.cpp" />
     <ClCompile Include="src\ecs\Entity.cpp" />
     <ClCompile Include="src\ecs\Manager.cpp" />
