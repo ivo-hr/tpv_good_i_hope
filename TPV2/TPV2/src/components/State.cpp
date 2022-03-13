@@ -36,19 +36,19 @@ void State::render()
 
 	if (state == ecs::NEWGAME)
 	{
-		sdlutils().msgs().at("NewGame").render(sdlutils().width() / 2, 10);
+		sdlutils().msgs().at("NewGame").render(20, sdlutils().height() - 45);
 	}
 	else if (state == ecs::RUNNING)
 	{
-		sdlutils().msgs().at("Running").render(sdlutils().width() / 2, 10);
+		sdlutils().msgs().at("Running").render(20, sdlutils().height() - 45);
 	}
 	else if (state == ecs::PAUSED)
 	{
-		sdlutils().msgs().at("Paused").render(sdlutils().width() / 2, 10);
+		sdlutils().msgs().at("Paused").render(20, sdlutils().height() - 45);
 	}
 	else if (state == ecs::GAMEOVER)
 	{
-		sdlutils().msgs().at("GameOver").render(sdlutils().width() / 2, 10);
+		sdlutils().msgs().at("GameOver").render(20, sdlutils().height() - 45);
 	}
 
 }
