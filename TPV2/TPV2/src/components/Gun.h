@@ -1,9 +1,8 @@
-
-
 #pragma once
 #include "../ecs/Component.h"
 
 class Transform;
+class Image;
 
 class Gun : public ecs::Component {
 public:

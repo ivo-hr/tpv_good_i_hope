@@ -22,7 +22,6 @@ void ShowAtOppositeSide::initComponent() {
 
 void ShowAtOppositeSide::update() {
 	auto &pos = tr_->getPos();
-	auto &vel = tr_->getVel();
 
 	// check left/right borders
 	if (pos.getX() < -tr_->getWidth()) 

@@ -11,6 +11,9 @@
     { "id" : "tennis_ball", "file" : "resources/images/tennis_ball.png" },
     { "id" : "star", "file" : "resources/images/star.png"},
     { "id" : "fighter", "file" : "resources/images/fighter.png"},
+    { "id" : "asteroid", "file" : "resources/images/asteroid.png"},
+    { "id" : "asteroid_g", "file" : "resources/images/asteroid_gold.png"},
+    { "id" : "bullet", "file" : "resources/images/fire.png"},
     { "id" : "heart", "file" : "resources/images/heart.png"}
   ],
   
@@ -24,6 +27,7 @@
     { "id" : "gunshot", "file" : "resources/sound/gunshot.wav" },
     { "id" : "explosion", "file" : "resources/sound/explosion.wav" },
     { "id" : "pacman_eat", "file" : "resources/sound/pacman_eat.wav" },
+    { "id" : "fire", "file" : "resources/sound/fire.wav" },
     { "id" : "thrust", "file" : "resources/sound/thrust.wav" }
   ],
 

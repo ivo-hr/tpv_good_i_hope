@@ -156,6 +156,9 @@
     <ClInclude Include="src\components\AsteroidMotion.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="src\components\DisableOnExit.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\json\JSONValue.cpp">
@@ -225,6 +228,9 @@
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\components\AsteroidMotion.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\DisableOnExit.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
