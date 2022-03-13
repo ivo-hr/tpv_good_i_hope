@@ -76,27 +76,59 @@ void GameCtrl::createStart(unsigned int n) {
 		auto x = rand.nextInt(-s, sdlutils().width() + s);
 		auto y = rand.nextInt(-s, sdlutils().height() + s);
 
-		if (x < sdlutils().width() && x > 0)
-		{
-			if (rand.nextInt(0, 2) == 0) {
-				y = -s;
-			}
-			else y = sdlutils().height() + s;
-		}
+		auto cx = rand.nextInt(sdlutils().width()/2 - 100, sdlutils().width()/2 + 100);
+		auto cy = rand.nextInt(sdlutils().height()/2 - 100, sdlutils().height()/2 + 100);
 
-		else if (y < sdlutils().height() && y > 0)
-		{
-			if (rand.nextInt(0, 2) == 0) {
-				x = -s;
-			}
-			else x = sdlutils().width() + s;
-		}
 
+		if (rand.nextInt(0, 2) == 0) {
+
+			if (y < sdlutils().height() && y > 0)
+			{
+				if (rand.nextInt(0, 2) == 0) {
+					x = -s;
+				}
+				else x = sdlutils().width() + s;
+			}
+
+			else if (x < sdlutils().width() && x > 0)
+			{
+				if (rand.nextInt(0, 2) == 0) {
+					y = -s;
+				}
+				else y = sdlutils().height() + s;
+			}
+		}
+		else {
+
+			if (x < sdlutils().width() && x > 0)
+			{
+				if (rand.nextInt(0, 2) == 0) {
+					y = -s;
+				}
+				else y = sdlutils().height() + s;
+			}
+
+			else if (y < sdlutils().height() && y > 0)
+			{
+				if (rand.nextInt(0, 2) == 0) {
+					x = -s;
+				}
+				else x = sdlutils().width() + s;
+			}
+
+			
+		}
+		
 
 		tr->init(Vector2D(x, y), Vector2D(), s, s, 0.0f);
 
-		
 
+		auto sp = rand.nextInt(1, 10)/10.0f;
+
+		auto dirX = ((cx - x)/100) * sp;
+		auto dirY = ((cy - y) / 100) * sp;
+		
+		
 		// add an Image Component
 		//
 		e->addComponent<FramedImage>(&sdlutils().images().at("asteroid"));
@@ -106,7 +138,7 @@ void GameCtrl::createStart(unsigned int n) {
 		//e->addComponent<StarMotion>();
 		e->addComponent<AsteroidMotion>();
 		e->addComponent<ShowAtOppositeSide>();
-		e->getComponent<AsteroidMotion>()->dirSet(rand.nextInt(-100, 100), rand.nextInt(-100, 100));
+		e->getComponent<AsteroidMotion>()->dirSet(dirX, dirY);
 		currNumOfStars_++;
 	}
 }

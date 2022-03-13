@@ -19,7 +19,7 @@ public:
 
 		AsteroidMotion();
 	virtual ~AsteroidMotion();
-	void dirSet(double x, double y);
+	void dirSet(float x, float y);
 	void initComponent() override;
 	void update() override;
 

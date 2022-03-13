@@ -12,9 +12,9 @@ AsteroidMotion::AsteroidMotion() :
 	tr_(), lastUpdate_() {
 }
 
-void AsteroidMotion::dirSet(double x, double y)
+void AsteroidMotion::dirSet(float x, float y)
 {
-	dir = new Vector2D(x/50, y/50);
+	dir = new Vector2D(x, y);
 }
 
 AsteroidMotion::~AsteroidMotion() {
