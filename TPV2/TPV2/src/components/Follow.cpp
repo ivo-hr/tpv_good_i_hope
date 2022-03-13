@@ -37,6 +37,7 @@ void Follow::update() {
 
 	lastUpdate_ = sdlutils().currRealTime();
 
+	//Calculate in which direction the asteroid should turn
 	tr_->getVel() = v.rotate(v.angle(q - p) > 0 ? 1.0f : -1.0f);
 
 }

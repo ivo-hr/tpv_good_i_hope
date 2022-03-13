@@ -54,16 +54,6 @@ void Game::init() {
 	fighter->addComponent<Hearts>(&sdlutils().images().at("heart"));
 	fighter->addComponent<Gun>();
 
-
-	auto &asteroids = mngr_->getEntitiesByGroup(ecs::_grp_ASTEROIDS);
-	auto n = asteroids.size();
-	for (auto i = 0u; i < n; i++) {
-		auto e = asteroids[i];
-		if (e->isAlive()) {
-
-			auto eTR = e->getComponent<Transform>();
-		}
-	}
 	
 	auto ginfo = mngr_->addEntity();
 	mngr_->setHandler(ecs::_hdlr_GAMEINFO, ginfo);
@@ -91,6 +81,7 @@ void Game::start() {
 		mngr_->refresh();
 
 		astermngr_->addAsteroidFrequently();
+
 		checkCollisions();
 
 		sdlutils().clearRenderer();
@@ -110,14 +101,20 @@ void Game::checkCollisions() {
 	auto& asteroids = mngr_->getEntitiesByGroup(ecs::_grp_ASTEROIDS);
 
 	auto n = asteroids.size();
+
+	//For each asteroid
 	for (auto i = 0u; i < n; i++)
 	{
 		if (asteroids[i]->isAlive()) {
 
 			auto astTR = asteroids[i]->getComponent<Transform>();
 
+
+			//We check if it collides with the fighter
 			if (Collisions::collidesWithRotation(fighterTR->getPos(), fighterTR->getWidth(), fighterTR->getHeight(), fighterTR->getRot(),
 				astTR->getPos(), astTR->getWidth(), astTR->getHeight(), astTR->getRot())) {
+
+				//If it did...
 
 				mngr_->getHandler(ecs::_hdlr_FIGHTER)->getComponent<Hearts>()->takeLive(1);
 
@@ -153,6 +150,7 @@ void Game::checkCollisions() {
 			auto& bullets = mngr_->getEntitiesByGroup(ecs::_grp_BULLETS);
 			auto a = bullets.size();
 
+			//We check if a bullet collides with it
 			for (auto l = 0u; l < a; l++)
 			{
 				if (bullets[l]->isAlive()) {

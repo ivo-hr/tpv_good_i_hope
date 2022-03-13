@@ -33,6 +33,9 @@ void Gun::update()
 
 			if (timeLastShot + fireRate < sdlutils().currRealTime())
 			{
+
+				//Create the bullet
+
 				auto entTr = ent_->getComponent<Transform>();
 
 				auto bullet = mngr_->addEntity();
@@ -55,7 +58,6 @@ void Gun::update()
 
 				bullet->addComponent<Image>(&sdlutils().images().at("bullet"));
 
-				//Crea la bala
 				sdlutils().soundEffects().at("fire").play(0, 1);
 				timeLastShot = sdlutils().currRealTime();
 			}

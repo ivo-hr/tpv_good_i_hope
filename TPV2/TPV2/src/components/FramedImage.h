@@ -36,7 +36,8 @@ private:
 
 	SDL_Rect* recorte_;
 
-	float counter_;
+	float lastUpdate_;
+	float frameRate_;
 	int currIndex_;
 };
 
