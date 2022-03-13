@@ -32,32 +32,25 @@ void FighterCtrl::update() {
 		auto &vel_ = tr_->getVel();
 		auto rot = tr_->getRot();
 
-		if (ihldr.isKeyDown(SDL_SCANCODE_RIGHT)) {
-
+		if (ihldr.isKeyDown(SDL_SCANCODE_RIGHT))
+		{
 			tr_->setRot(rot + 5.0f);
-
-			vel_ = vel_.rotate(5.0f);
-
-		} if (ihldr.isKeyDown(SDL_SCANCODE_LEFT)) {
-
+		} 
+		if (ihldr.isKeyDown(SDL_SCANCODE_LEFT))
+		{
 			tr_->setRot(rot - 5.0f);
+		}
+		if (ihldr.isKeyDown(SDL_SCANCODE_UP))
+		{
 
-			vel_ = vel_.rotate(-5.0f);
+			auto newVel = vel_ + Vector2D(0, -1).rotate(rot) * 0.2f;
 
-		} if (ihldr.isKeyDown(SDL_SCANCODE_UP)) {
-
-			float speed = std::min(3.0f, vel_.magnitude() + 1.0f);
+			float speed = std::min(newVel.magnitude() + 1.0f, 3.f);
 
 			vel_ = Vector2D(0, -speed).rotate(rot);
 
 			sdlutils().soundEffects().at("thrust").play(0, 1);
 
-		} if (ihldr.isKeyDown(SDL_SCANCODE_DOWN)) { 
-
-			float speed = std::max(0.0f, vel_.magnitude() - 1.0f);
-
-
-			vel_ = Vector2D(0, -speed).rotate(rot);
 		}
 	}
 }
