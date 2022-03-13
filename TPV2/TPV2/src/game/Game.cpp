@@ -63,8 +63,8 @@ void Game::init() {
 			// the Star's Transform
 			//
 			auto eTR = e->getComponent<Transform>();
-			}
 		}
+	}
 	
 
 	// create the game info entity

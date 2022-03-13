@@ -75,9 +75,5 @@ void FighterCtrl::update() {
 			//
 			vel_ = Vector2D(0, -speed).rotate(rot);
 		}
-
-		 if (ihldr.isKeyDown(SDL_SCANCODE_S)){
-			//Shoot a bullet!
-		}
 	}
 }

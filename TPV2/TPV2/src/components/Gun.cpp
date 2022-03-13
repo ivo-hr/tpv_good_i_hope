@@ -36,6 +36,9 @@ void Gun::update()
 				auto entTr = ent_->getComponent<Transform>();
 
 				auto bullet = mngr_->addEntity();
+
+				bullet->addToGroup(ecs::_grp_BULLETS);
+
 				auto tr = bullet->addComponent<Transform>();
 
 				auto p = entTr->getPos();

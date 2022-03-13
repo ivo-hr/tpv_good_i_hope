@@ -8,6 +8,7 @@
 #define _CMPS_LIST_ \
 	_TRANSFORM, \
 	_IMAGE, \
+	_FRAMEDIMAGE, \
 	_FIGHTERCTRL, \
 	_STARMOTION, \
 	_ASTROMOTION, \
@@ -24,6 +25,7 @@
 //
 #define _GRPS_LIST_ \
 	_grp_STARS, \
+	_grp_BULLETS, \
 	_grp_ASTEROIDS
 
 // Handlers list - must have at least one element

@@ -11,6 +11,7 @@
 #include "StarMotion.h"
 #include "AsteroidMotion.h"
 #include "ShowAtOppositeSide.h"
+#include "FramedImage.h"
 #include "Transform.h"
 
 GameCtrl::GameCtrl() :
@@ -29,7 +30,7 @@ void GameCtrl::update() {
 	auto &ihldr = ih();
 
 	if (ihldr.keyDownEvent()) {
-		if (ihldr.isKeyDown(SDL_SCANCODE_SPACE)) { // create start
+		if (ihldr.isKeyDown(SDL_SCANCODE_SPACE)) { // create stars
 			createStart(std::min(5u, starsLimit_ - currNumOfStars_));
 		}
 	}
@@ -98,7 +99,7 @@ void GameCtrl::createStart(unsigned int n) {
 
 		// add an Image Component
 		//
-		e->addComponent<Image>(&sdlutils().images().at("star"));
+		e->addComponent<FramedImage>(&sdlutils().images().at("asteroid"));
 
 		// add a StarMotion component to resize/rotare the star
 		//
