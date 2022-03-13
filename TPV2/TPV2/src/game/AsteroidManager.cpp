@@ -130,4 +130,3 @@ void AsteroidManager::addAsteroidFrequently()
 void AsteroidManager::destroyAllAsteroids()
 {
 }
-

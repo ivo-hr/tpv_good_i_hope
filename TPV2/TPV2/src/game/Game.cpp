@@ -41,7 +41,7 @@ void Game::init() {
 	// create the PacMan entity
 	//
 	auto fighter = mngr_->addEntity();
-	mngr_->setHandler(ecs::_hdlr_PACMAN, fighter);
+	mngr_->setHandler(ecs::_hdlr_FIGHTER, fighter);
 	auto tr = fighter->addComponent<Transform>();
 	auto s = 50.0f;
 	auto x = (sdlutils().width() - s) / 2.0f;
@@ -111,6 +111,73 @@ void Game::start() {
 }
 
 void Game::checkCollisions() {
+
+	auto fighterTR = mngr_->getHandler(ecs::_hdlr_FIGHTER)->getComponent<Transform>();
+	auto& asteroids = mngr_->getEntitiesByGroup(ecs::_grp_ASTEROIDS);
+
+	auto n = asteroids.size();
+	for (auto i = 0u; i < n; i++) 
+	{
+		if (asteroids[i]->isAlive()) {
+
+			auto astTR = asteroids[i]->getComponent<Transform>(); 
+
+			if (Collisions::collidesWithRotation(fighterTR->getPos(), fighterTR->getWidth(), fighterTR->getHeight(), fighterTR->getRot(),
+				astTR->getPos(), astTR->getWidth(), astTR->getHeight(), astTR->getRot())) {
+
+				mngr_->getHandler(ecs::_hdlr_FIGHTER)->getComponent<Hearts>()->takeLive(1);
+
+				auto& bullets = mngr_->getEntitiesByGroup(ecs::_grp_BULLETS);
+				auto a = bullets.size();
+
+				for (auto j = 0u; j < a; j++)
+				{
+					bullets[j]->setAlive(false);
+				}
+
+				for (auto k = 0u; k < n; k++)
+				{
+					asteroids[k]->setAlive(false);
+				}
+
+				if (mngr_->getHandler(ecs::_hdlr_FIGHTER)->getComponent<Hearts>()->GetLives() == 0)
+				{
+					mngr_->SetState(ecs::GAMEOVER);
+				}
+				else
+				{
+					mngr_->SetState(ecs::PAUSED);
+				}
+
+				auto s = 50.0f;
+				auto x = (sdlutils().width() - s) / 2.0f;
+				auto y = (sdlutils().height() - s) / 2.0f;
+				fighterTR->init(Vector2D(x, y), Vector2D(), s, s, 0.0f);
+
+				break;
+
+			}
+
+			auto& bullets = mngr_->getEntitiesByGroup(ecs::_grp_BULLETS);
+			auto a = bullets.size();
+
+			for (auto l = 0u; l < a; l++)
+			{
+				if (bullets[l]->isAlive()) {
+
+					auto bullTR = bullets[l]->getComponent<Transform>();
+
+					if (Collisions::collidesWithRotation(bullTR->getPos(), bullTR->getWidth(), bullTR->getHeight(), bullTR->getRot(),
+						astTR->getPos(), astTR->getWidth(), astTR->getHeight(), astTR->getRot())) {
+
+						bullets[l]->setAlive(false);
+
+					}
+				}
+			}
+		}
+	}
+
 
 	// the PacMan's Transform
 	//

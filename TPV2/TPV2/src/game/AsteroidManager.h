@@ -26,4 +26,3 @@ protected:
 	ecs::Entity* ent_; // a pointer to the entity, should not be deleted on destruction
 	ecs::Manager* mngr_; //  a pointer to the manager, should not be deleted on destruction
 };
-

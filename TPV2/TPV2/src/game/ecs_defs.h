@@ -25,13 +25,12 @@
 // Groups list - must have at least one element
 //
 #define _GRPS_LIST_ \
-	_grp_STARS, \
 	_grp_BULLETS, \
 	_grp_ASTEROIDS
 
 // Handlers list - must have at least one element
 //
 #define _HDLRS_LIST_ \
-    _hdlr_PACMAN, \
+    _hdlr_FIGHTER, \
 	_hdlr_GAMEINFO
 

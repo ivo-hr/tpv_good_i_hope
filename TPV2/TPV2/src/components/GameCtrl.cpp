@@ -44,6 +44,7 @@ void GameCtrl::update() {
 				else if (mngr_->GetState() == ecs::PAUSED)
 				{
 					mngr_->SetState(ecs::RUNNING);
+					createStart(std::min(5u, starsLimit_ - currNumOfStars_));
 				}
 				else if (mngr_->GetState() == ecs::GAMEOVER)
 				{
