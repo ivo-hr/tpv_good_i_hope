@@ -117,12 +117,6 @@
     <ClInclude Include="src\components\FighterCtrl.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\StarMotion.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="src\components\StopOnBorders.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="src\components\Transform.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
@@ -171,6 +165,9 @@
     <ClInclude Include="src\components\Follow.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="src\components\Generations.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\json\JSONValue.cpp">
@@ -215,12 +212,6 @@
     <ClCompile Include="src\components\FighterCtrl.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\StarMotion.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
-    <ClCompile Include="src\components\StopOnBorders.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="src\ecs\Entity.cpp">
       <Filter>Source Files\ecs</Filter>
     </ClCompile>
@@ -255,6 +246,9 @@
       <Filter>Source Files\game</Filter>
     </ClCompile>
     <ClCompile Include="src\components\Follow.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Generations.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>

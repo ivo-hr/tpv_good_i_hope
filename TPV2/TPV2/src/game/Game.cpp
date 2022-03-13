@@ -5,7 +5,6 @@
 #include "../components/GameCtrl.h"
 #include "../components/Image.h"
 #include "../components/FighterCtrl.h"
-#include "../components/StopOnBorders.h"
 #include "../components/ShowAtOppositeSide.h"
 #include "../components/Transform.h"
 #include "../components/DeAcceleration.h"
@@ -18,6 +17,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../utils/Vector2D.h"
 #include "../utils/Collisions.h"
+#include "AsteroidManager.h"
 
 using ecs::Entity;
 using ecs::Manager;
@@ -28,6 +28,7 @@ Game::Game() :
 
 Game::~Game() {
 	delete mngr_;
+	delete astermngr_;
 }
 
 void Game::init() {
@@ -37,6 +38,7 @@ void Game::init() {
 
 	// Create the manager
 	mngr_ = new Manager();
+	astermngr_ = new AsteroidManager(mngr_);
 
 	// create the PacMan entity
 	//
@@ -71,7 +73,7 @@ void Game::init() {
 	// create the game info entity
 	auto ginfo = mngr_->addEntity();
 	mngr_->setHandler(ecs::_hdlr_GAMEINFO, ginfo);
-	ginfo->addComponent<GameCtrl>();
+	ginfo->addComponent<GameCtrl>(astermngr_);
 	ginfo->addComponent<State>();
 }
 
@@ -96,6 +98,7 @@ void Game::start() {
 		mngr_->update();
 		mngr_->refresh();
 
+		astermngr_->addAsteroidFrequently();
 		checkCollisions();
 
 		sdlutils().clearRenderer();
@@ -107,7 +110,6 @@ void Game::start() {
 		if (frameTime < 10)
 			SDL_Delay(10 - frameTime);
 	}
-
 }
 
 void Game::checkCollisions() {
@@ -135,19 +137,17 @@ void Game::checkCollisions() {
 					bullets[j]->setAlive(false);
 				}
 
-				for (auto k = 0u; k < n; k++)
-				{
-					asteroids[k]->setAlive(false);
-				}
-
 				if (mngr_->getHandler(ecs::_hdlr_FIGHTER)->getComponent<Hearts>()->GetLives() == 0)
 				{
 					mngr_->SetState(ecs::GAMEOVER);
+					mngr_->getHandler(ecs::_hdlr_FIGHTER)->getComponent<Hearts>()->resetLives();
 				}
 				else
 				{
 					mngr_->SetState(ecs::PAUSED);
 				}
+
+				astermngr_->destroyAllAsteroids();
 
 				auto s = 50.0f;
 				auto x = (sdlutils().width() - s) / 2.0f;
@@ -171,6 +171,8 @@ void Game::checkCollisions() {
 						astTR->getPos(), astTR->getWidth(), astTR->getHeight(), astTR->getRot())) {
 
 						bullets[l]->setAlive(false);
+
+						astermngr_->onCollision(asteroids[i]);
 
 					}
 				}

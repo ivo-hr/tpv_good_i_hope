@@ -8,21 +8,24 @@ class AsteroidManager {
 public:
 
 
-		AsteroidManager();
+		AsteroidManager(ecs::Manager* mngr);
 	virtual ~AsteroidManager();
 
 	void onCollision(ecs::Entity* a);
-
-private:
-	void createAsteroids(unsigned int n);
 	void addAsteroidFrequently();
 	void destroyAllAsteroids();
+	void createAsteroids(unsigned int n);
+
+private:
+	void createAsteroids(unsigned int n, ecs::Entity* a);
 	
 	unsigned int asterNum_;
 	unsigned int score_;
 	unsigned int asterLimit_;
 
+	float counter_;
+	float lastSpawn_;
+
 protected:
-	ecs::Entity* ent_; // a pointer to the entity, should not be deleted on destruction
 	ecs::Manager* mngr_; //  a pointer to the manager, should not be deleted on destruction
 };

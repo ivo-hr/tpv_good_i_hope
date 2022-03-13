@@ -4,6 +4,8 @@
 
 #include <vector>
 
+class AsteroidManager;
+
 namespace ecs {
 class Manager;
 }
@@ -17,5 +19,6 @@ public:
 private:
 	void checkCollisions();
 	ecs::Manager *mngr_;
+	AsteroidManager* astermngr_;
 };
 

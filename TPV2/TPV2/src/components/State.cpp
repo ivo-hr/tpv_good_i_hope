@@ -8,7 +8,6 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../sdlutils/Texture.h"
 #include "Image.h"
-#include "StarMotion.h"
 #include "AsteroidMotion.h"
 #include "ShowAtOppositeSide.h"
 #include "FramedImage.h"

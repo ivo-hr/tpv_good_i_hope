@@ -8,8 +8,8 @@
 #include "Transform.h"
 
 
-Follow::Follow() :
-	tr_(), lastUpdate_() {
+Follow::Follow(Transform* fighter) :
+	tr_(), lastUpdate_(), fighterTR_(fighter) {
 }
 
 
@@ -21,6 +21,8 @@ void Follow::initComponent() {
 	assert(tr_ != nullptr);
 
 	lastUpdate_ = sdlutils().currRealTime();
+
+	tr_->getVel() = Vector2D(1, 1);
 }
 
 void Follow::update() {
@@ -29,15 +31,13 @@ void Follow::update() {
 	if (lastUpdate_ + 50 > sdlutils().currRealTime())
 		return;
 
+	auto v = tr_->getVel();
+	auto p = tr_->getPos();
+	auto q = fighterTR_->getPos();
+
 	lastUpdate_ = sdlutils().currRealTime();
 
-	tr_->getVel() = dir;
+	tr_->getVel() = v.rotate(v.angle(q - p) > 0 ? 1.0f : -1.0f);
 
 }
-
-void Follow::dirSet(float x, float y)
-{
-	dir = new Vector2D(x, y);
-}
-
 

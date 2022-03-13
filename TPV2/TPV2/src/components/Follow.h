@@ -15,18 +15,16 @@ public:
 	//
 	//    constexpr static ecs::cmpId_type id = ecs::_STARMOTION
 	//
-	__CMPID_DECL__(ecs::_ASTROMOTION)
+	__CMPID_DECL__(ecs::_FOLLOW)
 
-		Follow();
+		Follow(Transform* fighter);
 	virtual ~Follow();
 	void initComponent() override;
 	void update() override;
 
-	void dirSet(float x, float y);
-
 private:
 	Transform* tr_;
+	Transform* fighterTR_;
 	Uint32 lastUpdate_;
-	Vector2D dir;
 };
 

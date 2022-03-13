@@ -4,9 +4,10 @@
 #include <SDL_stdinc.h>
 
 #include "../ecs/Component.h"
+#include "../utils/Vector2D.h"
 
 class Transform;
-class StarMotion: public ecs::Component {
+class Generations : public ecs::Component {
 public:
 
 	// This line expands to the following (see the defintion of
@@ -14,15 +15,14 @@ public:
 	//
 	//    constexpr static ecs::cmpId_type id = ecs::_STARMOTION
 	//
-	__CMPID_DECL__(ecs::_STARMOTION)
+	__CMPID_DECL__(ecs::_GENERATION)
 
-	StarMotion();
-	virtual ~StarMotion();
-	void initComponent() override;
-	void update() override;
+		Generations(int genNum);
+	virtual ~Generations();
+
+	int getGen() { return gen_; };
 
 private:
-	Transform *tr_;
-	Uint32 lastUpdate_;
+	int gen_;
 };
 
