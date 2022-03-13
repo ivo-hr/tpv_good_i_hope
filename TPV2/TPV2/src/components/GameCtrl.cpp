@@ -1,5 +1,3 @@
-// This file is part of the course TPV2@UCM - Samir Genaim
-
 #include "GameCtrl.h"
 
 #include <algorithm>
@@ -17,9 +15,6 @@
 
 
 GameCtrl::GameCtrl(AsteroidManager* ast) :
-		currNumOfStars_(0), //
-		score_(0), //
-		starsLimit_(30),
 		astman_(ast)  {
 }
 

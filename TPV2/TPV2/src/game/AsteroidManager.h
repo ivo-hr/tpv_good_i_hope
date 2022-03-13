@@ -27,5 +27,5 @@ private:
 	float lastSpawn_;
 
 protected:
-	ecs::Manager* mngr_; //  a pointer to the manager, should not be deleted on destruction
+	ecs::Manager* mngr_;
 };

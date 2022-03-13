@@ -1,4 +1,5 @@
-// This file is part of the course TPV2@UCM - Samir Genaim
+//Enrique Juan Gamboa
+//Javier Enrique Villegas Montelongo
 
 #include "Game.h"
 
@@ -33,15 +34,12 @@ Game::~Game() {
 
 void Game::init() {
 
-	// initialise the SDLUtils singleton
 	SDLUtils::init("Demo", 800, 600, "resources/config/resources.json");
 
-	// Create the manager
 	mngr_ = new Manager();
 	astermngr_ = new AsteroidManager(mngr_);
 
-	// create the PacMan entity
-	//
+
 	auto fighter = mngr_->addEntity();
 	mngr_->setHandler(ecs::_hdlr_FIGHTER, fighter);
 	auto tr = fighter->addComponent<Transform>();
@@ -61,16 +59,12 @@ void Game::init() {
 	auto n = asteroids.size();
 	for (auto i = 0u; i < n; i++) {
 		auto e = asteroids[i];
-		if (e->isAlive()) { // if the star is active (it might have died in this frame)
+		if (e->isAlive()) {
 
-			// the Star's Transform
-			//
 			auto eTR = e->getComponent<Transform>();
 		}
 	}
 	
-
-	// create the game info entity
 	auto ginfo = mngr_->addEntity();
 	mngr_->setHandler(ecs::_hdlr_GAMEINFO, ginfo);
 	ginfo->addComponent<GameCtrl>(astermngr_);
@@ -79,7 +73,6 @@ void Game::init() {
 
 void Game::start() {
 
-	// a boolean to exit the loop
 	bool exit = false;
 
 	auto &ihdlr = ih();
@@ -87,7 +80,6 @@ void Game::start() {
 	while (!exit) {
 		Uint32 startTime = sdlutils().currRealTime();
 
-		// refresh the input handler
 		ihdlr.refresh();
 
 		if (ihdlr.isKeyDown(SDL_SCANCODE_ESCAPE)) {
@@ -118,11 +110,11 @@ void Game::checkCollisions() {
 	auto& asteroids = mngr_->getEntitiesByGroup(ecs::_grp_ASTEROIDS);
 
 	auto n = asteroids.size();
-	for (auto i = 0u; i < n; i++) 
+	for (auto i = 0u; i < n; i++)
 	{
 		if (asteroids[i]->isAlive()) {
 
-			auto astTR = asteroids[i]->getComponent<Transform>(); 
+			auto astTR = asteroids[i]->getComponent<Transform>();
 
 			if (Collisions::collidesWithRotation(fighterTR->getPos(), fighterTR->getWidth(), fighterTR->getHeight(), fighterTR->getRot(),
 				astTR->getPos(), astTR->getWidth(), astTR->getHeight(), astTR->getRot())) {
@@ -179,37 +171,4 @@ void Game::checkCollisions() {
 			}
 		}
 	}
-
-
-	// the PacMan's Transform
-	//
-	/*auto pTR = mngr_->getHandler(ecs::_hdlr_PACMAN)->getComponent<Transform>();*/
-
-	// For safety, we traverse with a normal loop until the current size. In this
-	// particular case we could use a for-each loop since the list stars is not
-	// modified.
-	//
-	//auto &stars = mngr_->getEntitiesByGroup(ecs::_grp_STARS);
-	//auto n = stars.size();
-	//for (auto i = 0u; i < n; i++) {
-	//	auto e = stars[i];
-	//	if (e->isAlive()) { // if the star is active (it might have died in this frame)
-
-	//		// the Star's Transform
-	//		//
-	//		auto eTR = e->getComponent<Transform>();
-
-	//		// check if PacMan collides with the Star (i.e., eat it)
-	//		if (Collisions::collides(pTR->getPos(), pTR->getWidth(),
-	//				pTR->getHeight(), //
-	//				eTR->getPos(), eTR->getWidth(), eTR->getHeight())) {
-	//			e->setAlive(false);
-	//			mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<GameCtrl>()->onStarEaten();
-
-	//			// play sound on channel 1 (if there is something playing there
-	//			// it will be cancelled
-	//			sdlutils().soundEffects().at("pacman_eat").play(0, 1);
-	//		}
-	//	}
-	//}
 }

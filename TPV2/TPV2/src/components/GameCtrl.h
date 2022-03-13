@@ -14,14 +14,6 @@ public:
 	GameCtrl(AsteroidManager* ast);
 	virtual ~GameCtrl();
 
-	inline void onStarDeath() {
-		currNumOfStars_--;
-	}
-
-	inline void onStarEaten() {
-		currNumOfStars_--;
-		score_++;
-	}
 
 	void initComponent() override;
 	void update() override;
@@ -31,8 +23,5 @@ private:
 
 	AsteroidManager* astman_;
 
-	unsigned int currNumOfStars_;
-	unsigned int score_;
-	unsigned int starsLimit_;
 };
 

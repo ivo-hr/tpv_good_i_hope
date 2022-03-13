@@ -1,4 +1,3 @@
-// This file is part of the course TPV2@UCM - Samir Genaim
 
 #include "AsteroidManager.h"
 
@@ -15,9 +14,9 @@
 #include "../components/Generations.h"
 
 AsteroidManager::AsteroidManager(ecs::Manager* mngr) :
-	asterNum_(0), //
-	score_(0), //
-	asterLimit_(30), //
+	asterNum_(0), 
+	score_(0), 
+	asterLimit_(30), 
 	counter_(1000.f),
 	mngr_(mngr)  {
 	lastSpawn_ = sdlutils().currRealTime();
@@ -45,26 +44,20 @@ void AsteroidManager::createAsteroids(unsigned int n) {
 	{
 
 		for (auto i = 0u; i < n; i++) {
-			// Always use the random number generator provided by SDLUtils
-			//
+
 			auto& rand = sdlutils().rand();
 
-			// add and entity to the manager
-			//
 			auto e = mngr_->addEntity();
 			e->addToGroup(ecs::_grp_ASTEROIDS);
 
-			// add a Transform component, and initialise it with random
-			// size and position
-			//
 			auto tr = e->addComponent<Transform>();
-			auto s = rand.nextInt(0, 3);//size
+			auto s = rand.nextInt(0, 3);
 
 			e->addComponent<Generations>(s);
 
-			if (s == 0)			s = 33;
-			else if (s == 1)	s = 66;
-			else				s = 100;
+			if (s == 0)			s = 20;
+			else if (s == 1)	s = 40;
+			else				s = 80;
 
 			auto x = rand.nextInt(-s, sdlutils().width() + s);
 			auto y = rand.nextInt(-s, sdlutils().height() + s);
@@ -170,26 +163,20 @@ void AsteroidManager::createAsteroids(unsigned int n, ecs::Entity* a)
 	{
 
 		for (auto i = 0u; i < n; i++) {
-			// Always use the random number generator provided by SDLUtils
-			//
+
 			auto& rand = sdlutils().rand();
 
-			// add and entity to the manager
-			//
 			auto e = mngr_->addEntity();
 			e->addToGroup(ecs::_grp_ASTEROIDS);
 
-			// add a Transform component, and initialise it with random
-			// size and position
-			//
 			auto tr = e->addComponent<Transform>();
 			auto s = a->getComponent<Generations>()->getGen() - 1;
 
 			e->addComponent<Generations>(s);
 
-			if (s == 0)			s = 33;
-			else if (s == 1)	s = 66;
-			else				s = 100;
+			if (s == 0)			s = 20;
+			else if (s == 1)	s = 40;
+			else				s = 80;
 
 			auto cx = rand.nextInt(0, sdlutils().width());
 			auto cy = rand.nextInt(0, sdlutils().height());

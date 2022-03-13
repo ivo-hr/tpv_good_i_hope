@@ -54,9 +54,6 @@
     <ClInclude Include="src\json\JSONValue.h">
       <Filter>Header Files\json</Filter>
     </ClInclude>
-    <ClInclude Include="src\json\json_demo.h">
-      <Filter>Header Files\json</Filter>
-    </ClInclude>
     <ClInclude Include="src\json\JSON.h">
       <Filter>Header Files\json</Filter>
     </ClInclude>
@@ -90,9 +87,6 @@
     <ClInclude Include="src\sdlutils\SDLUtils.h">
       <Filter>Header Files\sdlutil</Filter>
     </ClInclude>
-    <ClInclude Include="src\sdlutils\sdlutils_demo.h">
-      <Filter>Header Files\sdlutil</Filter>
-    </ClInclude>
     <ClInclude Include="src\sdlutils\SoundEffect.h">
       <Filter>Header Files\sdlutil</Filter>
     </ClInclude>
@@ -124,9 +118,6 @@
       <Filter>Header Files\ecs</Filter>
     </ClInclude>
     <ClInclude Include="src\ecs\ecs.h">
-      <Filter>Header Files\ecs</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ecs\ecs_defs_example.h">
       <Filter>Header Files\ecs</Filter>
     </ClInclude>
     <ClInclude Include="src\ecs\Entity.h">
@@ -173,9 +164,6 @@
     <ClCompile Include="src\json\JSONValue.cpp">
       <Filter>Source Files\json</Filter>
     </ClCompile>
-    <ClCompile Include="src\json\json_demo.cpp">
-      <Filter>Source Files\json</Filter>
-    </ClCompile>
     <ClCompile Include="src\json\JSON.cpp">
       <Filter>Source Files\json</Filter>
     </ClCompile>
@@ -186,9 +174,6 @@
       <Filter>Source Files\utils</Filter>
     </ClCompile>
     <ClCompile Include="src\sdlutils\SDLUtils.cpp">
-      <Filter>Source Files\sdlutil</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sdlutils\sdlutils_demo.cpp">
       <Filter>Source Files\sdlutil</Filter>
     </ClCompile>
     <ClCompile Include="src\sdlutils\SoundEffect.cpp">

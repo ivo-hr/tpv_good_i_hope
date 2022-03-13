@@ -1,4 +1,4 @@
-// This file is part of the course TPV2@UCM - Samir Genaim
+
 
 #include "FighterCtrl.h"
 
@@ -32,46 +32,31 @@ void FighterCtrl::update() {
 		auto &vel_ = tr_->getVel();
 		auto rot = tr_->getRot();
 
-		if (ihldr.isKeyDown(SDL_SCANCODE_RIGHT)) { // rotate right
+		if (ihldr.isKeyDown(SDL_SCANCODE_RIGHT)) {
+
 			tr_->setRot(rot + 5.0f);
 
-			// also rotate the PacMan so it looks in the same
-			// direction where it moves
-			//
 			vel_ = vel_.rotate(5.0f);
-		} if (ihldr.isKeyDown(SDL_SCANCODE_LEFT)) { // rotate left
+
+		} if (ihldr.isKeyDown(SDL_SCANCODE_LEFT)) {
+
 			tr_->setRot(rot - 5.0f);
 
-			// also rotate the PacMan so it looks in the same
-			// direction where it moves
-			//
 			vel_ = vel_.rotate(-5.0f);
-		} if (ihldr.isKeyDown(SDL_SCANCODE_UP)) { // increase speed
 
-			// add 1.0f to the speed (respecting the limit 3.0f). Recall
-			// that speed is the length of the velocity vector
+		} if (ihldr.isKeyDown(SDL_SCANCODE_UP)) {
+
 			float speed = std::min(3.0f, vel_.magnitude() + 1.0f);
 
-			// change the length of velocity vecto to 'speed'. We need
-			// '.rotate(rot)' for the case in which the current speed is
-			// 0, so we rotate it to the same direction where the PacMan
-			// is looking
-			//
 			vel_ = Vector2D(0, -speed).rotate(rot);
-
 
 			sdlutils().soundEffects().at("thrust").play(0, 1);
 
-		} if (ihldr.isKeyDown(SDL_SCANCODE_DOWN)) { // decrease speed
-			// subtract 1.0f to the speed (respecting the limit 0.0f). Recall
-			// that speed is the length of the velocity vector
+		} if (ihldr.isKeyDown(SDL_SCANCODE_DOWN)) { 
+
 			float speed = std::max(0.0f, vel_.magnitude() - 1.0f);
 
-			// change the length of velocity vector to 'speed'. We need
-			// '.rotate(rot)' for the case in which the current speed is
-			// 0, so we rotate it to the same direction where the PacMan
-			// is looking
-			//
+
 			vel_ = Vector2D(0, -speed).rotate(rot);
 		}
 	}
