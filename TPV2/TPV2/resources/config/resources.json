@@ -23,6 +23,8 @@
   
   "sounds" : [
     { "id" : "fire", "file" : "resources/sound/fire.wav" },
+    { "id" : "explosion", "file" : "resources/sound/explosion.wav" },
+    { "id" : "asteroidexplosion", "file" : "resources/sound/explosion1.wav" },
     { "id" : "thrust", "file" : "resources/sound/thrust.wav" }
   ],
 

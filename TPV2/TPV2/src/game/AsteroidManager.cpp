@@ -41,6 +41,8 @@ void AsteroidManager::onCollision(ecs::Entity* a)
 	{
 		createAsteroids(2, a);
 	}
+
+	sdlutils().soundEffects().at("asteroidexplosion").play(0, 3);
 }
 
 //Initial asteroids creation

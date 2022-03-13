@@ -7,6 +7,7 @@
 #include "../ecs/Entity.h"
 #include "../sdlutils/macros.h"
 #include "../sdlutils/Texture.h"
+#include "../sdlutils/SDLUtils.h"
 
 Hearts::Hearts() : lives(3), hearts_()
 {
@@ -41,6 +42,7 @@ void Hearts::takeLive(int amount)
 	{
 		resetLives();
 	}
+	sdlutils().soundEffects().at("explosion").play(0, 3);
 }
 
 void Hearts::resetLives()

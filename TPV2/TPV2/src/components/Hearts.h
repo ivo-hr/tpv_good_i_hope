@@ -28,7 +28,6 @@ public:
 	int GetLives() { return lives; };
 
 private:
-	void createStart();
 	Texture* hearts_;
 	int lives = 3;
 };
