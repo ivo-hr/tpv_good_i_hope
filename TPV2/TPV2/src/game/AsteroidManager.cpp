@@ -1,146 +1,133 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
-#include "Game.h"
+#include "AsteroidManager.h"
 
-#include "../components/GameCtrl.h"
-#include "../components/Image.h"
-#include "../components/FighterCtrl.h"
-#include "../components/StopOnBorders.h"
-#include "../components/ShowAtOppositeSide.h"
-#include "../components/Transform.h"
-#include "../components/DeAcceleration.h"
-#include "../components/Hearts.h"
-#include "../components/Gun.h"
-#include "../components/State.h"
-#include "../ecs/Entity.h"
+#include <algorithm>
 #include "../ecs/Manager.h"
-#include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SDLUtils.h"
-#include "../utils/Vector2D.h"
-#include "../utils/Collisions.h"
+#include "../sdlutils/Texture.h"
+#include "../components/Image.h"
+#include "../components/AsteroidMotion.h"
+#include "../components/ShowAtOppositeSide.h"
+#include "../components/FramedImage.h"
+#include "../components/Transform.h"
 
-using ecs::Entity;
-using ecs::Manager;
-
-Game::Game() :
-		mngr_(nullptr) {
+AsteroidManager::AsteroidManager() :
+	asterNum_(0), //
+	score_(0), //
+	asterLimit_(30) {
 }
 
-Game::~Game() {
-	delete mngr_;
+AsteroidManager::~AsteroidManager() {
 }
 
-void Game::init() {
-
-	// initialise the SDLUtils singleton
-	SDLUtils::init("Demo", 800, 600, "resources/config/resources.json");
-
-	// Create the manager
-	mngr_ = new Manager();
-
-	// create the PacMan entity
-	//
-	auto fighter = mngr_->addEntity();
-	mngr_->setHandler(ecs::_hdlr_PACMAN, fighter);
-	auto tr = fighter->addComponent<Transform>();
-	auto s = 50.0f;
-	auto x = (sdlutils().width() - s) / 2.0f;
-	auto y = (sdlutils().height() - s) / 2.0f;
-	tr->init(Vector2D(x, y), Vector2D(), s, s, 0.0f);
-	fighter->addComponent<Image>(&sdlutils().images().at("fighter"));
-	fighter->addComponent<FighterCtrl>();
-	fighter->addComponent<ShowAtOppositeSide>();
-	fighter->addComponent<DeAcceleration>();
-	fighter->addComponent<Hearts>(&sdlutils().images().at("heart"));
-	fighter->addComponent<Gun>();
 
 
-	auto &asteroids = mngr_->getEntitiesByGroup(ecs::_grp_ASTEROIDS);
-	auto n = asteroids.size();
+void AsteroidManager::onCollision(ecs::Entity* a)
+{
+}
+
+
+void AsteroidManager::createAsteroids(unsigned int n) {
+
 	for (auto i = 0u; i < n; i++) {
-		auto e = asteroids[i];
-		if (e->isAlive()) { // if the star is active (it might have died in this frame)
+		// Always use the random number generator provided by SDLUtils
+		//
+		auto& rand = sdlutils().rand();
 
-			// the Star's Transform
-			//
-			auto eTR = e->getComponent<Transform>();
+		// add and entity to the manager
+		//
+		auto e = mngr_->addEntity();
+		e->addToGroup(ecs::_grp_ASTEROIDS);
+
+		// add a Transform component, and initialise it with random
+		// size and position
+		//
+		auto tr = e->addComponent<Transform>();
+		auto s = rand.nextInt(50, 100);//size
+
+		auto x = rand.nextInt(-s, sdlutils().width() + s);
+		auto y = rand.nextInt(-s, sdlutils().height() + s);
+
+		auto cx = rand.nextInt(sdlutils().width() / 2 - 100, sdlutils().width() / 2 + 100);
+		auto cy = rand.nextInt(sdlutils().height() / 2 - 100, sdlutils().height() / 2 + 100);
+
+
+		if (rand.nextInt(0, 2) == 0) {
+
+			if (y < sdlutils().height() && y > 0)
+			{
+				if (rand.nextInt(0, 2) == 0) {
+					x = -s;
+				}
+				else x = sdlutils().width() + s;
+			}
+
+			else if (x < sdlutils().width() && x > 0)
+			{
+				if (rand.nextInt(0, 2) == 0) {
+					y = -s;
+				}
+				else y = sdlutils().height() + s;
+			}
 		}
-	}
-	
+		else {
 
-	// create the game info entity
-	auto ginfo = mngr_->addEntity();
-	mngr_->setHandler(ecs::_hdlr_GAMEINFO, ginfo);
-	ginfo->addComponent<GameCtrl>();
-	ginfo->addComponent<State>();
-}
+			if (x < sdlutils().width() && x > 0)
+			{
+				if (rand.nextInt(0, 2) == 0) {
+					y = -s;
+				}
+				else y = sdlutils().height() + s;
+			}
 
-void Game::start() {
+			else if (y < sdlutils().height() && y > 0)
+			{
+				if (rand.nextInt(0, 2) == 0) {
+					x = -s;
+				}
+				else x = sdlutils().width() + s;
+			}
 
-	// a boolean to exit the loop
-	bool exit = false;
 
-	auto &ihdlr = ih();
-
-	while (!exit) {
-		Uint32 startTime = sdlutils().currRealTime();
-
-		// refresh the input handler
-		ihdlr.refresh();
-
-		if (ihdlr.isKeyDown(SDL_SCANCODE_ESCAPE)) {
-			exit = true;
-			continue;
 		}
 
-		mngr_->update();
-		mngr_->refresh();
 
-		checkCollisions();
+		tr->init(Vector2D(x, y), Vector2D(), s, s, 0.0f);
 
-		sdlutils().clearRenderer();
-		mngr_->render();
-		sdlutils().presentRenderer();
 
-		Uint32 frameTime = sdlutils().currRealTime() - startTime;
+		auto sp = rand.nextInt(1, 10) / 10.0f;
 
-		if (frameTime < 10)
-			SDL_Delay(10 - frameTime);
+		auto dirX = ((cx - x) / 100) * sp;
+		auto dirY = ((cy - y) / 100) * sp;
+
+
+		// add an Image Component
+		//
+		e->addComponent<FramedImage>(&sdlutils().images().at("asteroid"));
+		
+		// add a StarMotion component to resize/rotare the star
+		//
+		//e->addComponent<StarMotion>();
+		e->addComponent<AsteroidMotion>();
+		e->addComponent<ShowAtOppositeSide>();
+		e->getComponent<AsteroidMotion>()->dirSet(dirX, dirY);
+
+
+		if (rand.nextInt(0, 10) < 3) {
+
+		}
+
+
+		asterNum_++;
 	}
-
 }
 
-void Game::checkCollisions() {
-
-	// the PacMan's Transform
-	//
-	/*auto pTR = mngr_->getHandler(ecs::_hdlr_PACMAN)->getComponent<Transform>();*/
-
-	// For safety, we traverse with a normal loop until the current size. In this
-	// particular case we could use a for-each loop since the list stars is not
-	// modified.
-	//
-	//auto &stars = mngr_->getEntitiesByGroup(ecs::_grp_STARS);
-	//auto n = stars.size();
-	//for (auto i = 0u; i < n; i++) {
-	//	auto e = stars[i];
-	//	if (e->isAlive()) { // if the star is active (it might have died in this frame)
-
-	//		// the Star's Transform
-	//		//
-	//		auto eTR = e->getComponent<Transform>();
-
-	//		// check if PacMan collides with the Star (i.e., eat it)
-	//		if (Collisions::collides(pTR->getPos(), pTR->getWidth(),
-	//				pTR->getHeight(), //
-	//				eTR->getPos(), eTR->getWidth(), eTR->getHeight())) {
-	//			e->setAlive(false);
-	//			mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<GameCtrl>()->onStarEaten();
-
-	//			// play sound on channel 1 (if there is something playing there
-	//			// it will be cancelled
-	//			sdlutils().soundEffects().at("pacman_eat").play(0, 1);
-	//		}
-	//	}
-	//}
+void AsteroidManager::addAsteroidFrequently()
+{
 }
+
+void AsteroidManager::destroyAllAsteroids()
+{
+}
+

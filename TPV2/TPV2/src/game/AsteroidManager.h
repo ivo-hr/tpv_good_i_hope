@@ -1,21 +1,29 @@
-// This file is part of the course TPV2@UCM - Samir Genaim
-
 #pragma once
 
-#include <vector>
+#include "../ecs/ecs.h"
+#include "../ecs/Entity.h"
 
-namespace ecs {
-class Manager;
-}
 
-class Game {
+class AsteroidManager {
 public:
-	Game();
-	virtual ~Game();
-	void init();
-	void start();
+
+
+		AsteroidManager();
+	virtual ~AsteroidManager();
+
+	void onCollision(ecs::Entity* a);
+
 private:
-	void checkCollisions();
-	ecs::Manager *mngr_;
+	void createAsteroids(unsigned int n);
+	void addAsteroidFrequently();
+	void destroyAllAsteroids();
+	
+	unsigned int asterNum_;
+	unsigned int score_;
+	unsigned int asterLimit_;
+
+protected:
+	ecs::Entity* ent_; // a pointer to the entity, should not be deleted on destruction
+	ecs::Manager* mngr_; //  a pointer to the manager, should not be deleted on destruction
 };
 

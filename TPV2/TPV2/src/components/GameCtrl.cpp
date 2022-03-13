@@ -14,6 +14,8 @@
 #include "FramedImage.h"
 #include "Transform.h"
 
+
+
 GameCtrl::GameCtrl() :
 		currNumOfStars_(0), //
 		score_(0), //

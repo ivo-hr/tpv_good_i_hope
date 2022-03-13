@@ -7,7 +7,7 @@
 #include "../utils/Vector2D.h"
 
 class Transform;
-class AsteroidMotion : public ecs::Component {
+class Follow : public ecs::Component {
 public:
 
 	// This line expands to the following (see the defintion of
@@ -17,8 +17,8 @@ public:
 	//
 	__CMPID_DECL__(ecs::_ASTROMOTION)
 
-		AsteroidMotion();
-	virtual ~AsteroidMotion();
+		Follow();
+	virtual ~Follow();
 	void initComponent() override;
 	void update() override;
 

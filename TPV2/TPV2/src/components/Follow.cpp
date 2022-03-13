@@ -1,4 +1,4 @@
-#include "AsteroidMotion.h"
+#include "Follow.h"
 
 #include <cassert>
 #include "../ecs/Entity.h"
@@ -8,22 +8,22 @@
 #include "Transform.h"
 
 
-AsteroidMotion::AsteroidMotion() :
+Follow::Follow() :
 	tr_(), lastUpdate_() {
 }
 
 
-AsteroidMotion::~AsteroidMotion() {
+Follow::~Follow() {
 }
 
-void AsteroidMotion::initComponent() {
+void Follow::initComponent() {
 	tr_ = ent_->getComponent<Transform>();
 	assert(tr_ != nullptr);
 
 	lastUpdate_ = sdlutils().currRealTime();
 }
 
-void AsteroidMotion::update() {
+void Follow::update() {
 
 	// update every 50ms
 	if (lastUpdate_ + 50 > sdlutils().currRealTime())
@@ -35,7 +35,7 @@ void AsteroidMotion::update() {
 
 }
 
-void AsteroidMotion::dirSet(float x, float y)
+void Follow::dirSet(float x, float y)
 {
 	dir = new Vector2D(x, y);
 }
