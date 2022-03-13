@@ -112,33 +112,33 @@ void Game::checkCollisions() {
 
 	// the PacMan's Transform
 	//
-	auto pTR = mngr_->getHandler(ecs::_hdlr_PACMAN)->getComponent<Transform>();
+	/*auto pTR = mngr_->getHandler(ecs::_hdlr_PACMAN)->getComponent<Transform>();*/
 
 	// For safety, we traverse with a normal loop until the current size. In this
 	// particular case we could use a for-each loop since the list stars is not
 	// modified.
 	//
-	auto &stars = mngr_->getEntitiesByGroup(ecs::_grp_STARS);
-	auto n = stars.size();
-	for (auto i = 0u; i < n; i++) {
-		auto e = stars[i];
-		if (e->isAlive()) { // if the star is active (it might have died in this frame)
+	//auto &stars = mngr_->getEntitiesByGroup(ecs::_grp_STARS);
+	//auto n = stars.size();
+	//for (auto i = 0u; i < n; i++) {
+	//	auto e = stars[i];
+	//	if (e->isAlive()) { // if the star is active (it might have died in this frame)
 
-			// the Star's Transform
-			//
-			auto eTR = e->getComponent<Transform>();
+	//		// the Star's Transform
+	//		//
+	//		auto eTR = e->getComponent<Transform>();
 
-			// check if PacMan collides with the Star (i.e., eat it)
-			if (Collisions::collides(pTR->getPos(), pTR->getWidth(),
-					pTR->getHeight(), //
-					eTR->getPos(), eTR->getWidth(), eTR->getHeight())) {
-				e->setAlive(false);
-				mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<GameCtrl>()->onStarEaten();
+	//		// check if PacMan collides with the Star (i.e., eat it)
+	//		if (Collisions::collides(pTR->getPos(), pTR->getWidth(),
+	//				pTR->getHeight(), //
+	//				eTR->getPos(), eTR->getWidth(), eTR->getHeight())) {
+	//			e->setAlive(false);
+	//			mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<GameCtrl>()->onStarEaten();
 
-				// play sound on channel 1 (if there is something playing there
-				// it will be cancelled
-				sdlutils().soundEffects().at("pacman_eat").play(0, 1);
-			}
-		}
-	}
+	//			// play sound on channel 1 (if there is something playing there
+	//			// it will be cancelled
+	//			sdlutils().soundEffects().at("pacman_eat").play(0, 1);
+	//		}
+	//	}
+	//}
 }

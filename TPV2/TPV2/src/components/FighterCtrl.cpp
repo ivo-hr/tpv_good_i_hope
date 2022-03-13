@@ -40,14 +40,14 @@ void FighterCtrl::update() {
 			// direction where it moves
 			//
 			vel_ = vel_.rotate(5.0f);
-		} else if (ihldr.isKeyDown(SDL_SCANCODE_LEFT)) { // rotate left
+		} if (ihldr.isKeyDown(SDL_SCANCODE_LEFT)) { // rotate left
 			tr_->setRot(rot - 5.0f);
 
 			// also rotate the PacMan so it looks in the same
 			// direction where it moves
 			//
 			vel_ = vel_.rotate(-5.0f);
-		} else if (ihldr.isKeyDown(SDL_SCANCODE_UP)) { // increase speed
+		} if (ihldr.isKeyDown(SDL_SCANCODE_UP)) { // increase speed
 
 			// add 1.0f to the speed (respecting the limit 3.0f). Recall
 			// that speed is the length of the velocity vector
@@ -63,7 +63,7 @@ void FighterCtrl::update() {
 
 			sdlutils().soundEffects().at("thrust").play(0, 1);
 
-		} else if (ihldr.isKeyDown(SDL_SCANCODE_DOWN)) { // decrease speed
+		} if (ihldr.isKeyDown(SDL_SCANCODE_DOWN)) { // decrease speed
 			// subtract 1.0f to the speed (respecting the limit 0.0f). Recall
 			// that speed is the length of the velocity vector
 			float speed = std::max(0.0f, vel_.magnitude() - 1.0f);
@@ -76,7 +76,7 @@ void FighterCtrl::update() {
 			vel_ = Vector2D(0, -speed).rotate(rot);
 		}
 
-		else if (ihldr.isKeyDown(SDL_SCANCODE_S)){
+		 if (ihldr.isKeyDown(SDL_SCANCODE_S)){
 			//Shoot a bullet!
 		}
 	}

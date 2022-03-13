@@ -1,37 +1,9 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
-  DeAcceleration.cpp
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
   GameCtrl.cpp
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(47,19): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(46,18): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(74,24): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(74,21): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(74,43): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(74,40): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  Gun.cpp
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\Gun.cpp(22,40): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\Gun.cpp(30,41): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
-  Hearts.cpp
-  Image.cpp
-  FighterCtrl.cpp
-  ShowAtOppositeSide.cpp
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\ShowAtOppositeSide.cpp(30,28): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\ShowAtOppositeSide.cpp(40,29): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  StarMotion.cpp
-  StopOnBorders.cpp
-  Entity.cpp
-  Manager.cpp
-  Game.cpp
-  JSON.cpp
-  JSONValue.cpp
-  json_demo.cpp
-  main.cpp
-  SDLUtils.cpp
-  sdlutils_demo.cpp
-  SoundEffect.cpp
-  Texture.cpp
-  Generando código...
-  Compilando...
-  Collisions.cpp
-  Vector2D.cpp
-  Generando código...
-  TPV2.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\bin\TPV2Debug.exe
+C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(49,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(48,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(95,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(95,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(95,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\TPV2\src\components\GameCtrl.cpp(95,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  TPV2.vcxproj -> C:\Users\enriq\Documents\GitHub\tpv_good_i_hope\TPV2\bin\TPV2Debug.exe

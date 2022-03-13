@@ -9,6 +9,8 @@
 #include "../sdlutils/Texture.h"
 #include "Image.h"
 #include "StarMotion.h"
+#include "AsteroidMotion.h"
+#include "ShowAtOppositeSide.h"
 #include "Transform.h"
 
 GameCtrl::GameCtrl() :
@@ -62,16 +64,37 @@ void GameCtrl::createStart(unsigned int n) {
 		// add and entity to the manager
 		//
 		auto e = mngr_->addEntity();
-		e->addToGroup(ecs::_grp_STARS);
+		e->addToGroup(ecs::_grp_ASTEROIDS);
 
 		// add a Transform component, and initialise it with random
 		// size and position
 		//
 		auto tr = e->addComponent<Transform>();
-		auto s = rand.nextInt(50, 100);
-		auto x = rand.nextInt(0, sdlutils().width() - s);
-		auto y = rand.nextInt(0, sdlutils().height() - s);
+		auto s = rand.nextInt(50, 100);//size
+
+		auto x = rand.nextInt(-s, sdlutils().width() + s);
+		auto y = rand.nextInt(-s, sdlutils().height() + s);
+
+		if (x < sdlutils().width() && x > 0)
+		{
+			if (rand.nextInt(0, 2) == 0) {
+				y = -s;
+			}
+			else y = sdlutils().height() + s;
+		}
+
+		else if (y < sdlutils().height() && y > 0)
+		{
+			if (rand.nextInt(0, 2) == 0) {
+				x = -s;
+			}
+			else x = sdlutils().width() + s;
+		}
+
+
 		tr->init(Vector2D(x, y), Vector2D(), s, s, 0.0f);
+
+		
 
 		// add an Image Component
 		//
@@ -79,8 +102,10 @@ void GameCtrl::createStart(unsigned int n) {
 
 		// add a StarMotion component to resize/rotare the star
 		//
-		e->addComponent<StarMotion>();
-
+		//e->addComponent<StarMotion>();
+		e->addComponent<AsteroidMotion>();
+		e->addComponent<ShowAtOppositeSide>();
+		e->getComponent<AsteroidMotion>()->dirSet(rand.nextInt(-100, 100), rand.nextInt(-100, 100));
 		currNumOfStars_++;
 	}
 }

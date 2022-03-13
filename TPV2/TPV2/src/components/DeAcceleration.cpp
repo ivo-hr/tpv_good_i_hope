@@ -10,6 +10,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "Image.h"
 #include "StarMotion.h"
+
 #include "Transform.h"
 
 DeAcceleration::DeAcceleration() : tr_(nullptr) {
