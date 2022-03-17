@@ -108,7 +108,7 @@ void RegularPolygon::render(glm::dmat4 const& modelViewMat) const
 
 Rectangulo::Rectangulo(GLdouble w, GLdouble h)
 {
-	mMesh = Mesh::generaRectangulo(w, h);
+	mMesh = Mesh::generaRectangulo(w, h, 0);
 }
 
 Rectangulo::~Rectangulo()
@@ -255,7 +255,7 @@ void CuboRGB::update()
 
 Suelo::Suelo(GLdouble longitud, GLuint repes)
 {
-	mMesh = Mesh::generaRectanguloTexCor(longitud, longitud, repes, repes);
+	mMesh = Mesh::generaRectanguloTexCor(longitud, longitud, repes, repes, 0);
 }
 
 Suelo::~Suelo()
@@ -386,4 +386,38 @@ void Cristalera::render(glm::dmat4 const& modelViewMat) const
 		mTexture->unbind();
 		glColor4d(1, 1, 1, 0.5);
 	}
+}
+
+Foto::Foto(GLdouble w, GLdouble h)
+{
+	mMesh = Mesh::generaRectanguloTexCor(w, h, 1, 1, 0.2);
+
+	mTexture = new Texture();
+}
+
+Foto::~Foto()
+{
+	delete mMesh; mMesh = nullptr;
+}
+
+void Foto::render(glm::dmat4 const& modelViewMat) const
+{
+	if (mMesh != nullptr) {
+
+		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
+		upload(aMat);
+
+		glColor4dv(value_ptr(mColor));
+
+		mTexture->bind(GL_MODULATE);
+		mMesh->render();
+		mTexture->unbind();
+
+		glColor4d(1, 1, 1, 1);
+	}
+}
+
+void Foto::update()
+{
+	mTexture->loadColourBuffer(GLUT_WINDOW_WIDTH * 7, GLUT_WINDOW_HEIGHT * 7, GL_FRONT);
 }

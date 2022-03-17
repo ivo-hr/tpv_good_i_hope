@@ -43,6 +43,8 @@ protected:
 	void init();
 	void iniWinOpenGL();
 	void free();   
+
+	void update();
  
 	void display() const;   // the scene
 	void resize(int newWidth, int newHeight);   // the viewport (without changing the scale) 
@@ -66,6 +68,11 @@ protected:
 	int mWinId = 0;	    // window's identifier
 	int mWinW = 800;    // window's width 
 	int mWinH = 600;    // window's height
+
+	bool updating = false;
+
+	int mLastUpdateTime = 0;
+
 };
 //-------------------------------------------------------------------------
 

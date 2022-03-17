@@ -19,14 +19,14 @@ public:
 
 	static Mesh* createTriangleRGB();
 
-	static Mesh* generaRectangulo(GLdouble w, GLdouble h);
+	static Mesh* generaRectangulo(GLdouble w, GLdouble h, GLdouble d);
 
 	static Mesh* generaRectanguloRGB(GLdouble w, GLdouble h);
 
 	static Mesh* generaCubo(GLdouble longitud);
 	static Mesh* generaCuboRGB(GLdouble longitud);
 
-	static Mesh* generaRectanguloTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh);
+	static Mesh* generaRectanguloTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh, GLdouble d);
 
 	static Mesh* generaContCaja(GLdouble longitud);
 

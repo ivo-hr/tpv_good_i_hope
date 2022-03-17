@@ -46,6 +46,7 @@ void Scene::init()
 		Suelo* s = new Suelo(800., 4);
 		s->SetTexture(t);
 
+		gObjects.push_back(new Foto(200, 200));
 		gObjects.push_back(s);
 	}
 	else if (mId == 3)
@@ -90,15 +91,54 @@ void Scene::init()
 
 		gTransObjects.push_back(e);
 	}
+	else if (mId == 6)
+	{
+		Texture* t = new Texture();
+		t->load("..\\Bmps\\baldosaC.bmp");
+		gTextures.push_back(t);
 
-    // Graphics objects (entities) of the scene
-	
-	//gObjects.push_back(new TriangleRGB());
-	//gObjects.push_back(new RegularPolygon(250., 7, glm::dvec4(0., 0., 0., 1.)));
-	//gObjects.push_back(new RegularPolygon(250., 3, glm::dvec4(0., 1., 1., 1.)));
-	//gObjects.push_back(new RegularPolygon(250., 100, glm::dvec4(1., 0., 1., 1.)));
-	//gObjects.push_back(new RectanguloRGB(300.0, 400.0));
-	//gObjects.push_back(new Cubo(200.));
+		Suelo* s = new Suelo(400., 4);
+		s->SetTexture(t);
+
+		gObjects.push_back(new Foto(200, 200));
+		gObjects.push_back(s);
+
+		Texture* y = new Texture();
+		Texture* u = new Texture();
+		y->load("..\\Bmps\\container.bmp");
+		u->load("..\\Bmps\\papelE.bmp");
+		gTextures.push_back(y);
+		gTextures.push_back(u);
+
+		ContornoCaja* r = new ContornoCaja(50.);
+		r->SetTexture(y);
+		r->SetTexture2(u);
+
+		r->setModelMat(translate(r->modelMat(), dvec3(150, 25, 150)));
+
+		gObjects.push_back(r);
+
+		Texture* p = new Texture();
+		p->load("..\\Bmps\\baldosaP.bmp");
+		gTextures.push_back(p);
+
+		Estrella3D* e = new Estrella3D(20., 8, 20.);
+		e->SetTexture(p);
+
+		e->setModelMat(translate(e->modelMat(), dvec3(150, 60, 150)));
+
+		gObjects.push_back(e);
+
+		Texture* f = new Texture();
+		f->load("..\\Bmps\\windowV.bmp", 150);
+		gTextures.push_back(f);
+
+		Cristalera* j = new Cristalera(400., 100.);
+		j->SetTexture(f);
+
+
+		gTransObjects.push_back(j);
+	}
 	
 }
 //-------------------------------------------------------------------------
@@ -166,7 +206,9 @@ void Scene::SetState(int id){
 		free();
 
 		for (int i = gObjects.size(); i > 0; i--)
-			gObjects.pop_back();
+			gObjects.pop_back(); 
+		for (int i = gTransObjects.size(); i > 0; i--)
+			gTransObjects.pop_back();
 
 
 		mId = id;

@@ -115,7 +115,7 @@ Mesh* Mesh::createTriangleRGB()
     return mesh;
 }
 
-Mesh* Mesh::generaRectangulo(GLdouble w, GLdouble h)
+Mesh* Mesh::generaRectangulo(GLdouble w, GLdouble h, GLdouble d)
 {
     Mesh* mesh = new Mesh();
 
@@ -124,10 +124,10 @@ Mesh* Mesh::generaRectangulo(GLdouble w, GLdouble h)
     mesh->mNumVertices = 4;
     mesh->vVertices.reserve(mesh->mNumVertices);
 
-    mesh->vVertices.emplace_back(w / 2., 0, h / 2.);
-    mesh->vVertices.emplace_back(w / 2., 0, -h / 2.);
-    mesh->vVertices.emplace_back(-w / 2., 0, h / 2.);
-    mesh->vVertices.emplace_back(-w / 2., 0, -h / 2.);
+    mesh->vVertices.emplace_back(w / 2., d, h / 2.);
+    mesh->vVertices.emplace_back(w / 2., d, -h / 2.);
+    mesh->vVertices.emplace_back(-w / 2., d, h / 2.);
+    mesh->vVertices.emplace_back(-w / 2., d, -h / 2.);
 
     return mesh;
 }
@@ -265,9 +265,9 @@ Mesh* Mesh::generaCuboRGB(GLdouble longitud)
     return mesh;
 }
 
-Mesh* Mesh::generaRectanguloTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh)
+Mesh* Mesh::generaRectanguloTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh, GLdouble d)
 {
-    Mesh* m = generaRectangulo(w, h);
+    Mesh* m = generaRectangulo(w, h, d);
 
     m->vTexCoors.reserve(m->mNumVertices);
 

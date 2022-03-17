@@ -130,6 +130,9 @@ void IG1App::key(unsigned char key, int x, int y)
 	case 'u':
 		mScene->update();
 		break;
+	case 'U':
+		updating = !updating;
+		break;
 	case '1':
 		mScene->SetState(0);
 		break;
@@ -147,6 +150,9 @@ void IG1App::key(unsigned char key, int x, int y)
 		break;
 	case '6':
 		mScene->SetState(5);
+		break;
+	case '7':
+		mScene->SetState(6);
 		break;
 	default:
 		need_redisplay = false;
@@ -191,4 +197,18 @@ void IG1App::specialKey(int key, int x, int y)
 		glutPostRedisplay(); // marks the window as needing to be redisplayed -> calls to display()
 }
 //-------------------------------------------------------------------------
+
+void IG1App::update() {
+
+	if (updating)
+	{
+		if (glutGet(GLUT_ELAPSED_TIME) - mLastUpdateTime > (1000 / 60))
+		{
+			mScene->update();
+			mLastUpdateTime = glutGet(GLUT_ELAPSED_TIME);
+			glutPostRedisplay();
+		}
+
+	}
+}
 
