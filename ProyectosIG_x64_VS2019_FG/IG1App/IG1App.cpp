@@ -71,6 +71,7 @@ void IG1App::iniWinOpenGL()
 	glutKeyboardFunc(s_key);
 	glutSpecialFunc(s_specialKey);
 	glutDisplayFunc(s_display);
+	glutIdleFunc(s_update);
 	
 	cout << glGetString(GL_VERSION) << '\n';
 	cout << glGetString(GL_VENDOR) << '\n';
@@ -128,7 +129,7 @@ void IG1App::key(unsigned char key, int x, int y)
 		mCamera->set2D();
 		break;
 	case 'u':
-		mScene->update();
+		updating = !updating;
 		break;
 	case 'U':
 		updating = !updating;
@@ -208,7 +209,6 @@ void IG1App::update() {
 			mLastUpdateTime = glutGet(GLUT_ELAPSED_TIME);
 			glutPostRedisplay();
 		}
-
 	}
 }
 

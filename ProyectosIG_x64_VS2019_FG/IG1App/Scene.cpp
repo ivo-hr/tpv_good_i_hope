@@ -18,6 +18,7 @@ void Scene::init()
 
 	if (mId == 0)
 	{
+
 		auto tri = new TriangleRGB();
 		auto rec = new RectanguloRGB(300.0, 400.0);
 		auto cir = new RegularPolygon(circRad, 100, glm::dvec4(1., 0., 1., 1.));

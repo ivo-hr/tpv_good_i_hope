@@ -1,8 +1,5 @@
-﻿  IG1App.cpp
-  Scene.cpp
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(168,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(208,3): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(210,3): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-  main.cpp
-  Generando código...
-  IG1App.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe
+﻿  Scene.cpp
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(169,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(209,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(211,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  IG1App.vcxproj -> F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe
