@@ -14,6 +14,12 @@ public:
 	explicit Camera(Viewport* vp);
 	~Camera() {};
 
+	void moveLR(GLdouble cs);
+	void moveFB(GLdouble cs);
+	void moveUD(GLdouble cs);
+
+	void ChangePrj();
+
 	// viewPort
 	Viewport const& viewPort() const { return *mViewPort; };
 
@@ -26,6 +32,10 @@ public:
 	void pitch(GLdouble a); // rotates a degrees on the X axis
 	void yaw(GLdouble a);   // rotates a degrees on the Y axis
 	void roll(GLdouble a);  // rotates a degrees on the Z axis
+
+	void pitchReal(GLdouble a); // rotates a degrees on the X axis
+	void yawReal(GLdouble a);   // rotates a degrees on the Y axis
+	void rollReal(GLdouble a);  // rotates a degrees on the Z axis
 
 	// projection matrix
 	glm::dmat4 const& projMat() const { return mProjMat; };
@@ -55,7 +65,7 @@ protected:
 	void uploadPM() const;   // transfers projMat to the GPU
 
 	GLdouble xRight, xLeft, yTop, yBot;      // size of scene visible area
-	GLdouble mNearVal = 1, mFarVal = 10000;  // view volume
+	GLdouble mNearVal =	1, mFarVal = 10000;  // view volume
 	GLdouble mScaleFact = 1;   // scale factor
 	bool bOrto = true;   // orthogonal or perspective projection
 

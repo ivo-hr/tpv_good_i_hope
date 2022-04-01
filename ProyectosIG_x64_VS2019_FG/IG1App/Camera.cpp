@@ -14,8 +14,39 @@ Camera::Camera(Viewport* vp): mViewPort(vp), mViewMat(1.0), mProjMat(1.0),
 							  yTop(vp->height() / 2.0), yBot(-yTop)
 {
     setPM();
+	setAxes();
 }
 //-------------------------------------------------------------------------
+
+void Camera::moveLR(GLdouble cs)
+{
+	mEye += mRight * cs;
+	mLook += mRight * cs;
+	mViewMat = lookAt(mEye, mLook, mUp);
+	uploadVM();
+}
+
+void Camera::moveFB(GLdouble cs)
+{
+	mEye += mFront * cs;
+	mLook += mFront * cs;
+	mViewMat = lookAt(mEye, mLook, mUp);
+	uploadVM();
+}
+
+void Camera::moveUD(GLdouble cs)
+{
+	mEye += mUp * cs;
+	mLook += mUp * cs;
+	mViewMat = lookAt(mEye, mLook, mUp);
+	uploadVM();
+}
+
+void Camera::ChangePrj()
+{
+	bOrto = !bOrto;
+	setPM();
+}
 
 void Camera::setAxes()
 {
@@ -34,6 +65,7 @@ void Camera::uploadVM() const
 void Camera::setVM() 
 {
 	mViewMat = lookAt(mEye, mLook, mUp);  // glm::lookAt defines the view matrix 
+	setAxes();
 }
 //-------------------------------------------------------------------------
 
@@ -58,6 +90,7 @@ void Camera::set3D()
 void Camera::pitch(GLdouble a) 
 {  
 	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(1.0, 0, 0));
+	setAxes();
 	// glm::rotate returns mViewMat * rotationMatrix
 }
 //-------------------------------------------------------------------------
@@ -65,6 +98,7 @@ void Camera::pitch(GLdouble a)
 void Camera::yaw(GLdouble a) 
 {
 	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(0, 1.0, 0));
+	setAxes();
 	// glm::rotate returns mViewMat * rotationMatrix
 }
 //-------------------------------------------------------------------------
@@ -72,7 +106,19 @@ void Camera::yaw(GLdouble a)
 void Camera::roll(GLdouble a) 
 {
 	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(0, 0, 1.0));
+	setAxes();
 	// glm::rotate returns mViewMat * rotationMatrix
+}
+void Camera::pitchReal(GLdouble a)
+{
+	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(1.0, 0, 0));
+	//lookat, mup
+}
+void Camera::yawReal(GLdouble a)
+{
+}
+void Camera::rollReal(GLdouble a)
+{
 }
 //-------------------------------------------------------------------------
 
@@ -97,8 +143,14 @@ void Camera::setScale(GLdouble s)
 void Camera::setPM() 
 {
 	if (bOrto) { //  if orthogonal projection
+		mNearVal = 1;
 		mProjMat = ortho(xLeft*mScaleFact, xRight*mScaleFact, yBot*mScaleFact, yTop*mScaleFact, mNearVal, mFarVal);
 		// glm::ortho defines the orthogonal projection matrix
+	}
+	else
+	{
+		mNearVal = yTop * mScaleFact;
+		mProjMat = frustum(xLeft * mScaleFact, xRight * mScaleFact, yBot * mScaleFact, yTop * mScaleFact, mNearVal, mFarVal);
 	}
 }
 //-------------------------------------------------------------------------

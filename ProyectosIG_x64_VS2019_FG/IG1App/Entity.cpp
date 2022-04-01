@@ -297,20 +297,21 @@ void ContornoCaja::render(glm::dmat4 const& modelViewMat) const
 		upload(aMat);
 		glColor4dv(value_ptr(mColor));
 		
-		glPolygonMode(GL_FRONT, GL_FILL);
-		glPolygonMode(GL_BACK, GL_POINT);
-
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
 
 		mTexture->bind(GL_MODULATE);
 		mMesh->render();
 		mTexture->unbind();
-		
-		glPolygonMode(GL_FRONT, GL_POINT);
-		glPolygonMode(GL_BACK, GL_FILL);
+
+		glCullFace(GL_FRONT);
 
 		mTexture2->bind(GL_MODULATE);
 		mMesh->render();
 		mTexture2->unbind();
+
+		glDisable(GL_CULL_FACE);
+
 		glColor4d(1, 1, 1, 1);
 	}
 }

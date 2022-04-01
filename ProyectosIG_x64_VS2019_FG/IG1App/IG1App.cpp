@@ -134,6 +134,24 @@ void IG1App::key(unsigned char key, int x, int y)
 	case 'U':
 		updating = !updating;
 		break;
+	case 'd':
+		mCamera->moveLR(1);
+		break;
+	case 'a':
+		mCamera->moveLR(-1);
+		break;
+	case 'w':
+		mCamera->moveUD(1);
+		break;
+	case 's':
+		mCamera->moveUD(-1);
+		break;
+	case 'q':
+		mCamera->moveFB(1);
+		break;
+	case 'e':
+		mCamera->moveFB(-1);
+		break;
 	case '1':
 		mScene->SetState(0);
 		break;
@@ -155,6 +173,9 @@ void IG1App::key(unsigned char key, int x, int y)
 	case '7':
 		mScene->SetState(6);
 		break;
+	case 'p':
+		mCamera->ChangePrj();
+		break;
 	default:
 		need_redisplay = false;
 		break;
@@ -170,29 +191,29 @@ void IG1App::specialKey(int key, int x, int y)
 	bool need_redisplay = true;
 	int mdf = glutGetModifiers(); // returns the modifiers (Shift, Ctrl, Alt)
 	
-	switch (key) {
-	case GLUT_KEY_RIGHT:
-		if (mdf == GLUT_ACTIVE_CTRL)
-			mCamera->pitch(-1);   // rotates -1 on the X axis
-		else
-			mCamera->pitch(1);    // rotates 1 on the X axis
-		break;
-	case GLUT_KEY_LEFT:
-		if (mdf == GLUT_ACTIVE_CTRL)
-		    mCamera->yaw(1);      // rotates 1 on the Y axis 
-		else 
-			mCamera->yaw(-1);     // rotate -1 on the Y axis 
-		break;
-	case GLUT_KEY_UP:
-		mCamera->roll(1);    // rotates 1 on the Z axis
-		break;
-	case GLUT_KEY_DOWN:
-		mCamera->roll(-1);   // rotates -1 on the Z axis
-		break;
-	default:
-		need_redisplay = false;
-		break;
-	}//switch
+	//switch (key) {
+	//case GLUT_KEY_RIGHT:
+	//	if (mdf == GLUT_ACTIVE_CTRL)
+	//		mCamera->pitch(-1);   // rotates -1 on the X axis
+	//	else
+	//		mCamera->pitch(1);    // rotates 1 on the X axis
+	//	break;
+	//case GLUT_KEY_LEFT:
+	//	if (mdf == GLUT_ACTIVE_CTRL)
+	//	    mCamera->yaw(1);      // rotates 1 on the Y axis 
+	//	else 
+	//		mCamera->yaw(-1);     // rotate -1 on the Y axis 
+	//	break;
+	//case GLUT_KEY_UP:
+	//	mCamera->roll(1);    // rotates 1 on the Z axis
+	//	break;
+	//case GLUT_KEY_DOWN:
+	//	mCamera->roll(-1);   // rotates -1 on the Z axis
+	//	break;
+	//default:
+	//	need_redisplay = false;
+	//	break;
+	//}//switch
 
 	if (need_redisplay)
 		glutPostRedisplay(); // marks the window as needing to be redisplayed -> calls to display()
