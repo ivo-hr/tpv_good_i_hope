@@ -115,10 +115,10 @@ void Camera::pitchReal(GLdouble a)
 {
 	//Mup y mlook
 					//mirando arriba positivo	
-	mUp += glm::dvec3(sin(glm::radians(-a)), cos(glm::radians(a)), 0);
+	mUp += glm::dvec3(cos(glm::radians(a)), sin(glm::radians(a)), 0);
 	mUpward = mUp;
 
-	mFront += glm::dvec3(sin(glm::radians(a)), cos(glm::radians(a)), 0);
+	mFront += glm::dvec3(cos(glm::radians(a)), sin(glm::radians(a)), 0);
 	mLook += mFront;
 
 	setVM();
