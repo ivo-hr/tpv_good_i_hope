@@ -176,6 +176,9 @@ void IG1App::key(unsigned char key, int x, int y)
 	case 'p':
 		mCamera->ChangePrj();
 		break;
+	case 'c':
+		orbiting = !orbiting;
+		break;
 	default:
 		need_redisplay = false;
 		break;
@@ -210,10 +213,14 @@ void IG1App::specialKey(int key, int x, int y)
 			mCamera->yawReal(-unit);     // rotate -1 on the Y axis 
 		break;
 	case GLUT_KEY_UP:
-		mCamera->rollReal(unit);    // rotates 1 on the Z axis
+		if (mdf == GLUT_ACTIVE_CTRL)
+			orbitHeight++;
+		else mCamera->rollReal(unit);    // rotates 1 on the Z axis
 		break;
 	case GLUT_KEY_DOWN:
-		mCamera->rollReal(-unit);   // rotates -1 on the Z axis
+		if (mdf == GLUT_ACTIVE_CTRL)
+			orbitHeight--;
+		else mCamera->rollReal(-unit); ;   // rotates -1 on the Z axis
 		break;
 	default:
 		need_redisplay = false;
@@ -232,6 +239,7 @@ void IG1App::update() {
 		if (glutGet(GLUT_ELAPSED_TIME) - mLastUpdateTime > (1000 / 60))
 		{
 			mScene->update();
+			if (orbiting) mCamera->orbit(1, orbitHeight);
 			mLastUpdateTime = glutGet(GLUT_ELAPSED_TIME);
 			glutPostRedisplay();
 		}

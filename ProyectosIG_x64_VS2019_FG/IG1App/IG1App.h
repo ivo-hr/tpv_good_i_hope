@@ -70,7 +70,10 @@ protected:
 	int mWinW = 800;    // window's width 
 	int mWinH = 600;    // window's height
 
+	int orbitHeight = 0;
+
 	bool updating = false;
+	bool orbiting = false;
 
 	int mLastUpdateTime = 0;
 

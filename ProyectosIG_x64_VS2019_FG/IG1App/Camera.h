@@ -37,6 +37,8 @@ public:
 	void yawReal(GLdouble a);   // rotates a degrees on the Y axis
 	void rollReal(GLdouble a);  // rotates a degrees on the Z axis
 
+	void orbit(GLdouble incAng, GLdouble incY);
+
 	// projection matrix
 	glm::dmat4 const& projMat() const { return mProjMat; };
 	
@@ -65,8 +67,11 @@ protected:
 	void uploadPM() const;   // transfers projMat to the GPU
 
 	GLdouble xRight, xLeft, yTop, yBot;      // size of scene visible area
-	GLdouble mNearVal =	0.1, mFarVal = 10000;  // view volume
+	GLdouble mNearVal =	0.1, mFarVal = 10000000000;  // view volume
 	GLdouble mScaleFact = 1;   // scale factor
+	GLdouble mRadio = 100;
+	GLdouble mAng = 1;
+
 	bool bOrto = true;   // orthogonal or perspective projection
 
 	Viewport* mViewPort;   // the viewport

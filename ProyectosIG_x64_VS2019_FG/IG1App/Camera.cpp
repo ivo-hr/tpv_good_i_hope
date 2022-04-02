@@ -121,7 +121,6 @@ void Camera::pitchReal(GLdouble a)
 
 	mViewMat = translate(mViewMat, -mEye);
 
-	//setVM();
 }
 //-------------------------------------------------------------------------
 
@@ -134,8 +133,6 @@ void Camera::yawReal(GLdouble a)
 	yaw(a);
 
 	mViewMat = translate(mViewMat, -mEye);
-
-	//setVM();
 }
 //-------------------------------------------------------------------------
 
@@ -148,8 +145,19 @@ void Camera::rollReal(GLdouble a)
 	roll(a);
 
 	mViewMat = translate(mViewMat, -mEye);
-	
-	//setVM();
+}
+//-------------------------------------------------------------------------
+
+void Camera::orbit(GLdouble incAng, GLdouble incY)
+{
+	mAng += incAng;
+
+	mEye.x = mLook.x + cos(radians(mAng)) * mRadio;
+	mEye.z = mLook.z - sin(radians(mAng)) * mRadio;
+
+	mEye.y += incY;
+
+	setVM();
 }
 //-------------------------------------------------------------------------
 
