@@ -89,7 +89,7 @@ void Camera::set3D()
 
 void Camera::pitch(GLdouble a) 
 {  
-	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(1.0, 0, 0));
+	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(0.1, 0, 0));
 	setAxes();
 	// glm::rotate returns mViewMat * rotationMatrix
 }
@@ -97,7 +97,7 @@ void Camera::pitch(GLdouble a)
 
 void Camera::yaw(GLdouble a) 
 {
-	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(0, 1.0, 0));
+	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(0, 0.1, 0));
 	setAxes();
 	// glm::rotate returns mViewMat * rotationMatrix
 }
@@ -105,9 +105,9 @@ void Camera::yaw(GLdouble a)
 
 void Camera::roll(GLdouble a) 
 {
-	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(0, 0, 1.0));
+	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(0, 0, 0.1));
 	setAxes();
-	// glm::rotate returns mViewMat * rotationMatrix
+	//glm::rotate returns mViewMat * rotationMatrix
 }
 //-------------------------------------------------------------------------
 
@@ -115,13 +115,13 @@ void Camera::pitchReal(GLdouble a)
 {
 	//Mup y mlook
 					//mirando arriba positivo	
-	mUp += glm::dvec3(cos(glm::radians(a)), sin(glm::radians(a)), 0);
-	mUpward = mUp;
+	mViewMat = translate(mViewMat, mEye);
 
-	mFront += glm::dvec3(cos(glm::radians(a)), sin(glm::radians(a)), 0);
-	mLook += mFront;
+	pitch(a);
 
-	setVM();
+	mViewMat = translate(mViewMat, -mEye);
+
+	//setVM();
 }
 //-------------------------------------------------------------------------
 
@@ -129,8 +129,13 @@ void Camera::yawReal(GLdouble a)
 {
 	//mlook
 
-	mRight += glm::dvec3(sin(glm::radians(a)), 0, cos(glm::radians(a)));
-	mFront += glm::dvec3(sin(glm::radians(a)), 0, cos(glm::radians(a)));
+	mViewMat = translate(mViewMat, mEye);
+
+	yaw(a);
+
+	mViewMat = translate(mViewMat, -mEye);
+
+	//setVM();
 }
 //-------------------------------------------------------------------------
 
@@ -138,10 +143,13 @@ void Camera::rollReal(GLdouble a)
 {
 	//Mup
 
-	mRight += glm::dvec3(0, sin(glm::radians(a)), cos(glm::radians(a)));
-	mUpward += glm::dvec3(0, sin(glm::radians(a)), cos(glm::radians(a)));
+	mViewMat = translate(mViewMat, mEye);
 
-	mUp = mUpward;
+	roll(a);
+
+	mViewMat = translate(mViewMat, -mEye);
+	
+	//setVM();
 }
 //-------------------------------------------------------------------------
 
