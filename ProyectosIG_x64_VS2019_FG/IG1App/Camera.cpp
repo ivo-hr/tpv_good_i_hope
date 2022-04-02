@@ -89,7 +89,7 @@ void Camera::set3D()
 
 void Camera::pitch(GLdouble a) 
 {  
-	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(0.1, 0, 0));
+	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(1, 0, 0));
 	setAxes();
 	// glm::rotate returns mViewMat * rotationMatrix
 }
@@ -97,7 +97,7 @@ void Camera::pitch(GLdouble a)
 
 void Camera::yaw(GLdouble a) 
 {
-	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(0, 0.1, 0));
+	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(0, 1, 0));
 	setAxes();
 	// glm::rotate returns mViewMat * rotationMatrix
 }
@@ -105,7 +105,7 @@ void Camera::yaw(GLdouble a)
 
 void Camera::roll(GLdouble a) 
 {
-	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(0, 0, 0.1));
+	mViewMat = rotate(mViewMat, glm::radians(a), glm::dvec3(0, 0, 1));
 	setAxes();
 	//glm::rotate returns mViewMat * rotationMatrix
 }
