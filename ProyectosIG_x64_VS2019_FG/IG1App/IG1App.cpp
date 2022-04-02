@@ -191,29 +191,29 @@ void IG1App::specialKey(int key, int x, int y)
 	bool need_redisplay = true;
 	int mdf = glutGetModifiers(); // returns the modifiers (Shift, Ctrl, Alt)
 	
-	//switch (key) {
-	//case GLUT_KEY_RIGHT:
-	//	if (mdf == GLUT_ACTIVE_CTRL)
-	//		mCamera->pitch(-1);   // rotates -1 on the X axis
-	//	else
-	//		mCamera->pitch(1);    // rotates 1 on the X axis
-	//	break;
-	//case GLUT_KEY_LEFT:
-	//	if (mdf == GLUT_ACTIVE_CTRL)
-	//	    mCamera->yaw(1);      // rotates 1 on the Y axis 
-	//	else 
-	//		mCamera->yaw(-1);     // rotate -1 on the Y axis 
-	//	break;
-	//case GLUT_KEY_UP:
-	//	mCamera->roll(1);    // rotates 1 on the Z axis
-	//	break;
-	//case GLUT_KEY_DOWN:
-	//	mCamera->roll(-1);   // rotates -1 on the Z axis
-	//	break;
-	//default:
-	//	need_redisplay = false;
-	//	break;
-	//}//switch
+	switch (key) {
+	case GLUT_KEY_RIGHT:
+		if (mdf == GLUT_ACTIVE_CTRL)
+			mCamera->pitchReal(-1);   // rotates -1 on the X axis
+		else
+			mCamera->pitchReal(1);    // rotates 1 on the X axis
+		break;
+	case GLUT_KEY_LEFT:
+		if (mdf == GLUT_ACTIVE_CTRL)
+		    mCamera->yawReal(1);      // rotates 1 on the Y axis 
+		else 
+			mCamera->yawReal(-1);     // rotate -1 on the Y axis 
+		break;
+	case GLUT_KEY_UP:
+		mCamera->rollReal(1);    // rotates 1 on the Z axis
+		break;
+	case GLUT_KEY_DOWN:
+		mCamera->rollReal(-1);   // rotates -1 on the Z axis
+		break;
+	default:
+		need_redisplay = false;
+		break;
+	}//switch
 
 	if (need_redisplay)
 		glutPostRedisplay(); // marks the window as needing to be redisplayed -> calls to display()
