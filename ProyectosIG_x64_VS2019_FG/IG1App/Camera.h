@@ -48,7 +48,9 @@ public:
 	void setScale(GLdouble s);
 
 	// transfers its viewport, the view matrix and projection matrix to the GPU
-	void upload() const { mViewPort->upload();  uploadVM(); uploadPM(); }; 
+	void upload() const { mViewPort->upload();  uploadVM(); uploadPM(); };
+
+	void setCenital();
 
 protected:
 	
@@ -69,8 +71,8 @@ protected:
 	GLdouble xRight, xLeft, yTop, yBot;      // size of scene visible area
 	GLdouble mNearVal =	0.1, mFarVal = 10000000000;  // view volume
 	GLdouble mScaleFact = 1;   // scale factor
-	GLdouble mRadio = 100;
-	GLdouble mAng = 1;
+	GLdouble mRadio;
+	GLdouble mAng;
 
 	bool bOrto = true;   // orthogonal or perspective projection
 

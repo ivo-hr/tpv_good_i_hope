@@ -178,6 +178,10 @@ void IG1App::key(unsigned char key, int x, int y)
 		break;
 	case 'c':
 		orbiting = !orbiting;
+		orbitHeight = 0;
+		break;
+	case 'x':
+		mCamera->setCenital();
 		break;
 	default:
 		need_redisplay = false;

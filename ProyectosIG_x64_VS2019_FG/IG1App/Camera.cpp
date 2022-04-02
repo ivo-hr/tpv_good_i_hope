@@ -74,6 +74,8 @@ void Camera::set2D()
 	mEye = dvec3(0, 0, 500);
 	mLook = dvec3(0, 0, 0);
 	mUp = dvec3(0, 1, 0);
+	mAng = 1;
+	mRadio = 100;
 	setVM();
 }
 //-------------------------------------------------------------------------
@@ -83,6 +85,8 @@ void Camera::set3D()
 	mEye = dvec3(500, 500, 500);  
 	mLook = dvec3(0, 10, 0);   
 	mUp = dvec3(0, 1, 0);
+	mAng = 1;
+	mRadio = 100;
 	setVM();
 }
 //-------------------------------------------------------------------------
@@ -138,13 +142,8 @@ void Camera::yawReal(GLdouble a)
 
 void Camera::rollReal(GLdouble a)
 {
-	//Mup
-
-	mViewMat = translate(mViewMat, mEye);
-
-	roll(a);
-
-	mViewMat = translate(mViewMat, -mEye);
+	mViewMat = rotate(mViewMat, glm::radians(a), mFront);
+	setAxes();
 }
 //-------------------------------------------------------------------------
 
@@ -176,6 +175,15 @@ void Camera::setScale(GLdouble s)
 	mScaleFact -= s;
 	if (mScaleFact < 0) mScaleFact = 0.01;
 	setPM();
+}
+//-------------------------------------------------------------------------
+
+void Camera::setCenital()
+{
+	mEye = dvec3(0, mRadio, 0);
+	mAng = -90;
+	mUp = dvec3(0, 0, -1);
+	setVM();
 }
 //-------------------------------------------------------------------------
 
