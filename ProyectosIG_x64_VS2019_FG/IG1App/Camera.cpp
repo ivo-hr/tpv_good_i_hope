@@ -23,6 +23,7 @@ void Camera::moveLR(GLdouble cs)
 	mEye += mRight * cs;
 	mLook += mRight * cs;
 	mViewMat = lookAt(mEye, mLook, mUp);
+	setAxes();
 	uploadVM();
 }
 
@@ -31,6 +32,7 @@ void Camera::moveFB(GLdouble cs)
 	mEye += mFront * cs;
 	mLook += mFront * cs;
 	mViewMat = lookAt(mEye, mLook, mUp);
+	setAxes();
 	uploadVM();
 }
 
@@ -39,6 +41,7 @@ void Camera::moveUD(GLdouble cs)
 	mEye += mUp * cs;
 	mLook += mUp * cs;
 	mViewMat = lookAt(mEye, mLook, mUp);
+	setAxes();
 	uploadVM();
 }
 
@@ -121,9 +124,11 @@ void Camera::pitchReal(GLdouble a)
 					//mirando arriba positivo	
 	mViewMat = translate(mViewMat, mEye);
 
-	pitch(a);
+	mViewMat = rotate(mViewMat, glm::radians(a), mRight);
 
 	mViewMat = translate(mViewMat, -mEye);
+	setAxes();
+	uploadVM();
 
 }
 //-------------------------------------------------------------------------
@@ -134,16 +139,23 @@ void Camera::yawReal(GLdouble a)
 
 	mViewMat = translate(mViewMat, mEye);
 
-	yaw(a);
+	mViewMat = rotate(mViewMat, glm::radians(a), mUpward);
 
 	mViewMat = translate(mViewMat, -mEye);
+	setAxes();
+	uploadVM();
 }
 //-------------------------------------------------------------------------
 
 void Camera::rollReal(GLdouble a)
 {
+	mViewMat = translate(mViewMat, mEye);
+
 	mViewMat = rotate(mViewMat, glm::radians(a), mFront);
+
+	mViewMat = translate(mViewMat, -mEye);
 	setAxes();
+	uploadVM();
 }
 //-------------------------------------------------------------------------
 
