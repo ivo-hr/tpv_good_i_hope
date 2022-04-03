@@ -60,8 +60,10 @@ protected:
 
 	// Viewport position and size
 	Viewport *mViewPort = nullptr;
+	Viewport* mViewPort2 = nullptr;
 	// Camera position, view volume and projection
 	Camera *mCamera = nullptr;
+	Camera* mCamera2 = nullptr;
 	// Graphics objects of the scene
 	Scene *mScene = nullptr;
 	
@@ -69,6 +71,8 @@ protected:
 	int mWinId = 0;	    // window's identifier
 	int mWinW = 800;    // window's width 
 	int mWinH = 600;    // window's height
+
+	bool m2Vistas = false;
 
 	int orbitHeight = 0;
 

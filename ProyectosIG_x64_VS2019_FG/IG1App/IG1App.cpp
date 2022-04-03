@@ -39,11 +39,16 @@ void IG1App::init()
 
 	// create the scene after creating the context 
 	// allocate memory and resources
-	mViewPort = new Viewport(mWinW, mWinH); //glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT)
+	mViewPort = new Viewport(mWinW / 2, mWinH); //glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT)
 	mCamera = new Camera(mViewPort);
-	mScene = new Scene;
-	
 	mCamera->set2D();
+
+	mViewPort2 = new Viewport(mWinW / 2, mWinH); //glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT)
+	mViewPort2->setPos(mWinW / 2, 0);
+	mCamera2 = new Camera(mViewPort2);
+	mCamera2->setCenital();
+
+	mScene = new Scene;
 	mScene->init();
 }
 //-------------------------------------------------------------------------
@@ -82,7 +87,9 @@ void IG1App::free()
 {  // release memory and resources
 	delete mScene; mScene = nullptr;
 	delete mCamera; mCamera = nullptr;
+	delete mCamera2; mCamera2 = nullptr;
 	delete mViewPort; mViewPort = nullptr;
+	delete mViewPort2; mViewPort2 = nullptr;
 }
 //-------------------------------------------------------------------------
 
@@ -91,7 +98,15 @@ void IG1App::display() const
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // clears the back buffer
 
-	mScene->render(*mCamera);  // uploads the viewport and camera to the GPU
+	if (m2Vistas)
+	{
+		mScene->render(*mCamera);
+		mScene->render(*mCamera2);
+	}
+	else
+	{
+		mScene->render(*mCamera);  // uploads the viewport and camera to the GPU
+	}
 	
 	glutSwapBuffers();	// swaps the front and back buffer
 }
@@ -102,10 +117,13 @@ void IG1App::resize(int newWidth, int newHeight)
 	mWinW = newWidth; mWinH = newHeight;
 
 	// Resize Viewport to the new window size
-	mViewPort->setSize(newWidth, newHeight);
+	mViewPort->setSize(newWidth / 2, newHeight);
+	mViewPort2->setSize(newWidth / 2, newHeight);
+	mViewPort2->setPos(newWidth / 2, 0);
 
 	// Resize Scene Visible Area such that the scale is not modified
-	mCamera->setSize(mViewPort->width(), mViewPort->height()); 
+	mCamera->setSize(mViewPort->width(), mViewPort->height());
+	mCamera2->setSize(mViewPort2->width(), mViewPort2->height());
 }
 //-------------------------------------------------------------------------
 
@@ -175,6 +193,17 @@ void IG1App::key(unsigned char key, int x, int y)
 		break;
 	case 'p':
 		mCamera->ChangePrj();
+		break;
+	case 'k':
+		m2Vistas = !m2Vistas;
+		if (m2Vistas)
+		{
+			mCamera->set3D();
+			mCamera2->setCenital();
+		}
+		else {
+			mCamera->set2D();
+		}
 		break;
 	case 'c':
 		orbiting = !orbiting;
