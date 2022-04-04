@@ -50,20 +50,31 @@ protected:
 	void resize(int newWidth, int newHeight);   // the viewport (without changing the scale) 
 	void key(unsigned char key, int x, int y);  // keypress event
 	void specialKey(int key, int x, int y);     // keypress event for special characters
-
+	void mouse(int button, int state, int x, int y);
+	void motion(int x, int y);
+	void mouseWheel(int wheelButNo, int dir, int x, int y);
 	// static callbacks 
 	static void s_display() { s_ig1app.display(); };
 	static void s_resize(int newWidth, int newHeight) { s_ig1app.resize(newWidth, newHeight); };
 	static void s_key(unsigned char key, int x, int y) { s_ig1app.key(key, x, y); };
 	static void s_specialKey(int key, int x, int y) { s_ig1app.specialKey(key, x, y); };
 	static void s_update() { s_ig1app.update(); };
+	static void s_mouse(int button, int state, int x, int y) { s_ig1app.mouse(button, state, x, y); };
+	static void s_motion(int x, int y) { s_ig1app.motion(x, y); };
+	static void s_mouseWheel(int n, int d, int x, int y) { s_ig1app.mouseWheel(n, d, x, y); };
+
+
+
+
 
 	// Viewport position and size
 	Viewport *mViewPort = nullptr;
 	Viewport* mViewPort2 = nullptr;
+	Viewport* mViewPort3 = nullptr;
 	// Camera position, view volume and projection
 	Camera *mCamera = nullptr;
 	Camera* mCamera2 = nullptr;
+	Camera* mCamera3 = nullptr;
 	// Graphics objects of the scene
 	Scene *mScene = nullptr;
 	
@@ -80,6 +91,9 @@ protected:
 	bool orbiting = false;
 
 	int mLastUpdateTime = 0;
+
+	glm_dvec2 mMouseCoord;
+	int mMouseButt;
 
 };
 //-------------------------------------------------------------------------

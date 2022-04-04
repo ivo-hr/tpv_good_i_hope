@@ -39,14 +39,16 @@ void IG1App::init()
 
 	// create the scene after creating the context 
 	// allocate memory and resources
-	mViewPort = new Viewport(mWinW / 2, mWinH); //glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT)
+	mViewPort = new Viewport(mWinW, mWinH); //glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT)
 	mCamera = new Camera(mViewPort);
 	mCamera->set2D();
 
-	mViewPort2 = new Viewport(mWinW / 2, mWinH); //glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT)
-	mViewPort2->setPos(mWinW / 2, 0);
+	mViewPort2 = new Viewport(mWinW, mWinH); //glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT)
 	mCamera2 = new Camera(mViewPort2);
-	mCamera2->setCenital();
+
+	mViewPort3 = new Viewport(mWinW, mWinH); //glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT)
+	mCamera3 = new Camera(mViewPort3);
+	mCamera3->set2D();
 
 	mScene = new Scene;
 	mScene->init();
@@ -77,6 +79,10 @@ void IG1App::iniWinOpenGL()
 	glutSpecialFunc(s_specialKey);
 	glutDisplayFunc(s_display);
 	glutIdleFunc(s_update);
+
+	glutMouseFunc(s_mouse);
+	glutMotionFunc(s_motion);
+	glutMouseWheelFunc(s_mouseWheel);
 	
 	cout << glGetString(GL_VERSION) << '\n';
 	cout << glGetString(GL_VENDOR) << '\n';
@@ -100,12 +106,26 @@ void IG1App::display() const
 
 	if (m2Vistas)
 	{
+		Camera mCamera2 = *mCamera;
+		Viewport mViewPort2 = *mViewPort;
+
+		mViewPort->setSize(mWinW / 2, mWinH);
+
+		mCamera2.setSize(mViewPort->width(), mViewPort->height());
+
+		*mViewPort = mViewPort2;
+
+		mViewPort->setPos(0, 0);
 		mScene->render(*mCamera);
-		mScene->render(*mCamera2);
+
+		mViewPort->setPos(mWinW/2, 0);
+		mCamera2.setCenital();
+
+		mScene->render(mCamera2);
 	}
 	else
 	{
-		mScene->render(*mCamera);  // uploads the viewport and camera to the GPU
+		mScene->render(*mCamera3);  // uploads the viewport and camera to the GPU
 	}
 	
 	glutSwapBuffers();	// swaps the front and back buffer
@@ -263,6 +283,24 @@ void IG1App::specialKey(int key, int x, int y)
 	if (need_redisplay)
 		glutPostRedisplay(); // marks the window as needing to be redisplayed -> calls to display()
 }
+
+//-------------------------------------------------------------------------
+
+void IG1App::mouse(int button, int state, int x, int y)
+{
+	mMouseButt = button;
+
+	mMouseCoord = {(double)x, -(double)(glutGet(GLUT_INIT_WINDOW_HEIGHT) - y)};
+}
+void IG1App::motion(int x, int y)
+{
+
+}
+void IG1App::mouseWheel(int wheelButNo, int dir, int x, int y)
+{
+
+}
+
 //-------------------------------------------------------------------------
 
 void IG1App::update() {

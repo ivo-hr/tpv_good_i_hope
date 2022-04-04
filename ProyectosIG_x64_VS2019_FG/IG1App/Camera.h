@@ -71,8 +71,8 @@ protected:
 	GLdouble xRight, xLeft, yTop, yBot;      // size of scene visible area
 	GLdouble mNearVal =	0.1, mFarVal = 10000000000;  // view volume
 	GLdouble mScaleFact = 1;   // scale factor
-	GLdouble mRadio;
-	GLdouble mAng;
+	GLdouble mRadio = 1000.0;
+	GLdouble mAng = -45;
 
 	bool bOrto = true;   // orthogonal or perspective projection
 
