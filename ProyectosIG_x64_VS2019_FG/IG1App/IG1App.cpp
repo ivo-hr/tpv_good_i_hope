@@ -94,8 +94,10 @@ void IG1App::free()
 	delete mScene; mScene = nullptr;
 	delete mCamera; mCamera = nullptr;
 	delete mCamera2; mCamera2 = nullptr;
+	delete mCamera3; mCamera3 = nullptr;
 	delete mViewPort; mViewPort = nullptr;
 	delete mViewPort2; mViewPort2 = nullptr;
+	delete mViewPort3; mViewPort3 = nullptr;
 }
 //-------------------------------------------------------------------------
 
@@ -106,25 +108,32 @@ void IG1App::display() const
 
 	if (m2Vistas)
 	{
-		Camera mCamera2 = *mCamera3;
+		Camera mCamera2 = *mCamera;
+		Camera mCamera3 = *mCamera;
 		Viewport mViewPort2 = *mViewPort;
+		Viewport mViewPort3 = *mViewPort;
 
-		mViewPort->setSize(mWinW / 2, mWinH);
+		mViewPort2.setSize(mWinW / 2, mWinH);
+		mViewPort3.setSize(mWinW / 2, mWinH);
 
 		mCamera2.setSize(mViewPort->width(), mViewPort->height());
+		mCamera3.setSize(mViewPort->width(), mViewPort->height());
+
+		*mViewPort = mViewPort3;
+
+		mViewPort->setPos(0, 0);
+		mScene->render(mCamera3);
 
 		*mViewPort = mViewPort2;
 
-		mViewPort->setPos(0, 0);
-		mScene->render(*mCamera3);
-
 		mViewPort->setPos(mWinW/2, 0);
 		mCamera2.setCenital();
-
 		mScene->render(mCamera2);
 	}
 	else
 	{
+		mViewPort->setPos(0, 0);
+		mViewPort->setSize(mWinW, mWinH);
 		mScene->render(*mCamera);  // uploads the viewport and camera to the GPU
 	}
 	
@@ -218,7 +227,7 @@ void IG1App::key(unsigned char key, int x, int y)
 		m2Vistas = !m2Vistas;
 		if (m2Vistas)
 		{
-			mCamera->set3D();
+			mCamera3->set3D();
 			mCamera2->setCenital();
 		}
 		else {
