@@ -39,16 +39,16 @@ void IG1App::init()
 
 	// create the scene after creating the context 
 	// allocate memory and resources
-	mViewPort = new Viewport(mWinW, mWinH); //glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT)
-	mCamera = new Camera(mViewPort);
-	mCamera->set2D();
+	mViewPort3 = new Viewport(mWinW, mWinH); //glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT)
+	mCamera3 = new Camera(mViewPort3);
+	mCamera3->set2D();
 
 	mViewPort2 = new Viewport(mWinW, mWinH); //glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT)
 	mCamera2 = new Camera(mViewPort2);
 
-	mViewPort3 = new Viewport(mWinW, mWinH); //glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT)
-	mCamera3 = new Camera(mViewPort3);
-	mCamera3->set2D();
+	mViewPort = new Viewport(mWinW, mWinH); //glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT)
+	mCamera = new Camera(mViewPort);
+	mCamera->set2D();
 
 	mScene = new Scene;
 	mScene->init();
@@ -106,7 +106,7 @@ void IG1App::display() const
 
 	if (m2Vistas)
 	{
-		Camera mCamera2 = *mCamera;
+		Camera mCamera2 = *mCamera3;
 		Viewport mViewPort2 = *mViewPort;
 
 		mViewPort->setSize(mWinW / 2, mWinH);
@@ -116,7 +116,7 @@ void IG1App::display() const
 		*mViewPort = mViewPort2;
 
 		mViewPort->setPos(0, 0);
-		mScene->render(*mCamera);
+		mScene->render(*mCamera3);
 
 		mViewPort->setPos(mWinW/2, 0);
 		mCamera2.setCenital();
@@ -125,7 +125,7 @@ void IG1App::display() const
 	}
 	else
 	{
-		mScene->render(*mCamera3);  // uploads the viewport and camera to the GPU
+		mScene->render(*mCamera);  // uploads the viewport and camera to the GPU
 	}
 	
 	glutSwapBuffers();	// swaps the front and back buffer
@@ -137,12 +137,12 @@ void IG1App::resize(int newWidth, int newHeight)
 	mWinW = newWidth; mWinH = newHeight;
 
 	// Resize Viewport to the new window size
-	mViewPort->setSize(newWidth / 2, newHeight);
+	mViewPort3->setSize(newWidth / 2, newHeight);
 	mViewPort2->setSize(newWidth / 2, newHeight);
 	mViewPort2->setPos(newWidth / 2, 0);
 
 	// Resize Scene Visible Area such that the scale is not modified
-	mCamera->setSize(mViewPort->width(), mViewPort->height());
+	mCamera3->setSize(mViewPort3->width(), mViewPort3->height());
 	mCamera2->setSize(mViewPort2->width(), mViewPort2->height());
 }
 //-------------------------------------------------------------------------
@@ -294,11 +294,37 @@ void IG1App::mouse(int button, int state, int x, int y)
 }
 void IG1App::motion(int x, int y)
 {
+	glm::dvec2 mov = { (double)x, -(double)(glutGet(GLUT_INIT_WINDOW_HEIGHT) - y) };
+	mov -= mMouseCoord;
+	mMouseCoord = { (double)x, -(double)(glutGet(GLUT_INIT_WINDOW_HEIGHT) - y) };
 
+	if (mMouseButt == 0)
+	{
+		mCamera->moveLR(-mov.x);
+		mCamera->moveUD(mov.y);
+
+		glutPostRedisplay();
+	}
+	else if (mMouseButt == 2)
+	{
+		mCamera->yawReal(-mov.x);
+		mCamera->pitchReal(-mov.y);
+
+		glutPostRedisplay();
+	}
 }
 void IG1App::mouseWheel(int wheelButNo, int dir, int x, int y)
 {
-
+	if (glutGetModifiers() == GLUT_ACTIVE_CTRL)
+	{
+		mCamera->setScale(dir * 0.01f);
+		glutPostRedisplay();
+	}
+	else
+	{
+		mCamera->moveFB(-dir * 100);
+		glutPostRedisplay();
+	}
 }
 
 //-------------------------------------------------------------------------

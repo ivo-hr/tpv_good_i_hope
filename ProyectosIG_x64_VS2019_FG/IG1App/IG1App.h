@@ -92,7 +92,7 @@ protected:
 
 	int mLastUpdateTime = 0;
 
-	glm_dvec2 mMouseCoord;
+	glm::dvec2 mMouseCoord;
 	int mMouseButt;
 
 };

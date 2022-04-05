@@ -20,27 +20,21 @@ Camera::Camera(Viewport* vp): mViewPort(vp), mViewMat(1.0), mProjMat(1.0),
 
 void Camera::moveLR(GLdouble cs)
 {
-	mEye += mRight * cs;
-	mLook += mRight * cs;
-	mViewMat = lookAt(mEye, mLook, mUp);
+	mViewMat = translate(mViewMat, mRight * -cs);
 	setAxes();
 	uploadVM();
 }
 
 void Camera::moveFB(GLdouble cs)
 {
-	mEye += mFront * cs;
-	mLook += mFront * cs;
-	mViewMat = lookAt(mEye, mLook, mUp);
+	mViewMat = translate(mViewMat, mFront * -cs);
 	setAxes();
 	uploadVM();
 }
 
 void Camera::moveUD(GLdouble cs)
 {
-	mEye += mUp * cs;
-	mLook += mUp * cs;
-	mViewMat = lookAt(mEye, mLook, mUp);
+	mViewMat = translate(mViewMat, mUp * -cs);
 	setAxes();
 	uploadVM();
 }
