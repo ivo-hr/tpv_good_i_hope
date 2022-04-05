@@ -12,6 +12,7 @@
 #include "../components/Transform.h"
 #include "../components/Follow.h"
 #include "../components/Generations.h"
+#include "../components/State.h"
 
 //Method  initialization  and constructor
 AsteroidManager::AsteroidManager(ecs::Manager* mngr) :
@@ -41,6 +42,10 @@ void AsteroidManager::onCollision(ecs::Entity* a)
 	{
 		createAsteroids(2, a);
 	}
+	else if (asterNum_ == 0)
+	{
+		mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<State>()->SetState(GAMEOVER);
+	}
 
 	sdlutils().soundEffects().at("asteroidexplosion").play(0, 3);
 }
@@ -67,9 +72,9 @@ void AsteroidManager::createAsteroids(unsigned int n) {
 
 			e->addComponent<Generations>(s);
 
-			if (s == 0)			s = 20;
-			else if (s == 1)	s = 40;
-			else				s = 80;
+			if (s == 0)			s = 15;
+			else if (s == 1)	s = 30;
+			else				s = 50;
 
 			//Starting position
 			auto x = rand.nextInt(-s, sdlutils().width() + s);
@@ -131,13 +136,13 @@ void AsteroidManager::createAsteroids(unsigned int n) {
 			if (rand.nextInt(0, 10) < 3)
 			{
 				e->addComponent<Follow>(mngr_->getHandler(ecs::_hdlr_FIGHTER)->getComponent<Transform>());	//Following  component
-				e->addComponent<FramedImage>(&sdlutils().images().at("asteroid_g"));						//Image
+				e->addComponent<FramedImage>(&sdlutils().images().at("asteroid_g"), 6, 5);						//Image
 			}
 
 			//Normal asteroid
 			else
 			{
-				e->addComponent<FramedImage>(&sdlutils().images().at("asteroid"));							//Image
+				e->addComponent<FramedImage>(&sdlutils().images().at("asteroid"), 6, 5);							//Image
 
 				//Asteroid direction
 				auto dirX = ((cx - x) / 100) * sp;
@@ -158,7 +163,7 @@ void AsteroidManager::createAsteroids(unsigned int n) {
 void AsteroidManager::addAsteroidFrequently()
 {
 	//If time  passed and in appropiate game state
-	if (mngr_->GetState() == ecs::RUNNING && 
+	if (mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<State>()->GetState() == RUNNING &&
 		lastSpawn_ + counter_ < sdlutils().currRealTime())
 	{
 		createAsteroids(1);
@@ -216,11 +221,11 @@ void AsteroidManager::createAsteroids(unsigned int n, ecs::Entity* a)
 			if (rand.nextInt(0, 10) < 3)
 			{
 				e->addComponent<Follow>(mngr_->getHandler(ecs::_hdlr_FIGHTER)->getComponent<Transform>());
-				e->addComponent<FramedImage>(&sdlutils().images().at("asteroid_g"));
+				e->addComponent<FramedImage>(&sdlutils().images().at("asteroid_g"), 6, 5);
 			}
 			else
 			{
-				e->addComponent<FramedImage>(&sdlutils().images().at("asteroid"));
+				e->addComponent<FramedImage>(&sdlutils().images().at("asteroid"), 6, 5);
 
 				auto dirX = ((cx - a->getComponent<Transform>()->getPos().getX()) / 100) * sp;
 				auto dirY = ((cy - a->getComponent<Transform>()->getPos().getY()) / 100) * sp;

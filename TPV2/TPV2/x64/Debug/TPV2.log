@@ -1,19 +1,20 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
+  FramedImage.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\FramedImage.cpp(16,39): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\FramedImage.cpp(24,39): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\FramedImage.cpp(58,40): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\FramedImage.cpp(45,36): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
   GameCtrl.cpp
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\FramedImage.h(8,15): warning C4099: 'SDL_Rect': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\SDL2-2.0.7\include\SDL_rect.h(64): message : vea la declaración de 'SDL_Rect'
-  Hearts.cpp
+  State.cpp
   AsteroidManager.cpp
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\components\FramedImage.h(8,15): warning C4099: 'SDL_Rect': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\SDL2-2.0.7\include\SDL_rect.h(64): message : vea la declaración de 'SDL_Rect'
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(22,38): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(123,25): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(123,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(123,44): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(123,41): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(166,39): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(212,69): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(212,66): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(23,38): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(128,25): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(128,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(128,44): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(128,41): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(171,39): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(217,69): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\TPV2\src\game\AsteroidManager.cpp(217,66): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   Game.cpp
   Generando código...
   TPV2.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV2\bin\TPV2Debug.exe

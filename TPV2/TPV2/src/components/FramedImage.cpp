@@ -11,33 +11,28 @@
 
 FramedImage::FramedImage() :
 		tr_(), tex_(), frameRate_(50.f) {
+	recorte_ = new SDL_Rect{ 0, 0, 85, 100 };
+
+	lastUpdate_ = sdlutils().currRealTime();
 }
 
-FramedImage::FramedImage(Texture *tex) :
-		tr_(), tex_(tex), frameRate_(50.f) {
+FramedImage::FramedImage(Texture* tex, int spritesInRow, int spritesInCol) : 
+	tr_(), tex_(tex), frameRate_(50.f)
+{
+	recorte_ = new SDL_Rect{ 0, 0, tex->width() / spritesInRow, tex->height() / spritesInCol };
+
+	lastUpdate_ = sdlutils().currRealTime();
 }
 
 FramedImage::~FramedImage() {
-	for (Vector2D* vec : frames_) {
-		delete vec;
-	}
+
+	delete recorte_;
 }
 
 void FramedImage::initComponent() {
 	tr_ = ent_->getComponent<Transform>();
-	recorte_ = new SDL_Rect{ 0, 0, 85, 100 };
 	assert(tr_ != nullptr); 
 
-	lastUpdate_ = sdlutils().currRealTime();
-
-	//Save all pairs of coordinates in a vector for easy access
-	for (int i = 0; i < 6; i++)
-	{
-		for (int j = 0; j < 5; j++)
-		{
-			frames_.push_back(new Vector2D(i, j));
-		}
-	}
 }
 
 void FramedImage::update()
@@ -45,14 +40,19 @@ void FramedImage::update()
 	//If enough time passes...
 	if (lastUpdate_ + frameRate_ <= sdlutils().currRealTime())
 	{
-		//We update the index of the current frame
-		currIndex_++;
-		if (currIndex_ == frames_.size())
-			currIndex_ = 0;
+		recorte_->x += recorte_->w;
 
-		//We set the rect to select the sprite according to the vector2 in the current index
-		recorte_->x = 85 * frames_[currIndex_]->getX();
-		recorte_->y = 100 * frames_[currIndex_]->getY();
+		if (recorte_->x >= tex_->width());
+		{
+			recorte_->x = 0;
+
+			recorte_->y += recorte_->h;
+
+			if (recorte_->y >= tex_->height())
+			{
+				recorte_->y = 0;
+			}
+		}
 
 		//Update the timer
 		lastUpdate_ = sdlutils().currRealTime();

@@ -129,7 +129,7 @@
     <ClInclude Include="src\components\DeAcceleration.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\Hearts.h">
+    <ClInclude Include="src\components\Health.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="src\components\Gun.h">
@@ -206,7 +206,7 @@
     <ClCompile Include="src\components\DeAcceleration.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\Hearts.cpp">
+    <ClCompile Include="src\components\Health.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\components\Gun.cpp">

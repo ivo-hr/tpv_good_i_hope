@@ -9,7 +9,7 @@
 #include "../components/ShowAtOppositeSide.h"
 #include "../components/Transform.h"
 #include "../components/DeAcceleration.h"
-#include "../components/Hearts.h"
+#include "../components/Health.h"
 #include "../components/Gun.h"
 #include "../components/State.h"
 #include "../ecs/Entity.h"
@@ -24,7 +24,7 @@ using ecs::Entity;
 using ecs::Manager;
 
 Game::Game() :
-		mngr_(nullptr) {
+		mngr_(nullptr), astermngr_(nullptr) {
 }
 
 Game::~Game() {
@@ -51,7 +51,7 @@ void Game::init() {
 	fighter->addComponent<FighterCtrl>();
 	fighter->addComponent<ShowAtOppositeSide>();
 	fighter->addComponent<DeAcceleration>();
-	fighter->addComponent<Hearts>(&sdlutils().images().at("heart"));
+	fighter->addComponent<Health>(&sdlutils().images().at("heart"));
 	fighter->addComponent<Gun>();
 
 	
@@ -116,7 +116,7 @@ void Game::checkCollisions() {
 
 				//If it did...
 
-				mngr_->getHandler(ecs::_hdlr_FIGHTER)->getComponent<Hearts>()->takeLive(1);
+				mngr_->getHandler(ecs::_hdlr_FIGHTER)->getComponent<Health>()->takeLive(1);
 
 				auto& bullets = mngr_->getEntitiesByGroup(ecs::_grp_BULLETS);
 				auto a = bullets.size();
@@ -126,14 +126,14 @@ void Game::checkCollisions() {
 					bullets[j]->setAlive(false);
 				}
 
-				if (mngr_->getHandler(ecs::_hdlr_FIGHTER)->getComponent<Hearts>()->GetLives() == 0)
+				if (mngr_->getHandler(ecs::_hdlr_FIGHTER)->getComponent<Health>()->GetLives() == 0)
 				{
-					mngr_->SetState(ecs::GAMEOVER);
-					mngr_->getHandler(ecs::_hdlr_FIGHTER)->getComponent<Hearts>()->resetLives();
+					mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<State>()->SetState(GAMEOVER);
+					mngr_->getHandler(ecs::_hdlr_FIGHTER)->getComponent<Health>()->resetLives();
 				}
 				else
 				{
-					mngr_->SetState(ecs::PAUSED);
+					mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<State>()->SetState(PAUSED);
 				}
 
 				astermngr_->destroyAllAsteroids();

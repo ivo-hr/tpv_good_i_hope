@@ -1,6 +1,6 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
-#include "Hearts.h"
+#include "Health.h"
 
 #include <cassert>
 
@@ -9,25 +9,25 @@
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/SDLUtils.h"
 
-Hearts::Hearts() : lives(3), hearts_()
+Health::Health() : hearts_(), lives(3)
 {
 }
 
-Hearts::Hearts(Texture* heart) : lives(3), hearts_(heart)
+Health::Health(Texture* heart) : hearts_(heart), lives(3)
 {
 }
 
-Hearts::~Hearts() {
+Health::~Health() {
 }
 
-void Hearts::initComponent() {
+void Health::initComponent() {
 
 }
 
-void Hearts::update() {
+void Health::update() {
 }
 
-void Hearts::render()
+void Health::render()
 {
 	for (int i = 0; i < lives; i++)
 	{
@@ -35,7 +35,7 @@ void Hearts::render()
 	}
 }
 
-void Hearts::takeLive(int amount)
+void Health::takeLive(int amount)
 {
 	lives -= amount;
 	if (lives < 0)
@@ -45,7 +45,7 @@ void Hearts::takeLive(int amount)
 	sdlutils().soundEffects().at("explosion").play(0, 3);
 }
 
-void Hearts::resetLives()
+void Health::resetLives()
 {
 	lives = 3;
 }

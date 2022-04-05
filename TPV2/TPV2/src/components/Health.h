@@ -6,7 +6,7 @@
 class Texture;
 
 
-class Hearts : public ecs::Component {
+class Health : public ecs::Component {
 public:
 
 	// This line expands to the following (see the defintion of
@@ -16,9 +16,9 @@ public:
 	//
 	__CMPID_DECL__(ecs::_HEARTS)
 
-	Hearts();
-	Hearts(Texture* heart);
-	virtual ~Hearts();
+	Health();
+	Health(Texture* heart);
+	virtual ~Health();
 	void initComponent() override;
 	void update() override;
 	void render() override;

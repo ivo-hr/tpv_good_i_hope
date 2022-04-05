@@ -7,7 +7,7 @@ namespace ecs {
 Manager::Manager() :
 		ents_(), 
 		hdlrs_(), 
-		entsByGroup_() 
+		entsByGroup_()
 {
 
 	ents_.reserve(100);

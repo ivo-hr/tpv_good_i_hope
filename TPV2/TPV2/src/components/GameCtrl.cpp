@@ -10,6 +10,7 @@
 #include "ShowAtOppositeSide.h"
 #include "FramedImage.h"
 #include "Transform.h"
+#include "State.h"
 #include "../game/AsteroidManager.h"
 
 
@@ -30,21 +31,21 @@ void GameCtrl::update() {
 	if (ihldr.keyDownEvent()) {
 		if (ihldr.isKeyDown(SDL_SCANCODE_SPACE))
 		{
-			if (mngr_->GetState() != ecs::RUNNING)
+			if (mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<State>()->GetState() != RUNNING)
 			{
-				if (mngr_->GetState() == ecs::NEWGAME)
+				if (mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<State>()->GetState() == NEWGAME)
 				{
-					mngr_->SetState(ecs::RUNNING);
+					mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<State>()->SetState(RUNNING);
 					astman_->createAsteroids(10);
 				}
-				else if (mngr_->GetState() == ecs::PAUSED)
+				else if (mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<State>()->GetState() == PAUSED)
 				{
-					mngr_->SetState(ecs::RUNNING);
+					mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<State>()->SetState(RUNNING);
 					astman_->createAsteroids(10);
 				}
-				else if (mngr_->GetState() == ecs::GAMEOVER)
+				else if (mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<State>()->GetState() == GAMEOVER)
 				{
-					mngr_->SetState(ecs::NEWGAME);
+					mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<State>()->SetState(NEWGAME);
 				}
 			}
 		}

@@ -5,7 +5,7 @@
 class Transform;
 class Texture;
 class Vector2D;
-class SDL_Rect;
+struct SDL_Rect;
 
 class FramedImage: public ecs::Component {
 public:
@@ -18,7 +18,7 @@ public:
 	__CMPID_DECL__(ecs::_FRAMEDIMAGE)
 
 		FramedImage();
-	FramedImage(Texture *tex);
+	FramedImage(Texture* tex, int spritesInRow, int spritesInCol);
 	virtual ~FramedImage();
 
 	void setTexture(Texture *tex) {
@@ -32,12 +32,10 @@ public:
 private:
 	Transform *tr_;
 	Texture *tex_;
-	std::vector<Vector2D*> frames_;
 
 	SDL_Rect* recorte_;
 
 	float lastUpdate_;
 	float frameRate_;
-	int currIndex_;
 };
 

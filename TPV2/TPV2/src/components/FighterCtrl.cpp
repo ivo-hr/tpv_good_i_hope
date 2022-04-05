@@ -10,6 +10,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "Image.h"
 #include "Transform.h"
+#include "State.h"
 
 FighterCtrl::FighterCtrl() :
 		tr_(nullptr) {
@@ -25,32 +26,35 @@ void FighterCtrl::initComponent() {
 
 void FighterCtrl::update() {
 
-	auto &ihldr = ih();
+	if (mngr_->getHandler(ecs::_hdlr_GAMEINFO)->getComponent<State>()->GetState() == RUNNING)
+	{
+		auto& ihldr = ih();
 
-	if (ihldr.keyDownEvent()) {
+		if (ihldr.keyDownEvent()) {
 
-		auto &vel_ = tr_->getVel();
-		auto rot = tr_->getRot();
+			auto& vel_ = tr_->getVel();
+			auto rot = tr_->getRot();
 
-		if (ihldr.isKeyDown(SDL_SCANCODE_RIGHT))
-		{
-			tr_->setRot(rot + 5.0f);
-		} 
-		if (ihldr.isKeyDown(SDL_SCANCODE_LEFT))
-		{
-			tr_->setRot(rot - 5.0f);
-		}
-		if (ihldr.isKeyDown(SDL_SCANCODE_UP))
-		{
+			if (ihldr.isKeyDown(SDL_SCANCODE_RIGHT))
+			{
+				tr_->setRot(rot + 5.0f);
+			}
+			if (ihldr.isKeyDown(SDL_SCANCODE_LEFT))
+			{
+				tr_->setRot(rot - 5.0f);
+			}
+			if (ihldr.isKeyDown(SDL_SCANCODE_UP))
+			{
 
-			auto newVel = vel_ + Vector2D(0, -1).rotate(rot) * 0.2f;
+				auto newVel = vel_ + Vector2D(0, -1).rotate(rot) * 0.2f;
 
-			float speed = std::min(newVel.magnitude() + 1.0f, 3.f);
+				float speed = std::min(newVel.magnitude() + 1.0f, 3.f);
 
-			vel_ = Vector2D(0, -speed).rotate(rot);
+				vel_ = Vector2D(0, -speed).rotate(rot);
 
-			sdlutils().soundEffects().at("thrust").play(0, 1);
+				sdlutils().soundEffects().at("thrust").play(0, 1);
 
+			}
 		}
 	}
 }

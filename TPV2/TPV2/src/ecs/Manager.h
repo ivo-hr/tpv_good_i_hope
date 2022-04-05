@@ -10,14 +10,6 @@
 
 namespace ecs {
 
-	enum States
-	{
-		NEWGAME,
-		RUNNING,
-		PAUSED,
-		GAMEOVER
-	};
-
 
 class Manager {
 
@@ -74,9 +66,6 @@ public:
 
 	void refresh();
 
-	States GetState() { return currentState_; };
-	void SetState(States newState) { currentState_ = newState; };
-
 private:
 
 
@@ -85,8 +74,6 @@ private:
 	void addToGroup(grpId_type gId, Entity *e) {
 		entsByGroup_[gId].push_back(e);
 	}
-
-	States currentState_;
 
 	std::vector<Entity*> ents_;
 	std::array<Entity*, maxHandlerId> hdlrs_;

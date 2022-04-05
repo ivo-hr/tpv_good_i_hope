@@ -14,7 +14,7 @@
 #include "Transform.h"
 #include "State.h"
 
-State::State()
+State::State(): currentState_(NEWGAME)
 {
 }
 
@@ -32,21 +32,19 @@ void State::update()
 
 void State::render()
 {
-	ecs::States state = mngr_->GetState();
-
-	if (state == ecs::NEWGAME)
+	if (currentState_ == NEWGAME)
 	{
 		sdlutils().msgs().at("NewGame").render(20, sdlutils().height() - 45);
 	}
-	else if (state == ecs::RUNNING)
+	else if (currentState_ == RUNNING)
 	{
 		sdlutils().msgs().at("Running").render(20, sdlutils().height() - 45);
 	}
-	else if (state == ecs::PAUSED)
+	else if (currentState_ == PAUSED)
 	{
 		sdlutils().msgs().at("Paused").render(20, sdlutils().height() - 45);
 	}
-	else if (state == ecs::GAMEOVER)
+	else if (currentState_ == GAMEOVER)
 	{
 		sdlutils().msgs().at("GameOver").render(20, sdlutils().height() - 45);
 	}

@@ -9,7 +9,7 @@
 
 
 Follow::Follow(Transform* fighter) :
-	tr_(), lastUpdate_(), fighterTR_(fighter) {
+	tr_(), fighterTR_(fighter), lastUpdate_() {
 }
 
 
