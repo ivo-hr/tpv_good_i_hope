@@ -146,6 +146,7 @@ void IG1App::resize(int newWidth, int newHeight)
 	mWinW = newWidth; mWinH = newHeight;
 
 	// Resize Viewport to the new window size
+	mViewPort->setSize(newWidth, newHeight);
 	mViewPort3->setSize(newWidth / 2, newHeight);
 	mViewPort2->setSize(newWidth / 2, newHeight);
 	mViewPort2->setPos(newWidth / 2, 0);
@@ -153,6 +154,7 @@ void IG1App::resize(int newWidth, int newHeight)
 	// Resize Scene Visible Area such that the scale is not modified
 	mCamera3->setSize(mViewPort3->width(), mViewPort3->height());
 	mCamera2->setSize(mViewPort2->width(), mViewPort2->height());
+	mCamera->setSize(mViewPort->width(), mViewPort->height());
 }
 //-------------------------------------------------------------------------
 
