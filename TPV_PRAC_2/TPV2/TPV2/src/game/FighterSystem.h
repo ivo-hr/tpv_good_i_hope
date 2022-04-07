@@ -1,6 +1,10 @@
 #pragma once
 #include "System.h"
 
+class Texture;
+
+class Transform;
+
 class FighterSystem : public ecs::System {
 public:
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
@@ -15,6 +19,10 @@ public:
 	// Si el juego está parado no hacer nada, en otro caso actualizar la velocidad
 	// del caza y moverlo como en la práctica 1 (acelerar, desacelerar, etc).
 	void update() override;
+
+	int health;
+
+	Texture* getHearts() { return hearts; };
 
 private:
 	// Para reaccionar al mensaje de que ha habido un choque entre el fighter y un
@@ -34,4 +42,7 @@ private:
 	// Indica si el sistema está activo o no (modificar el valor en onRoundOver y
 	// onRoundStart, y en update no hacer nada si no está activo)
 	bool active_;
+
+	Texture* hearts;
+	Transform* fghtrTR;
 };

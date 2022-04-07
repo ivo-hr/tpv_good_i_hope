@@ -43,6 +43,12 @@
     <Filter Include="Header Files\game\Sistemas">
       <UniqueIdentifier>{3aa38b24-2e31-4fa1-aa58-71ea36b95f60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\game\Components">
+      <UniqueIdentifier>{b3b63546-5d2c-4263-a511-faabc0196147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\Components">
+      <UniqueIdentifier>{da0e63c0-d612-4216-a214-f3fc8d755214}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\json\JSONValue.h">
@@ -99,9 +105,6 @@
     <ClInclude Include="src\sdlutils\SDLNetUtils.h">
       <Filter>Header Files\sdlutil</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\messages_defs_example.h">
-      <Filter>Header Files\game</Filter>
-    </ClInclude>
     <ClInclude Include="src\game\messages.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
@@ -109,9 +112,6 @@
       <Filter>Header Files\game</Filter>
     </ClInclude>
     <ClInclude Include="src\game\Entity.h">
-      <Filter>Header Files\game</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\ecs_defs_example.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
     <ClInclude Include="src\game\ecs.h">
@@ -143,6 +143,18 @@
     </ClInclude>
     <ClInclude Include="src\game\RenderSystem.h">
       <Filter>Header Files\game\Sistemas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\ecs_defs.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\components\FramedImage.h">
+      <Filter>Header Files\game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\components\Image.h">
+      <Filter>Header Files\game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\components\Transform.h">
+      <Filter>Header Files\game\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +208,12 @@
     </ClCompile>
     <ClCompile Include="src\game\RenderSystem.cpp">
       <Filter>Source Files\game\Sistemas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\components\FramedImage.cpp">
+      <Filter>Source Files\game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\components\Image.cpp">
+      <Filter>Source Files\game\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

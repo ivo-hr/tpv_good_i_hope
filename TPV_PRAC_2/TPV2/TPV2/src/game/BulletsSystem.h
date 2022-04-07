@@ -21,12 +21,12 @@ private:
 	// Para gestionar el mensaje de que el jugador ha disparado. Añadir una bala al
 	// juego, como en la práctica 1. Recuerda que la rotación de la bala sería
 	// vel.angle(Vector2D(0.0f,-1.0f))
-	void shoot(Vector2D pos, Vector2D vel, double width, double height);
+	void shoot(Vector2D pos, Vector2D vel, double width, double height, float rot);
 
 
 	// Para gestionar el mensaje de que ha habido un choque entre una bala y un
 	// asteroide. Desactivar la bala “b”.
-	void onCollision_BulletAsteroid(Entity* b);
+	void onCollision_BulletAsteroid(ecs::Entity* b);
 
 
 	// Para gestionar el mensaje de que ha acabado la ronda. Desactivar todas las
@@ -37,6 +37,8 @@ private:
 	// Para gestionar el mensaje de que ha empezado una ronda. Activar el sistema.
 	void onRoundStart();
 
+	float timeLastShot;
+	float fireRate;
 
 	// Indica si el sistema está activo o no (modificar el valor en onRoundOver y
 	// onRoundStart, y en update no hacer nada si no está activo)

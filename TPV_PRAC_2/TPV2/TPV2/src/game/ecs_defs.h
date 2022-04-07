@@ -31,7 +31,11 @@
 // Systems list - must have at least one element
 //
 #define _SYS_LIST_ \
-    _hdlr_COLLISION, \
-	_hdlr_RENDER
+    _sys_COLLISION, \
+	_sys_RENDER, \
+	_sys_BULLET, \
+	_sys_ASTEROID, \
+	_sys_CTRL, \
+	_sys_FIGHTER
 
 

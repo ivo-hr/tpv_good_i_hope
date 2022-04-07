@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "../ecs/Component.h"
+#include "../Component.h"
 
 class Transform;
 class Texture;
@@ -15,15 +15,18 @@ public:
 	//
 	//    constexpr static ecs::cmpId_type id = ecs::_IMAGE
 	//
-	__CMPID_DECL__(ecs::_FRAMEDIMAGE)
 
 		FramedImage();
 	FramedImage(Texture* tex, int spritesInRow, int spritesInCol);
 	virtual ~FramedImage();
 
+	Texture* getTexture() { return tex_; };
+
 	void setTexture(Texture *tex) {
 		tex_ = tex;
 	}
+
+	SDL_Rect* getSrc() { return recorte_; };
 
 	void initComponent() override;
 	void update() override;

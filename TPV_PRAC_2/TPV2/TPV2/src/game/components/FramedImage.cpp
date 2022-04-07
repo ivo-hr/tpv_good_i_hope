@@ -2,12 +2,13 @@
 
 #include <cassert>
 
-#include "../ecs/Entity.h"
-#include "../sdlutils/macros.h"
-#include "../sdlutils/Texture.h"
-#include "../sdlutils/SDLUtils.h"
-#include "../utils/Vector2D.h"
+#include "../Entity.h"
+#include "../../sdlutils/macros.h"
+#include "../../sdlutils/Texture.h"
+#include "../../sdlutils/SDLUtils.h"
+#include "../../utils/Vector2D.h"
 #include "Transform.h"
+#include "../Manager.h"
 
 FramedImage::FramedImage() :
 		tr_(), tex_(), frameRate_(50.f) {
@@ -30,7 +31,7 @@ FramedImage::~FramedImage() {
 }
 
 void FramedImage::initComponent() {
-	tr_ = ent_->getComponent<Transform>();
+	tr_ = mngr_->getComponent<Transform>(ent_);
 	assert(tr_ != nullptr); 
 
 }

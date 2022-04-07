@@ -18,18 +18,6 @@ public:
 	void update() override;
 private:
 
-	// Para gestionar los mensajes correspondientes y actualizar los atributos
-	// winner_ y state_. Otra posibilidad es simplemente consultar el valor de
-	// winner_ y state_ directamente a GameCtrlSystem (en este caso no hacen falta
-	// los siguientes métodos y atributos)
-	void onRoundStart();
-
-	void onRoundOver();
-
-	void onGameStart();
-
-	void onGameOver();
-
 	void drawMsgs();
 
 	void drawAsteroids();
@@ -40,9 +28,5 @@ private:
 
 	void drawHealth();
 
-	void draw(Texture* tx);
-
 	uint8_t winner_; // 0 - None, 1 - Asteroid, 2- Fighter
-
-	uint8_t state_; // El estado actual de juego (como en GameCtrlSystem)
 };

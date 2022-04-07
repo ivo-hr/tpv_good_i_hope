@@ -2,7 +2,17 @@
 #include "System.h"
 
 class GameCtrlSystem : public ecs::System {
+
+
+
 public:
+
+	enum State {
+		NEWGAME,
+		RUNNING,
+		PAUSED,
+		GAMEOVER
+	};
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
 	void receive(const Message& m) override;
 

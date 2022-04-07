@@ -1,35 +1,59 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
-  AsteroidsSystem.cpp
   BulletsSystem.cpp
-  CollisionsSystem.cpp
-  FighterSystem.cpp
-  GameCtrlSystem.cpp
-  Manager.cpp
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(248,9): error C2039: "recieve": no es un miembro de "ecs::System"
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\System.h(15): message : vea la declaración de 'ecs::System'
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(272,9): error C2039: "recieve": no es un miembro de "ecs::System"
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\System.h(15): message : vea la declaración de 'ecs::System'
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(295,9): error C2039: "recieve": no es un miembro de "ecs::System"
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\System.h(15): message : vea la declaración de 'ecs::System'
-  RenderSystem.cpp
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(34,32): error C2065: 'tr_': identificador no declarado
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(34,47): error C2065: 'tr_': identificador no declarado
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(35,3): error C2065: 'tr_': identificador no declarado
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(34,18): error C2661: 'build_sdlrect': ninguna función sobrecargada acepta 1 argumentos
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(37,2): error C2065: 'tex_': identificador no declarado
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(38,2): error C2065: 'tex_': identificador no declarado
-C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(38,21): error C2065: 'tr_': identificador no declarado
-  JSON.cpp
-  JSONValue.cpp
-  json_demo.cpp
-  main.cpp
-  SDLUtils.cpp
-  sdlutils_demo.cpp
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\BulletsSystem.cpp(34,29): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\BulletsSystem.cpp(34,22): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
 C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
 C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(47): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
 C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(192): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
-  SoundEffect.cpp
-  Texture.cpp
-  Collisions.cpp
-  Vector2D.cpp
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\BulletsSystem.cpp(39,41): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
+  FramedImage.cpp
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\components\FramedImage.cpp(17,39): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\components\FramedImage.cpp(25,39): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\components\FramedImage.cpp(59,40): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\components\FramedImage.cpp(46,36): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+  Image.cpp
+  FighterSystem.cpp
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(47): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(192): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\FighterSystem.cpp(26,111): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\FighterSystem.cpp(26,104): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\FighterSystem.cpp(26,41): error C2398: Elemento '1': la conversión de 'int' en 'float' requiere una conversión de restricción
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\FighterSystem.cpp(26,78): error C2398: Elemento '2': la conversión de 'int' en 'float' requiere una conversión de restricción
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\FighterSystem.cpp(26,78): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\FighterSystem.cpp(26,41): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\FighterSystem.cpp(68,28): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\FighterSystem.cpp(78,29): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  GameCtrlSystem.cpp
+  RenderSystem.cpp
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(47): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(192): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(238,33): error C2039: "id": no es un miembro de "GameCtrlSystem"
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\GameCtrlSystem.h(4): message : vea la declaración de 'GameCtrlSystem'
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(30): message : Vea la referencia a la creación de una instancia de la función plantilla "T *ecs::Manager::getSystem<GameCtrlSystem>(void)" que se está compilando
+          with
+          [
+              T=GameCtrlSystem
+          ]
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(238,1): error C2065: 'id': identificador no declarado
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(238,28): error C2131: la expresión no se evaluó como una constante
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(238,28): message : se encontró una (sub)expresión no constante
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(143,33): error C2039: "id": no es un miembro de "FramedImage"
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\components\FramedImage.h(10): message : vea la declaración de 'FramedImage'
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(64): message : Vea la referencia a la creación de una instancia de la función plantilla "T *ecs::Manager::getComponent<FramedImage>(ecs::Entity *)" que se está compilando
+          with
+          [
+              T=FramedImage
+          ]
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(143,1): error C2065: 'id': identificador no declarado
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(143,28): error C2131: la expresión no se evaluó como una constante
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(143,28): message : se encontró una (sub)expresión no constante
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(238,33): error C2039: "id": no es un miembro de "FighterSystem"
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\FighterSystem.h(8): message : vea la declaración de 'FighterSystem'
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(108): message : Vea la referencia a la creación de una instancia de la función plantilla "T *ecs::Manager::getSystem<FighterSystem>(void)" que se está compilando
+          with
+          [
+              T=FighterSystem
+          ]
   Generando código...
