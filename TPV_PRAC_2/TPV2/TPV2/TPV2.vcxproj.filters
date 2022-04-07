@@ -156,6 +156,9 @@
     <ClInclude Include="src\game\components\Transform.h">
       <Filter>Header Files\game\Components</Filter>
     </ClInclude>
+    <ClInclude Include="src\game\components\asteroidTypeGen.h">
+      <Filter>Header Files\game\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\json\JSONValue.cpp">
@@ -213,6 +216,9 @@
       <Filter>Source Files\game\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\game\components\Image.cpp">
+      <Filter>Source Files\game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\components\asteroidTypeGen.cpp">
       <Filter>Source Files\game\Components</Filter>
     </ClCompile>
   </ItemGroup>
