@@ -24,6 +24,7 @@
     <ClInclude Include="src\game\BulletsSystem.h" />
     <ClInclude Include="src\game\CollisionsSystem.h" />
     <ClInclude Include="src\game\Component.h" />
+    <ClInclude Include="src\game\components\asteroidTypeGen.h" />
     <ClInclude Include="src\game\components\FramedImage.h" />
     <ClInclude Include="src\game\components\Image.h" />
     <ClInclude Include="src\game\components\Transform.h" />
@@ -61,6 +62,7 @@
     <ClCompile Include="src\game\AsteroidsSystem.cpp" />
     <ClCompile Include="src\game\BulletsSystem.cpp" />
     <ClCompile Include="src\game\CollisionsSystem.cpp" />
+    <ClCompile Include="src\game\components\asteroidTypeGen.cpp" />
     <ClCompile Include="src\game\components\FramedImage.cpp" />
     <ClCompile Include="src\game\components\Image.cpp" />
     <ClCompile Include="src\game\FighterSystem.cpp" />
