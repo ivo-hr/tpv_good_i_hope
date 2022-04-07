@@ -3,13 +3,33 @@
 #include "../utils/Vector2D.h"
 #include "Manager.h"
 #include "GameCtrlSystem.h"
-#include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SDLUtils.h"
 #include "components/Image.h"
 #include "components/Transform.h"
 
 void BulletsSystem::receive(const Message& m)
 {
+	switch (m.id)
+	{
+	case _m_SHOOT:
+		shoot({ m.shoot_data.x, m.shoot_data.y }, 
+			{ m.shoot_data.velX, m.shoot_data.velY }, 
+			m.shoot_data.width, 
+			m.shoot_data.height, 
+			m.shoot_data.rot);
+		break;
+	case _m_COLLISION_BULLETASTEROID:
+		onCollision_BulletAsteroid(m.collision_bulast_data.b);
+		break;
+	case _m_ROUND_START:
+		onRoundStart();
+		break;
+	case _m_ROUND_END:
+		onRoundOver();
+		break;
+	default:
+		break;
+	}
 }
 
 void BulletsSystem::initSystem()
@@ -28,10 +48,13 @@ void BulletsSystem::shoot(Vector2D pos, Vector2D vel, double width, double heigh
 	{
 		auto bullet = mngr_->addEntity(ecs::_grp_BULLETS);
 
-
 		auto tr = mngr_->addComponent<Transform>(bullet);
 
-		tr->init(pos, vel, width, height, rot);
+		tr->init(pos + Vector2D(width / 2.0f, height / 2.0f) - Vector2D(0.0f, height / 2.0f + 5.0f + 12.0f).rotate(rot) - Vector2D(2.0f, 10.0f),
+			Vector2D(0.0f, -1.0f).rotate(rot) * (vel.magnitude() + 5.0f),
+			5.f,
+			20.f,
+			rot);
 
 		mngr_->addComponent<Image>(bullet, &sdlutils().images().at("bullet"));
 

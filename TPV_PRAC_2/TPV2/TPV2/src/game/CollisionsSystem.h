@@ -4,6 +4,8 @@
 class CollisionsSystem : public ecs::System {
 public:
 
+	constexpr static ecs::sysId_type id = ecs::_sys_COLLISION;
+
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
 	void receive(const Message& m) override;
 

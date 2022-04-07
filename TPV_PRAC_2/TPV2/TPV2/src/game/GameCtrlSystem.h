@@ -1,11 +1,13 @@
 #pragma once
 #include "System.h"
 
+
+
 class GameCtrlSystem : public ecs::System {
 
-
-
 public:
+
+	constexpr static ecs::sysId_type id = ecs::_sys_CTRL;
 
 	enum State {
 		NEWGAME,
@@ -13,6 +15,7 @@ public:
 		PAUSED,
 		GAMEOVER
 	};
+
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
 	void receive(const Message& m) override;
 

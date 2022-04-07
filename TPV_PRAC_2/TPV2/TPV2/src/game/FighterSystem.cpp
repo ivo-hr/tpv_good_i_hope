@@ -2,6 +2,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "Manager.h"
 #include "GameCtrlSystem.h"
+#include "BulletsSystem.h"
 #include "components/Image.h"
 #include "components/Transform.h"
 #include "../sdlutils/InputHandler.h"
@@ -19,11 +20,12 @@ void FighterSystem::initSystem()
 
 	mngr_->addComponent<Image>(fghtr, &sdlutils().images().at("fighter"));
 
-	int width = 40, height = 40;
+	int width = 50, height = 50;
 
 	fghtrTR = mngr_->addComponent<Transform>(fghtr);
 
-	fghtrTR->init({ sdlutils().width() / 2 - width / 2, sdlutils().height() / 2 - height / 2 }, { 0, 0 }, width, height, 0);
+	fghtrTR->init(Vector2D
+		(sdlutils().width() / 2 - width / 2, sdlutils().height() / 2 - height / 2 ), { 0, 0 }, width, height, 0);
 }
 
 void FighterSystem::update()
@@ -59,6 +61,23 @@ void FighterSystem::update()
 				sdlutils().soundEffects().at("thrust").play(0, 1);
 
 			}
+			if (ihldr.isKeyDown(SDL_SCANCODE_S))
+			{
+				Message m;
+				m.id = _m_SHOOT;
+				m.shoot_data.x = fghtrTR->getPos().getX();
+				m.shoot_data.y = fghtrTR->getPos().getY();
+
+				m.shoot_data.velX = fghtrTR->getVel().getX();
+				m.shoot_data.velY = fghtrTR->getVel().getY();
+
+				m.shoot_data.width = fghtrTR->getWidth();
+				m.shoot_data.height = fghtrTR->getHeight();
+
+				m.shoot_data.rot = fghtrTR->getRot();
+
+				mngr_->getSystem<BulletsSystem>()->receive(m);
+			}
 		}
 	}
 
@@ -90,13 +109,24 @@ void FighterSystem::update()
 
 void FighterSystem::onCollision_FighterAsteroid()
 {
+	auto s = 50.0f;
+	auto x = (sdlutils().width() - s) / 2.0f;
+	auto y = (sdlutils().height() - s) / 2.0f;
+	fghtrTR->init(Vector2D(x, y), Vector2D(), s, s, 0.0f);
+
 	health--;
+
+	if (health < 0)
+	{
+	}
 }
 
 void FighterSystem::onRoundOver()
 {
+	active_ = false;
 }
 
 void FighterSystem::onRoundStart()
 {
+	active_ = true;
 }

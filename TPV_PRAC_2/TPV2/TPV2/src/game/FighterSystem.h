@@ -7,6 +7,9 @@ class Transform;
 
 class FighterSystem : public ecs::System {
 public:
+
+	constexpr static ecs::sysId_type id = ecs::_sys_FIGHTER;
+
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
 	void receive(const Message& m) override;
 

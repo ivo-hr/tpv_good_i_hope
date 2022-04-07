@@ -12,11 +12,11 @@ public:
 
 	// This line expands to the following (see the defintion of
 	// __CMPID_DECL__ en ecs.h):
-	//
-	//    constexpr static ecs::cmpId_type id = ecs::_IMAGE
-	//
 
-		FramedImage();
+
+	constexpr static ecs::cmpId_type id = ecs::_FRAMED_IMAGE;
+
+	FramedImage();
 	FramedImage(Texture* tex, int spritesInRow, int spritesInCol);
 	virtual ~FramedImage();
 

@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <cstdint>
 #include "ecs.h"
 #include "Entity.h"
@@ -28,7 +27,7 @@ struct Message {
 
 		// _m_SHOOT
 		struct {
-			int x, y, velX, velY;
+			float x, y, velX, velY;
 			double width, height;
 			float rot;
 		} shoot_data;
