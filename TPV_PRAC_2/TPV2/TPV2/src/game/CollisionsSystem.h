@@ -1,7 +1,10 @@
 #pragma once
 #include "System.h"
 
+
+
 class CollisionsSystem : public ecs::System {
+
 public:
 
 	constexpr static ecs::sysId_type id = ecs::_sys_COLLISION;

@@ -7,6 +7,9 @@
 class asteroidTypeGen : public ecs::Component {
 
 public:
+
+	constexpr static ecs::cmpId_type id = ecs::_ASTER_TYPE;
+
 	asteroidTypeGen(int generation, int type);
 	virtual ~asteroidTypeGen();
 

@@ -10,6 +10,7 @@ enum msgId : msgId_type {
 	_m_COLLISION_BULLETASTEROID, //
 	_m_COLLISION_ASTEROIDFIGHTER, //
 	_m_ROUND_START, //
+	_m_ASTEROIDS_EX, //
 	_m_ROUND_END
 };
 

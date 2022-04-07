@@ -40,6 +40,12 @@ void BulletsSystem::initSystem()
 
 void BulletsSystem::update()
 {
+	auto& ast = mngr_->getEntities(ecs::_grp_BULLETS);
+	int n = ast.size();
+
+	for (int i = 0; i < n; i++) {
+		ast[i]->update();
+	}
 }
 
 void BulletsSystem::shoot(Vector2D pos, Vector2D vel, double width, double height, float rot)

@@ -10,7 +10,7 @@
 #include "src/game/System.h"
 #include "src/game/Manager.h"
 
-#include "GameCtrlSystem.h"
+#include "src/game/GameCtrlSystem.h"
 #include "src/game/AsteroidsSystem.h"
 #include "src/game/BulletsSystem.h"
 #include "src/game/CollisionsSystem.h"

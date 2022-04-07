@@ -223,7 +223,7 @@
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\game</Filter>
-    </ClInclude>
+    </ClCompile>
     <ClCompile Include="src\game\components\asteroidTypeGen.cpp">
       <Filter>Source Files\game\Components</Filter>
     </ClCompile>

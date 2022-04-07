@@ -23,6 +23,7 @@ public:
 	// del caza y moverlo como en la práctica 1 (acelerar, desacelerar, etc).
 	void update() override;
 
+	int maxHealth = 3;
 	int health;
 
 	Texture* getHearts() { return hearts; };

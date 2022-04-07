@@ -15,10 +15,10 @@
   ],
   
   "messages" : [
-    { "id" : "NewGame", "text" : "Press SPACE to start game!", "font" : "ARIAL24", "color" : "0x00000000" },
+    { "id" : "start", "text" : "Press SPACE to start game!", "font" : "ARIAL24", "color" : "0x00000000" },
     { "id" : "Running", "text" : "Shoot the asteroids!", "font" : "ARIAL24", "color" : "0x00000000" },
     { "id" : "Paused", "text" : "Press Space to continue!", "font" : "ARIAL24", "color" : "0x00000000" },
-    { "id" : "GameOver", "text" : "Press Space to go back to new game", "font" : "ARIAL24", "color" : "0x00000000" }
+    { "id" : "gameover", "text" : "Press Space to go back to new game", "font" : "ARIAL24", "color" : "0x00000000" }
   ],
   
   "sounds" : [

@@ -32,6 +32,7 @@ FramedImage::~FramedImage() {
 
 void FramedImage::initComponent() {
 	tr_ = mngr_->getComponent<Transform>(ent_);
+
 	assert(tr_ != nullptr); 
 
 }

@@ -27,6 +27,13 @@ void AsteroidsSystem::initSystem()
 
 void AsteroidsSystem::update()
 {
+	auto& ast = mngr_->getEntities(ecs::_grp_ASTEROID);
+	int n = ast.size();
+
+	for (int i = 0; i < n; i++) {
+		ast[i]->update();
+	}
+
 	auto sys = mngr_->getSystem<GameCtrlSystem>();
 
 	if (sys->getState() == sys->RUNNING) {
@@ -151,6 +158,9 @@ void AsteroidsSystem::createAsteroids(int num)
 			//Asteroid type maker
 			auto r = rand.nextInt(0, 10);
 			//Asteroid that follows
+
+			mngr_->addComponent<Transform>(e, Vector2D(x, y), Vector2D(dirX, dirY), s, s, 0);
+
 			if (r < 3)
 			{
 				r = 1;
@@ -167,7 +177,6 @@ void AsteroidsSystem::createAsteroids(int num)
 
 			}
 			mngr_->addComponent<asteroidTypeGen>(e, s, r);
-			mngr_->addComponent<Transform>(e, Vector2D(x, y), Vector2D(dirX,dirY), s, s, 0);
 			numOfAsteroids_++;	
 			lastSpwnTime_ = sdlutils().currRealTime();//Current asteroid increase
 		}
@@ -192,7 +201,7 @@ void AsteroidsSystem::moveAsteroids(int type)
 
 void AsteroidsSystem::followFighter(Transform* ast)
 {
-	auto fght = mngr_->getComponent<Transform>(mngr_->getHandler<fighter>());
+	auto fght = mngr_->getComponent<Transform>(mngr_->getHandler(ecs::_hdlr_FGHTR));
 	
 	ast->getVel() = ast->getVel().rotate(ast->getVel().angle(fght->getPos() - ast->getPos()));
 	ast->getPos() = ast->getPos() + ast->getVel();

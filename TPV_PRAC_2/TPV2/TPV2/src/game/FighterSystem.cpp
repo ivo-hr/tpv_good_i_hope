@@ -105,6 +105,11 @@ void FighterSystem::update()
 
 	if (vel_.magnitude() < 0.05f)
 		vel_ = vel_ * 0;
+
+
+	auto ast = mngr_->getHandler(ecs::_hdlr_FGHTR);
+
+	ast->update();
 }
 
 void FighterSystem::onCollision_FighterAsteroid()

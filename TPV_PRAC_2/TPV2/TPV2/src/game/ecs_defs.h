@@ -15,7 +15,8 @@
 #define _CMPS_LIST_ \
 	_TRANSFORM, \
 	_IMAGE, \
-	_FRAMED_IMAGE
+	_FRAMED_IMAGE, \
+	_ASTER_TYPE
 
 // Groups list - must have at least one element
 //
