@@ -1,0 +1,35 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
+  AsteroidsSystem.cpp
+  BulletsSystem.cpp
+  CollisionsSystem.cpp
+  FighterSystem.cpp
+  GameCtrlSystem.cpp
+  Manager.cpp
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(248,9): error C2039: "recieve": no es un miembro de "ecs::System"
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\System.h(15): message : vea la declaración de 'ecs::System'
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(272,9): error C2039: "recieve": no es un miembro de "ecs::System"
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\System.h(15): message : vea la declaración de 'ecs::System'
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(295,9): error C2039: "recieve": no es un miembro de "ecs::System"
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\System.h(15): message : vea la declaración de 'ecs::System'
+  RenderSystem.cpp
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(34,32): error C2065: 'tr_': identificador no declarado
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(34,47): error C2065: 'tr_': identificador no declarado
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(35,3): error C2065: 'tr_': identificador no declarado
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(34,18): error C2661: 'build_sdlrect': ninguna función sobrecargada acepta 1 argumentos
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(37,2): error C2065: 'tex_': identificador no declarado
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(38,2): error C2065: 'tex_': identificador no declarado
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\RenderSystem.cpp(38,21): error C2065: 'tr_': identificador no declarado
+  JSON.cpp
+  JSONValue.cpp
+  json_demo.cpp
+  main.cpp
+  SDLUtils.cpp
+  sdlutils_demo.cpp
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(47): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(192): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
+  SoundEffect.cpp
+  Texture.cpp
+  Collisions.cpp
+  Vector2D.cpp
+  Generando código...
