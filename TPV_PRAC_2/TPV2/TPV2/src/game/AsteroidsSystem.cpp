@@ -192,7 +192,7 @@ void AsteroidsSystem::moveAsteroids(int type)
 
 void AsteroidsSystem::followFighter(Transform* ast)
 {
-	auto fght = mngr_->getComponent<Transform>(mngr_->getHandler<fighter>());
+	auto fght = mngr_->getComponent<Transform>(mngr_->getHandler(ecs::_hdlr_FGHTR));
 	
 	ast->getVel() = ast->getVel().rotate(ast->getVel().angle(fght->getPos() - ast->getPos()));
 	ast->getPos() = ast->getPos() + ast->getVel();
