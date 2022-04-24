@@ -504,6 +504,29 @@ IndexMesh* IndexMesh::generaCuboConTapasIndexado(GLdouble l)
     return m;
 }
 
+void IndexMesh::buildNormalVectors()
+{
+    auto normals = new dvec3[mNumIndices];
+    for (int i = 0; i < mNumIndices; i++)
+        normals[i] = dvec3(0, 0, 0);
+
+    for (int i = 0; i < (int)vIndices; i + 3) {
+        auto u = dvec3(vVertices.at(vIndices[i + 1]) - vVertices.at(vIndices[i]));
+        auto v = dvec3(vVertices.at(vIndices[i + 2]) - vVertices.at(vIndices[i]));
+
+        auto n = cross(u, v);
+
+        normals[vIndices[i]] += n;
+        normals[vIndices[i + 1]] += n;
+        normals[vIndices[i + 2]] += n;
+    }
+
+    
+
+    for (int i = 0; i < mNumIndices; i++)
+        vNormals.at(i) = normalize(normals[i]);
+}
+
 void IndexMesh::draw() const
 {
     glDrawElements(mPrimitive, mNumIndices, GL_UNSIGNED_INT, vIndices);

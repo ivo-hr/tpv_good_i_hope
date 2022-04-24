@@ -72,6 +72,8 @@ class IndexMesh : public Mesh
 public:
 	static IndexMesh* generaCuboConTapasIndexado(GLdouble l);
 
+	void buildNormalVectors();
+
 	virtual void draw() const;
 
 protected:
