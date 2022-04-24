@@ -43,18 +43,7 @@ void Scene::init()
 	}
 	else if (mId == 3)
 	{
-		Texture* t = new Texture();
-		Texture* u = new Texture();
-		t->load("..\\Bmps\\container.bmp");
-		u->load("..\\Bmps\\papelE.bmp");
-		gTextures.push_back(t);
-		gTextures.push_back(u);
-
-		ContornoCaja* s = new ContornoCaja(200.);
-		s->SetTexture(t);
-		s->SetTexture2(u);
-
-		
+		Cubo* s = new Cubo(200.);
 
 		gObjects.push_back(s);
 	}
