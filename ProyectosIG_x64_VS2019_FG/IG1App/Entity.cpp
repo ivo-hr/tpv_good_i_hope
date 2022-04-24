@@ -155,7 +155,7 @@ void RectanguloRGB::render(glm::dmat4 const& modelViewMat) const
 
 Cubo::Cubo(GLdouble longitud)
 {
-	mMesh = Mesh::generaCubo(longitud);
+	mMesh = IndexMesh::generaCuboConTapasIndexado(longitud);
 }
 
 Cubo::~Cubo()

@@ -474,115 +474,6 @@ Mesh* Mesh::generaCristaleraTexCor(GLdouble longitud, GLdouble h)
     return m;
 }
 //---------------------------------------------------------------------------------------
-
-IndexMesh* IndexMesh::generaCuboConTapasIndexado(GLdouble l)
-{
-    IndexMesh* m = new IndexMesh();
-
-    m->mPrimitive = GL_TRIANGLES;
-
-    m->mNumVertices = 36;
-    m->vVertices.reserve(m->mNumVertices);
-    m->mNumIndices = 8;
-    m->vNormals.reserve(m->mNumIndices);
-
-
-    m->vVertices.emplace_back(-l / 2., l / 2., -l / 2.); //1
-    m->vVertices.emplace_back(l / 2., l / 2., -l / 2.);//2
-    m->vVertices.emplace_back(l / 2., -l / 2., -l / 2.);//4
-
-    m->vVertices.emplace_back(-l / 2., l / 2., -l / 2.); //1
-    m->vVertices.emplace_back(l / 2., -l / 2., -l / 2.);//4
-    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//3
-
-
-    m->vVertices.emplace_back(l / 2., l / 2., l / 2.);//5
-    m->vVertices.emplace_back(-l / 2., l / 2., l / 2.);//8
-    m->vVertices.emplace_back(-l / 2., -l / 2., l / 2.);//7
-
-    m->vVertices.emplace_back(l / 2., l / 2., l / 2.);//5
-    m->vVertices.emplace_back(-l / 2., -l / 2., l / 2.);//7
-    m->vVertices.emplace_back(l / 2., -l / 2., l / 2.);//6
-
-    //---------------------------------
-
-    m->vVertices.emplace_back(-l / 2., l / 2., l / 2.);//8
-    m->vVertices.emplace_back(-l / 2., l / 2., -l / 2.);//1
-    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//3
-
-    m->vVertices.emplace_back(-l / 2., l / 2., l / 2.);//8
-    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//3
-    m->vVertices.emplace_back(-l / 2., -l / 2., l / 2.);//7
-
-
-    m->vVertices.emplace_back(l / 2., l / 2., -l / 2.);//2
-    m->vVertices.emplace_back(l / 2., l / 2., l / 2.);//5
-    m->vVertices.emplace_back(l / 2., -l / 2., l / 2.);//6
-
-    m->vVertices.emplace_back(l / 2., l / 2., -l / 2.);//2
-    m->vVertices.emplace_back(l / 2., -l / 2., l / 2.);//6
-    m->vVertices.emplace_back(l / 2., -l / 2., -l / 2.);//4
-
-    //-------------------------------------
-
-    m->vVertices.emplace_back(-l / 2., l / 2., -l / 2.);//1
-    m->vVertices.emplace_back(-l / 2., l / 2., l / 2.);//8
-    m->vVertices.emplace_back(l / 2., l / 2., -l / 2.);//2
-
-    m->vVertices.emplace_back(l / 2., l / 2., -l / 2.);//2
-    m->vVertices.emplace_back(-l / 2., l / 2., l / 2.);//8
-    m->vVertices.emplace_back(l / 2., l / 2., l / 2.);//5
-
-
-    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//3
-    m->vVertices.emplace_back(l / 2., -l / 2., -l / 2.);//1
-    m->vVertices.emplace_back(-l / 2., -l / 2., l / 2.);//7
-
-    m->vVertices.emplace_back(-l / 2., -l / 2., l / 2.);//7
-    m->vVertices.emplace_back(l / 2., -l / 2., -l / 2.);//2
-    m->vVertices.emplace_back(l / 2., -l / 2., l / 2.);//6
-
-
-    m->vNormals.emplace_back(glm::normalize(dvec3(1, 1, -2))); //1
-    m->vNormals.emplace_back(glm::normalize(dvec3(2, 2, -1))); //2
-    m->vNormals.emplace_back(glm::normalize(dvec3(1, -2, -2))); //4
-    m->vNormals.emplace_back(glm::normalize(dvec3(-2, -1, -1))); //3
-    m->vNormals.emplace_back(glm::normalize(dvec3(1, 1, 2))); //5
-    m->vNormals.emplace_back(glm::normalize(dvec3(-2, 2, 1))); //8
-    m->vNormals.emplace_back(glm::normalize(dvec3(-1, -2, 2))); //7
-    m->vNormals.emplace_back(glm::normalize(dvec3(2, -1, 1))); //6
-
-    return m;
-}
-
-void IndexMesh::buildNormalVectors()
-{
-    auto normals = new dvec3[mNumIndices];
-    for (int i = 0; i < mNumIndices; i++)
-        normals[i] = dvec3(0, 0, 0);
-
-    for (int i = 0; i < (int)vIndices; i + 3) {
-        auto u = dvec3(vVertices.at(vIndices[i + 1]) - vVertices.at(vIndices[i]));
-        auto v = dvec3(vVertices.at(vIndices[i + 2]) - vVertices.at(vIndices[i]));
-
-        auto n = cross(u, v);
-
-        normals[vIndices[i]] += n;
-        normals[vIndices[i + 1]] += n;
-        normals[vIndices[i + 2]] += n;
-    }
-
-    
-
-    for (int i = 0; i < mNumIndices; i++)
-        vNormals.at(i) = normalize(normals[i]);
-}
-
-void IndexMesh::draw() const
-{
-    glDrawElements(mPrimitive, mNumIndices, GL_UNSIGNED_INT, vIndices);
-}
-
 Mesh* Mesh::generaAlaTIE(GLdouble dist, GLdouble tam)
 {
     Mesh* mesh = new Mesh();
@@ -630,4 +521,118 @@ Mesh* Mesh::generaAlaTIE(GLdouble dist, GLdouble tam)
     mesh->vTexCoors.emplace_back(1, 1);
 
     return mesh;
+}
+
+//================================================================================================
+
+IndexMesh* IndexMesh::generaCuboConTapasIndexado(GLdouble l)
+{
+    IndexMesh* m = new IndexMesh();
+
+    m->mPrimitive = GL_TRIANGLES;
+
+    m->mNumVertices = 36;
+    m->vVertices.reserve(m->mNumVertices);
+
+    m->mNumIndices = 8;
+    m->vNormals.reserve(m->mNumIndices);
+
+    m->vVertices.emplace_back(-l / 2.,  l / 2., -l / 2.);//1
+    m->vVertices.emplace_back( l / 2.,  l / 2., -l / 2.);//2
+    m->vVertices.emplace_back( l / 2., -l / 2., -l / 2.);//4
+
+    m->vVertices.emplace_back(-l / 2.,  l / 2., -l / 2.);//1
+    m->vVertices.emplace_back( l / 2., -l / 2., -l / 2.);//4
+    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//3
+
+
+    m->vVertices.emplace_back( l / 2.,  l / 2.,  l / 2.);//5
+    m->vVertices.emplace_back(-l / 2.,  l / 2.,  l / 2.);//8
+    m->vVertices.emplace_back(-l / 2., -l / 2.,  l / 2.);//7
+
+    m->vVertices.emplace_back( l / 2.,  l / 2.,  l / 2.);//5
+    m->vVertices.emplace_back(-l / 2., -l / 2.,  l / 2.);//7
+    m->vVertices.emplace_back( l / 2., -l / 2.,  l / 2.);//6
+
+    //---------------------------------
+
+    m->vVertices.emplace_back(-l / 2.,  l / 2.,  l / 2.);//8
+    m->vVertices.emplace_back(-l / 2.,  l / 2., -l / 2.);//1
+    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//3
+
+    m->vVertices.emplace_back(-l / 2.,  l / 2.,  l / 2.);//8
+    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//3
+    m->vVertices.emplace_back(-l / 2., -l / 2.,  l / 2.);//7
+
+
+    m->vVertices.emplace_back( l / 2.,  l / 2., -l / 2.);//2
+    m->vVertices.emplace_back( l / 2.,  l / 2.,  l / 2.);//5
+    m->vVertices.emplace_back( l / 2., -l / 2.,  l / 2.);//6
+
+    m->vVertices.emplace_back( l / 2.,  l / 2., -l / 2.);//2
+    m->vVertices.emplace_back( l / 2., -l / 2.,  l / 2.);//6
+    m->vVertices.emplace_back( l / 2., -l / 2., -l / 2.);//4
+
+    //-------------------------------------
+
+    m->vVertices.emplace_back(-l / 2.,  l / 2., -l / 2.);//1
+    m->vVertices.emplace_back(-l / 2.,  l / 2.,  l / 2.);//8
+    m->vVertices.emplace_back( l / 2.,  l / 2., -l / 2.);//2
+
+    m->vVertices.emplace_back( l / 2.,  l / 2., -l / 2.);//2
+    m->vVertices.emplace_back(-l / 2.,  l / 2.,  l / 2.);//8
+    m->vVertices.emplace_back( l / 2.,  l / 2.,  l / 2.);//5
+
+
+    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//3
+    m->vVertices.emplace_back( l / 2., -l / 2., -l / 2.);//1
+    m->vVertices.emplace_back(-l / 2., -l / 2.,  l / 2.);//7
+
+    m->vVertices.emplace_back(-l / 2., -l / 2.,  l / 2.);//7
+    m->vVertices.emplace_back( l / 2., -l / 2., -l / 2.);//2
+    m->vVertices.emplace_back( l / 2., -l / 2.,  l / 2.);//6
+
+    m->buildNormalVectors();
+
+    //m->vNormals.emplace_back(glm::normalize(dvec3(1, 1, -2)));    //1
+    //m->vNormals.emplace_back(glm::normalize(dvec3(2, 2, -1)));    //2
+    //m->vNormals.emplace_back(glm::normalize(dvec3(1, -2, -2)));   //4
+    //m->vNormals.emplace_back(glm::normalize(dvec3(-2, -1, -1)));  //3
+    //m->vNormals.emplace_back(glm::normalize(dvec3(1, 1, 2)));     //5
+    //m->vNormals.emplace_back(glm::normalize(dvec3(-2, 2, 1)));    //8
+    //m->vNormals.emplace_back(glm::normalize(dvec3(-1, -2, 2)));   //7
+    //m->vNormals.emplace_back(glm::normalize(dvec3(2, -1, 1)));    //6
+
+    return m;
+}
+
+void IndexMesh::buildNormalVectors()
+{
+    auto normals = new dvec3[mNumIndices];
+    for (int i = 0; i < mNumIndices; i++)
+    {
+        normals[i] = dvec3(0, 0, 0);
+    }
+
+    for (int i = 0; i < (int)vIndices; i + 3) 
+    {
+        auto u = dvec3(vVertices.at(vIndices[i + 1]) - vVertices.at(vIndices[i]));
+        auto v = dvec3(vVertices.at(vIndices[i + 2]) - vVertices.at(vIndices[i]));
+
+        auto n = cross(u, v);
+
+        normals[vIndices[i]] += n;
+        normals[vIndices[i + 1]] += n;
+        normals[vIndices[i + 2]] += n;
+    }
+
+    for (int i = 0; i < mNumIndices; i++)
+        vNormals.at(i) = glm::normalize(normals[i]);
+
+    delete normals;
+}
+
+void IndexMesh::draw() const
+{
+    glDrawElements(mPrimitive, mNumIndices, GL_UNSIGNED_INT, vIndices);
 }
