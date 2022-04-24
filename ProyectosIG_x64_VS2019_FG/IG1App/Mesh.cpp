@@ -31,11 +31,17 @@ void Mesh::render() const
       glColorPointer(4, GL_DOUBLE, 0, vColors.data());  // components number (rgba=4), type of each component, stride, pointer  
     }
 
+    if (vNormals.size() > 0) {
+        glEnableClientState(GL_NORMAL_ARRAY);
+        glNormalPointer(GL_DOUBLE, 0, vNormals.data());
+    }
+
 	draw();
 
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_NORMAL_ARRAY);
   }
 }
 //-------------------------------------------------------------------------
@@ -425,4 +431,81 @@ Mesh* Mesh::generaCristaleraTexCor(GLdouble longitud, GLdouble h)
     m->vTexCoors.emplace_back(4, 0);
 
     return m;
+}
+
+//---------------------------------------------------------------------------------------
+
+IndexMesh* IndexMesh::generaCuboConTapasIndexado(GLdouble l)
+{
+    IndexMesh* m = new IndexMesh();
+
+    m->mPrimitive = GL_TRIANGLES;
+
+    m->mNumVertices = 36;
+    m->vVertices.reserve(m->mNumVertices);
+    m->mNumIndices = 8;
+    m->vNormals.reserve(m->mNumIndices);
+
+    m->vVertices.emplace_back(-l / 2., l / 2., -l / 2.); //1
+    m->vVertices.emplace_back(l / 2., l / 2., -l / 2.);//2
+    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//3
+
+    m->vVertices.emplace_back(l / 2., l / 2., -l / 2.);//2
+    m->vVertices.emplace_back(l / 2., -l / 2., -l / 2.);//4
+    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//3
+
+
+    m->vVertices.emplace_back(l / 2., l / 2., l / 2.);//5
+    m->vVertices.emplace_back(-l / 2., l / 2., l / 2.);//8
+    m->vVertices.emplace_back(-l / 2., -l / 2., l / 2.);//7
+
+    m->vVertices.emplace_back(l / 2., l / 2., l / 2.);//5
+    m->vVertices.emplace_back(-l / 2., -l / 2., l / 2.);//7
+    m->vVertices.emplace_back(l / 2., -l / 2., l / 2.);//6
+
+    //---------------------------------
+
+    m->vVertices.emplace_back(-l / 2., l / 2., l / 2.);//8
+    m->vVertices.emplace_back(-l / 2., l / 2., -l / 2.);//1
+    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//3
+
+    m->vVertices.emplace_back(-l / 2., l / 2., l / 2.);//8
+    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//3
+    m->vVertices.emplace_back(-l / 2., -l / 2., l / 2.);//7
+
+
+    m->vVertices.emplace_back(l / 2., l / 2., -l / 2.);//2
+    m->vVertices.emplace_back(l / 2., l / 2., l / 2.);//5
+    m->vVertices.emplace_back(l / 2., -l / 2., -l / 2.);//4
+
+    m->vVertices.emplace_back(l / 2., l / 2., l / 2.);//5
+    m->vVertices.emplace_back(l / 2., -l / 2., l / 2.);//6
+    m->vVertices.emplace_back(l / 2., -l / 2., -l / 2.);//4
+
+    //-------------------------------------
+
+    m->vVertices.emplace_back(-l / 2., l / 2., -l / 2.);//1
+    m->vVertices.emplace_back(-l / 2., l / 2., l / 2.);//8
+    m->vVertices.emplace_back(l / 2., l / 2., -l / 2.);//2
+
+    m->vVertices.emplace_back(l / 2., l / 2., -l / 2.);//2
+    m->vVertices.emplace_back(-l / 2., l / 2., l / 2.);//8
+    m->vVertices.emplace_back(l / 2., l / 2., l / 2.);//5
+
+
+    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//3
+    m->vVertices.emplace_back(l / 2., -l / 2., -l / 2.);//1
+    m->vVertices.emplace_back(-l / 2., -l / 2., l / 2.);//7
+
+    m->vVertices.emplace_back(-l / 2., -l / 2., l / 2.);//7
+    m->vVertices.emplace_back(l / 2., -l / 2., -l / 2.);//2
+    m->vVertices.emplace_back(l / 2., -l / 2., l / 2.);//6
+
+
+    return m;
+}
+
+void IndexMesh::draw() const
+{
+    glDrawElements(mPrimitive, mNumIndices, GL_UNSIGNED_INT, vIndices);
 }

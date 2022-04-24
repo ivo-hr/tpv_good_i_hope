@@ -50,6 +50,7 @@ public:
 	GLuint size() const { return mNumVertices; };   // number of elements
 	std::vector<glm::dvec3> const& vertices() const { return vVertices; };
 	std::vector<glm::dvec4> const& colors() const { return vColors; };
+	std::vector<glm::dvec3> const& normals() const { return vNormals; };
 		
 protected:
 
@@ -59,8 +60,21 @@ protected:
 	GLuint mNumVertices = 0;  // number of elements ( = vVertices.size())
 	std::vector<glm::dvec3> vVertices;  // vertex array
 	std::vector<glm::dvec4> vColors;    // color array
+	std::vector<glm::dvec3> vNormals;	//Normals array
 	virtual void draw() const;
 };
 //-------------------------------------------------------------------------
+
+class IndexMesh : public Mesh 
+{
+public:
+	static IndexMesh* generaCuboConTapasIndexado(GLdouble l);
+
+	virtual void draw() const;
+
+protected:
+	GLuint* vIndices = nullptr;
+	GLuint mNumIndices = 0;
+};
 
 #endif //_H_Scene_H_
