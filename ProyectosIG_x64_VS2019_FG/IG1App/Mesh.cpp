@@ -89,7 +89,7 @@ Mesh* Mesh::generaPoligonoRegular(GLuint num, GLdouble r)
     mesh->mNumVertices = num;
     mesh->vVertices.reserve(mesh->mNumVertices);
 
-    long double sect = (4 * glm::acos(0.0)) / num;  //  2*Pi / nº of sides
+    long double sect = (4 * glm::acos(0.0)) / num;  //  2*Pi / nï¿½ of sides
 
     for (int i = 0; i < num; i++) {
 
@@ -341,7 +341,7 @@ Mesh* Mesh::generaEstrella3D(GLdouble re, GLuint np, GLdouble h)
 
     GLdouble ri = re/2;
 
-    long double sect = (4 * glm::acos(0.0)) / (np * 2);  //  2*Pi / nº of sides
+    long double sect = (4 * glm::acos(0.0)) / (np * 2);  //  2*Pi / nï¿½ of sides
 
     mesh->vVertices.emplace_back(0, 0, 0);
 
@@ -432,7 +432,6 @@ Mesh* Mesh::generaCristaleraTexCor(GLdouble longitud, GLdouble h)
 
     return m;
 }
-
 //---------------------------------------------------------------------------------------
 
 IndexMesh* IndexMesh::generaCuboConTapasIndexado(GLdouble l)
@@ -508,4 +507,53 @@ IndexMesh* IndexMesh::generaCuboConTapasIndexado(GLdouble l)
 void IndexMesh::draw() const
 {
     glDrawElements(mPrimitive, mNumIndices, GL_UNSIGNED_INT, vIndices);
+}
+
+Mesh* Mesh::generaAlaTIE(GLdouble dist, GLdouble tam)
+{
+    Mesh* mesh = new Mesh();
+
+    mesh->mPrimitive = GL_TRIANGLE_STRIP;
+
+    mesh->mNumVertices = 8;
+    mesh->vVertices.reserve(mesh->mNumVertices);
+
+    if (dist > 0)
+    {
+        mesh->vVertices.emplace_back(tam, tam, dist - tam * sin(3.1415 / 3));
+        mesh->vVertices.emplace_back(-tam, tam, dist - tam * sin(3.1415 / 3));
+    }
+    else
+    {
+        mesh->vVertices.emplace_back(tam, tam, dist + tam * sin(3.1415 / 3));
+        mesh->vVertices.emplace_back(-tam, tam, dist + tam * sin(3.1415 / 3));
+    }
+    mesh->vVertices.emplace_back(tam, tam / 2, dist);
+    mesh->vVertices.emplace_back(-tam, tam / 2, dist);
+    mesh->vVertices.emplace_back(tam, -tam / 2, dist);
+    mesh->vVertices.emplace_back(-tam, -tam / 2, dist);
+
+    if (dist > 0)
+    {
+        mesh->vVertices.emplace_back(tam, -tam, dist - tam * sin(3.1415 / 3));
+        mesh->vVertices.emplace_back(-tam, -tam, dist - tam * sin(3.1415 / 3));
+    }
+    else
+    {
+        mesh->vVertices.emplace_back(tam, -tam, dist + tam * sin(3.1415 / 3));
+        mesh->vVertices.emplace_back(-tam, -tam, dist + tam * sin(3.1415 / 3));
+    }
+
+    mesh->vTexCoors.reserve(mesh->mNumVertices);
+
+    mesh->vTexCoors.emplace_back(0, 0);
+    mesh->vTexCoors.emplace_back(0, 1);
+    mesh->vTexCoors.emplace_back(0.3, 0);
+    mesh->vTexCoors.emplace_back(0.3, 1);
+    mesh->vTexCoors.emplace_back(0.7, 0);
+    mesh->vTexCoors.emplace_back(0.7, 1);
+    mesh->vTexCoors.emplace_back(1, 0);
+    mesh->vTexCoors.emplace_back(1, 1);
+
+    return mesh;
 }

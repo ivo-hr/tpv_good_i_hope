@@ -423,6 +423,43 @@ void Foto::update()
 	mTexture->loadColourBuffer(GLUT_WINDOW_WIDTH * 7, GLUT_WINDOW_HEIGHT * 7, GL_FRONT);
 }
 
+AlaTIE::AlaTIE(GLdouble dist, GLdouble tam)
+{
+	mMesh = Mesh::generaAlaTIE(dist, tam);
+	mTexture = new Texture();
+}
+
+AlaTIE::~AlaTIE()
+{
+	delete mMesh; mMesh = nullptr;
+}
+
+void AlaTIE::render(glm::dmat4 const& modelViewMat) const
+{
+	if (mMesh != nullptr) {
+
+		glDepthMask(GL_FALSE);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
+		upload(aMat);
+
+		glPolygonMode(GL_BACK, GL_FILL);
+		glPolygonMode(GL_FRONT, GL_FILL);
+
+		mTexture->bind(GL_MODULATE);
+		mMesh->render();
+		mTexture->unbind();
+
+		glColor4d(1, 1, 1, 1);
+
+		glDepthMask(GL_TRUE);
+		glDisable(GL_BLEND);
+	}
+}
+
+
 //=========================================================QUADIRC====================================
 
 QuadricEntity::QuadricEntity()
@@ -452,7 +489,7 @@ void QuadricSphere::render(glm::dmat4 const& modelViewMat) const
 	glColor3f(vec3Color.x, vec3Color.y, vec3Color.z);
 
 	//Modo de dibujar
-	gluQuadricDrawStyle(qObj, GL_POINT);
+	gluQuadricDrawStyle(qObj, GL_FILL);
 
 	gluSphere(qObj, r, res, res);
 
@@ -477,12 +514,37 @@ void QuadricCylinder::render(glm::dmat4 const& modelViewMat) const
 	glColor3f(vec3Color.x, vec3Color.y, vec3Color.z);
 
 	//Modo de dibujar
-	gluQuadricDrawStyle(qObj, GL_POINT);
+	gluQuadricDrawStyle(qObj, GL_FILL);
 
 	gluCylinder(qObj, r, rr, h, res, res);
 
 	glColor3f(1, 1, 1);
 }
+
+QuadricDisk::QuadricDisk(GLfloat innerRadius, GLfloat outerRadius, GLuint reso)
+{
+	inR = innerRadius;
+	ouR = outerRadius;
+	res = reso;
+}
+
+void QuadricDisk::render(glm::dmat4 const& modelViewMat) const
+{
+	dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
+	upload(aMat);
+
+	//Color
+	glEnable(GL_COLOR_MATERIAL);
+	glColor3f(vec3Color.x, vec3Color.y, vec3Color.z);
+
+	//Modo de dibujar
+	gluQuadricDrawStyle(qObj, GL_FILL);
+
+	gluDisk(qObj, inR, ouR, res, res);
+
+	glColor3f(1, 1, 1);
+}
+
 
 CompoundEntity::CompoundEntity()
 {
@@ -511,21 +573,46 @@ void CompoundEntity::addEntity(Abs_Entity* ae)
 
 TIEAvanzado::TIEAvanzado()
 {
-	auto a = new QuadricSphere(75, 40);
-	a->SetColor(0, 65, 106);
-	addEntity(a);
 
-	auto b = new QuadricCylinder(20, 45, 45, 40);
-	b->SetColor(0, 65, 106);
+	//==================CUERPO===================
 
-	b->setModelMat(translate(b->modelMat(), dvec3(0, 0, 75)));
+	auto cuerpo = new QuadricSphere(75, 40);
+	cuerpo->SetColor(0, 65, 106);
+	addEntity(cuerpo);
 
-	b->setModelMat(rotate(b->modelMat(), 3.141516, dvec3(0, 1, 0)));
-	addEntity(b);
+	//==================CABINA===================
 
-	auto c = new QuadricCylinder(120, 20, 20, 40);
-	c->SetColor(0, 65, 106);
-	addEntity(c);
+	auto cabina = new QuadricCylinder(20, 45, 45, 40);
+	cabina->SetColor(0, 65, 106);
+	cabina->setModelMat(translate(cabina->modelMat(), dvec3(60, 0, 0)));
+	cabina->setModelMat(rotate(cabina->modelMat(), 3.141516 / 2, dvec3(0, 1, 0)));
+	addEntity(cabina);
+
+	//==================CRISTAL===================
+
+	auto cristal = new QuadricDisk(0, 45, 40);
+	cristal->SetColor(0, 65, 106);
+	cristal->setModelMat(translate(cristal->modelMat(), dvec3(80, 0, 0)));
+	cristal->setModelMat(rotate(cristal->modelMat(), 3.141516 / 2, dvec3(0, 1, 0)));
+	addEntity(cristal);
+
+	//==================ESCUDOS===================
+
+	Texture* t = new Texture();
+	t->load("..\\Bmps\\Noche.bmp", 150);
+	auto escudo = new AlaTIE(120, 100);
+	escudo->SetTexture(t);
+	addEntity(escudo);
+	auto escudo2 = new AlaTIE(-120, 100);
+	escudo2->SetTexture(t);
+	addEntity(escudo2);
+
+	//==================EJE===================
+
+	auto eje = new QuadricCylinder(240, 20, 20, 40);
+	eje->setModelMat(translate(eje->modelMat(), dvec3(0, 0, -120)));
+	eje->SetColor(0, 65, 106);
+	addEntity(eje);
 }
 
 TIEAvanzado::~TIEAvanzado()

@@ -182,6 +182,19 @@ public:
 
 };
 
+//-------------------------------------------------------------------------
+
+class AlaTIE : public Abs_Entity
+{
+public:
+	explicit AlaTIE(GLdouble dist, GLdouble tam);
+	~AlaTIE();
+	virtual void render(glm::dmat4 const& modelViewMat) const;
+
+};
+
+//------------------------------------------------------------
+
 
 class QuadricEntity : public Abs_Entity
 {
@@ -221,7 +234,13 @@ protected:
 };
 class QuadricDisk : public QuadricEntity
 {
+public:
+	QuadricDisk(GLfloat innerRadius, GLfloat outerRadius, GLuint reso);
+	void render(glm::dmat4 const& modelViewMat) const;
 
+protected:
+	GLdouble inR, ouR;
+	GLint res;
 };
 class QuadricPartialDisk : public QuadricEntity
 {

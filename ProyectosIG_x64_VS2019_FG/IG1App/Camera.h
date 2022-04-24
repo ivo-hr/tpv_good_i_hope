@@ -69,7 +69,7 @@ protected:
 	void uploadPM() const;   // transfers projMat to the GPU
 
 	GLdouble xRight, xLeft, yTop, yBot;      // size of scene visible area
-	GLdouble mNearVal =	0.1, mFarVal = 10000000000;  // view volume
+	GLdouble mNearVal =	1, mFarVal = 10000000000;  // view volume
 	GLdouble mScaleFact = 1;   // scale factor
 	GLdouble mRadio = 1000.0;
 	GLdouble mAng = -45;

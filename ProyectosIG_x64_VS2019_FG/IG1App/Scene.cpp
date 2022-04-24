@@ -33,7 +33,6 @@ void Scene::init()
 	else if (mId == 1)
 	{
 		auto cil = new TIEAvanzado();
-
 		gObjects.push_back(cil);
 	}
 	else if (mId == 2)

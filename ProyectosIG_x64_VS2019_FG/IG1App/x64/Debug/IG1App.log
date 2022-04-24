@@ -1,13 +1,2 @@
 ﻿  Entity.cpp
-  IG1App.cpp
-  Mesh.cpp
-F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(94,23): warning C4018: '<': signed/unsigned mismatch
-F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(260,22): warning C4018: '<': signed/unsigned mismatch
-F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(348,23): warning C4018: '<': signed/unsigned mismatch
-  Scene.cpp
-F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(161,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(219,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(221,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  main.cpp
-  Generating Code...
-  IG1App.vcxproj -> F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe
+  IG1App.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe

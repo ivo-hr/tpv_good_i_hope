@@ -197,7 +197,7 @@ void Camera::setPM()
 {
 	if (bOrto) { //  if orthogonal projection
 		mNearVal = 1;
-		mProjMat = ortho(xLeft*mScaleFact, xRight*mScaleFact, yBot*mScaleFact, yTop*mScaleFact, mNearVal, mFarVal);
+		mProjMat = ortho(xLeft * mScaleFact, xRight * mScaleFact, yBot * mScaleFact, yTop * mScaleFact, mNearVal, mFarVal);
 		// glm::ortho defines the orthogonal projection matrix
 	}
 	else

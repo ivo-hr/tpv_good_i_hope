@@ -38,6 +38,8 @@ public:
 	static Mesh* generaCristalera(GLdouble longitud, GLdouble h);
 	static Mesh* generaCristaleraTexCor(GLdouble longitud, GLdouble h);
 
+	static Mesh* generaAlaTIE(GLdouble dist, GLdouble tam);
+
 
 	Mesh() {};
 	virtual ~Mesh() {};
