@@ -422,3 +422,112 @@ void Foto::update()
 {
 	mTexture->loadColourBuffer(GLUT_WINDOW_WIDTH * 7, GLUT_WINDOW_HEIGHT * 7, GL_FRONT);
 }
+
+//=========================================================QUADIRC====================================
+
+QuadricEntity::QuadricEntity()
+{
+	qObj = gluNewQuadric();
+}
+
+QuadricEntity::~QuadricEntity()
+{
+	gluDeleteQuadric(qObj);
+}
+
+QuadricSphere::QuadricSphere(GLdouble radius, GLint res)
+{
+	r = radius;
+	this->res = res;
+}
+
+void QuadricSphere::render(glm::dmat4 const& modelViewMat) const
+{
+	dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
+	upload(aMat);
+
+		
+	//Color
+	glEnable(GL_COLOR_MATERIAL);
+	glColor3f(vec3Color.x, vec3Color.y, vec3Color.z);
+
+	//Modo de dibujar
+	gluQuadricDrawStyle(qObj, GL_POINT);
+
+	gluSphere(qObj, r, res, res);
+
+	glColor3f(1, 1, 1);
+}
+
+QuadricCylinder::QuadricCylinder(GLdouble h, GLdouble radius, GLdouble r, GLint res)
+{
+	this->h = h;
+	this->r = radius;
+	this->rr = r;
+	this->res = res;
+}
+
+void QuadricCylinder::render(glm::dmat4 const& modelViewMat) const
+{
+	dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
+	upload(aMat);
+
+	//Color
+	glEnable(GL_COLOR_MATERIAL);
+	glColor3f(vec3Color.x, vec3Color.y, vec3Color.z);
+
+	//Modo de dibujar
+	gluQuadricDrawStyle(qObj, GL_POINT);
+
+	gluCylinder(qObj, r, rr, h, res, res);
+
+	glColor3f(1, 1, 1);
+}
+
+CompoundEntity::CompoundEntity()
+{
+}
+
+CompoundEntity::~CompoundEntity()
+{
+	for (Abs_Entity* a : gObjects)
+	{
+		delete a;
+	}
+}
+
+void CompoundEntity::render(glm::dmat4 const& modelViewMat) const
+{
+	for (Abs_Entity* a : gObjects)
+	{
+		a->render(modelViewMat);
+	}
+}
+
+void CompoundEntity::addEntity(Abs_Entity* ae)
+{
+	gObjects.push_back(ae);
+}
+
+TIEAvanzado::TIEAvanzado()
+{
+	auto a = new QuadricSphere(75, 40);
+	a->SetColor(0, 65, 106);
+	addEntity(a);
+
+	auto b = new QuadricCylinder(20, 45, 45, 40);
+	b->SetColor(0, 65, 106);
+
+	b->setModelMat(translate(b->modelMat(), dvec3(0, 0, 75)));
+
+	b->setModelMat(rotate(b->modelMat(), 3.141516, dvec3(0, 1, 0)));
+	addEntity(b);
+
+	auto c = new QuadricCylinder(120, 20, 20, 40);
+	c->SetColor(0, 65, 106);
+	addEntity(c);
+}
+
+TIEAvanzado::~TIEAvanzado()
+{
+}

@@ -32,23 +32,15 @@ void Scene::init()
 	}
 	else if (mId == 1)
 	{
-		auto cub = new CuboRGB(200.);
+		auto cil = new TIEAvanzado();
 
-		gObjects.push_back(cub);
-
-		cub->setModelMat(translate(cub->modelMat(), dvec3(100, 100, 100)));
+		gObjects.push_back(cil);
 	}
 	else if (mId == 2)
 	{
-		Texture* t = new Texture();
-		t->load("..\\Bmps\\baldosaC.bmp");
-		gTextures.push_back(t);
-
-		Suelo* s = new Suelo(800., 4);
-		s->SetTexture(t);
-
-		gObjects.push_back(new Foto(200, 200));
-		gObjects.push_back(s);
+		auto aaa = new QuadricSphere(100, 30);
+		aaa->SetColor(200, 200, 200);
+		gObjects.push_back(aaa);
 	}
 	else if (mId == 3)
 	{
@@ -179,8 +171,26 @@ void Scene::resetGL()
 }
 //-------------------------------------------------------------------------
 
+void Scene::sceneDirLight(Camera const& cam) const
+{
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+	glm::fvec4 posDir = { 1, 1, 1, 0 };
+	glMatrixMode(GL_MODELVIEW);
+	glLoadMatrixd(value_ptr(cam.viewMat()));
+	glLightfv(GL_LIGHT0, GL_POSITION, value_ptr(posDir));
+	glm::fvec4 ambient = { 0, 0, 0, 1 };
+	glm::fvec4 diffuse = { 1, 1, 1, 1 };
+	glm::fvec4 specular = { 0.5, 0.5, 0.5, 1 };
+	glLightfv(GL_LIGHT0, GL_AMBIENT, value_ptr(ambient));
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, value_ptr(diffuse));
+	glLightfv(GL_LIGHT0, GL_SPECULAR, value_ptr(specular));
+}
+//-------------------------------------------------------------------------
+
 void Scene::render(Camera const& cam) const 
 {
+	sceneDirLight(cam);
 	cam.upload();
 
 	for (Abs_Entity* el : gObjects)

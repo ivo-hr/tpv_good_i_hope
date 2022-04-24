@@ -153,6 +153,8 @@ Mesh* Mesh::generaRectanguloRGB(GLdouble w, GLdouble h)
     mesh->vColors.emplace_back(0.0, 1.0, 0.0, 1.0);
     mesh->vColors.emplace_back(0.0, 0.0, 1.0, 1.0);
 
+    //Meter color material
+
     return mesh;
 }
 //---------------------------------------------------------

@@ -42,6 +42,7 @@ protected:
 	Mesh* mMesh = nullptr;   // the mesh
 	glm::dmat4 mModelMat;    // modeling matrix
 	glm::dvec4 mColor;		//colo
+	glm::vec3 vec3Color;	//colo
 	
 	// transfers modelViewMat to the GPU
 	virtual void upload(glm::dmat4 const& mModelViewMat) const; 
@@ -178,6 +179,75 @@ public:
 	~Foto();
 	virtual void render(glm::dmat4 const& modelViewMat) const;
 	virtual void update() override;
+
+};
+
+
+class QuadricEntity : public Abs_Entity
+{
+public:
+
+	QuadricEntity();
+	~QuadricEntity();
+
+	void SetColor(GLfloat r, GLfloat g, GLfloat b) { vec3Color = glm::vec3(r/255, g/255, b/255); };
+
+protected:
+	GLUquadricObj* qObj;
+};
+
+class QuadricSphere : public QuadricEntity
+{
+public:
+	QuadricSphere(GLdouble radius, GLint res);
+	void render(glm::dmat4 const& modelViewMat) const;
+
+protected:
+	GLdouble r;
+	GLint res;
+
+};
+class QuadricCylinder : public QuadricEntity
+{
+public:
+	QuadricCylinder(GLdouble h, GLdouble radius, GLdouble r, GLint res);
+	void render(glm::dmat4 const& modelViewMat) const;
+
+protected:
+	GLdouble r, rr;
+	GLdouble h;
+	GLint res;
+
+};
+class QuadricDisk : public QuadricEntity
+{
+
+};
+class QuadricPartialDisk : public QuadricEntity
+{
+
+};
+
+//--------------------------------------------------------------------
+
+class CompoundEntity : public Abs_Entity 
+{
+public:
+	CompoundEntity();
+	~CompoundEntity();
+	virtual void render(glm::dmat4 const& modelViewMat) const;
+
+	void addEntity(Abs_Entity* ae);
+
+protected:
+	std::vector<Abs_Entity*> gObjects;
+};
+
+class TIEAvanzado : public CompoundEntity
+{
+public:
+	TIEAvanzado();
+	~TIEAvanzado();
 
 };
 
