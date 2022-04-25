@@ -167,11 +167,11 @@ void Cubo::render(glm::dmat4 const& modelViewMat) const
 {
 	if (mMesh != nullptr) {
 
-		glPolygonMode(GL_FRONT, GL_LINE);
+		glPolygonMode(GL_FRONT, GL_POINT);
 		//glPolygonMode(GL_BACK, GL_LINE);
-		glPolygonMode(GL_BACK, GL_POINT);
+		glPolygonMode(GL_BACK, GL_FILL);
 
-		glColor3d(0., 0., 0.);
+		glColor3d(0.7, 0., 0.);
 
 		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
 		upload(aMat);

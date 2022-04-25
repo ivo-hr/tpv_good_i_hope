@@ -1,10 +1,7 @@
 ﻿  Mesh.cpp
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(94,23): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(301,22): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(389,23): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(613,23): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(618,38): warning C4311: 'conversión de tipo': truncamiento de puntero de 'GLuint *' a 'int'
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(618,38): warning C4302: 'conversión de tipo': truncamiento de 'GLuint *' a 'int'
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(618,42): warning C4552: "+": el resultado de la expresión no se usa
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(630,23): warning C4018: '<': no coinciden signed/unsigned
-  IG1App.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(94,23): warning C4018: '<': signed/unsigned mismatch
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(302,22): warning C4018: '<': signed/unsigned mismatch
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(390,23): warning C4018: '<': signed/unsigned mismatch
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(634,23): warning C4018: '<': signed/unsigned mismatch
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(640,23): warning C4018: '<': signed/unsigned mismatch
+  IG1App.vcxproj -> F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe
