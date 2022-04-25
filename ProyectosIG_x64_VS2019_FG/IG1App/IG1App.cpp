@@ -243,6 +243,12 @@ void IG1App::key(unsigned char key, int x, int y)
 	case 'x':
 		mCamera->setCenital();
 		break;
+	case 'f':
+		mScene->rota();
+		break;
+	case 'g':
+		mScene->orbita();
+		break;
 	default:
 		need_redisplay = false;
 		break;

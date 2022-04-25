@@ -174,14 +174,13 @@ Mesh* Mesh::generaCubo(GLdouble l)
     m->vVertices.reserve(m->mNumVertices);
 
 
-    m->vVertices.emplace_back(-l / 2., l / 2., -l / 2.); //6
-    m->vVertices.emplace_back(l / 2., l / 2., -l / 2.);//0
-    m->vVertices.emplace_back(l / 2., -l / 2., -l / 2.);//1
+    m->vVertices.emplace_back(-l / 2., l / 2., -l / 2.);//1
+    m->vVertices.emplace_back(l / 2., l / 2., -l / 2.);//2
+    m->vVertices.emplace_back(l / 2., -l / 2., -l / 2.);//4
 
-
-    m->vVertices.emplace_back(-l / 2., l / 2., -l / 2.); //6
-    m->vVertices.emplace_back(l / 2., -l / 2., -l / 2.);//1
-    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//7
+    m->vVertices.emplace_back(-l / 2., l / 2., -l / 2.);//1
+    m->vVertices.emplace_back(l / 2., -l / 2., -l / 2.);//4
+    m->vVertices.emplace_back(-l / 2., -l / 2., -l / 2.);//3
 
 
     m->vVertices.emplace_back(l / 2., l / 2., l / 2.);//2
@@ -614,6 +613,7 @@ IndexMesh* IndexMesh::generaCuboConTapasIndexado(GLdouble l)
 
     */
 
+    m->buildNormalVectors();
 
     //m->vNormals.emplace_back(glm::normalize(dvec3(1, 1, -2)));    //6
     //m->vNormals.emplace_back(glm::normalize(dvec3(2, 2, -1)));    //0

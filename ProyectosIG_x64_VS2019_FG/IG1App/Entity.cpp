@@ -558,9 +558,14 @@ CompoundEntity::~CompoundEntity()
 
 void CompoundEntity::render(glm::dmat4 const& modelViewMat) const
 {
+
+	glm::dmat4 aMat =  modelViewMat * mModelMat;
+
+	upload(aMat);
+
 	for (Abs_Entity* a : gObjects)
 	{
-		a->render(modelViewMat);
+		a->render(aMat);
 	}
 }
 
@@ -613,6 +618,76 @@ TIEAvanzado::TIEAvanzado()
 	addEntity(eje);
 }
 
+
+TIEAvanzado::TIEAvanzado(float size)
+{
+
+	//==================CUERPO===================
+
+	auto cuerpo = new QuadricSphere(75 * size, 40);
+	cuerpo->SetColor(0, 65, 106);
+	addEntity(cuerpo);
+
+	//==================CABINA===================
+
+	auto cabina = new QuadricCylinder(20 * size, 45 * size, 45 * size, 40);
+	cabina->SetColor(0, 65, 106);
+	cabina->setModelMat(translate(cabina->modelMat(), dvec3(60 * size, 0, 0)));
+	cabina->setModelMat(rotate(cabina->modelMat(), 3.141516 / 2, dvec3(0, 1, 0)));
+	addEntity(cabina);
+
+	//==================CRISTAL===================
+
+	auto cristal = new QuadricDisk(0, 45 * size, 40 * size);
+	cristal->SetColor(0, 65, 106);
+	cristal->setModelMat(translate(cristal->modelMat(), dvec3(80 * size, 0, 0)));
+	cristal->setModelMat(rotate(cristal->modelMat(), 3.141516 / 2, dvec3(0, 1, 0)));
+	addEntity(cristal);
+
+	//==================ESCUDOS===================
+
+	Texture* t = new Texture();
+	t->load("..\\Bmps\\Noche.bmp", 150);
+	auto escudo = new AlaTIE(120 * size, 100 * size);
+	escudo->SetTexture(t);
+	addEntity(escudo);
+	auto escudo2 = new AlaTIE(-120 * size, 100 * size);
+	escudo2->SetTexture(t);
+	addEntity(escudo2);
+
+	//==================EJE===================
+
+	auto eje = new QuadricCylinder(240 * size, 20 * size, 20 * size, 40);
+	eje->setModelMat(translate(eje->modelMat(), dvec3(0, 0, -120 * size)));
+	eje->SetColor(0, 65, 106);
+	addEntity(eje);
+}
+
 TIEAvanzado::~TIEAvanzado()
 {
+}
+
+TrianguloNodoFict::TrianguloNodoFict()
+{
+	auto triang = new TriangleFict();
+	triang->setModelMat(translate(triang->modelMat(), dvec3(300, 0, 0)));
+	addEntity(triang);
+}
+
+TrianguloNodoFict::~TrianguloNodoFict()
+{
+}
+
+void TrianguloNodoFict::update()
+{
+	mModelMat = rotate(mModelMat, 0.02, dvec3(0, 0, 1));
+	for (Abs_Entity* ent : gObjects)
+	{
+		ent->update();
+	}
+}
+
+void TriangleFict::update()
+{
+	mModelMat = rotate(mModelMat, -0.04, dvec3(0, 0, 1));
 }

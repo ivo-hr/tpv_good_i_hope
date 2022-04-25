@@ -32,9 +32,14 @@ public:
 	void SetState(int id);
 
 	virtual void update();
+
+	void rota();
+
+	void orbita();
 	
 protected:
 
+	CompoundEntity* compCaza;
 	int mId;
 	GLdouble circRad = 300.;
 	void free();

@@ -68,6 +68,14 @@ public:
 	virtual void render(glm::dmat4 const& modelViewMat) const;
 	virtual void update() override;
 };
+class TriangleFict : public TriangleRGB
+{
+	double triAngl = 0;
+public:
+	explicit TriangleFict() {};
+	~TriangleFict() {};
+	virtual void update() override;
+};
 
 //-------------------------------------------------------------------------
 
@@ -266,8 +274,17 @@ class TIEAvanzado : public CompoundEntity
 {
 public:
 	TIEAvanzado();
+	TIEAvanzado(float size);
 	~TIEAvanzado();
+};
+//--------------------------------------------------------------
+class TrianguloNodoFict : public CompoundEntity
+{
+public:
+	TrianguloNodoFict();
+	~TrianguloNodoFict();
 
+	virtual void update() override;
 };
 
 

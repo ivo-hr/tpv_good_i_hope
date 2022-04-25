@@ -37,27 +37,32 @@ void Scene::init()
 	}
 	else if (mId == 2)
 	{
-		auto aaa = new QuadricSphere(100, 30);
-		aaa->SetColor(200, 200, 200);
-		gObjects.push_back(aaa);
+		glClearColor(0., 0., 0., 1.0);  // background color (alpha=1 -> opaque)
+
+		auto tatooine = new QuadricSphere(300, 80);
+		tatooine->SetColor(255, 233, 200);
+		gObjects.push_back(tatooine);
+
+		auto comp = new CompoundEntity();
+
+		auto TIE = new TIEAvanzado(0.1f);
+		TIE->setModelMat(translate(TIE->modelMat(), dvec3(0, 320, 0)));
+		comp->addEntity(TIE);
+
+		gObjects.push_back(comp);
+
+		compCaza = comp;
 	}
 	else if (mId == 3)
 	{
 		Cubo* s = new Cubo(200.);
-
 		gObjects.push_back(s);
 	}
 	else if (mId == 4)
 	{
-		Texture* t = new Texture();
-		t->load("..\\Bmps\\baldosaP.bmp");
-		gTextures.push_back(t);
+		TrianguloNodoFict* ii = new TrianguloNodoFict();
 
-		Estrella3D* e = new Estrella3D(200., 8, 200.);
-		e->SetTexture(t);
-
-
-		gObjects.push_back(e);
+		gObjects.push_back(ii);
 	}
 	else if (mId == 5)
 	{
@@ -226,6 +231,22 @@ void Scene::update()
 	for (Abs_Entity* obj : gTransObjects)
 	{
 		obj->update();
+	}
+}
+
+void Scene::rota()
+{
+	if (compCaza != nullptr)
+	{
+		compCaza->setModelMat(rotate(compCaza->modelMat(), -0.1, dvec3(0, 1, 0)));
+	}
+}
+
+void Scene::orbita()
+{
+	if (compCaza != nullptr)
+	{
+		compCaza->setModelMat(rotate(compCaza->modelMat(), -0.1, dvec3(0, 0, 1)));
 	}
 }
 
