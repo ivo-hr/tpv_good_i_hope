@@ -5,6 +5,16 @@
 
 void CollisionsSystem::receive(const Message& m)
 {
+	switch (m.id) {
+	case _m_ROUND_START:
+		active_ = true;
+		break;
+	case _m_ROUND_END:
+		active_ = false;
+		break;
+	default:
+		break;
+	}
 }
 
 void CollisionsSystem::initSystem()
@@ -39,10 +49,6 @@ void CollisionsSystem::update()
 					Message m;
 					m.id = _m_COLLISION_ASTEROIDFIGHTER;
 					mngr_->send(m);
-
-					Message e;
-					e.id = _m_ROUND_END;
-					mngr_->send(e);
 
 					break;
 

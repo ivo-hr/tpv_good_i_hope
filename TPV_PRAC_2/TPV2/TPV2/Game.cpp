@@ -65,6 +65,7 @@ void Game::start() {
 
         mngr->refresh();
 
+        
         collSys->update();
         fghtrSys->update();
         bulletsSys->update();

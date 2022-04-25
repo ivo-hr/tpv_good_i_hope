@@ -16,6 +16,9 @@ void AsteroidsSystem::receive(const Message& m)
 	case _m_ROUND_END:
 		onRoundOver();
 		break;
+	case _m_COLLISION_BULLETASTEROID:
+		nextGen(m.collision_bulast_data.a);
+		break;
 	default:
 		break;
 	}
@@ -34,18 +37,22 @@ void AsteroidsSystem::update()
 		ast[i]->update();
 	}
 
+	moveAsteroids();
+	toroidalMov();
 	auto sys = mngr_->getSystem<GameCtrlSystem>();
 
 	if (sys->getState() == sys->RUNNING) {
-		if (sdlutils().currRealTime() - lastSpwnTime_ > asteroidRate_ * 1000) {
+		if (sdlutils().currRealTime() > lastSpwnTime_ + asteroidRate_ * 1000) {
 			
 			createAsteroids(1);
 
 			lastSpwnTime_ = sdlutils().currRealTime();
 		}
 
-		if (numOfAsteroids_ = 0) {
+		if (numOfAsteroids_ <= 0) {
 			Message end;
+			end.id = _m_ASTEROIDS_EX;
+			mngr_->send(end);
 			end.id = _m_ROUND_END;
 			mngr_->send(end);
 		}
@@ -101,7 +108,7 @@ void AsteroidsSystem::createAsteroids(int num)
 
 			if (s == 0)			s = 15;
 			else if (s == 1)	s = 30;
-			else				s = 60;
+			else				s = 45;
 
 			//Starting position
 			auto x = rand.nextInt(-s, sdlutils().width() + s);
@@ -176,14 +183,14 @@ void AsteroidsSystem::createAsteroids(int num)
 				//Asteroid direction
 
 			}
-			mngr_->addComponent<asteroidTypeGen>(e, s, r);
+			mngr_->addComponent<asteroidTypeGen>(e, s/15, r);
 			numOfAsteroids_++;	
 			lastSpwnTime_ = sdlutils().currRealTime();//Current asteroid increase
 		}
 	}
 }
 
-void AsteroidsSystem::moveAsteroids(int type)
+void AsteroidsSystem::moveAsteroids()
 {
 	auto& astEnt = mngr_->getEntities(ecs::_grp_ASTEROID);
 	
@@ -192,7 +199,7 @@ void AsteroidsSystem::moveAsteroids(int type)
 		auto currAst = astEnt[i];
 		auto currAstTr = mngr_->getComponent<Transform>(currAst);
 		if (mngr_->getComponent<asteroidTypeGen>(currAst)->typ_ == 0) {
-			currAstTr->getVel() = currAstTr->getPos() + currAstTr->getVel();
+			currAstTr->getPos() = currAstTr->getPos() + currAstTr->getVel();
 		}
 		else followFighter(currAstTr);
 	}
@@ -204,7 +211,7 @@ void AsteroidsSystem::followFighter(Transform* ast)
 	auto fght = mngr_->getComponent<Transform>(mngr_->getHandler(ecs::_hdlr_FGHTR));
 	
 	ast->getVel() = ast->getVel().rotate(ast->getVel().angle(fght->getPos() - ast->getPos()));
-	ast->getPos() = ast->getPos() + ast->getVel();
+	ast->getPos() = ast->getPos() + ast->getVel()/2;
 }
 
 void AsteroidsSystem::toroidalMov()
@@ -237,7 +244,7 @@ void AsteroidsSystem::nextGen(ecs::Entity* old)
 	auto typ = mngr_->getComponent<asteroidTypeGen>(old)->typ_;
 	auto trans = mngr_->getComponent<Transform>(old);
 
-	if (gen < 1) {
+	if (gen > 1) {
 		for (int i = 0; i < 2; i++) {
 			auto newAst = mngr_->addEntity(ecs::_grp_ASTEROID);
 
@@ -246,10 +253,18 @@ void AsteroidsSystem::nextGen(ecs::Entity* old)
 			mngr_->addComponent<Transform>(newAst,
 				trans->getPos(),
 				trans->getVel().rotate(sdlutils().rand().nextInt(0, 360)),
-				trans->getWidth() / 2, trans->getHeight() / 2, 0);
+				(int)trans->getWidth() / 2, (int)trans->getHeight() / 2, 0);
 
+			if (typ == 0) {
+				mngr_->addComponent<FramedImage>(newAst, &sdlutils().images().at("asteroid"), 6, 5);
+			}
+			else mngr_->addComponent<FramedImage>(newAst, &sdlutils().images().at("asteroid_g"), 6, 5);
 			numOfAsteroids_++;
 		}
 	}
-	else numOfAsteroids_--;
+	numOfAsteroids_--;
+
+	mngr_->setAlive(old, false);
+
+
 }

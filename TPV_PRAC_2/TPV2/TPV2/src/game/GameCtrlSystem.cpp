@@ -6,6 +6,7 @@
 void GameCtrlSystem::receive(const Message& m) {
     switch (m.id) {
     case _m_COLLISION_ASTEROIDFIGHTER:
+        
         onCollision_FighterAsteroid();
         break;
     case _m_ASTEROIDS_EX:
@@ -53,12 +54,14 @@ void GameCtrlSystem::onCollision_FighterAsteroid()
 
     auto fghtrSys = mngr_->getSystem<FighterSystem>();
 
-    if (fghtrSys->health > 0)
+    if (fghtrSys->health > 1)
 
         state_ = GameCtrlSystem::PAUSED;
-    else
-
+    else {
         state_ = GameCtrlSystem::GAMEOVER;
+    }
+
+        
 }
 
 void GameCtrlSystem::onAsteroidsExtinction()

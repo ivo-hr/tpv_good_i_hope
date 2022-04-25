@@ -1,1 +1,25 @@
-﻿
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  AsteroidsSystem.cpp
+C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(34,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(45,33): warning C4018: '>': signed/unsigned mismatch
+C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': unreferenced local variable
+C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(47): message : while compiling class template member function 'SoundEffect &SDLUtils::map_access_wrapper<SoundEffect>::at(std::string)'
+C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(194): message : see reference to class template instantiation 'SDLUtils::map_access_wrapper<SoundEffect>' being compiled
+C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(94,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(169,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(169,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(228,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(234,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(255,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(96,40): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(169): message : see reference to function template instantiation 'T *ecs::Manager::addComponent<Transform,Vector2D,Vector2D,int&,int&,int>(ecs::Entity *,Vector2D &&,Vector2D &&,int &,int &,int &&)' being compiled
+          with
+          [
+              T=Transform
+          ]
+C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(96,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  TPV2.vcxproj -> C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\bin\TPV2Debug.exe

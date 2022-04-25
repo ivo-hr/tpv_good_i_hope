@@ -41,7 +41,7 @@ private:
 
 	void createAsteroids(int num);
 
-	void moveAsteroids(int type);
+	void moveAsteroids();
 
 	void followFighter(Transform* ast);
 
@@ -51,10 +51,10 @@ private:
 
 	// El número actual de asteroides en el juego (recuerda que no puede superar un
 	// límite)
-	uint8_t numOfAsteroids_ = 0;
-	uint8_t limOfAsteroids_ = 20;
-	uint8_t lastSpwnTime_ = 0;
-	uint8_t asteroidRate_ = 10;
+	int numOfAsteroids_ = 0;
+	int limOfAsteroids_ = 20;
+	int lastSpwnTime_ = 0;
+	int asteroidRate_ = 10;
 	// Indica si el sistema está activo o no (modificar el valor en onRoundOver y
 	// onRoundStart, y en update no hacer nada si no está activo)
 	bool active_;

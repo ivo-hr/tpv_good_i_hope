@@ -40,11 +40,26 @@ void BulletsSystem::initSystem()
 
 void BulletsSystem::update()
 {
-	auto& ast = mngr_->getEntities(ecs::_grp_BULLETS);
-	int n = ast.size();
+	auto& bull = mngr_->getEntities(ecs::_grp_BULLETS);
+	int n = bull.size();
 
 	for (int i = 0; i < n; i++) {
-		ast[i]->update();
+		bull[i]->update();
+
+		auto bullT = mngr_->getComponent<Transform>(bull[i]);
+
+		if (bullT->getPos().getX() > sdlutils().width()) {
+			mngr_->setAlive(bull[i], false);
+		}
+		else if (bullT->getPos().getX() + bullT->getHeight() < 0) {
+			mngr_->setAlive(bull[i], false);
+		}
+		else if (bullT->getPos().getY() > sdlutils().height()) {
+			mngr_->setAlive(bull[i], false);
+		}
+		else if (bullT->getPos().getY() + bullT->getWidth() < 0) {
+			mngr_->setAlive(bull[i], false);
+		}
 	}
 }
 
@@ -77,6 +92,11 @@ void BulletsSystem::onCollision_BulletAsteroid(ecs::Entity* b)
 void BulletsSystem::onRoundOver()
 {
 	active_ = false;
+
+	auto& bullEnt = mngr_->getEntities(ecs::_grp_BULLETS);
+	for (int i = 0; i < bullEnt.size(); i++) {
+		mngr_->setAlive(bullEnt[i], false);
+	}
 }
 
 void BulletsSystem::onRoundStart()

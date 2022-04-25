@@ -9,6 +9,19 @@
 
 void FighterSystem::receive(const Message& m)
 {
+	switch (m.id) {
+	case _m_ROUND_START:
+		onRoundStart();
+		break;
+	case _m_ROUND_END:
+		onRoundOver();
+		break;
+	case _m_COLLISION_ASTEROIDFIGHTER:
+		onCollision_FighterAsteroid();
+		break;
+	default:
+		break;
+	}
 }
 
 void FighterSystem::initSystem()
@@ -121,9 +134,9 @@ void FighterSystem::onCollision_FighterAsteroid()
 
 	health--;
 
-	if (health < 0)
-	{
-	}
+	Message m;
+	m.id = _m_ROUND_END;
+	mngr_->send(m);
 }
 
 void FighterSystem::onRoundOver()
