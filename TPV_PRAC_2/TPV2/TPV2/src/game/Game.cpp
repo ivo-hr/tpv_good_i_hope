@@ -1,21 +1,21 @@
 #include "Game.h"
 
-#include "src/components/Transform.h"
-#include "src/ecs/ecs.h"
-#include "src/game/Entity.h"
-#include "src/sdlutils/InputHandler.h"
-#include "src/sdlutils/SDLUtils.h"
+#include "../components/Transform.h"
+#include "../ecs/ecs.h"
+#include "../game/Entity.h"
+#include "../sdlutils/InputHandler.h"
+#include "../sdlutils/SDLUtils.h"
 
-#include "src/utils/Vector2D.h"
-#include "src/game/System.h"
-#include "src/game/Manager.h"
+#include "../utils/Vector2D.h"
+#include "../game/System.h"
+#include "../game/Manager.h"
 
-#include "src/systems/GameCtrlSystem.h"
-#include "src/systems/AsteroidsSystem.h"
-#include "src/systems/BulletsSystem.h"
-#include "src/systems/CollisionsSystem.h"
-#include "src/systems/FighterSystem.h"
-#include "src/systems/RenderSystem.h"
+#include "../systems/GameCtrlSystem.h"
+#include "../systems/AsteroidsSystem.h"
+#include "../systems/BulletsSystem.h"
+#include "../systems/CollisionsSystem.h"
+#include "../systems/FighterSystem.h"
+#include "../systems/RenderSystem.h"
 
 Game::Game() {
 

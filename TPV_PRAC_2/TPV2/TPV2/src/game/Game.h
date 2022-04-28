@@ -1,6 +1,6 @@
 #pragma once
 
-#include "src/ecs/ecs.h"
+#include "../ecs/ecs.h"
 
 class ecs::Manager;
 class System;
