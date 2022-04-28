@@ -42,8 +42,8 @@ private:
 	void onAsteroidsExtinction();
 
 
-	uint8_t winner_; // 0 - None, 1 - Asteroids, 2- Fighter
+	uint8_t winner_ = 0; // 0 - None, 1 - Asteroids, 2- Fighter
 
-	uint8_t state_; // El estado actual del juego (en lugar del componente State)
+	uint8_t state_ = 0; // El estado actual del juego (en lugar del componente State)
 
 };

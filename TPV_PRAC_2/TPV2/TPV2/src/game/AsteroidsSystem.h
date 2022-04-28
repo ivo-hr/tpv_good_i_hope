@@ -39,7 +39,7 @@ private:
 	// añadir los asteroides iniciales (como en la práctica 1).
 	void onRoundStart();
 
-	void createAsteroids(int num);
+	void createAsteroids(uint16_t num);
 
 	void moveAsteroids();
 
@@ -57,5 +57,5 @@ private:
 	int asteroidRate_ = 10;
 	// Indica si el sistema está activo o no (modificar el valor en onRoundOver y
 	// onRoundStart, y en update no hacer nada si no está activo)
-	bool active_;
+	bool active_ = false;
 };

@@ -31,7 +31,7 @@ void AsteroidsSystem::initSystem()
 void AsteroidsSystem::update()
 {
 	auto& ast = mngr_->getEntities(ecs::_grp_ASTEROID);
-	int n = ast.size();
+	auto n = ast.size();
 
 	for (int i = 0; i < n; i++) {
 		ast[i]->update();
@@ -52,8 +52,6 @@ void AsteroidsSystem::update()
 		if (numOfAsteroids_ <= 0) {
 			Message end;
 			end.id = _m_ASTEROIDS_EX;
-			mngr_->send(end);
-			end.id = _m_ROUND_END;
 			mngr_->send(end);
 		}
 	}
@@ -86,7 +84,7 @@ void AsteroidsSystem::onRoundStart()
 	createAsteroids(10);
 }
 
-void AsteroidsSystem::createAsteroids(int num)
+void AsteroidsSystem::createAsteroids(uint16_t num)
 {
 	if (numOfAsteroids_ < limOfAsteroids_)
 	{
@@ -111,8 +109,8 @@ void AsteroidsSystem::createAsteroids(int num)
 			else				s = 45;
 
 			//Starting position
-			auto x = rand.nextInt(-s, sdlutils().width() + s);
-			auto y = rand.nextInt(-s, sdlutils().height() + s);
+			float x = rand.nextInt(-s, sdlutils().width() + s);
+			float y = rand.nextInt(-s, sdlutils().height() + s);
 
 			//Direction point
 			auto cx = rand.nextInt(sdlutils().width() / 2 - 100, sdlutils().width() / 2 + 100);
@@ -185,7 +183,6 @@ void AsteroidsSystem::createAsteroids(int num)
 			}
 			mngr_->addComponent<asteroidTypeGen>(e, s/15, r);
 			numOfAsteroids_++;	
-			lastSpwnTime_ = sdlutils().currRealTime();//Current asteroid increase
 		}
 	}
 }

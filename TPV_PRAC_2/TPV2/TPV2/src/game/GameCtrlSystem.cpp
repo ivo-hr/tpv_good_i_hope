@@ -46,7 +46,7 @@ void GameCtrlSystem::update()
 void GameCtrlSystem::onCollision_FighterAsteroid()
 {
     auto& ast = mngr_->getEntities(ecs::_grp_ASTEROID);
-    int n = ast.size();
+    auto n = ast.size();
 
     for (int i = 0; i < n; i++) {
         mngr_->setAlive(ast[i], false);
@@ -67,7 +67,7 @@ void GameCtrlSystem::onCollision_FighterAsteroid()
 void GameCtrlSystem::onAsteroidsExtinction()
 {
     auto& bul = mngr_->getEntities(ecs::_grp_BULLETS);
-    int n = bul.size();
+    auto n = bul.size();
 
     for (int i = 0; i < n; i++) {
         mngr_->setAlive(bul[i], false);

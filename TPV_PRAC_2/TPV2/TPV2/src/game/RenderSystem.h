@@ -30,5 +30,5 @@ private:
 
 	void drawHealth();
 
-	uint8_t winner_; // 0 - None, 1 - Asteroid, 2- Fighter
+	uint8_t winner_ = 0; // 0 - None, 1 - Asteroid, 2- Fighter
 };

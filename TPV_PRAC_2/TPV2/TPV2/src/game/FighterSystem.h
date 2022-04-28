@@ -24,7 +24,7 @@ public:
 	void update() override;
 
 	int maxHealth = 3;
-	int health;
+	int health = maxHealth;
 
 	Texture* getHearts() { return hearts; };
 
@@ -45,8 +45,8 @@ private:
 
 	// Indica si el sistema está activo o no (modificar el valor en onRoundOver y
 	// onRoundStart, y en update no hacer nada si no está activo)
-	bool active_;
+	bool active_ = false;
 
-	Texture* hearts;
-	Transform* fghtrTR;
+	Texture* hearts = nullptr;
+	Transform* fghtrTR = nullptr;
 };

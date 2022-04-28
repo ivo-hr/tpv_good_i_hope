@@ -41,7 +41,7 @@ void BulletsSystem::initSystem()
 void BulletsSystem::update()
 {
 	auto& bull = mngr_->getEntities(ecs::_grp_BULLETS);
-	int n = bull.size();
+	auto n = bull.size();
 
 	for (int i = 0; i < n; i++) {
 		bull[i]->update();

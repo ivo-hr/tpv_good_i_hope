@@ -1,25 +1,31 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
   AsteroidsSystem.cpp
-C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(34,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(45,33): warning C4018: '>': signed/unsigned mismatch
-C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': unreferenced local variable
-C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(47): message : while compiling class template member function 'SoundEffect &SDLUtils::map_access_wrapper<SoundEffect>::at(std::string)'
-C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(194): message : see reference to class template instantiation 'SDLUtils::map_access_wrapper<SoundEffect>' being compiled
-C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(94,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(169,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(169,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(228,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(234,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(255,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(96,40): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(45,33): warning C4018: '>': no coinciden signed/unsigned
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(47): message : al compilar la función del miembro clase plantilla "SoundEffect &SDLUtils::map_access_wrapper<SoundEffect>::at(std::string)"
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\sdlutils\SDLUtils.h(194): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<SoundEffect>" que se está compilando
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(112,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(113,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(125,11): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(127,34): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(133,11): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(135,35): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(143,11): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(145,35): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(151,11): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(153,34): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(225,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(231,44): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(252,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(96,40): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
           with
           [
               _Ty=int
           ]
-C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(169): message : see reference to function template instantiation 'T *ecs::Manager::addComponent<Transform,Vector2D,Vector2D,int&,int&,int>(ecs::Entity *,Vector2D &&,Vector2D &&,int &,int &,int &&)' being compiled
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\AsteroidsSystem.cpp(167): message : Vea la referencia a la creación de una instancia de la función plantilla "T *ecs::Manager::addComponent<Transform,Vector2D,Vector2D,int&,int&,int>(ecs::Entity *,Vector2D &&,Vector2D &&,int &,int &,int &&)" que se está compilando
           with
           [
               T=Transform
           ]
-C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(96,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  TPV2.vcxproj -> C:\Users\Henrie\Documents\GitHub\tpv_good_i_hope\TPV_PRAC_2\TPV2\bin\TPV2Debug.exe
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\TPV2\src\game\Manager.h(96,40): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  TPV2.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\TPV_PRAC_2\TPV2\bin\TPV2Debug.exe

@@ -33,12 +33,12 @@ public:
 	void render() override;
 
 private:
-	Transform *tr_;
-	Texture *tex_;
+	Transform *tr_ = nullptr;
+	Texture *tex_ = nullptr;
 
-	SDL_Rect* recorte_;
+	SDL_Rect* recorte_ = nullptr;
 
-	float lastUpdate_;
-	float frameRate_;
+	float lastUpdate_ = 0.f;
+	float frameRate_ = 0.f;
 };
 

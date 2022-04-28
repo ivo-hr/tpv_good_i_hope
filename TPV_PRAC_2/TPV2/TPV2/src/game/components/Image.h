@@ -24,6 +24,6 @@ public:
 		tex_ = tex;
 	}
 
-	Texture *tex_;
+	Texture *tex_ = nullptr;
 };
 
