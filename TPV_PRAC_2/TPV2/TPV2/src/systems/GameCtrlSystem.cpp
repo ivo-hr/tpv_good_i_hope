@@ -1,6 +1,6 @@
 #include "GameCtrlSystem.h"
 #include "../sdlutils/InputHandler.h"
-#include "Manager.h"
+#include "../game/Manager.h"
 #include "FighterSystem.h"
 
 void GameCtrlSystem::receive(const Message& m) {

@@ -4,11 +4,11 @@
 
 #include <cassert>
 
-#include "../Entity.h"
-#include "../../sdlutils/macros.h"
-#include "../../sdlutils/Texture.h"
+#include "../game/Entity.h"
+#include "../sdlutils/macros.h"
+#include "../sdlutils/Texture.h"
 #include "Transform.h"
-#include "../Manager.h"
+#include "../game/Manager.h"
 
 Image::Image() :
 		tex_() {

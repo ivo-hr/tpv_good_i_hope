@@ -2,13 +2,13 @@
 
 #include <cassert>
 
-#include "../Entity.h"
-#include "../../sdlutils/macros.h"
-#include "../../sdlutils/Texture.h"
-#include "../../sdlutils/SDLUtils.h"
-#include "../../utils/Vector2D.h"
+#include "../game/Entity.h"
+#include "../sdlutils/macros.h"
+#include "../sdlutils/Texture.h"
+#include "../sdlutils/SDLUtils.h"
+#include "../utils/Vector2D.h"
 #include "Transform.h"
-#include "../Manager.h"
+#include "../game/Manager.h"
 
 FramedImage::FramedImage() :
 		tr_(), tex_(), frameRate_(50.f) {

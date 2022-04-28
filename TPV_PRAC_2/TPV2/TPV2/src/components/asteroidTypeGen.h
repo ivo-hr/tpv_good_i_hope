@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../sdlutils/SDLUtils.h"
-#include  "../Component.h"
+#include "../sdlutils/SDLUtils.h"
+#include  "../game/Component.h"
 
 
 class asteroidTypeGen : public ecs::Component {

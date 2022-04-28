@@ -1,11 +1,11 @@
 #include "AsteroidsSystem.h"
-#include "Entity.h"
-#include "components/Transform.h"
-#include "Manager.h"
-#include "Entity.h"
+#include "../game/Entity.h"
+#include "../components/Transform.h"
+#include "../game/Manager.h"
+#include "../game/Entity.h"
 #include "../sdlutils/SDLUtils.h"
-#include "components/FramedImage.h"
-#include "components/asteroidTypeGen.h"
+#include "../components/FramedImage.h"
+#include "../components/asteroidTypeGen.h"
 
 void AsteroidsSystem::receive(const Message& m)
 {

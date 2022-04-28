@@ -1,10 +1,10 @@
 #include "FighterSystem.h"
 #include "../sdlutils/SDLUtils.h"
-#include "Manager.h"
+#include "../game/Manager.h"
 #include "GameCtrlSystem.h"
 #include "BulletsSystem.h"
-#include "components/Image.h"
-#include "components/Transform.h"
+#include "../components/Image.h"
+#include "../components/Transform.h"
 #include "../sdlutils/InputHandler.h"
 
 void FighterSystem::receive(const Message& m)

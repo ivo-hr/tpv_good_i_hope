@@ -1,12 +1,12 @@
 #include "RenderSystem.h"
 #include "../sdlutils/SDLUtils.h"
-#include "components/Transform.h"
+#include "../components/Transform.h"
 #include "GameCtrlSystem.h"
-#include "Manager.h"
-#include "Entity.h"
+#include "../game/Manager.h"
+#include "../game/Entity.h"
 #include "FighterSystem.h"
-#include "components/FramedImage.h"
-#include "components/Image.h"
+#include "../components/FramedImage.h"
+#include "../components/Image.h"
 
 void RenderSystem::receive(const Message& m)
 {

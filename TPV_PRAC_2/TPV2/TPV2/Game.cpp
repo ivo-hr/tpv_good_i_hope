@@ -1,6 +1,6 @@
 #include "Game.h"
 
-#include "src/game/components/Transform.h"
+#include "src/components/Transform.h"
 #include "src/game/ecs.h"
 #include "src/game/Entity.h"
 #include "src/sdlutils/InputHandler.h"
@@ -10,12 +10,12 @@
 #include "src/game/System.h"
 #include "src/game/Manager.h"
 
-#include "src/game/GameCtrlSystem.h"
-#include "src/game/AsteroidsSystem.h"
-#include "src/game/BulletsSystem.h"
-#include "src/game/CollisionsSystem.h"
-#include "src/game/FighterSystem.h"
-#include "src/game/RenderSystem.h"
+#include "src/systems/GameCtrlSystem.h"
+#include "src/systems/AsteroidsSystem.h"
+#include "src/systems/BulletsSystem.h"
+#include "src/systems/CollisionsSystem.h"
+#include "src/systems/FighterSystem.h"
+#include "src/systems/RenderSystem.h"
 
 Game::Game() {
 

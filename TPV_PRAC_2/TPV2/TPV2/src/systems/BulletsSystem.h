@@ -1,5 +1,5 @@
 #pragma once
-#include "System.h"
+#include "../game/System.h"
 
 class Entity;
 class Vector2D;

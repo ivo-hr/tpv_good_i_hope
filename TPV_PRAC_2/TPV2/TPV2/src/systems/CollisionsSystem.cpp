@@ -1,6 +1,6 @@
 #include "CollisionsSystem.h"
-#include "Manager.h"
-#include "components/Transform.h"
+#include "../game/Manager.h"
+#include "../components/Transform.h"
 #include "../utils/Collisions.h"
 
 void CollisionsSystem::receive(const Message& m)

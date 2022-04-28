@@ -1,11 +1,11 @@
 #include "BulletsSystem.h"
-#include "Entity.h"
+#include "../game/Entity.h"
 #include "../utils/Vector2D.h"
-#include "Manager.h"
+#include "../game/Manager.h"
 #include "GameCtrlSystem.h"
 #include "../sdlutils/SDLUtils.h"
-#include "components/Image.h"
-#include "components/Transform.h"
+#include "../components/Image.h"
+#include "../components/Transform.h"
 
 void BulletsSystem::receive(const Message& m)
 {

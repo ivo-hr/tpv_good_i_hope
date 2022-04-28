@@ -1,7 +1,7 @@
 #pragma once
-#include "System.h"
-#include "../game/components/Transform.h"
-#include "messages.h"
+#include "../game/System.h"
+#include "../components/Transform.h"
+#include "../game/messages.h"
 #include "GameCtrlSystem.h"
 
 class Entity;

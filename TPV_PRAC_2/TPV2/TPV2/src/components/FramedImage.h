@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "../Component.h"
+#include "../game/Component.h"
 
 class Transform;
 class Texture;
