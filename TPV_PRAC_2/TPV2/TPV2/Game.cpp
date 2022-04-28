@@ -1,7 +1,7 @@
 #include "Game.h"
 
 #include "src/components/Transform.h"
-#include "src/game/ecs.h"
+#include "src/ecs/ecs.h"
 #include "src/game/Entity.h"
 #include "src/sdlutils/InputHandler.h"
 #include "src/sdlutils/SDLUtils.h"

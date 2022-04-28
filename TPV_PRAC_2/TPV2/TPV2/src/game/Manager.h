@@ -7,7 +7,7 @@
 #include <cassert>
 
 #include "Component.h"
-#include "ecs.h"
+#include "../ecs/ecs.h"
 #include "messages.h"
 #include "Entity.h"
 #include "System.h"

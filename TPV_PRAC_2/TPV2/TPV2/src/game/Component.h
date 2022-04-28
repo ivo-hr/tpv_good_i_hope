@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "ecs.h"
+#include "../ecs/ecs.h"
 
 namespace ecs {
 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include "ecs.h"
+#include "../ecs/ecs.h"
 #include "Entity.h"
 
 using msgId_type = uint8_t;

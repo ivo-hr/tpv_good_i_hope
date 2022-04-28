@@ -114,52 +114,52 @@
     <ClInclude Include="src\game\Entity.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\ecs.h">
-      <Filter>Header Files\game</Filter>
-    </ClInclude>
     <ClInclude Include="src\game\Component.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
     <ClInclude Include="src\game\System.h">
       <Filter>Header Files\game\Sistemas</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\GameCtrlSystem.h">
-      <Filter>Header Files\game\Sistemas</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\AsteroidsSystem.h">
-      <Filter>Header Files\game\Sistemas</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\BulletsSystem.h">
-      <Filter>Header Files\game\Sistemas</Filter>
-    </ClInclude>
     <ClInclude Include="src\game\messages_defs.h">
       <Filter>Header Files\game</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\FighterSystem.h">
-      <Filter>Header Files\game\Sistemas</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\CollisionsSystem.h">
-      <Filter>Header Files\game\Sistemas</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\RenderSystem.h">
-      <Filter>Header Files\game\Sistemas</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\ecs_defs.h">
-      <Filter>Header Files\game</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\components\FramedImage.h">
-      <Filter>Header Files\game\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\components\Image.h">
-      <Filter>Header Files\game\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\components\Transform.h">
-      <Filter>Header Files\game\Components</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\components\asteroidTypeGen.h">
+    <ClInclude Include="src\ecs\ecs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ecs\ecs_defs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\FighterSystem.h">
+      <Filter>Header Files\game\Sistemas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\GameCtrlSystem.h">
+      <Filter>Header Files\game\Sistemas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\RenderSystem.h">
+      <Filter>Header Files\game\Sistemas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\CollisionsSystem.h">
+      <Filter>Header Files\game\Sistemas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\AsteroidsSystem.h">
+      <Filter>Header Files\game\Sistemas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\BulletsSystem.h">
+      <Filter>Header Files\game\Sistemas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\asteroidTypeGen.h">
+      <Filter>Header Files\game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\FramedImage.h">
+      <Filter>Header Files\game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Image.h">
+      <Filter>Header Files\game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Transform.h">
       <Filter>Header Files\game\Components</Filter>
     </ClInclude>
   </ItemGroup>
@@ -197,34 +197,34 @@
     <ClCompile Include="src\game\Manager.cpp">
       <Filter>Source Files\game</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\GameCtrlSystem.cpp">
-      <Filter>Source Files\game\Sistemas</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\AsteroidsSystem.cpp">
-      <Filter>Source Files\game\Sistemas</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\BulletsSystem.cpp">
-      <Filter>Source Files\game\Sistemas</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\FighterSystem.cpp">
-      <Filter>Source Files\game\Sistemas</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\CollisionsSystem.cpp">
-      <Filter>Source Files\game\Sistemas</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\RenderSystem.cpp">
-      <Filter>Source Files\game\Sistemas</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\components\FramedImage.cpp">
-      <Filter>Source Files\game\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\components\Image.cpp">
-      <Filter>Source Files\game\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\game</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\components\asteroidTypeGen.cpp">
+    <ClCompile Include="src\systems\AsteroidsSystem.cpp">
+      <Filter>Source Files\game\Sistemas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\BulletsSystem.cpp">
+      <Filter>Source Files\game\Sistemas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\CollisionsSystem.cpp">
+      <Filter>Source Files\game\Sistemas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\FighterSystem.cpp">
+      <Filter>Source Files\game\Sistemas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\GameCtrlSystem.cpp">
+      <Filter>Source Files\game\Sistemas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\RenderSystem.cpp">
+      <Filter>Source Files\game\Sistemas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Image.cpp">
+      <Filter>Source Files\game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\FramedImage.cpp">
+      <Filter>Source Files\game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\asteroidTypeGen.cpp">
       <Filter>Source Files\game\Components</Filter>
     </ClCompile>
   </ItemGroup>

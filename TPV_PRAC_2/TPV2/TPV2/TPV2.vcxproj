@@ -28,8 +28,8 @@
     <ClInclude Include="src\components\FramedImage.h" />
     <ClInclude Include="src\components\Image.h" />
     <ClInclude Include="src\components\Transform.h" />
-    <ClInclude Include="src\game\ecs.h" />
-    <ClInclude Include="src\game\ecs_defs.h" />
+    <ClInclude Include="src\ecs\ecs.h" />
+    <ClInclude Include="src\ecs\ecs_defs.h" />
     <ClInclude Include="src\game\Entity.h" />
     <ClInclude Include="src\systems\FighterSystem.h" />
     <ClInclude Include="src\systems\GameCtrlSystem.h" />

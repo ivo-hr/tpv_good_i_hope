@@ -7,7 +7,7 @@
 #include <vector>
 
 #include "Component.h"
-#include "ecs.h"
+#include "../ecs/ecs.h"
 
 namespace ecs {
 
