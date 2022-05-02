@@ -183,7 +183,6 @@ bool NetworkSystem::initHost() {
 
 	names_[0] = myName;
 	hostName = myName;
-
 	host_ = true;
 	side_ = 0;
 	connected_ = false;
@@ -230,6 +229,7 @@ bool NetworkSystem::initClient() {
 				m.deserialize(p_->data);
 				side_ = m.side;
 				chars_to_string(names_[0], m.name);
+				mngr_->getComponent<FighterInfo>(mngr_->getEntities(ecs::_grp_FIGHTERS)[0])->name_ = names_[0];
 				hostName = names_[0];
 				host_ = false;
 				connected_ = true;
@@ -289,8 +289,7 @@ void NetworkSystem::handleConnectionRequest() {
 }
 
 void NetworkSystem::sendStartRoundtRequest() {
-	if (isHost())
-		return;
+	if (isHost()) return;
 
 	net::StartRequestMsg m;
 
@@ -345,12 +344,18 @@ void NetworkSystem::handleBullets() {
 //}
 
 void NetworkSystem::handleStartRoundRequest() {
-	mngr_->getSystem<GameCtrlSystem>()->startGame();
+	Message msg;
+	msg.id = _m_ROUND_START;
+
+	mngr_->send(msg);
 }
 
 void NetworkSystem::handleStartTheRound() {
 	assert(!host_);
-	mngr_->getSystem<GameCtrlSystem>()->startGame();
+	Message msg;
+	msg.id = _m_ROUND_START;
+
+	mngr_->send(msg);
 }
 
 void NetworkSystem::handleFighterHit() {

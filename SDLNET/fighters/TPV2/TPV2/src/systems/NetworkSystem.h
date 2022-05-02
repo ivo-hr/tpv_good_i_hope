@@ -46,8 +46,8 @@ public:
 	void sendStartRoundtRequest();
 	void sendStartGameRequest();
 
-	std::string myName;
-	std::string hostName;
+	std::string myName = "waiting";
+	std::string hostName = "waiting";
 	std::array<std::string, 2> names_ = { "waiting", "waiting" };
 
 private:
