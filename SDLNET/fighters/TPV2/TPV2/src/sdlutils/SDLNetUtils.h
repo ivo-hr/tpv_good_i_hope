@@ -494,6 +494,34 @@ public:
 		return status;
 	}
 
+	template<typename T, std::size_t N>
+	struct array {
+		T v[N];
+
+		inline Uint8* serialize(Uint8* buf) {
+			return SDLNetUtils::serialize_array(v, N, buf);
+		}
+
+		inline Uint8* deserialize(Uint8* buf) {
+			return SDLNetUtils::deserialize_array(v, N, buf);
+		}
+
+		T& operator[](int i) {
+			return v[i];
+		}
+
+		const T& operator[](int i) const {
+			return v[i];
+		}
+
+		operator T* () {
+			return v;
+		}
+
+		operator const T* () const {
+			return v;
+		}
+	};
 	
 	
 private:
@@ -577,5 +605,4 @@ private:
 		memcpy(v, buf, N);
 		return buf + N;
 	}
-
 };
