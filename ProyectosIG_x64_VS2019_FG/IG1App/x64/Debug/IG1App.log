@@ -1,1 +1,17 @@
-﻿
+﻿  Camera.cpp
+  Entity.cpp
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Entity.cpp(641,50): warning C4244: 'argumento': conversión de 'float' a 'GLuint'; posible pérdida de datos
+  IG1App.cpp
+  Mesh.cpp
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(94,23): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(301,22): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(389,23): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(634,23): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(640,23): warning C4018: '<': no coinciden signed/unsigned
+  Scene.cpp
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(154,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(212,3): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(214,3): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+  main.cpp
+  Generando código...
+  IG1App.vcxproj -> C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe

@@ -80,5 +80,18 @@ protected:
 	GLuint* vIndices = nullptr;
 	GLuint mNumIndices = 0;
 };
+//--------------------------------------------------------------------------
+
+class MbR : public IndexMesh
+{
+public:
+	MbR(int mm, int nn, glm::dvec3* perf);
+	static MbR* generaMallaIndexadaPorRevolucion(int mm, int nn, glm::dvec3* perfil);
+
+protected:
+	int m;
+	int n;
+	dvec3* perfil;
+};
 
 #endif //_H_Scene_H_

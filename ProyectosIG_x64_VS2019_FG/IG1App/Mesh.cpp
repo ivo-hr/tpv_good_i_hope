@@ -661,3 +661,31 @@ void IndexMesh::draw() const
 {
     glDrawElements(mPrimitive, mNumIndices, GL_UNSIGNED_INT, vIndices);
 }
+
+MbR::MbR(int mm, int nn, glm::dvec3* perf) : IndexMesh()
+{
+    m = mm;
+    n = nn;
+    perfil = perf;
+}
+
+MbR* MbR::generaMallaIndexadaPorRevolucion(int mm, int nn, glm::dvec3* perfil)
+{
+    MbR* mesh = new MbR(mm, nn, perfil);
+
+    for (int i = 0; i < nn; i++)
+    {
+        GLdouble theta = i * 360 / nn;
+        GLdouble c = cos(radians(theta));
+        GLdouble s = sin(radians(theta));
+
+        for (int j = 0; j < mm; j++)
+        {
+            int indice = i * mm + j;
+            GLdouble x = c * perfil[j].x + s * perfil[j].z;
+            GLdouble z = -s * perfil[j].x + c * perfil[j].z;
+            vertices[indice] = dvec3(x, perfil[j].y, z);
+        }
+    }
+    return nullptr;
+}
