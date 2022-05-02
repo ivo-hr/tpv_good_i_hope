@@ -138,6 +138,9 @@ void FightersSystem::update() {
 				m.shoot.pos.y = bPos.getY();
 				m.shoot.vel.x = bVel.getX();
 				m.shoot.vel.y = bVel.getY();
+
+				m.shoot.net = false;
+
 				mngr_->send(m);
 				fInfo->lastShoot_ = sdlutils().currRealTime();
 			}

@@ -40,6 +40,7 @@ public:
 	}
 
 	void sendFighterPosition(Transform *tr);
+	void sendBullet(const Message& m);
 	void sendBulletsPosition(std::vector<Transform*> tr);
 	void sendBulletsVelocity(std::vector<Transform*> tr);
 	void sendStartRoundtRequest();
@@ -51,9 +52,11 @@ private:
 	bool initClient();
 	bool initConnection(Uint16 port);
 
+	void sendBulletVelocity();
+
 	void handleConnectionRequest();
 	void handleFighterPos();
-	void handleBulletsPos();
+	void handleBullets();
 	void handleBulletsVel();
 	void handleStartGameRequest();
 	void handleStartRoundRequest();
