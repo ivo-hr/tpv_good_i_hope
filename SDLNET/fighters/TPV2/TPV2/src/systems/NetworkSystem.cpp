@@ -116,6 +116,9 @@ void NetworkSystem::update() {
 		case net::_CONNECTION_REQUEST:
 			handleConnectionRequest();
 			break;
+		case net::_REQUEST_ACCEPTED:
+
+			break;
 		case net::_FIGHTER_POS:
 			handleFighterPos();
 			break;
