@@ -229,7 +229,7 @@ bool NetworkSystem::initClient() {
 				m.deserialize(p_->data);
 				side_ = m.side;
 				chars_to_string(names_[0], m.name);
-				mngr_->getComponent<FighterInfo>(mngr_->getEntities(ecs::_grp_FIGHTERS)[0])->name_ = names_[0];
+				//mngr_->getComponent<FighterInfo>(mngr_->getEntities(ecs::_grp_FIGHTERS)[0])->name_ = names_[0];
 				hostName = names_[0];
 				host_ = false;
 				connected_ = true;
