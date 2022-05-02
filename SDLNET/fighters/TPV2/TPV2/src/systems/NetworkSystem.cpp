@@ -114,7 +114,7 @@ void NetworkSystem::update() {
 			handleFighterPos();
 			break;
 		case net::_BULLETS_POS:
-			handleBulletsPos();
+			handleBullets();
 			break;
 		case net::_BULLETS_VEL:
 			handleBulletsVel();
@@ -246,20 +246,21 @@ void NetworkSystem::sendFighterPosition(Transform *tr) {
 	SDLNetUtils::serializedSend(m, p_, sock_, otherPlayerAddr_);
 }
 
-void NetworkSystem::sendBulletPosition(Transform* tr) {
+void NetworkSystem::sendBullet(const Message& m) {
 	if (!connected_)
 		return;
 
-	net::BulletsPosMsg m;
-	m.id = net::_BULLETS_POS;
-	m.side = side_;
-	m.x = tr->pos_.getX();
-	m.y = tr->pos_.getY();
-	p_->address = otherPlayerAddr_;
-	SDLNetUtils::serializedSend(m, p_, sock_, otherPlayerAddr_);
+	net::BullGenMsg send;
+
+	send.pos.x = m.shoot.pos.x;
+	send.pos.y = m.shoot.pos.y;
+	send.vel.x = m.shoot.vel.x;
+	send.vel.y = m.shoot.vel.y;
+
+	SDLNetUtils::serializedSend(send, p_, sock_, otherPlayerAddr_);
 }
 
-void NetworkSystem::sendBulletVelocity(Transform* tr) {
+void NetworkSystem::sendBulletVelocity() {
 	if (!connected_ || !host_)
 		return;
 
@@ -314,19 +315,29 @@ void NetworkSystem::handleFighterPos() {
 	mngr_->getSystem<FightersSystem>()->changeFighterPos(m.side, m.x, m.y);
 }
 
-void NetworkSystem::handleBulletsPos() {
+void NetworkSystem::handleBullets() {
 	assert(!host_);
-	net::BulletsPosMsg m;
+	net::BullGenMsg m;
 	m.deserialize(p_->data);
-	//mngr_->getSystem<BulletsSystem>()->changeBulletPos(m.x, m.y);
+
+	Message send;
+	send.shoot.pos.x = m.pos.x;
+	send.shoot.pos.y = m.pos.y;
+	send.shoot.vel.x = m.vel.x;
+	send.shoot.vel.y = m.vel.y;
+
+	send.shoot.net = true;
+
+	mngr_->getSystem<BulletsSystem>()->recieve(send);
+
 }
 
-void NetworkSystem::handleBulletsVel() {
-	assert(!host_);
-	net::BulletsVelMsg m;
-	m.deserialize(p_->data);
-	//mngr_->getSystem<BulletsSystem>()->changeBulletVel(m.x, m.y);
-}
+//void NetworkSystem::handleBulletsVel() {
+//	assert(!host_);
+//	net::BulletsVelMsg m;
+//	m.deserialize(p_->data);
+//	mngr_->getSystem<BulletsSystem>()->changeBallVel(m.x, m.y);
+//}
 
 void NetworkSystem::handleStartRoundRequest() {
 	mngr_->getSystem<GameCtrlSystem>()->startGame();

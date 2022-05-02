@@ -43,6 +43,8 @@ struct Message {
 				float x;
 				float y;
 			} vel;
+
+			bool net;
 		} shoot;
 
 	};

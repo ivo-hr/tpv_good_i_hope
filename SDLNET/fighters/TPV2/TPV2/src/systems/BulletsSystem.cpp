@@ -8,6 +8,7 @@
 #include "../game/messages_defs.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../utils/Vector2D.h"
+#include "NetworkSystem.h"
 
 BulletsSystem::BulletsSystem() :
 		running_(false) {
@@ -17,6 +18,10 @@ BulletsSystem::~BulletsSystem() {
 }
 
 void BulletsSystem::recieve(const Message &m) {
+	
+	if (!mngr_->getSystem<NetworkSystem>()->isHost())
+		return;
+	
 	switch (m.id) {
 	case _m_SHOOT:
 		handleShoot(m);
@@ -78,7 +83,11 @@ void BulletsSystem::handleShoot(const Message &m) {
 	mngr_->addComponent<Transform>(b, bPos, vel, bw, bh, rot);
 	mngr_->addComponent<Image>(b, &sdlutils().images().at("fire"));
 
+	//
+
 	sdlutils().soundEffects().at("gunshot").play();
+
+	if (!m.shoot.net) mngr_->getSystem<NetworkSystem>()->sendBullet(m);
 }
 
 void BulletsSystem::handleGameOver(const Message&) {

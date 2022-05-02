@@ -83,5 +83,21 @@ struct BallExitMsg: Message {
 	_IMPL_SERIALIAZION_WITH_BASE_(Message,side)
 };
 
+
+struct BullGenMsg: Message{
+		struct {
+			float x;
+			float y;
+		} pos;
+		struct {
+			float x;
+			float y;
+		} vel;
+
+		_IMPL_SERIALIAZION_WITH_BASE_(Message, pos.x, pos.y, vel.x, vel.y)
+};
+
+
+
 }
 
