@@ -1,0 +1,51 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
+  Manager.cpp
+  Game.cpp
+  JSON.cpp
+  JSONValue.cpp
+  json_demo.cpp
+  main.cpp
+  SDLUtils.cpp
+  sdlutils_demo.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\sdlutils\SDLUtils.h(47): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\sdlutils\SDLUtils.h(192): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
+  SoundEffect.cpp
+  Texture.cpp
+  BallSystem.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\sdlutils\SDLUtils.h(47): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\sdlutils\SDLUtils.h(192): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\systems\BallSystem.cpp(53,72): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\systems\BallSystem.cpp(53,43): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\systems\BallSystem.cpp(73,38): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\systems\BallSystem.cpp(73,16): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  CollisionsSystem.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\sdlutils\SDLUtils.h(47): message : al compilar la función del miembro clase plantilla "SoundEffect &SDLUtils::map_access_wrapper<SoundEffect>::at(std::string)"
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\sdlutils\SDLUtils.h(194): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<SoundEffect>" que se está compilando
+  GameCtrlSystem.cpp
+  NetworkSystem.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\sdlutils\SDLNetUtils.h(467,16): warning C4244: '=': conversión de '__int64' a 'int'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\systems\NetworkSystem.cpp(99): message : Vea la referencia a la creación de una instancia de la función plantilla "int SDLNetUtils::serializedSend<net::Message>(T &,UDPpacket *,UDPsocket)" que se está compilando
+          with
+          [
+              T=net::Message
+          ]
+  PaddlesSystem.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\systems\PaddlesSystem.cpp(135,42): warning C4244: 'argumento': conversión de 'const _Ty2' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty2=Sint32
+          ]
+  RenderSystem.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\sdlutils\SDLUtils.h(47): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\sdlutils\SDLUtils.h(192): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\systems\RenderSystem.cpp(107,64): warning C4305: 'argumento': truncamiento de '__int64' a 'unsigned long'
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\TPV2\src\systems\RenderSystem.cpp(107,53): warning C4309: 'argumento': truncamiento de valor constante
+  Collisions.cpp
+  Vector2D.cpp
+  Generando código...
+     Creando biblioteca C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\bin\TPV2Debug.lib y objeto C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\bin\TPV2Debug.exp
+  TPV2.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\ping_pong\TPV2\bin\TPV2Debug.exe

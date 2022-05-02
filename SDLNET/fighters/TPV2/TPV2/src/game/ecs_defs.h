@@ -29,5 +29,6 @@
 	_sys_BULLETS, \
 	_sys_GAMECTRL, \
 	_sys_COLLISIONS, \
- 	_sys_RENDER
+ 	_sys_RENDER, \
+	_sys_NETWORK
 
