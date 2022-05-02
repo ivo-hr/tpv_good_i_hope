@@ -72,7 +72,7 @@ void RenderSystem::drawMsgs() {
 					20);
 
 			Texture winnerMsg(sdlutils().renderer(), //
-					"Player " + std::to_string(killedId_) + " has been shot!", //
+					mngr_->getComponent<FighterInfo>(mngr_->getEntities(ecs::_grp_FIGHTERS)[killedId_])->name_ + " has been shot!", //
 					sdlutils().fonts().at("ARIAL24"), //
 					build_sdlcolor(0xffAA44ff));
 

@@ -179,6 +179,7 @@ bool NetworkSystem::initHost() {
 		return false;
 
 	names_[0] = myName;
+	hostName = myName;
 
 	host_ = true;
 	side_ = 0;
@@ -226,7 +227,7 @@ bool NetworkSystem::initClient() {
 				m.deserialize(p_->data);
 				side_ = m.side;
 				chars_to_string(names_[0], m.name);
-				mngr_->getComponent<FighterInfo>(mngr_->getEntities(ecs::_grp_FIGHTERS)[0])->name_ = names_[0];
+				hostName = names_[0];
 				host_ = false;
 				connected_ = true;
 			}
@@ -285,7 +286,8 @@ void NetworkSystem::handleConnectionRequest() {
 }
 
 void NetworkSystem::sendStartRoundtRequest() {
-	assert(!isHost());
+	if (isHost())
+		return;
 
 	net::StartRequestMsg m;
 

@@ -60,7 +60,7 @@ struct Message {
 struct ReqAccMsg: Message {
 
 	Uint8 side;
-	array<char, 11> name;
+	char name[11];
 
 	_IMPL_SERIALIAZION_WITH_BASE_(Message, side, name)
 };
@@ -99,7 +99,7 @@ struct BulletsVelMsg: Message {
 struct StartRequestMsg: Message {
 
 	Uint8 side;
-	array<char, 11> name;
+	char name[11];
 
 	_IMPL_SERIALIAZION_WITH_BASE_(Message, side, name)
 };
