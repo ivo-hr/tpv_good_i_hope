@@ -187,6 +187,14 @@ void FightersSystem::changeFighterTransform(uint8_t side, float x, float y, floa
 
 void FightersSystem::handleGameStart(const Message&) {
 	running_ = true;
+	tr0_->pos_ = Vector2D(10.0f, (sdlutils().height() - tr0_->height_) / 2.0f);
+	tr0_->vel_ = Vector2D();
+	tr0_->rot_ = 90.0f;
+
+	tr1_->pos_ = Vector2D(sdlutils().width() - tr1_->width_ - 10.0f,
+		(sdlutils().height() - tr1_->height_) / 2.0f);
+	tr1_->vel_ = Vector2D();
+	tr1_->rot_ = -90.0f;
 }
 
 void FightersSystem::handleGameOver(const Message&) {

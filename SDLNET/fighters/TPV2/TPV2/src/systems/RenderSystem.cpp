@@ -12,6 +12,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../sdlutils/Texture.h"
 #include "GameCtrlSystem.h"
+#include "NetworkSystem.h"
 
 RenderSystem::RenderSystem() :
 		running_(false), over_(false), killedId_() {
@@ -47,11 +48,14 @@ void RenderSystem::initSystem() {
 }
 
 void RenderSystem::update() {
-	drawMsgs();
-	if (running_) {
-		drawFighters();
-		drawBullets();
+	if (mngr_->getSystem<NetworkSystem>()->isReday()) {
+		drawMsgs();
 	}
+	else {
+		drawWaitingMsg();
+	}
+	drawFighters();
+	drawBullets();
 }
 
 void RenderSystem::drawMsgs() {
@@ -163,19 +167,21 @@ void RenderSystem::drawBox(ecs::Entity *e) {
 	SDL_RenderDrawLine(renderer, lb.getX() + x, lb.getY() + y, lu.getX() + x,
 			lu.getY() + y);
 
-	/*
-	 // draw center point
-	 SDL_SetRenderDrawColor(renderer, COLOREXP(build_sdlcolor(0xff000000)));
-	 SDL_Rect dest = build_sdlrect(x - 1, y - 1, 3, 3);
-	 SDL_RenderFillRect(renderer, &dest);
-
-	 // draw velocity vector
-	 SDL_SetRenderDrawColor(renderer, COLOREXP(build_sdlcolor(0x00ff0011)));
-
-	 auto vel = tr->vel_;
-	 float wh = std::min(tr->height_, tr->width_) / 2.0f; // minimum of width an height
-	 vel = vel * wh / 2.0f;
-	 SDL_RenderDrawLine(renderer, x, y, vel.getX() + x, vel.getY() + y);
-	 */
 }
 
+void RenderSystem::drawWaitingMsg() {
+	auto port = mngr_->getSystem<NetworkSystem>()->getPort();
+
+	Texture waiting(
+		sdlutils().renderer(), //
+		"Waiting for the other to connect ...",
+		sdlutils().fonts().at("ARIAL16"), build_sdlcolor(0xccddaaaff));
+	waiting.render((sdlutils().width() - waiting.width()) / 2, 10);
+
+	Texture portmsg(
+		sdlutils().renderer(), //
+		"Your are connected at port " + std::to_string(port),
+		sdlutils().fonts().at("ARIAL16"), build_sdlcolor(0x1155aaff));
+	portmsg.render((sdlutils().width() - portmsg.width()) / 2,
+		waiting.height() + 30);
+}

@@ -31,6 +31,8 @@ private:
 	void handleGameOver(const Message&);
 	void drawBox(ecs::Entity *e);
 
+	void drawWaitingMsg();
+
 	bool running_;
 	bool over_;
 	uint8_t killedId_;

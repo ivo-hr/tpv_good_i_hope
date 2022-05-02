@@ -6,6 +6,7 @@
 #include "../ecs/Manager.h"
 #include "../game/messages_defs.h"
 #include "../sdlutils/InputHandler.h"
+#include "NetworkSystem.h"
 
 GameCtrlSystem::GameCtrlSystem() :
 		state_(_STOPPED) {
@@ -21,11 +22,14 @@ void GameCtrlSystem::update() {
 	auto &ihldr = ih();
 
 	if (state_ != _RUNNING) {
-		if (ihldr.isKeyDown(SDL_SCANCODE_SPACE)) {
-			state_ = _RUNNING;
-			Message m;
-			m.id = _m_ROUND_START;
-			mngr_->send(m);
+		if (mngr_->getSystem<NetworkSystem>()->isReday())
+		{
+			if (ihldr.isKeyDown(SDL_SCANCODE_SPACE)) {
+				state_ = _RUNNING;
+				Message m;
+				m.id = _m_ROUND_START;
+				mngr_->send(m);
+			}
 		}
 	}
 }
