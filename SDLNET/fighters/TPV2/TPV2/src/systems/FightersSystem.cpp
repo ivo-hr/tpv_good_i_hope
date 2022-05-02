@@ -1,6 +1,7 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
 #include "FightersSystem.h"
+#include "NetworkSystem.h"
 
 #include "../components/CtrlKeys.h"
 #include "../components/FighterInfo.h"
@@ -66,6 +67,7 @@ void FightersSystem::initSystem() {
 			SDL_SCANCODE_RIGHT, //
 			SDL_SCANCODE_RETURN);
 
+	fighters_[0] = fighter0;
 	// Fighter 1
 	//
 	auto fighter1 = mngr_->addEntity(ecs::_grp_FIGHTERS);
@@ -92,81 +94,86 @@ void FightersSystem::initSystem() {
 			SDL_SCANCODE_H, //
 			SDL_SCANCODE_L, //
 			SDL_SCANCODE_D);
+	fighters_[1] = fighter1;
 
 }
 
 void FightersSystem::update() {
+
 	if (!running_)
 		return;
 
+	auto netSys = mngr_->getSystem<NetworkSystem>();
+
+	auto side = netSys->getSide();
+
 	auto &ihdlr = ih();
 
-	for (Entity *e : mngr_->getEntities(ecs::_grp_FIGHTERS)) {
+	auto tr = mngr_->getComponent<Transform>(fighters_[side]);
+	auto keys = mngr_->getComponent<CtrlKeys>(fighters_[side]);
 
-		auto tr = mngr_->getComponent<Transform>(e);
-		auto keys = mngr_->getComponent<CtrlKeys>(e);
+	// handle input
+	if (ihdlr.isKeyDown(keys->up_)) {
+		auto thrust_ = 0.2f;
+		if (tr->vel_.magnitude() < 5.0f)
+			tr->vel_ = tr->vel_
+					+ Vector2D(0, -1).rotate(tr->rot_) * thrust_;
+	} else if (ihdlr.isKeyDown(keys->right_)) {
+		tr->rot_ += 2.0f;
+	}
 
-		// handle input
-		if (ihdlr.isKeyDown(keys->up_)) {
-			auto thrust_ = 0.2f;
-			if (tr->vel_.magnitude() < 5.0f)
-				tr->vel_ = tr->vel_
-						+ Vector2D(0, -1).rotate(tr->rot_) * thrust_;
-		} else if (ihdlr.isKeyDown(keys->right_)) {
-			tr->rot_ += 2.0f;
-		}
+	if (ihdlr.isKeyDown(keys->down_)) {
+		tr->vel_ = tr->vel_ * 0.75f;
+	} else if (ihdlr.isKeyDown(keys->left_)) {
+		tr->rot_ -= 2.0f;
+	}
 
-		if (ihdlr.isKeyDown(keys->down_)) {
-			tr->vel_ = tr->vel_ * 0.75f;
-		} else if (ihdlr.isKeyDown(keys->left_)) {
-			tr->rot_ -= 2.0f;
-		}
+	if (ihdlr.isKeyDown(keys->shoot_)) {
+		auto fInfo = mngr_->getComponent<FighterInfo>(fighters_[side]);
+		if (fInfo->lastShoot_ + fInfo->shootRate_
+				< sdlutils().currRealTime()) {
+			auto bPos = tr->pos_
+					+ Vector2D(tr->width_ / 2.0f, tr->height_ / 2.0f)
+					- Vector2D(0.0f, tr->height_ / 2.0f + 5.0f).rotate(
+							tr->rot_);
+			auto bVel = Vector2D(0.0f, -1.0f).rotate(tr->rot_)
+					* (tr->vel_.magnitude() + 5.0f);
+			Message m;
+			m.id = _m_SHOOT;
+			m.shoot.pos.x = bPos.getX();
+			m.shoot.pos.y = bPos.getY();
+			m.shoot.vel.x = bVel.getX();
+			m.shoot.vel.y = bVel.getY();
 
-		if (ihdlr.isKeyDown(keys->shoot_)) {
-			auto fInfo = mngr_->getComponent<FighterInfo>(e);
-			if (fInfo->lastShoot_ + fInfo->shootRate_
-					< sdlutils().currRealTime()) {
-				auto bPos = tr->pos_
-						+ Vector2D(tr->width_ / 2.0f, tr->height_ / 2.0f)
-						- Vector2D(0.0f, tr->height_ / 2.0f + 5.0f).rotate(
-								tr->rot_);
-				auto bVel = Vector2D(0.0f, -1.0f).rotate(tr->rot_)
-						* (tr->vel_.magnitude() + 5.0f);
-				Message m;
-				m.id = _m_SHOOT;
-				m.shoot.pos.x = bPos.getX();
-				m.shoot.pos.y = bPos.getY();
-				m.shoot.vel.x = bVel.getX();
-				m.shoot.vel.y = bVel.getY();
+			m.shoot.net = false;
 
-				m.shoot.net = false;
-
-				mngr_->send(m);
-				fInfo->lastShoot_ = sdlutils().currRealTime();
-			}
-		}
-
-		// move
-		tr->move();
-
-		// reduce velocity
-		tr->vel_ = tr->vel_ * 0.99f;
-		if (tr->vel_.magnitude() < 0.1f)
-			tr->vel_ = Vector2D(0.0f, 0.0f);
-
-		// show at opposite side
-		if (tr->pos_.getX() < -tr->width_) {
-			tr->pos_.setX(sdlutils().width());
-		} else if (tr->pos_.getX() > sdlutils().width()) {
-			tr->pos_.setX(-tr->width_);
-		}
-
-		if (tr->pos_.getY() < -tr->height_) {
-			tr->pos_.setY(sdlutils().height());
-		} else if (tr->pos_.getY() > sdlutils().height()) {
-			tr->pos_.setY(-tr->height_);
+			mngr_->send(m);
+			fInfo->lastShoot_ = sdlutils().currRealTime();
 		}
 	}
+
+	// move
+	tr->move();
+
+	// reduce velocity
+	tr->vel_ = tr->vel_ * 0.99f;
+	if (tr->vel_.magnitude() < 0.1f)
+		tr->vel_ = Vector2D(0.0f, 0.0f);
+
+	// show at opposite side
+	if (tr->pos_.getX() < -tr->width_) {
+		tr->pos_.setX(sdlutils().width());
+	} else if (tr->pos_.getX() > sdlutils().width()) {
+		tr->pos_.setX(-tr->width_);
+	}
+
+	if (tr->pos_.getY() < -tr->height_) {
+		tr->pos_.setY(sdlutils().height());
+	} else if (tr->pos_.getY() > sdlutils().height()) {
+		tr->pos_.setY(-tr->height_);
+	}
+
+	netSys->sendFighterPosition(tr);
 
 }
 

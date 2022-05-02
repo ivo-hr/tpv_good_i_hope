@@ -1,4 +1,8 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
-  main.cpp
-     Creating library F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\SDLNET\fighters\TPV2\bin\TPV2Debug.lib and object F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\SDLNET\fighters\TPV2\bin\TPV2Debug.exp
-  TPV2.vcxproj -> F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\SDLNET\fighters\TPV2\bin\TPV2Debug.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
+  FightersSystem.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\fighters\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\fighters\TPV2\TPV2\src\sdlutils\SDLUtils.h(47): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\fighters\TPV2\TPV2\src\sdlutils\SDLUtils.h(192): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\fighters\TPV2\TPV2\src\systems\FightersSystem.cpp(165,33): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\fighters\TPV2\TPV2\src\systems\FightersSystem.cpp(171,34): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  TPV2.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\SDLNET\fighters\TPV2\bin\TPV2Debug.exe
