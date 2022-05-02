@@ -19,35 +19,6 @@ enum MsgId : Uint8 {
 	_FIGHTER_HIT, //
 	_GAME_OVER, //
 	_DISCONNECTING, //
-}; 
-
-template<typename T, std::size_t N>
-struct array {
-	T v[N];
-
-	inline Uint8* serialize(Uint8* buf) {
-		return SDLNetUtils::serialize_array(v, N, buf);
-	}
-
-	inline Uint8* deserialize(Uint8* buf) {
-		return SDLNetUtils::deserialize_array(v, N, buf);
-	}
-
-	T& operator[](int i) {
-		return v[i];
-	}
-
-	const T& operator[](int i) const {
-		return v[i];
-	}
-
-	operator T* () {
-		return v;
-	}
-
-	operator const T* () const {
-		return v;
-	}
 };
 
 struct Message {
@@ -60,8 +31,9 @@ struct Message {
 struct ReqAccMsg: Message {
 
 	Uint8 side;
-	array<char, 11> name;
+	char name[11];
 
+	//
 	_IMPL_SERIALIAZION_WITH_BASE_(Message, side, name)
 };
 
@@ -99,8 +71,9 @@ struct BulletsVelMsg: Message {
 struct StartRequestMsg: Message {
 
 	Uint8 side;
-	array<char, 11> name;
+	char name[11];
 
+	//
 	_IMPL_SERIALIAZION_WITH_BASE_(Message, side, name)
 };
 
