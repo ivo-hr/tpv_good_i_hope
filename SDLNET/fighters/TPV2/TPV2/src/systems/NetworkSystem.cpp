@@ -113,7 +113,7 @@ void NetworkSystem::update() {
 		case net::_FIGHTER_POS:
 			handleFighterPos();
 			break;
-		case net::_BULLETS_POS:
+		case net::_BULLETS_REC:
 			handleBullets();
 			break;
 		case net::_START_ROUND_REQUEST:
@@ -248,7 +248,7 @@ void NetworkSystem::sendBullet(const Message& m) {
 		return;
 
 	net::BullGenMsg send;
-
+	send.id = net::_BULLETS_REC;
 	send.pos.x = m.shoot.pos.x;
 	send.pos.y = m.shoot.pos.y;
 	send.vel.x = m.shoot.vel.x;
