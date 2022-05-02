@@ -2,15 +2,17 @@
 
 #include "NetworkSystem.h"
 
-//#include <iostream>
-//
+#include <iostream>
+
 #include "../components/Transform.h"
+#include "../components/FighterInfo.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/SDLNetUtils.h"
 #include "../utils/Vector2D.h"
-//#include "BallSystem.h"
+#include "FightersSystem.h"
+#include "BulletsSystem.h"
 #include "GameCtrlSystem.h"
-//#include "network_messages.h"
+#include "network_messages.h"
 //#include "PaddlesSystem.h"
 
 NetworkSystem::NetworkSystem() :
@@ -32,27 +34,26 @@ NetworkSystem::~NetworkSystem() {
 	}
 }
 
-/*
 void NetworkSystem::recieve(const Message &m) {
 	if (!host_)
 		return;
 
 	switch (m.id) {
-	case _m_ROUND_START:
+	case _m_GAME_START:
 		tellOtherClientToStartRound();
 		break;
 	case _m_NEW_GAME:
 		tellOtherClientToStartGame();
 		break;
-	case _m_BALL_EXIT:
-		tellOtherClientBallExit(
-				static_cast<GameCtrlSystem::Side>(m.ball_exit.side));
+	case _m_BULLET_HIT_FIGHTER:
+		tellOtherClientFighterHit(
+			static_cast<GameCtrlSystem::Side>(
+				mngr_->getComponent<FighterInfo>(m.bullet_hit.fighter_)->id_));
 		break;
 	default:
 		break;
 	}
 }
-*/
 
 void NetworkSystem::initSystem() {
 }
@@ -90,7 +91,6 @@ bool NetworkSystem::connect() {
 	return success;
 }
 
-/*
 void NetworkSystem::disconnect() {
 	if (!connected_)
 		return;
@@ -102,9 +102,7 @@ void NetworkSystem::disconnect() {
 	SDLNetUtils::serializedSend(m, p_, sock_);
 
 }
-*/
 
-/*
 void NetworkSystem::update() {
 	net::Message m;
 	while (SDLNetUtils::deserializedReceive(m, p_, sock_) > 0) {
@@ -112,14 +110,14 @@ void NetworkSystem::update() {
 		case net::_CONNECTION_REQUEST:
 			handleConnectionRequest();
 			break;
-		case net::_PADDLE_POS:
-			handlePaddlePos();
+		case net::_FIGHTER_POS:
+			handleFighterPos();
 			break;
-		case net::_BALL_POS:
-			handleBallPos();
+		case net::_BULLETS_POS:
+			handleBulletsPos();
 			break;
-		case net::_BALL_VEL:
-			handleBallVel();
+		case net::_BULLETS_VEL:
+			handleBulletsVel();
 			break;
 		case net::_START_GAME_REQUEST:
 			handleStartGameRequest();
@@ -133,8 +131,8 @@ void NetworkSystem::update() {
 		case net::_START_THE_ROUND:
 			handleStartTheRound();
 			break;
-		case net::_BALL_EXIT:
-			handleBallExit();
+		case net::_FIGHTER_HIT:
+			handleFighterHit();
 			break;
 		case net::_DISCONNECTING:
 			handleDisconnecting();
@@ -146,7 +144,6 @@ void NetworkSystem::update() {
 	}
 
 }
-*/
 
 bool NetworkSystem::initConnection(Uint16 port) {
 	sock_ = SDLNet_UDP_Open(port);
@@ -192,7 +189,6 @@ bool NetworkSystem::initHost() {
 
 }
 
-/*
 bool NetworkSystem::initClient() {
 
 	Uint16 port;
@@ -242,56 +238,46 @@ bool NetworkSystem::initClient() {
 	return true;
 
 }
-*/
 
-/*
-void NetworkSystem::sendPaddlePosition(Transform *tr) {
+void NetworkSystem::sendFighterPosition(Transform *tr) {
 	if (!connected_)
 		return;
 
-	net::PaddelPosMsg m;
-	m.id = net::_PADDLE_POS;
+	net::FighterPosMsg m;
+	m.id = net::_FIGHTER_POS;
 	m.side = side_;
 	m.x = tr->pos_.getX();
 	m.y = tr->pos_.getY();
 	p_->address = otherPlayerAddr_;
 	SDLNetUtils::serializedSend(m, p_, sock_, otherPlayerAddr_);
 }
-*/
 
-/*
-void NetworkSystem::sendBallPosition(Transform *tr) {
+void NetworkSystem::sendBulletPosition(Transform* tr) {
 	if (!connected_)
 		return;
 
-	net::BallPosMsg m;
-	m.id = net::_BALL_POS;
+	net::BulletsPosMsg m;
+	m.id = net::_BULLETS_POS;
 	m.side = side_;
 	m.x = tr->pos_.getX();
 	m.y = tr->pos_.getY();
 	p_->address = otherPlayerAddr_;
 	SDLNetUtils::serializedSend(m, p_, sock_, otherPlayerAddr_);
 }
-*/
 
-/*
-void NetworkSystem::sendBallVelocity(Transform *tr) {
+void NetworkSystem::sendBulletVelocity(Transform* tr) {
 	if (!connected_ || !host_)
 		return;
 
-	net::BallVelMsg m;
-	m.id = net::_BALL_VEL;
+	net::BulletsVelMsg m;
+	m.id = net::_BULLETS_VEL;
 	m.side = side_;
-	m.x = tr->vel_.getX();
-	m.y = tr->vel_.getY();
-
+	m.x = tr->pos_.getX();
+	m.y = tr->pos_.getY();
 	p_->address = otherPlayerAddr_;
 	SDLNetUtils::serializedSend(m, p_, sock_, otherPlayerAddr_);
 }
-*/
 
-
-/*
 void NetworkSystem::handleConnectionRequest() {
 
 	if (!connected_ && host_) {
@@ -304,7 +290,7 @@ void NetworkSystem::handleConnectionRequest() {
 	}
 }
 
-void NetworkSystem::sendStarRoundtRequest() {
+void NetworkSystem::sendStartRoundtRequest() {
 	assert(!isHost());
 
 	net::StartRequestMsg m;
@@ -316,7 +302,7 @@ void NetworkSystem::sendStarRoundtRequest() {
 
 }
 
-void NetworkSystem::sendStarGameRequest() {
+void NetworkSystem::sendStartGameRequest() {
 	assert(!isHost());
 
 	net::StartRequestMsg m;
@@ -328,29 +314,27 @@ void NetworkSystem::sendStarGameRequest() {
 
 }
 
-void NetworkSystem::handlePaddlePos() {
-	net::PaddelPosMsg m;
+void NetworkSystem::handleFighterPos() {
+	net::FighterPosMsg m;
 	m.deserialize(p_->data);
-	mngr_->getSystem<PaddlesSystem>()->changePaddlePos(m.side, m.x, m.y);
+	mngr_->getSystem<FightersSystem>()->changePaddlePos(m.side, m.x, m.y);
 }
 
-void NetworkSystem::handleBallPos() {
+void NetworkSystem::handleBulletsPos() {
 	assert(!host_);
-	net::BallPosMsg m;
+	net::BulletsPosMsg m;
 	m.deserialize(p_->data);
-	mngr_->getSystem<BallSystem>()->changeBallPos(m.x, m.y);
+	mngr_->getSystem<BulletsSystem>()->changeBallPos(m.x, m.y);
 }
 
-void NetworkSystem::handleBallVel() {
+void NetworkSystem::handleBulletsVel() {
 	assert(!host_);
-	net::BallVelMsg m;
+	net::BulletsVelMsg m;
 	m.deserialize(p_->data);
-	mngr_->getSystem<BallSystem>()->changeBallVel(m.x, m.y);
+	mngr_->getSystem<BulletsSystem>()->changeBallVel(m.x, m.y);
 }
-*/
 
 
-/*
 void NetworkSystem::handleStartGameRequest() {
 	mngr_->getSystem<GameCtrlSystem>()->startGame();
 }
@@ -374,7 +358,7 @@ void NetworkSystem::handleGameOver() {
 	mngr_->getSystem<GameCtrlSystem>()->gameOver();
 }
 
-void NetworkSystem::handleBallExit() {
+void NetworkSystem::handleFighterHit() {
 	net::BallExitMsg m;
 	m.deserialize(p_->data);
 	mngr_->getSystem<GameCtrlSystem>()->onBallExit(m.side);
@@ -401,13 +385,12 @@ void NetworkSystem::tellOtherClientToStartGame() {
 	SDLNetUtils::serializedSend(m, p_, sock_, otherPlayerAddr_);
 }
 
-void NetworkSystem::tellOtherClientBallExit(Uint8 side) {
+void NetworkSystem::tellOtherClientFighterHit(uint8_t hitId_) {
 	net::BallExitMsg m;
 
-	m.id = net::_BALL_EXIT;
-	m.side = side;
+	m.id = net::_FIGHTER_HIT;
+	m.side = hitId_;
 	SDLNetUtils::serializedSend(m, p_, sock_, otherPlayerAddr_);
 
 }
-*/
 

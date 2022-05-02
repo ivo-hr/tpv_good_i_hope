@@ -16,12 +16,12 @@ public:
 	NetworkSystem();
 	virtual ~NetworkSystem();
 
-	//void recieve(const Message&) override;
+	void recieve(const Message&) override;
 	void initSystem() override;
-	//void update() override;
+	void update() override;
 
 	bool connect();
-	//void disconnect();
+	void disconnect();
 
 	inline Uint8 getSide() {
 		return side_;
@@ -39,33 +39,33 @@ public:
 		return port_;
 	}
 
-	//void sendPaddlePosition(Transform *tr);
-	//void sendBallPosition(Transform *tr);
-	//void sendBallVelocity(Transform *tr);
-	//void sendStarRoundtRequest();
-	//void sendStarGameRequest();
+	void sendFighterPosition(Transform *tr);
+	void sendBulletsPosition(std::vector<Transform*> tr);
+	void sendBulletsVelocity(std::vector<Transform*> tr);
+	void sendStartRoundtRequest();
+	void sendStartGameRequest();
 
 private:
 
 	bool initHost();
-	bool initClient() { return false; };			//Quitemos esto xd
+	bool initClient();
 	bool initConnection(Uint16 port);
 
-	//void handleConnectionRequest();
-	//void handlePaddlePos();
-	//void handleBallPos();
-	//void handleBallVel();
-	//void handleStartGameRequest();
-	//void handleStartRoundRequest();
-	//void handleStartTheGame();
-	//void handleStartTheRound();
-	//void handleBallExit();
-	//void handleGameOver();
-	//void handleDisconnecting();
+	void handleConnectionRequest();
+	void handleFighterPos();
+	void handleBulletsPos();
+	void handleBulletsVel();
+	void handleStartGameRequest();
+	void handleStartRoundRequest();
+	void handleStartTheGame();
+	void handleStartTheRound();
+	void handleFighterHitExit();
+	void handleGameOver();
+	void handleDisconnecting();
 
-	//void tellOtherClientToStartRound();
-	//void tellOtherClientToStartGame();
-	//void tellOtherClientBallExit(Uint8 side);
+	void tellOtherClientToStartRound();
+	void tellOtherClientToStartGame();
+	void tellOtherClientFighterHit(uint8_t hitId_);
 
 	bool host_;
 	Uint8 side_; // 0 left 1 right

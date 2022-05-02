@@ -6,8 +6,15 @@
 class GameCtrlSystem: public ecs::System {
 public:
 
+	enum Side : uint8_t {
+		LEFT = 0, //
+		RIGHT
+	};
+
 	enum GameState : uint8_t {
-		_RUNNING, _STOPPED
+		_NEWGAME = 0,
+		_RUNNING,
+		_STOPPED
 	};
 
 	__SYSID_DECL__(ecs::_sys_GAMECTRL)

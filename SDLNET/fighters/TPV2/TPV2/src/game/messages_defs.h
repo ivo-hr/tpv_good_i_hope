@@ -9,6 +9,7 @@ enum msgId : msgId_type {
 	_m_GAME_START, //
 	_m_GAME_OVER, //
 	_m_SHOOT, //
+	_m_NEW_GAME, //
 	_m_BULLET_HIT_FIGHTER
 };
 
