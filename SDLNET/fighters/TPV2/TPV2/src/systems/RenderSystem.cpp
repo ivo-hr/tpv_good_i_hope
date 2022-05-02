@@ -112,6 +112,7 @@ void RenderSystem::drawId(ecs::Entity *e) {
 
 	std::string tag = info->name_;
 
+
 	Texture playeTag(sdlutils().renderer(), //
 			tag, //
 			sdlutils().fonts().at("ARIAL12"), //

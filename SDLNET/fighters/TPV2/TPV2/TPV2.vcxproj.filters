@@ -52,7 +52,7 @@
     <Filter Include="Source Files\systems">
       <UniqueIdentifier>{6fad1da5-f376-45a3-8690-a18026bcd814}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\sdlutil\systems">
+    <Filter Include="Header Files\systems">
       <UniqueIdentifier>{0b1f2299-cbb1-4d48-ab8a-9972ea0973e2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -157,25 +157,25 @@
       <Filter>Header Files\game</Filter>
     </ClInclude>
     <ClInclude Include="src\systems\BulletsSystem.h">
-      <Filter>Header Files\sdlutil\systems</Filter>
+      <Filter>Header Files\systems</Filter>
     </ClInclude>
     <ClInclude Include="src\systems\CollisionsSystem.h">
-      <Filter>Header Files\sdlutil\systems</Filter>
+      <Filter>Header Files\systems</Filter>
     </ClInclude>
     <ClInclude Include="src\systems\FightersSystem.h">
-      <Filter>Header Files\sdlutil\systems</Filter>
+      <Filter>Header Files\systems</Filter>
     </ClInclude>
     <ClInclude Include="src\systems\GameCtrlSystem.h">
-      <Filter>Header Files\sdlutil\systems</Filter>
+      <Filter>Header Files\systems</Filter>
     </ClInclude>
     <ClInclude Include="src\systems\RenderSystem.h">
-      <Filter>Header Files\sdlutil\systems</Filter>
+      <Filter>Header Files\systems</Filter>
     </ClInclude>
     <ClInclude Include="src\systems\NetworkSystem.h">
-      <Filter>Header Files\sdlutil\systems</Filter>
+      <Filter>Header Files\systems</Filter>
     </ClInclude>
     <ClInclude Include="src\systems\network_messages.h">
-      <Filter>Header Files\sdlutil\systems</Filter>
+      <Filter>Header Files\systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
