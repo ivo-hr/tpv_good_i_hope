@@ -116,9 +116,6 @@ void NetworkSystem::update() {
 		case net::_BULLETS_POS:
 			handleBullets();
 			break;
-		case net::_BULLETS_VEL:
-			handleBulletsVel();
-			break;
 		case net::_START_ROUND_REQUEST:
 			handleStartRoundRequest();
 			break;
@@ -258,19 +255,6 @@ void NetworkSystem::sendBullet(const Message& m) {
 	send.vel.y = m.shoot.vel.y;
 
 	SDLNetUtils::serializedSend(send, p_, sock_, otherPlayerAddr_);
-}
-
-void NetworkSystem::sendBulletVelocity() {
-	if (!connected_ || !host_)
-		return;
-
-	net::BulletsVelMsg m;
-	m.id = net::_BULLETS_VEL;
-	m.side = side_;
-	m.x = tr->pos_.getX();
-	m.y = tr->pos_.getY();
-	p_->address = otherPlayerAddr_;
-	SDLNetUtils::serializedSend(m, p_, sock_, otherPlayerAddr_);
 }
 
 void NetworkSystem::handleConnectionRequest() {
