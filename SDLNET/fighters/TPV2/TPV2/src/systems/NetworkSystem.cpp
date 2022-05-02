@@ -16,14 +16,14 @@
 //#include "PaddlesSystem.h"
 
 NetworkSystem::NetworkSystem() :
-		host_(false), //
-		side_(0), //
-		sock_(), //
-		p_(), //
-		sockSet_(), //
-		port_(), //
-		connected_(false), //
-		otherPlayerAddr_() {
+	host_(false), //
+	side_(0), //
+	sock_(), //
+	p_(), //
+	sockSet_(), //
+	port_(), //
+	connected_(false), //
+	otherPlayerAddr_() {
 
 }
 
@@ -34,7 +34,7 @@ NetworkSystem::~NetworkSystem() {
 	}
 }
 
-void NetworkSystem::recieve(const Message &m) {
+void NetworkSystem::recieve(const Message& m) {
 	if (!host_)
 		return;
 
@@ -66,7 +66,7 @@ bool NetworkSystem::connect() {
 
 	while (!done) {
 		std::cout << "Do you want to be host, client or exit [h/c/e]? "
-				<< std::endl;
+			<< std::endl;
 		std::cin >> choice;
 		switch (choice) {
 		case 'h':
@@ -186,7 +186,7 @@ bool NetworkSystem::initClient() {
 	std::string host;
 
 	std::cout << "Enter the host and port (separated by space) of the host: "
-			<< std::endl;
+		<< std::endl;
 	if (!(std::cin >> host >> port)) {
 		std::cerr << "Invalid host/port" << std::endl;
 		return false;
@@ -230,7 +230,7 @@ bool NetworkSystem::initClient() {
 
 }
 
-void NetworkSystem::sendFighterPosition(Transform *tr) {
+void NetworkSystem::sendFighterPosition(Transform* tr) {
 	if (!connected_)
 		return;
 
@@ -249,6 +249,7 @@ void NetworkSystem::sendBullet(const Message& m) {
 
 	net::BullGenMsg send;
 	send.id = net::_BULLETS_REC;
+
 	send.pos.x = m.shoot.pos.x;
 	send.pos.y = m.shoot.pos.y;
 	send.vel.x = m.shoot.vel.x;
@@ -300,11 +301,12 @@ void NetworkSystem::handleFighterPos() {
 }
 
 void NetworkSystem::handleBullets() {
-	assert(!host_);
+
 	net::BullGenMsg m;
 	m.deserialize(p_->data);
 
 	Message send;
+	send.id = _m_SHOOT;
 	send.shoot.pos.x = m.pos.x;
 	send.shoot.pos.y = m.pos.y;
 	send.shoot.vel.x = m.vel.x;

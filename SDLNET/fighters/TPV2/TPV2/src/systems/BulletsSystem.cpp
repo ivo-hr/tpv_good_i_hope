@@ -18,10 +18,7 @@ BulletsSystem::~BulletsSystem() {
 }
 
 void BulletsSystem::recieve(const Message &m) {
-	
-	if (!mngr_->getSystem<NetworkSystem>()->isHost())
-		return;
-	
+	 
 	switch (m.id) {
 	case _m_SHOOT:
 		handleShoot(m);
