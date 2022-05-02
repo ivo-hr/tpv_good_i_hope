@@ -32,9 +32,10 @@ struct Message {
 struct ReqAccMsg: Message {
 
 	Uint8 side;
+	char name[11];
 
 	//
-	_IMPL_SERIALIAZION_WITH_BASE_(Message,side)
+	_IMPL_SERIALIAZION_WITH_BASE_(Message,side,name)
 };
 
 struct PaddelPosMsg: Message {
@@ -70,9 +71,10 @@ struct BallVelMsg: Message {
 struct StartRequestMsg: Message {
 
 	Uint8 side;
+	char name[11];
 
 	//
-	_IMPL_SERIALIAZION_WITH_BASE_(Message,side)
+	_IMPL_SERIALIAZION_WITH_BASE_(Message,side,name)
 };
 
 struct BallExitMsg: Message {

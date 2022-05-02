@@ -3,6 +3,7 @@
 #pragma once
 #include <SDL_net.h>
 #include <SDL_stdinc.h>
+#include <string>
 
 #include "../ecs/System.h"
 
@@ -76,6 +77,9 @@ private:
 
 	bool connected_;
 	IPaddress otherPlayerAddr_;
+
+	std::string thisName_;
+	std::string otherName_;
 
 };
 

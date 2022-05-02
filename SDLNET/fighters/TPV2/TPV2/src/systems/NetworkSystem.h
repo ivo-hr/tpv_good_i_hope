@@ -3,6 +3,8 @@
 #pragma once
 #include <SDL_net.h>
 #include <SDL_stdinc.h>
+#include <string>
+#include <array>
 
 #include "../ecs/System.h"
 
@@ -44,6 +46,10 @@ public:
 	void sendStartRoundtRequest();
 	void sendStartGameRequest();
 
+	std::string myName;
+	std::string hostName;
+	std::array<std::string, 2> names_ = { "waiting", "waiting" };
+
 private:
 
 	bool initHost();
@@ -61,6 +67,10 @@ private:
 	void tellOtherClientToStartRound();
 	void tellOtherClientToStartGame();
 	void tellOtherClientFighterHit(uint8_t hitId_);
+
+	void string_to_chars(std::string& str, char c_str[11]);
+
+	void chars_to_string(std::string& str, char c_str[11]);
 
 	bool host_;
 	Uint8 side_; // 0 left 1 right

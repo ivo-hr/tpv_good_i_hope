@@ -65,6 +65,11 @@ bool NetworkSystem::connect() {
 	bool done = false;
 	bool success = false;
 
+	std::cout << "Whats your name? ";
+	std::cin >> myName;
+	std::cout << std::endl;
+	std::cout << std::endl;
+
 	while (!done) {
 		std::cout << "Do you want to be host, client or exit [h/c/e]? "
 			<< std::endl;
@@ -174,6 +179,9 @@ bool NetworkSystem::initHost() {
 	if (!initConnection(port))
 		return false;
 
+	names_[0] = myName;
+	hostName = myName;
+
 	host_ = true;
 	side_ = 0;
 	connected_ = false;
@@ -202,9 +210,13 @@ bool NetworkSystem::initClient() {
 
 	initConnection(0);
 
-	net::Message m;
+	names_[1] = myName;
+
+	net::StartRequestMsg m;
 
 	m.id = net::_CONNECTION_REQUEST;
+	string_to_chars(myName, m.name);
+
 	p_->address = otherPlayerAddr_;
 	SDLNetUtils::serializedSend(m, p_, sock_);
 
@@ -215,10 +227,11 @@ bool NetworkSystem::initClient() {
 				net::ReqAccMsg m;
 				m.deserialize(p_->data);
 				side_ = m.side;
+				chars_to_string(names_[0], m.name);
+				hostName = names_[0];
 				host_ = false;
 				connected_ = true;
 			}
-
 		}
 	}
 
@@ -267,7 +280,9 @@ void NetworkSystem::handleConnectionRequest() {
 		net::ReqAccMsg m;
 		m.id = net::_REQUEST_ACCEPTED;
 		m.side = 1 - side_;
+		chars_to_string(names_[1], m.name);
 		SDLNetUtils::serializedSend(m, p_, sock_, otherPlayerAddr_);
+		mngr_->getComponent<FighterInfo>(mngr_->getEntities(ecs::_grp_FIGHTERS)[1])->name_ = names_[1];
 	}
 }
 
@@ -381,3 +396,14 @@ void NetworkSystem::tellOtherClientFighterHit(uint8_t hitId_) {
 
 }
 
+
+void NetworkSystem::string_to_chars(std::string& str, char c_str[11]) {
+	auto i = 0u;
+	for (; i < str.size() && i < 10; i++) c_str[i] = str[i];
+	c_str[i] = 0;
+}
+
+void NetworkSystem::chars_to_string(std::string& str, char c_str[11]) {
+	c_str[10] = 0;
+	str = std::string(c_str);
+}

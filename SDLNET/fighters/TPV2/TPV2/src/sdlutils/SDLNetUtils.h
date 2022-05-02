@@ -192,6 +192,16 @@ public:
 	inline static Uint8* deserialize(T &v, Uint8 *buf) {
 		return v.deserialize(buf);
 	}
+	
+	template<typename T>
+		inline static Uint8* serialize(T v[11], Uint8* buf) {
+		return serialize_array(v, 11, buf);
+	}
+
+	template<typename T>
+	inline static Uint8* deserialize(T v[11], Uint8* buf) {
+		return deserialize_array(v, 11, buf);
+	}
 
 	// case for char, it is treated as if it where Uint8. Use
 	// it only to send/receive chars with non-negativ values, i.e.,

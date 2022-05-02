@@ -61,6 +61,11 @@ bool NetworkSystem::connect() {
 	bool done = false;
 	bool success = false;
 
+	std::cout << "Whats your name? ";
+	std::cin >> thisName_;
+	std::cout << std::endl;
+	std::cout << std::endl;
+
 	while (!done) {
 		std::cout << "Do you want to be host, client or exit [h/c/e]? "
 				<< std::endl;
@@ -207,9 +212,10 @@ bool NetworkSystem::initClient() {
 
 	initConnection(0);
 
-	net::Message m;
+	net::StartRequestMsg m;
 
 	m.id = net::_CONNECTION_REQUEST;
+	string_to_chars(thisName_, m.name);
 	p_->address = otherPlayerAddr_;
 	SDLNetUtils::serializedSend(m, p_, sock_);
 
@@ -391,3 +397,13 @@ void NetworkSystem::tellOtherClientBallExit(Uint8 side) {
 
 }
 
+void string_to_chars(std::string& str, char c_str[11]) {
+	auto i = 0u;
+	for (; i < str.size() && i < 10; i++) c_str[i] = str[i];
+	c_str[i] = 0;
+}
+
+void chars_to_string(std::string& str, char c_str[11]) {
+	c_str[10] = 0;
+	str = std::string(c_str);
+}

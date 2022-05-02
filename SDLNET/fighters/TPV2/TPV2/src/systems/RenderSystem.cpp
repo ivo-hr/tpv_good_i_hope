@@ -107,10 +107,10 @@ void RenderSystem::draw(ecs::Entity *e) {
 }
 
 void RenderSystem::drawId(ecs::Entity *e) {
-	auto id = mngr_->getComponent<FighterInfo>(e)->id_;
+	auto info = mngr_->getComponent<FighterInfo>(e);
 	auto tr = mngr_->getComponent<Transform>(e);
 
-	std::string tag = "Player " + std::to_string(id);
+	std::string tag = info->name_;
 
 	Texture playeTag(sdlutils().renderer(), //
 			tag, //
