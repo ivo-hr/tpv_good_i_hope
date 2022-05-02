@@ -15,7 +15,7 @@
 using ecs::Entity;
 
 FightersSystem::FightersSystem() :
-		tr0_(nullptr), tr1_(nullptr), running_(false) {
+		tr0_(nullptr), tr1_(nullptr), running_(false), fighters_() {
 }
 
 FightersSystem::~FightersSystem() {

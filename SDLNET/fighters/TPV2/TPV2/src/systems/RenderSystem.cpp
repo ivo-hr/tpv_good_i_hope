@@ -106,6 +106,7 @@ void RenderSystem::draw(ecs::Entity *e) {
 	img->tex_->render(img->clip_, dest, tr->rot_);
 }
 
+
 void RenderSystem::drawId(ecs::Entity *e) {
 	auto info = mngr_->getComponent<FighterInfo>(e);
 	auto tr = mngr_->getComponent<Transform>(e);

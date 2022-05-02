@@ -222,10 +222,14 @@ bool NetworkSystem::initClient() {
 	p_->address = otherPlayerAddr_;
 	SDLNetUtils::serializedSend(m, p_, sock_);
 
-	if (SDLNet_CheckSockets(sockSet_, 3000) > 0) {
-		if (SDLNet_SocketReady(sock_)) {
+	if (SDLNet_CheckSockets(sockSet_, 3000) > 0)
+	{
+		if (SDLNet_SocketReady(sock_))
+		{
 			SDLNetUtils::deserializedReceive(m, p_, sock_);
-			if (m.id == net::_REQUEST_ACCEPTED) {
+
+			if (m.id == net::_REQUEST_ACCEPTED)
+			{
 				net::ReqAccMsg m;
 				m.deserialize(p_->data);
 				side_ = m.side;
@@ -277,25 +281,16 @@ void NetworkSystem::sendBullet(const Message& m) {
 void NetworkSystem::handleConnectionRequest(net::Message m) {
 
 	if (!connected_ && host_) {
+		net::ReqAccMsg received;
+		received.deserialize(p_->data);
+		chars_to_string(names_[1], received.name);
 		otherPlayerAddr_ = p_->address;
 		connected_ = true;
-		net::ReqAccMsg msg;
-		msg.id = net::_REQUEST_ACCEPTED;
-		msg.side = 1 - side_;
-		string_to_chars(names_[0], msg.name);
-		SDLNetUtils::serializedSend(msg, p_, sock_, otherPlayerAddr_);
-
-		if (m.id == net::_CONNECTION_REQUEST) {
-			net::ReqAccMsg m;
-			m.deserialize(p_->data);
-
-			std::cout << names_[1] << std::endl;
-
-			chars_to_string(names_[1], m.name);
-
-			std::cout << names_[1] << std::endl;
-		}
-
+		net::ReqAccMsg m;
+		m.id = net::_REQUEST_ACCEPTED;
+		m.side = 1 - side_;
+		string_to_chars(myName, m.name);
+		SDLNetUtils::serializedSend(m, p_, sock_, otherPlayerAddr_);
 		mngr_->getComponent<FighterInfo>(mngr_->getEntities(ecs::_grp_FIGHTERS)[1])->name_ = names_[1];
 	}
 
