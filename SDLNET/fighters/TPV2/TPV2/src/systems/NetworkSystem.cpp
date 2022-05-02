@@ -229,8 +229,7 @@ bool NetworkSystem::initClient() {
 	return true;
 
 }
-
-void NetworkSystem::sendFighterPosition(Transform* tr) {
+void NetworkSystem::sendFighterTransform(Transform *tr) {
 	if (!connected_)
 		return;
 
@@ -239,6 +238,7 @@ void NetworkSystem::sendFighterPosition(Transform* tr) {
 	m.side = side_;
 	m.x = tr->pos_.getX();
 	m.y = tr->pos_.getY();
+	m.rot = tr->rot_;
 	p_->address = otherPlayerAddr_;
 	SDLNetUtils::serializedSend(m, p_, sock_, otherPlayerAddr_);
 }
@@ -297,7 +297,7 @@ void NetworkSystem::sendStartGameRequest() {
 void NetworkSystem::handleFighterPos() {
 	net::FighterPosMsg m;
 	m.deserialize(p_->data);
-	mngr_->getSystem<FightersSystem>()->changeFighterPos(m.side, m.x, m.y);
+	mngr_->getSystem<FightersSystem>()->changeFighterTransform(m.side, m.x, m.y, m.rot);
 }
 
 void NetworkSystem::handleBullets() {

@@ -39,7 +39,7 @@ public:
 		return port_;
 	}
 
-	void sendFighterPosition(Transform *tr);
+	void sendFighterTransform(Transform *tr);
 	void sendBullet(const Message& m);
 	void sendStartRoundtRequest();
 	void sendStartGameRequest();

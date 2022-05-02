@@ -41,9 +41,10 @@ struct FighterPosMsg: Message {
 	Uint8 side;
 	float x;
 	float y;
+	float rot;
 
 	//
-	_IMPL_SERIALIAZION_WITH_BASE_(Message,side,x,y)
+	_IMPL_SERIALIAZION_WITH_BASE_(Message,side,x,y,rot)
 };
 
 struct BulletsPosMsg: Message {

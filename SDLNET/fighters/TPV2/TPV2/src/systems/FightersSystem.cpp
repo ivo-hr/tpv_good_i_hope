@@ -65,7 +65,7 @@ void FightersSystem::initSystem() {
 			SDL_SCANCODE_DOWN, //
 			SDL_SCANCODE_LEFT, //
 			SDL_SCANCODE_RIGHT, //
-			SDL_SCANCODE_RETURN);
+			SDL_SCANCODE_S);
 
 	fighters_[0] = fighter0;
 	// Fighter 1
@@ -89,11 +89,12 @@ void FightersSystem::initSystem() {
 			build_sdlrect(805.0f, 125.0f, 310.0f, 165.0f)); //
 
 	mngr_->addComponent<CtrlKeys>(fighter1, //
-			SDL_SCANCODE_W, //
-			SDL_SCANCODE_S, //
-			SDL_SCANCODE_H, //
-			SDL_SCANCODE_L, //
-			SDL_SCANCODE_D);
+			SDL_SCANCODE_UP, //
+			SDL_SCANCODE_DOWN, //
+			SDL_SCANCODE_LEFT, //
+			SDL_SCANCODE_RIGHT, //
+			SDL_SCANCODE_S);
+
 	fighters_[1] = fighter1;
 
 }
@@ -173,14 +174,15 @@ void FightersSystem::update() {
 		tr->pos_.setY(-tr->height_);
 	}
 
-	netSys->sendFighterPosition(tr);
+	netSys->sendFighterTransform(tr);
 
 }
 
-void FightersSystem::changeFighterPos(uint8_t side, float x, float y)
+void FightersSystem::changeFighterTransform(uint8_t side, float x, float y, float rot)
 {
 	auto tr = mngr_->getComponent<Transform>(fighters_[side]);
 	tr->pos_.set(x, y);
+	tr->rot_ = rot;
 }
 
 void FightersSystem::handleGameStart(const Message&) {

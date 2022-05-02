@@ -21,7 +21,7 @@ public:
 	void recieve(const Message&) override;
 	void initSystem() override;
 	void update() override;
-	void changeFighterPos(uint8_t side, float x, float y);
+	void changeFighterTransform(uint8_t side, float x, float y, float rot);
 private:
 	void handleGameStart(const Message&);
 	void handleGameOver(const Message&);
