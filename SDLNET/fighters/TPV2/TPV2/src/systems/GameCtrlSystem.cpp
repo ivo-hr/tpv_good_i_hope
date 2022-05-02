@@ -42,6 +42,9 @@ void GameCtrlSystem::recieve(const Message &m) {
 	case _m_BULLET_HIT_FIGHTER:
 		handleBulletHitFighter(m);
 		break;
+	case _m_ROUND_START:
+		state_ = _RUNNING;
+		break;
 	default:
 		break;
 	}
