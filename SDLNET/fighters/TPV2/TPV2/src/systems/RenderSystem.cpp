@@ -85,10 +85,16 @@ void RenderSystem::drawMsgs() {
 }
 
 void RenderSystem::drawFighters() {
-	for (ecs::Entity *e : mngr_->getEntities(ecs::_grp_FIGHTERS)) {
-		draw(e);
-		drawId(e);
-		drawBox(e);
+
+	auto fighters = mngr_->getEntities(ecs::_grp_FIGHTERS);
+
+	for (auto i = 0u; i < fighters.size(); i++)
+	{
+		draw(fighters[i]);
+		drawId(fighters[i]);
+
+		if (mngr_->getSystem<NetworkSystem>()->getSide() == i)
+			drawBox(fighters[i]);
 	}
 }
 
