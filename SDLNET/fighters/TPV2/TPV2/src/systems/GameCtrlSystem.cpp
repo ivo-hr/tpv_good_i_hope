@@ -24,7 +24,7 @@ void GameCtrlSystem::update() {
 		if (ihldr.isKeyDown(SDL_SCANCODE_SPACE)) {
 			state_ = _RUNNING;
 			Message m;
-			m.id = _m_GAME_START;
+			m.id = _m_ROUND_START;
 			mngr_->send(m);
 		}
 	}
@@ -40,14 +40,34 @@ void GameCtrlSystem::recieve(const Message &m) {
 	}
 }
 
+void GameCtrlSystem::startGame() {
+
+	if (state_ != _PAUSED)
+		return;
+
+	Message m;
+
+	state_ = _NEWGAME;
+	m.id = _m_NEW_GAME;
+	mngr_->send(m);
+
+}
+
 void GameCtrlSystem::handleBulletHitFighter(const Message &m) {
 
 	state_ = _STOPPED;
 
 	Message msg;
-	msg.id = _m_GAME_OVER;
+	msg.id = _m_ROUND_OVER;
 	msg.killed.playerId =
 			mngr_->getComponent<FighterInfo>(m.bullet_hit.fighter_)->id_;
 	mngr_->send(msg);
 
+}
+
+void GameCtrlSystem::stopTheGame() {
+	state_ = _PAUSED;
+	Message m;
+	m.id = _m_NEW_GAME;
+	mngr_->send(m);
 }

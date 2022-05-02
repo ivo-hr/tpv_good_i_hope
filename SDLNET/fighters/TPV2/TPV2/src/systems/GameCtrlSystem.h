@@ -13,6 +13,7 @@ public:
 
 	enum GameState : uint8_t {
 		_NEWGAME = 0,
+		_PAUSED,
 		_RUNNING,
 		_STOPPED
 	};
@@ -27,8 +28,14 @@ public:
 	void update() override;
 	void recieve(const Message &m) override;
 
-private:
+	//void requestToStartRound();
+	//void requestToStartGame();
+	//void startRound();
+	void startGame();
+	//void onBallExit(uint8_t side);
+	void stopTheGame();
 
+private:
 	void handleBulletHitFighter(const Message&);
 
 	uint8_t state_;

@@ -40,8 +40,8 @@ public:
 	}
 
 	void sendFighterPosition(Transform *tr);
-	void sendBulletsPosition(std::vector<Transform*> tr);
-	void sendBulletsVelocity(std::vector<Transform*> tr);
+	void sendBulletPosition(Transform* tr);
+	void sendBulletVelocity(Transform* tr);
 	void sendStartRoundtRequest();
 	void sendStartGameRequest();
 
@@ -55,12 +55,9 @@ private:
 	void handleFighterPos();
 	void handleBulletsPos();
 	void handleBulletsVel();
-	void handleStartGameRequest();
 	void handleStartRoundRequest();
-	void handleStartTheGame();
 	void handleStartTheRound();
-	void handleFighterHitExit();
-	void handleGameOver();
+	void handleFighterHit();
 	void handleDisconnecting();
 
 	void tellOtherClientToStartRound();

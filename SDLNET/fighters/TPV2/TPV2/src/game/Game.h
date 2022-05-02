@@ -3,12 +3,15 @@
 #pragma once
 
 #include "../ecs/ecs.h"
+#include <vector>
+
+class NetworkSystem;
 
 class Game {
 public:
 	Game();
 	virtual ~Game();
-	void init();
+	bool init();
 	void start();
 private:
 	ecs::Manager *mngr_;
@@ -17,6 +20,7 @@ private:
 	ecs::System *gameCtrlSys_;
 	ecs::System *collisionSys_;
 	ecs::System *renderSys_;
+	NetworkSystem* netSys_;
 
 };
 

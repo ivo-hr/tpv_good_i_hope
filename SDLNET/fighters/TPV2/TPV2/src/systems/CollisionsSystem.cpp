@@ -12,10 +12,10 @@ CollisionsSystem::CollisionsSystem() :
 
 void CollisionsSystem::recieve(const Message &m) {
 	switch (m.id) {
-	case _m_GAME_START:
+	case _m_ROUND_START:
 		handleGameStart(m);
 		break;
-	case _m_GAME_OVER:
+	case _m_ROUND_OVER:
 		handleGameOver(m);
 		break;
 	default:

@@ -39,7 +39,7 @@ void NetworkSystem::recieve(const Message &m) {
 		return;
 
 	switch (m.id) {
-	case _m_GAME_START:
+	case _m_ROUND_START:
 		tellOtherClientToStartRound();
 		break;
 	case _m_NEW_GAME:
@@ -119,14 +119,8 @@ void NetworkSystem::update() {
 		case net::_BULLETS_VEL:
 			handleBulletsVel();
 			break;
-		case net::_START_GAME_REQUEST:
-			handleStartGameRequest();
-			break;
 		case net::_START_ROUND_REQUEST:
 			handleStartRoundRequest();
-			break;
-		case net::_START_THE_GAME:
-			handleStartTheGame();
 			break;
 		case net::_START_THE_ROUND:
 			handleStartTheRound();
@@ -317,51 +311,36 @@ void NetworkSystem::sendStartGameRequest() {
 void NetworkSystem::handleFighterPos() {
 	net::FighterPosMsg m;
 	m.deserialize(p_->data);
-	mngr_->getSystem<FightersSystem>()->changePaddlePos(m.side, m.x, m.y);
+	mngr_->getSystem<FightersSystem>()->changeFighterPos(m.side, m.x, m.y);
 }
 
 void NetworkSystem::handleBulletsPos() {
 	assert(!host_);
 	net::BulletsPosMsg m;
 	m.deserialize(p_->data);
-	mngr_->getSystem<BulletsSystem>()->changeBallPos(m.x, m.y);
+	//mngr_->getSystem<BulletsSystem>()->changeBulletPos(m.x, m.y);
 }
 
 void NetworkSystem::handleBulletsVel() {
 	assert(!host_);
 	net::BulletsVelMsg m;
 	m.deserialize(p_->data);
-	mngr_->getSystem<BulletsSystem>()->changeBallVel(m.x, m.y);
-}
-
-
-void NetworkSystem::handleStartGameRequest() {
-	mngr_->getSystem<GameCtrlSystem>()->startGame();
+	//mngr_->getSystem<BulletsSystem>()->changeBulletVel(m.x, m.y);
 }
 
 void NetworkSystem::handleStartRoundRequest() {
-	mngr_->getSystem<GameCtrlSystem>()->startRound();
-}
-
-void NetworkSystem::handleStartTheGame() {
-	assert(!host_);
 	mngr_->getSystem<GameCtrlSystem>()->startGame();
 }
 
 void NetworkSystem::handleStartTheRound() {
 	assert(!host_);
-	mngr_->getSystem<GameCtrlSystem>()->startRound();
-}
-
-void NetworkSystem::handleGameOver() {
-	assert(!host_);
-	mngr_->getSystem<GameCtrlSystem>()->gameOver();
+	mngr_->getSystem<GameCtrlSystem>()->startGame();
 }
 
 void NetworkSystem::handleFighterHit() {
 	net::BallExitMsg m;
 	m.deserialize(p_->data);
-	mngr_->getSystem<GameCtrlSystem>()->onBallExit(m.side);
+	//mngr_->getSystem<GameCtrlSystem>()->(m.side);
 }
 
 void NetworkSystem::handleDisconnecting() {

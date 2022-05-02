@@ -53,6 +53,7 @@
     <ClInclude Include="src\systems\FightersSystem.h" />
     <ClInclude Include="src\systems\GameCtrlSystem.h" />
     <ClInclude Include="src\systems\NetworkSystem.h" />
+    <ClInclude Include="src\systems\network_messages.h" />
     <ClInclude Include="src\systems\RenderSystem.h" />
     <ClInclude Include="src\utils\Collisions.h" />
     <ClInclude Include="src\utils\mpl.h" />

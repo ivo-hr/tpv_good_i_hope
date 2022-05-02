@@ -22,10 +22,10 @@ FightersSystem::~FightersSystem() {
 
 void FightersSystem::recieve(const Message &m) {
 	switch (m.id) {
-	case _m_GAME_START:
+	case _m_ROUND_START:
 		handleGameStart(m);
 		break;
-	case _m_GAME_OVER:
+	case _m_ROUND_OVER:
 		handleGameOver(m);
 		break;
 	case _m_BULLET_HIT_FIGHTER:
@@ -165,6 +165,12 @@ void FightersSystem::update() {
 		}
 	}
 
+}
+
+void FightersSystem::changeFighterPos(uint8_t side, float x, float y)
+{
+	auto tr = mngr_->getComponent<Transform>(fighters_[side]);
+	tr->pos_.set(x, y);
 }
 
 void FightersSystem::handleGameStart(const Message&) {
