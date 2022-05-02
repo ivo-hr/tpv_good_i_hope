@@ -35,6 +35,7 @@ NetworkSystem::~NetworkSystem() {
 }
 
 void NetworkSystem::recieve(const Message& m) {
+
 	if (!host_)
 		return;
 
@@ -271,7 +272,8 @@ void NetworkSystem::handleConnectionRequest() {
 }
 
 void NetworkSystem::sendStartRoundtRequest() {
-	assert(!isHost());
+
+	if (isHost()) return;
 
 	net::StartRequestMsg m;
 
@@ -287,7 +289,7 @@ void NetworkSystem::sendStartGameRequest() {
 
 	net::StartRequestMsg m;
 
-	m.id = net::_START_GAME_REQUEST;
+	m.id = net::_START_ROUND_REQUEST;
 	m.side = side_;
 	p_->address = otherPlayerAddr_;
 	SDLNetUtils::serializedSend(m, p_, sock_, otherPlayerAddr_);
@@ -326,12 +328,21 @@ void NetworkSystem::handleBullets() {
 //}
 
 void NetworkSystem::handleStartRoundRequest() {
-	mngr_->getSystem<GameCtrlSystem>()->startGame();
+
+	Message msg;
+	msg.id = _m_ROUND_START;
+
+
+	mngr_->send(msg);
 }
 
 void NetworkSystem::handleStartTheRound() {
 	assert(!host_);
-	mngr_->getSystem<GameCtrlSystem>()->startGame();
+	Message msg;
+	msg.id = _m_ROUND_START;
+
+
+	mngr_->send(msg);
 }
 
 void NetworkSystem::handleFighterHit() {

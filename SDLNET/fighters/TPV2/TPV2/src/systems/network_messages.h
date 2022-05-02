@@ -18,7 +18,7 @@ enum MsgId : Uint8 {
 	_START_THE_ROUND, //
 	_FIGHTER_HIT, //
 	_GAME_OVER, //
-	_DISCONNECTING
+	_DISCONNECTING, //
 };
 
 struct Message {

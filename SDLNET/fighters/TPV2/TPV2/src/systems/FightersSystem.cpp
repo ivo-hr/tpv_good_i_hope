@@ -64,7 +64,7 @@ void FightersSystem::initSystem() {
 			SDL_SCANCODE_UP, //
 			SDL_SCANCODE_DOWN, //
 			SDL_SCANCODE_LEFT, //
-			SDL_SCANCODE_RIGHT, //
+			SDL_SCANCODE_RIGHT, // 
 			SDL_SCANCODE_S);
 
 	fighters_[0] = fighter0;
@@ -119,13 +119,19 @@ void FightersSystem::update() {
 		if (tr->vel_.magnitude() < 5.0f)
 			tr->vel_ = tr->vel_
 					+ Vector2D(0, -1).rotate(tr->rot_) * thrust_;
-	} else if (ihdlr.isKeyDown(keys->right_)) {
+	}
+	if (ihdlr.isKeyDown(keys->right_)) {
 		tr->rot_ += 2.0f;
 	}
 
 	if (ihdlr.isKeyDown(keys->down_)) {
-		tr->vel_ = tr->vel_ * 0.75f;
-	} else if (ihdlr.isKeyDown(keys->left_)) {
+		auto thrust_ = -0.2f;
+		if (tr->vel_.magnitude() > -3.0f)
+			tr->vel_ = tr->vel_
+			+ Vector2D(0, -1).rotate(tr->rot_) * thrust_;
+	}
+	
+	if (ihdlr.isKeyDown(keys->left_)) {
 		tr->rot_ -= 2.0f;
 	}
 

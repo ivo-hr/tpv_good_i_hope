@@ -39,9 +39,10 @@ void RenderSystem::handleGameStart(const Message&) {
 	over_ = false;
 }
 
-void RenderSystem::handleGameOver(const Message&) {
+void RenderSystem::handleGameOver(const Message& m) {
 	running_ = false;
 	over_ = true;
+	killedId_ = m.killed.playerId;
 }
 
 void RenderSystem::initSystem() {

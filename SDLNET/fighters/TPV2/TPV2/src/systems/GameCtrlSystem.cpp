@@ -26,6 +26,9 @@ void GameCtrlSystem::update() {
 		{
 			if (ihldr.isKeyDown(SDL_SCANCODE_SPACE)) {
 				state_ = _RUNNING;
+
+				mngr_->getSystem<NetworkSystem>()->sendStartRoundtRequest();
+
 				Message m;
 				m.id = _m_ROUND_START;
 				mngr_->send(m);
