@@ -64,7 +64,7 @@ bool NetworkSystem::connect() {
 	bool done = false;
 	bool success = false;
 
-	std::cout << "Whats your name? ";
+	std::cout << "What's your name? ";
 	std::cin >> myName;
 	std::cout << std::endl;
 	std::cout << std::endl;
@@ -113,7 +113,7 @@ void NetworkSystem::update() {
 	while (SDLNetUtils::deserializedReceive(m, p_, sock_) > 0) {
 		switch (m.id) {
 		case net::_CONNECTION_REQUEST:
-			handleConnectionRequest();
+			handleConnectionRequest(m);
 			break;
 		case net::_REQUEST_ACCEPTED:
 
@@ -216,6 +216,7 @@ bool NetworkSystem::initClient() {
 	net::StartRequestMsg m;
 
 	m.id = net::_CONNECTION_REQUEST;
+	m.side = side_;
 	string_to_chars(myName, m.name);
 
 	p_->address = otherPlayerAddr_;
@@ -229,7 +230,6 @@ bool NetworkSystem::initClient() {
 				m.deserialize(p_->data);
 				side_ = m.side;
 				chars_to_string(names_[0], m.name);
-				//mngr_->getComponent<FighterInfo>(mngr_->getEntities(ecs::_grp_FIGHTERS)[0])->name_ = names_[0];
 				hostName = names_[0];
 				host_ = false;
 				connected_ = true;
@@ -274,18 +274,31 @@ void NetworkSystem::sendBullet(const Message& m) {
 	SDLNetUtils::serializedSend(send, p_, sock_, otherPlayerAddr_);
 }
 
-void NetworkSystem::handleConnectionRequest() {
+void NetworkSystem::handleConnectionRequest(net::Message m) {
 
 	if (!connected_ && host_) {
 		otherPlayerAddr_ = p_->address;
 		connected_ = true;
-		net::ReqAccMsg m;
-		m.id = net::_REQUEST_ACCEPTED;
-		m.side = 1 - side_;
-		chars_to_string(names_[1], m.name);
-		SDLNetUtils::serializedSend(m, p_, sock_, otherPlayerAddr_);
+		net::ReqAccMsg msg;
+		msg.id = net::_REQUEST_ACCEPTED;
+		msg.side = 1 - side_;
+		string_to_chars(names_[0], msg.name);
+		SDLNetUtils::serializedSend(msg, p_, sock_, otherPlayerAddr_);
+
+		if (m.id == net::_CONNECTION_REQUEST) {
+			net::ReqAccMsg m;
+			m.deserialize(p_->data);
+
+			std::cout << names_[1] << std::endl;
+
+			chars_to_string(names_[1], m.name);
+
+			std::cout << names_[1] << std::endl;
+		}
+
 		mngr_->getComponent<FighterInfo>(mngr_->getEntities(ecs::_grp_FIGHTERS)[1])->name_ = names_[1];
 	}
+
 }
 
 void NetworkSystem::sendStartRoundtRequest() {

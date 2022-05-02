@@ -7,6 +7,7 @@
 #include <array>
 
 #include "../ecs/System.h"
+#include "network_messages.h"
 
 struct Transform;
 
@@ -47,7 +48,7 @@ public:
 	void sendStartGameRequest();
 
 	std::string myName = "waiting";
-	std::string hostName = "waiting";
+	std::string hostName = "wainting";
 	std::array<std::string, 2> names_ = { "waiting", "waiting" };
 
 private:
@@ -56,7 +57,7 @@ private:
 	bool initClient();
 	bool initConnection(Uint16 port);
 
-	void handleConnectionRequest();
+	void handleConnectionRequest(net::Message m);
 	void handleFighterPos();
 	void handleBullets();
 	void handleStartRoundRequest();
