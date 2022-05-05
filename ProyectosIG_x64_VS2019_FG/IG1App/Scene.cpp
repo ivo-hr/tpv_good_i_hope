@@ -12,6 +12,10 @@ void Scene::init()
 	glEnable(GL_DEPTH_TEST);
 	// allocate memory and load resources
     // Lights
+	dirLight = new DirLight();
+	posLight = new PosLight();
+	spotLight = new SpotLight();
+
     // Textures
 
 	gObjects.push_back(new EjesRGB(400.0));
@@ -157,11 +161,38 @@ void Scene::sceneDirLight(Camera const& cam) const
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, value_ptr(diffuse));
 	glLightfv(GL_LIGHT0, GL_SPECULAR, value_ptr(specular));
 }
+void Scene::setLights(Camera const& cam, fvec3 pos) const
+{
+	glEnable(GL_LIGHTING);
+
+	dirLight->setPosDir(pos);
+	posLight->setPosDir(pos);
+	spotLight->setPosDir(pos);
+
+	dirLight->setAmb(fvec4(0, 0, 0, 1));
+	posLight->setAmb(fvec4(0, 0, 0, 1));
+	spotLight->setAmb(fvec4(0, 0, 0, 1));
+
+	dirLight->setDiff(fvec4(1, 1, 1, 1));
+	posLight->setDiff(fvec4(1, 1, 1, 1));
+	spotLight->setDiff(fvec4(1, 1, 1, 1));
+
+	dirLight->setSpec(fvec4(0.5, 0.5, 0.5, 1));
+	posLight->setSpec(fvec4(0.5, 0.5, 0.5, 1));
+	spotLight->setSpec(fvec4(0.5, 0.5, 0.5, 1));
+}
+
+void Scene::uploadLights() const
+{
+	dirLight->upload();
+}
+
+
 //-------------------------------------------------------------------------
 
 void Scene::render(Camera const& cam) const 
 {
-	sceneDirLight(cam);
+	setLights(cam, fvec3(1, 1, 1));
 	cam.upload();
 
 	for (Abs_Entity* el : gObjects)
@@ -227,5 +258,29 @@ void Scene::orbita()
 		compCaza->setModelMat(rotate(compCaza->modelMat(), -0.1, dvec3(0, 0, 1)));
 	}
 }
+
+void Scene::enciendeLuz(int luz, bool on)
+{
+	switch (luz)
+	{
+	case 0:
+		if (on) dirLight->enable();
+		else dirLight->disable();
+		break;
+	case 1:
+		if (on) posLight->enable();
+		else posLight->disable();
+		break;
+	case 2:
+		if (on) spotLight->enable();
+		else spotLight->disable();
+		break;
+
+	default:
+		break;
+	}
+
+}
+
 
 
