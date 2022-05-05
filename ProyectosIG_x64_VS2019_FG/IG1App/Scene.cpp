@@ -79,7 +79,25 @@ void Scene::init()
 	}
 	else if (mId == 6)
 	{
-		gObjects.push_back(new Esfera(200, 20, 20));
+		auto esfera = new Esfera(100, 30, 30);
+
+		auto mat = new Material();
+		mat->setGold();
+		esfera->setMaterial(mat);
+
+		esfera->setModelMat(translate(esfera->modelMat(), dvec3(0, 0, 250)));
+
+		gObjects.push_back(esfera);
+
+		//-----------------------------------------------------------------------
+
+		auto esferaSinMat = new Esfera(100, 30, 30);
+
+		esferaSinMat->setColor(dvec4(0.8, 0.8, 0.05, 1.));
+
+		esferaSinMat->setModelMat(translate(esferaSinMat->modelMat(), dvec3(250, 0, 0)));
+
+		gObjects.push_back(esferaSinMat);
 	}
 	else if (mId == 7)
 	{

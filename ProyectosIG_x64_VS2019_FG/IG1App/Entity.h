@@ -7,6 +7,7 @@
 
 #include "Texture.h"
 #include "Mesh.h"
+#include "Material.h"
 
 //-------------------------------------------------------------------------
 
@@ -201,8 +202,24 @@ public:
 
 };
 
+//=============================================================
+
+class EntityWithMaterial : public Abs_Entity
+{
+public:
+	EntityWithMaterial() : Abs_Entity() { };
+	virtual ~EntityWithMaterial() { };
+
+	void setMaterial(Material* matl) { material = matl; };
+
+protected:
+	Material* material = nullptr;
+
+};
+
 //------------------------------------------------------------
-class Esfera : public Abs_Entity
+
+class Esfera : public EntityWithMaterial
 {
 public:
 	explicit Esfera(GLdouble r, GLuint p, GLuint m);

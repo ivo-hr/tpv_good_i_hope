@@ -1,7 +1,3 @@
-﻿  Mesh.cpp
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(94,23): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(301,22): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(389,23): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(632,23): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Mesh.cpp(638,23): warning C4018: '<': no coinciden signed/unsigned
+﻿  Entity.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Entity.cpp(643,50): warning C4244: 'argumento': conversión de 'float' a 'GLuint'; posible pérdida de datos
   IG1App.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe

@@ -724,9 +724,22 @@ void Esfera::render(glm::dmat4 const& modelViewMat) const
 
 		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
 		upload(aMat);
-		glColor4dv(value_ptr(mColor));
+
+		if (material != nullptr)
+			material->upload();
+		else
+		{
+			glEnable(GL_COLOR_MATERIAL);
+			glColor4dv(value_ptr(mColor));
+		}
+
 		mMesh->render();
-		glColor4d(1, 1, 1, 1);
+
+		if (material == nullptr)
+		{
+			glDisable(GL_COLOR_MATERIAL);
+			glColor4d(1, 1, 1, 1);
+		}
 	}
 }
 
