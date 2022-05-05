@@ -79,7 +79,11 @@ void Scene::init()
 	}
 	else if (mId == 6)
 	{
-		gObjects.push_back(new Esfera(200, 10, 10));
+		gObjects.push_back(new Esfera(200, 20, 20));
+	}
+	else if (mId == 7)
+	{
+		gObjects.push_back(new Toro(50, 100, 40, 20));
 	}
 	
 }
@@ -139,7 +143,7 @@ void Scene::sceneDirLight(Camera const& cam) const
 
 void Scene::render(Camera const& cam) const 
 {
-	//sceneDirLight(cam);
+	sceneDirLight(cam);
 	cam.upload();
 
 	for (Abs_Entity* el : gObjects)

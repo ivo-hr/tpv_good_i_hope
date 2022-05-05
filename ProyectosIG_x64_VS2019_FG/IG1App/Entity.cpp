@@ -628,21 +628,25 @@ TIEAvanzado::TIEAvanzado(float size)
 	cuerpo->SetColor(0, 65, 106);
 	addEntity(cuerpo);
 
-	//==================CABINA===================
+	//==================MORRO===================
 
+	auto morro = new CompoundEntity();
+
+	//Cabina
 	auto cabina = new QuadricCylinder(20 * size, 45 * size, 45 * size, 40);
 	cabina->SetColor(0, 65, 106);
 	cabina->setModelMat(translate(cabina->modelMat(), dvec3(60 * size, 0, 0)));
 	cabina->setModelMat(rotate(cabina->modelMat(), 3.141516 / 2, dvec3(0, 1, 0)));
-	addEntity(cabina);
+	morro->addEntity(cabina);
 
-	//==================CRISTAL===================
-
+	//Cristal
 	auto cristal = new QuadricDisk(0, 45 * size, 40 * size);
 	cristal->SetColor(0, 65, 106);
 	cristal->setModelMat(translate(cristal->modelMat(), dvec3(80 * size, 0, 0)));
 	cristal->setModelMat(rotate(cristal->modelMat(), 3.141516 / 2, dvec3(0, 1, 0)));
-	addEntity(cristal);
+	morro->addEntity(cristal);
+
+	addEntity(morro);
 
 	//==================ESCUDOS===================
 
@@ -694,14 +698,17 @@ void TriangleFict::update()
 
 Esfera::Esfera(GLdouble r, GLuint p, GLuint m)
 {
-	glm::dvec3* a = new glm::dvec3[p];
+	glm::dvec3* a = new glm::dvec3[p + 1];
 
-	for (GLuint i = 0u; i < p; i++)
+	GLdouble step = 3.1415 / p;
+
+	for (GLuint i = 0u; i < p + 1; i++)
 	{
-		a[i] = dvec3(r * glm::sin(radians((float)(i / p) * 180)), r * glm::cos(radians((float)(i / p) * 180)), 0);
+		a[i] = dvec3(r * glm::sin(step * i), -r * glm::cos(step * i), 0);
+		//a[i] = dvec3(30 * 1, (i * 20) - (p / 2), 0);
 	}
 
-	mMesh = MbR::generaMallaIndexadaPorRevolucion(p, m, a);
+	mMesh = MbR::generaMallaIndexadaPorRevolucion(p + 1, m, a);
 }
 
 Esfera::~Esfera()
@@ -713,7 +720,41 @@ void Esfera::render(glm::dmat4 const& modelViewMat) const
 	if (mMesh != nullptr) {
 
 		glPolygonMode(GL_FRONT, GL_FILL);
-		glPolygonMode(GL_BACK, GL_FILL);
+		glPolygonMode(GL_BACK, GL_POINT);
+
+		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
+		upload(aMat);
+		glColor4dv(value_ptr(mColor));
+		mMesh->render();
+		glColor4d(1, 1, 1, 1);
+	}
+}
+
+Toro::Toro(GLdouble r, GLdouble R, GLuint m, GLuint p)
+{
+	glm::dvec3* a = new glm::dvec3[p + 1];
+
+	GLdouble step = (2*3.1415) / p;
+
+	for (GLuint i = 0u; i < p + 1; i++)
+	{
+		a[i] = dvec3(R + (r * glm::sin(step * i)), -r * glm::cos(step * i), 0);
+		//a[i] = dvec3(30 * 1, (i * 20) - (p / 2), 0);
+	}
+
+	mMesh = MbR::generaMallaIndexadaPorRevolucion(p + 1, m, a);
+}
+
+Toro::~Toro()
+{
+}
+
+void Toro::render(glm::dmat4 const& modelViewMat) const
+{
+	if (mMesh != nullptr) {
+
+		glPolygonMode(GL_FRONT, GL_FILL);
+		glPolygonMode(GL_BACK, GL_POINT);
 
 		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
 		upload(aMat);

@@ -222,6 +222,9 @@ void IG1App::key(unsigned char key, int x, int y)
 	case '7':
 		mScene->SetState(6);
 		break;
+	case '8':
+		mScene->SetState(7);
+		break;
 	case 'p':
 		mCamera->ChangePrj();
 		break;

@@ -213,6 +213,16 @@ public:
 
 //------------------------------------------------------------
 
+class Toro : public Abs_Entity
+{
+public:
+	explicit Toro(GLdouble r, GLdouble R, GLuint m, GLuint p);
+	~Toro();
+	virtual void render(glm::dmat4 const& modelViewMat) const;
+
+};
+
+//------------------------------------------------------------
 
 
 class QuadricEntity : public Abs_Entity
