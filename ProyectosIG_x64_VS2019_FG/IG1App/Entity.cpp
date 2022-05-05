@@ -726,7 +726,9 @@ void Esfera::render(glm::dmat4 const& modelViewMat) const
 		upload(aMat);
 
 		if (material != nullptr)
+		{
 			material->upload();
+		}
 		else
 		{
 			glEnable(GL_COLOR_MATERIAL);

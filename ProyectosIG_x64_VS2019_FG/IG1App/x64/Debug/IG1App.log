@@ -1,3 +1,4 @@
-﻿  Entity.cpp
-C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Entity.cpp(643,50): warning C4244: 'argumento': conversión de 'float' a 'GLuint'; posible pérdida de datos
-  IG1App.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe
+﻿  Light.cpp
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Light.cpp(27,10): error C2662: 'void Light::uploadL(void)': no se puede convertir el puntero 'this' de 'const DirLight' a 'Light &'
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Light.cpp(27,2): message : Se pierden calificadores en la conversión
+C:\Users\jvill\Desktop\UNIIIII\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Light.cpp(14,13): message : vea la declaración de 'Light::uploadL'

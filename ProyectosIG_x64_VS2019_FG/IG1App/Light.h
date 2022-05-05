@@ -40,4 +40,41 @@ protected:
 	// Añade setter’s para cambiar el valor de los atributos lumínicos
 };
 
+class DirLight : public Light {
+public:
+	virtual void upload(glm::dmat4 const& modelViewMat) const;
+	void setPosDir(glm::fvec3 dir);
+}; 
+
+class PosLight : public Light {
+
+public:
+	virtual void upload(glm::dmat4 const& modelViewMat) const;
+
+	void setPosDir(glm::fvec3 dir);
+
+	void setAtte(GLfloat kc, GLfloat kl, GLfloat kq);
+
+protected:
+	// Factores de atenuación
+	GLfloat kc = 1, kl = 0, kq = 0;
+};
+
+class SpotLight : public PosLight {
+
+public:
+	SpotLight(glm::fvec3 pos = { 0, 0, 0 }) : PosLight() {
+		posDir = glm::fvec4(pos, 1.0);
+	};
+
+	virtual void upload(glm::dmat4 const& modelViewMat) const;
+
+	void setSpot(glm::fvec3 dir, GLfloat cf, GLfloat e);
+
+protected:
+	// Atributos del foco
+	glm::fvec4 direction = { 0, 0, -1, 0 };
+	GLfloat cutoff = 180;
+	GLfloat exp = 0;
+};
 #endif //_H_Light_H_
