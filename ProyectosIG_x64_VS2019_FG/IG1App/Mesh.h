@@ -70,6 +70,8 @@ protected:
 class IndexMesh : public Mesh 
 {
 public:
+	IndexMesh() { mPrimitive = GL_TRIANGLES; };
+	~IndexMesh() { delete[] vIndices; };
 	static IndexMesh* generaCuboConTapasIndexado(GLdouble l);
 
 	void buildNormalVectors();

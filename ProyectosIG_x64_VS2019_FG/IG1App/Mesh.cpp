@@ -635,12 +635,12 @@ void IndexMesh::buildNormalVectors()
     }
 
 
-    for (int i = 0; i < mNumVertices; i++) 
+    for (int i = 0; i < mNumIndices; i += 3)
     {
         auto u = vVertices[vIndices[i + 1]] - vVertices[vIndices[i]];
         auto v = vVertices[vIndices[i + 2]] - vVertices[vIndices[i]];
 
-        auto n = - cross(u, v);
+        auto n = cross(u, v);
 
         vNormals[vIndices[i]] += n;
         vNormals[vIndices[i + 1]] += n;

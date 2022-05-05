@@ -761,5 +761,6 @@ void Toro::render(glm::dmat4 const& modelViewMat) const
 		glColor4dv(value_ptr(mColor));
 		mMesh->render();
 		glColor4d(1, 1, 1, 1);
+
 	}
 }
