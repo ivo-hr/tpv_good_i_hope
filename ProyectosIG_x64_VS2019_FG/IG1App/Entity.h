@@ -8,6 +8,7 @@
 #include "Texture.h"
 #include "Mesh.h"
 #include "Material.h"
+#include "Light.h"
 
 //-------------------------------------------------------------------------
 
@@ -311,9 +312,13 @@ protected:
 class TIEAvanzado : public CompoundEntity
 {
 public:
-	TIEAvanzado();
-	TIEAvanzado(float size);
+	TIEAvanzado(float size = 1);
 	~TIEAvanzado();
+
+	virtual void render(glm::dmat4 const& modelViewMat) const override;
+
+protected:
+	SpotLight* foco;
 };
 //--------------------------------------------------------------
 class TrianguloNodoFict : public CompoundEntity

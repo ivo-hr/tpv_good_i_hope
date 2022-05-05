@@ -50,11 +50,11 @@ protected:
 	void resetGL();
 
 	void sceneDirLight(Camera const& cam) const;
-	void setLights(Camera const& cam, glm::fvec3 pos) const;
-	void uploadLights() const;
-	DirLight* dirLight;
-	PosLight* posLight;
-	SpotLight* spotLight;
+	void setLights();
+	void uploadLights(Camera const& cam) const;
+	DirLight* dirLight = nullptr;
+	PosLight* posLight = nullptr;
+	SpotLight* spotLight = nullptr;
 
 	std::vector<Abs_Entity*> gObjects;  // Entities (graphic objects) of the scene
 	std::vector<Abs_Entity*> gTransObjects;  // Entities (graphic objects) of the scene

@@ -183,23 +183,29 @@ void IG1App::key(unsigned char key, int x, int y)
 	case 'U':
 		updating = !updating;
 		break;
-	case 'd':
-		mCamera->moveLR(1);
-		break;
-	case 'a':
-		mCamera->moveLR(-1);
+	case 'q':
+		mScene->enciendeLuz(GL_LIGHT0, true);
 		break;
 	case 'w':
-		mCamera->moveUD(1);
+		mScene->enciendeLuz(GL_LIGHT0, false);
+		break;
+	case 'a':
+		mScene->enciendeLuz(GL_LIGHT1, true);
 		break;
 	case 's':
-		mCamera->moveUD(-1);
+		mScene->enciendeLuz(GL_LIGHT1, false);
 		break;
-	case 'q':
-		mCamera->moveFB(1);
+	case 'z':
+		mScene->enciendeLuz(GL_LIGHT2, true);
 		break;
-	case 'e':
-		mCamera->moveFB(-1);
+	case 'x':
+		mScene->enciendeLuz(GL_LIGHT2, false);
+		break;
+	case 'v':
+		mScene->enciendeLuz(GL_LIGHT3, true);
+		break;
+	case 'b':
+		mScene->enciendeLuz(GL_LIGHT3, false);
 		break;
 	case '1':
 		mScene->SetState(0);
@@ -243,7 +249,7 @@ void IG1App::key(unsigned char key, int x, int y)
 		orbiting = !orbiting;
 		orbitHeight = 0;
 		break;
-	case 'x':
+	case 'd':
 		mCamera->setCenital();
 		break;
 	case 'f':

@@ -491,6 +491,7 @@ void QuadricSphere::render(glm::dmat4 const& modelViewMat) const
 
 	gluSphere(qObj, r, res, res);
 
+	glDisable(GL_COLOR_MATERIAL);
 	glColor3f(1, 1, 1);
 }
 
@@ -516,6 +517,7 @@ void QuadricCylinder::render(glm::dmat4 const& modelViewMat) const
 
 	gluCylinder(qObj, r, rr, h, res, res);
 
+	glDisable(GL_COLOR_MATERIAL);
 	glColor3f(1, 1, 1);
 }
 
@@ -574,53 +576,15 @@ void CompoundEntity::addEntity(Abs_Entity* ae)
 	gObjects.push_back(ae);
 }
 
-TIEAvanzado::TIEAvanzado()
-{
-
-	//==================CUERPO===================
-
-	auto cuerpo = new QuadricSphere(75, 40);
-	cuerpo->SetColor(0, 65, 106);
-	addEntity(cuerpo);
-
-	//==================CABINA===================
-
-	auto cabina = new QuadricCylinder(20, 45, 45, 40);
-	cabina->SetColor(0, 65, 106);
-	cabina->setModelMat(translate(cabina->modelMat(), dvec3(60, 0, 0)));
-	cabina->setModelMat(rotate(cabina->modelMat(), 3.141516 / 2, dvec3(0, 1, 0)));
-	addEntity(cabina);
-
-	//==================CRISTAL===================
-
-	auto cristal = new QuadricDisk(0, 45, 40);
-	cristal->SetColor(0, 65, 106);
-	cristal->setModelMat(translate(cristal->modelMat(), dvec3(80, 0, 0)));
-	cristal->setModelMat(rotate(cristal->modelMat(), 3.141516 / 2, dvec3(0, 1, 0)));
-	addEntity(cristal);
-
-	//==================ESCUDOS===================
-
-	Texture* t = new Texture();
-	t->load("..\\Bmps\\Noche.bmp", 150);
-	auto escudo = new AlaTIE(120, 100);
-	escudo->SetTexture(t);
-	addEntity(escudo);
-	auto escudo2 = new AlaTIE(-120, 100);
-	escudo2->SetTexture(t);
-	addEntity(escudo2);
-
-	//==================EJE===================
-
-	auto eje = new QuadricCylinder(240, 20, 20, 40);
-	eje->setModelMat(translate(eje->modelMat(), dvec3(0, 0, -120)));
-	eje->SetColor(0, 65, 106);
-	addEntity(eje);
-}
-
 
 TIEAvanzado::TIEAvanzado(float size)
 {
+
+	foco = new SpotLight();
+	foco->setSpot(fvec3(0, -1, 0), 50, 10);
+	foco->setPosDir(fvec3(0, -75 * size, 0));
+	foco->setAmb(fvec4(0, 0, 0, 1));
+	foco->setDiff(fvec4(1, 1, 1, 1));
 
 	//==================CUERPO===================
 
@@ -669,6 +633,22 @@ TIEAvanzado::TIEAvanzado(float size)
 
 TIEAvanzado::~TIEAvanzado()
 {
+}
+
+void TIEAvanzado::render(glm::dmat4 const& modelViewMat) const
+{
+
+	glm::dmat4 aMat = modelViewMat * mModelMat;
+
+	upload(aMat);
+
+	foco->upload(aMat);
+
+	for (Abs_Entity* a : gObjects)
+	{
+		a->render(aMat);
+	}
+
 }
 
 TrianguloNodoFict::TrianguloNodoFict()
@@ -762,6 +742,7 @@ Toro::Toro(GLdouble r, GLdouble R, GLuint m, GLuint p)
 
 Toro::~Toro()
 {
+	delete mMesh;
 }
 
 void Toro::render(glm::dmat4 const& modelViewMat) const

@@ -11,12 +11,9 @@ void Scene::init()
 	setGL();  // OpenGL settings
 	glEnable(GL_DEPTH_TEST);
 	// allocate memory and load resources
-    // Lights
-	dirLight = new DirLight();
-	posLight = new PosLight();
-	spotLight = new SpotLight();
 
-    // Textures
+	setLights();
+
 
 	gObjects.push_back(new EjesRGB(400.0));
 
@@ -43,14 +40,16 @@ void Scene::init()
 	{
 		glClearColor(0., 0., 0., 1.0);  // background color (alpha=1 -> opaque)
 
-		auto tatooine = new QuadricSphere(300, 80);
-		tatooine->SetColor(255, 233, 200);
+		auto tatooine = new Esfera(300, 80, 80);
+		auto m = new Material();
+		m->setGold();
+		tatooine->setMaterial(m);
 		gObjects.push_back(tatooine);
 
 		auto comp = new CompoundEntity();
 
 		auto TIE = new TIEAvanzado(0.1f);
-		TIE->setModelMat(translate(TIE->modelMat(), dvec3(0, 320, 0)));
+		TIE->setModelMat(translate(TIE->modelMat(), dvec3(0, 330, 0)));
 		comp->addEntity(TIE);
 
 		gObjects.push_back(comp);
@@ -83,6 +82,7 @@ void Scene::init()
 	}
 	else if (mId == 6)
 	{
+
 		auto esfera = new Esfera(100, 30, 30);
 
 		auto mat = new Material();
@@ -132,6 +132,8 @@ void Scene::free()
 void Scene::setGL() 
 {
 	// OpenGL basic setting
+	glEnable(GL_LIGHTING);
+	glEnable(GL_NORMALIZE);
 	glEnable(GL_TEXTURE_2D);
 	glClearColor(0.2, 0.2, 0.2, 1.0);  // background color (alpha=1 -> opaque)
 	glEnable(GL_DEPTH_TEST);  // enable Depth test 
@@ -148,7 +150,7 @@ void Scene::resetGL()
 
 void Scene::sceneDirLight(Camera const& cam) const
 {
-	glEnable(GL_LIGHTING);
+	/*glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glm::fvec4 posDir = { 1, 1, 1, 0 };
 	glMatrixMode(GL_MODELVIEW);
@@ -159,15 +161,25 @@ void Scene::sceneDirLight(Camera const& cam) const
 	glm::fvec4 specular = { 0.5, 0.5, 0.5, 1 };
 	glLightfv(GL_LIGHT0, GL_AMBIENT, value_ptr(ambient));
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, value_ptr(diffuse));
-	glLightfv(GL_LIGHT0, GL_SPECULAR, value_ptr(specular));
+	glLightfv(GL_LIGHT0, GL_SPECULAR, value_ptr(specular));*/
 }
-void Scene::setLights(Camera const& cam, fvec3 pos) const
+void Scene::setLights()
 {
+	GLfloat amb[] = { 0.1, 0.1, 0.1, 1.0 };
+	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, amb);
+
+	if (!dirLight)
+	{
+		dirLight = new DirLight();
+		posLight = new PosLight();
+		spotLight = new SpotLight();
+	}
+
 	glEnable(GL_LIGHTING);
 
-	dirLight->setPosDir(pos);
-	posLight->setPosDir(pos);
-	spotLight->setPosDir(pos);
+	dirLight->setPosDir(fvec3(1, 1, 0));
+	posLight->setPosDir(fvec3(0, 100, 0));
+	spotLight->setPosDir(fvec3(0, 0, 300));
 
 	dirLight->setAmb(fvec4(0, 0, 0, 1));
 	posLight->setAmb(fvec4(0, 0, 0, 1));
@@ -182,9 +194,11 @@ void Scene::setLights(Camera const& cam, fvec3 pos) const
 	spotLight->setSpec(fvec4(0.5, 0.5, 0.5, 1));
 }
 
-void Scene::uploadLights() const
+void Scene::uploadLights(Camera const& cam) const
 {
-	dirLight->upload();
+	dirLight->upload(cam.viewMat());
+	posLight->upload(cam.viewMat());
+	spotLight->upload(cam.viewMat());
 }
 
 
@@ -192,8 +206,8 @@ void Scene::uploadLights() const
 
 void Scene::render(Camera const& cam) const 
 {
-	setLights(cam, fvec3(1, 1, 1));
 	cam.upload();
+	uploadLights(cam);
 
 	for (Abs_Entity* el : gObjects)
 	{
@@ -247,7 +261,7 @@ void Scene::rota()
 {
 	if (compCaza != nullptr)
 	{
-		compCaza->setModelMat(rotate(compCaza->modelMat(), -0.1, dvec3(0, 1, 0)));
+		compCaza->setModelMat(rotate(compCaza->modelMat(), -0.05, dvec3(0, 1, 0)));
 	}
 }
 
@@ -255,31 +269,20 @@ void Scene::orbita()
 {
 	if (compCaza != nullptr)
 	{
-		compCaza->setModelMat(rotate(compCaza->modelMat(), -0.1, dvec3(0, 0, 1)));
+		compCaza->setModelMat(rotate(compCaza->modelMat(), -0.05, dvec3(0, 0, 1)));
 	}
 }
 
 void Scene::enciendeLuz(int luz, bool on)
 {
-	switch (luz)
+	if (on)
 	{
-	case 0:
-		if (on) dirLight->enable();
-		else dirLight->disable();
-		break;
-	case 1:
-		if (on) posLight->enable();
-		else posLight->disable();
-		break;
-	case 2:
-		if (on) spotLight->enable();
-		else spotLight->disable();
-		break;
-
-	default:
-		break;
+		glEnable(luz);
 	}
-
+	else
+	{
+		glDisable(luz);
+	}
 }
 
 
