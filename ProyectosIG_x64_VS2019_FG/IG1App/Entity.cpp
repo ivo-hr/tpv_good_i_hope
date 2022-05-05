@@ -691,3 +691,34 @@ void TriangleFict::update()
 {
 	mModelMat = rotate(mModelMat, -0.04, dvec3(0, 0, 1));
 }
+
+Esfera::Esfera(GLdouble r, GLuint p, GLuint m)
+{
+	glm::dvec3* a = new glm::dvec3[p];
+
+	for (GLuint i = 0u; i < p; i++)
+	{
+		a[i] = dvec3(r * glm::sin(radians((float)(i / p) * 180)), r * glm::cos(radians((float)(i / p) * 180)), 0);
+	}
+
+	mMesh = MbR::generaMallaIndexadaPorRevolucion(p, m, a);
+}
+
+Esfera::~Esfera()
+{
+}
+
+void Esfera::render(glm::dmat4 const& modelViewMat) const
+{
+	if (mMesh != nullptr) {
+
+		glPolygonMode(GL_FRONT, GL_FILL);
+		glPolygonMode(GL_BACK, GL_FILL);
+
+		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
+		upload(aMat);
+		glColor4dv(value_ptr(mColor));
+		mMesh->render();
+		glColor4d(1, 1, 1, 1);
+	}
+}

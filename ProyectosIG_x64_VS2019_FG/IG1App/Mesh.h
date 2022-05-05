@@ -91,7 +91,7 @@ public:
 protected:
 	int m;
 	int n;
-	dvec3* perfil;
+	glm::dvec3* perfil;
 };
 
 #endif //_H_Scene_H_

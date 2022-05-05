@@ -79,51 +79,7 @@ void Scene::init()
 	}
 	else if (mId == 6)
 	{
-		Texture* t = new Texture();
-		t->load("..\\Bmps\\baldosaC.bmp");
-		gTextures.push_back(t);
-
-		Suelo* s = new Suelo(400., 4);
-		s->SetTexture(t);
-
-		gObjects.push_back(new Foto(200, 200));
-		gObjects.push_back(s);
-
-		Texture* y = new Texture();
-		Texture* u = new Texture();
-		y->load("..\\Bmps\\container.bmp");
-		u->load("..\\Bmps\\papelE.bmp");
-		gTextures.push_back(y);
-		gTextures.push_back(u);
-
-		ContornoCaja* r = new ContornoCaja(50.);
-		r->SetTexture(y);
-		r->SetTexture2(u);
-
-		r->setModelMat(translate(r->modelMat(), dvec3(150, 25, 150)));
-
-		gObjects.push_back(r);
-
-		Texture* p = new Texture();
-		p->load("..\\Bmps\\baldosaP.bmp");
-		gTextures.push_back(p);
-
-		Estrella3D* e = new Estrella3D(20., 8, 20.);
-		e->SetTexture(p);
-
-		e->setModelMat(translate(e->modelMat(), dvec3(150, 60, 150)));
-
-		gObjects.push_back(e);
-
-		Texture* f = new Texture();
-		f->load("..\\Bmps\\windowV.bmp", 150);
-		gTextures.push_back(f);
-
-		Cristalera* j = new Cristalera(400., 100.);
-		j->SetTexture(f);
-
-
-		gTransObjects.push_back(j);
+		gObjects.push_back(new Esfera(200, 10, 10));
 	}
 	
 }
@@ -183,7 +139,7 @@ void Scene::sceneDirLight(Camera const& cam) const
 
 void Scene::render(Camera const& cam) const 
 {
-	sceneDirLight(cam);
+	//sceneDirLight(cam);
 	cam.upload();
 
 	for (Abs_Entity* el : gObjects)

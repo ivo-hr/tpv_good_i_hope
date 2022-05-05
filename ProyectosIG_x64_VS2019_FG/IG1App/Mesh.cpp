@@ -624,8 +624,6 @@ IndexMesh* IndexMesh::generaCuboConTapasIndexado(GLdouble l)
     //m->vNormals.emplace_back(glm::normalize(dvec3(-1, -2, 2)));   //5
     //m->vNormals.emplace_back(glm::normalize(dvec3(2, -1, 1)));    //7
 
-    m->buildNormalVectors();
-
     return m;
 }
 
@@ -673,6 +671,17 @@ MbR* MbR::generaMallaIndexadaPorRevolucion(int mm, int nn, glm::dvec3* perfil)
 {
     MbR* mesh = new MbR(mm, nn, perfil);
 
+    mesh->mPrimitive = GL_TRIANGLES;
+
+    mesh->mNumVertices = nn * mm;
+    mesh->vVertices.reserve(mesh->mNumVertices);
+
+    mesh->mNumIndices = nn * mm;
+    mesh->vIndices = new GLuint[nn * mm];
+
+    std::vector<dvec3*> vertices;
+    vertices.reserve(mesh->mNumVertices);
+
     for (int i = 0; i < nn; i++)
     {
         GLdouble theta = i * 360 / nn;
@@ -684,8 +693,28 @@ MbR* MbR::generaMallaIndexadaPorRevolucion(int mm, int nn, glm::dvec3* perfil)
             int indice = i * mm + j;
             GLdouble x = c * perfil[j].x + s * perfil[j].z;
             GLdouble z = -s * perfil[j].x + c * perfil[j].z;
-            vertices[indice] = dvec3(x, perfil[j].y, z);
+            vertices.emplace_back(new dvec3(x, perfil[j].y, z));
         }
     }
-    return nullptr;
+
+    for (auto i = 0; i < vertices.size(); i++)
+        mesh->vVertices.emplace_back(*vertices[i]);
+
+    int indiceMayor = 0;
+    for (int i = 0; i < nn; i++)
+    {
+        for (int j = 0; j < mm - 1; j++)
+        {
+            int indice = i * mm + j;
+
+            mesh->vIndices[indiceMayor] = indice;
+            indiceMayor++;
+            mesh->vIndices[indiceMayor] = (indice + mm) % (nn * mm);
+            indiceMayor++;
+            mesh->vIndices[indiceMayor] = (indice + mm + 1) % (nn * mm);
+            indiceMayor++;
+        }
+    }
+    mesh->buildNormalVectors();
+    return mesh;
 }

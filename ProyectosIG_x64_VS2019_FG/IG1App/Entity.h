@@ -202,6 +202,17 @@ public:
 };
 
 //------------------------------------------------------------
+class Esfera : public Abs_Entity
+{
+public:
+	explicit Esfera(GLdouble r, GLuint p, GLuint m);
+	~Esfera();
+	virtual void render(glm::dmat4 const& modelViewMat) const;
+
+};
+
+//------------------------------------------------------------
+
 
 
 class QuadricEntity : public Abs_Entity
