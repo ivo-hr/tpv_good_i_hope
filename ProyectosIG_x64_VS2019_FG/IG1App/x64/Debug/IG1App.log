@@ -1,1 +1,7 @@
-﻿
+﻿  Scene.cpp
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(138,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(168,39): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(239,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(241,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\IG1App\Scene.cpp(243,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  IG1App.vcxproj -> F:\Docs\0Uni\2o\TPV I\tpv_good_i_hope\ProyectosIG_x64_VS2019_FG\bin\IG1AppDebug.exe

@@ -738,7 +738,7 @@ Toro::Toro(GLdouble r, GLdouble R, GLuint m, GLuint p)
 	}
 
 	mMesh = MbR::generaMallaIndexadaPorRevolucion(p + 1, m, a);
-}
+}	
 
 Toro::~Toro()
 {

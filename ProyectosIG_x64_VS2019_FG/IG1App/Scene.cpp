@@ -178,9 +178,10 @@ void Scene::setLights()
 	glEnable(GL_LIGHTING);
 
 	dirLight->setPosDir(fvec3(1, 1, 0));
-	posLight->setPosDir(fvec3(0, 100, 0));
-	spotLight->setPosDir(fvec3(0, 0, 300));
+	posLight->setPosDir(fvec3(300, 300, 300));
+	spotLight->setPosDir(fvec3(200, 200, 200));
 
+	//fvec4[3] -> 0 si posicional, 1 si direccional
 	dirLight->setAmb(fvec4(0, 0, 0, 1));
 	posLight->setAmb(fvec4(0, 0, 0, 1));
 	spotLight->setAmb(fvec4(0, 0, 0, 1));
@@ -230,12 +231,17 @@ void Scene::render(Camera const& cam) const
 void Scene::SetState(int id){
 
 	if (id != mId) {
+
+		resetGL();
+
 		free();
 
 		for (int i = gObjects.size(); i > 0; i--)
 			gObjects.pop_back(); 
 		for (int i = gTransObjects.size(); i > 0; i--)
 			gTransObjects.pop_back();
+		for (int i = gTextures.size(); i > 0; i--)
+			gTextures.pop_back();
 
 
 		mId = id;
